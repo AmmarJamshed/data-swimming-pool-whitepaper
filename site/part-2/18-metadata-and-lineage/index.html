@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en" data-part="p2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>18. Metadata and Data Lineage · Data Swimming Pool</title>
+<meta name="description" content="18. Metadata and Data Lineage --- Principle 7 — Evidence or Silence — is only enforceable if lineage is complete. This chapter specifies the metadata plane that makes it so. 18.1 T">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="18. Metadata and Data Lineage — Data Swimming Pool">
+<meta property="og:description" content="18. Metadata and Data Lineage --- Principle 7 — Evidence or Silence — is only enforceable if lineage is complete. This chapter specifies the metadata plane that makes it so. 18.1 T">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" open style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/" class="on">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part II — The Data Swimming Pool</span></p>
+    <h1>18. Metadata and Data Lineage</h1>
+    <p class="cmeta"><span class="chip">🏊 Part II — The Data Swimming Pool</span><span class="dot">·</span>5 min read</p>
+  </header>
+  <div class="prose">
+<h1>18. Metadata and Data Lineage</h1>
+<hr>
+<p>Principle 7 — Evidence or Silence — is only enforceable if lineage is complete. This chapter specifies the metadata plane that makes it so.</p>
+<h2 id="18.1-the-metadata-plane" tabindex="-1">18.1 The Metadata Plane <a class="header-anchor" href="#18.1-the-metadata-plane">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph PLANE[&quot;METADATA PLANE&quot;]
+        direction TB
+
+        subgraph CAT[&quot;Catalog&quot;]
+            direction LR
+            CA1[&quot;Asset registry&lt;br/&gt;&lt;i&gt;sources, topics, tables, models&lt;/i&gt;&quot;]
+            CA2[&quot;Schema registry&lt;br/&gt;&lt;i&gt;versioned, compatibility-checked&lt;/i&gt;&quot;]
+            CA3[&quot;Contract registry&lt;br/&gt;&lt;i&gt;data contracts, SLAs&lt;/i&gt;&quot;]
+            CA4[&quot;Scope registry&lt;br/&gt;&lt;i&gt;correlation scope definitions&lt;/i&gt;&quot;]
+        end
+
+        subgraph LIN[&quot;Lineage Graph&quot;]
+            direction LR
+            LI1[&quot;Source → canonical event&quot;]
+            LI2[&quot;Event → correlation&quot;]
+            LI3[&quot;Correlation → insight&quot;]
+            LI4[&quot;Insight → action → outcome&quot;]
+        end
+
+        subgraph SEMP[&quot;Semantics&quot;]
+            direction LR
+            SE1[&quot;Business glossary&quot;]
+            SE2[&quot;Metric definitions&quot;]
+            SE3[&quot;Ontology / type system&quot;]
+            SE4[&quot;Purpose taxonomy&quot;]
+        end
+
+        subgraph PROV[&quot;Provenance Ledger&quot;]
+            direction LR
+            PR1[&quot;Engine + model versions&quot;]
+            PR2[&quot;Parameters + thresholds&quot;]
+            PR3[&quot;Policy decisions&quot;]
+            PR4[&quot;Human interventions&quot;]
+        end
+
+        subgraph OPS[&quot;Operational Metadata&quot;]
+            direction LR
+            OP1[&quot;Freshness + volume&quot;]
+            OP2[&quot;Quality assertion results&quot;]
+            OP3[&quot;Degradation windows&quot;]
+            OP4[&quot;Cost attribution&quot;]
+        end
+    end
+
+    ACTIVE[&quot;&lt;b&gt;Active Metadata Behaviours&lt;/b&gt;&lt;br/&gt;• Contract violation → quarantine + notify&lt;br/&gt;• Classification change → policy re-evaluation&lt;br/&gt;• Retraction → dependent insight notification&lt;br/&gt;• Precision drift → autonomy demotion&lt;br/&gt;• Degradation → correlation flagging + re-run&quot;]
+
+    PLANE ==&gt; ACTIVE
+    ACTIVE -.acts on.-&gt; RUNTIME[&quot;Runtime layers L1–L6&quot;]
+
+    classDef plane fill:#183028,stroke:#4caf7d,stroke-width:2px,color:#e6fff2
+    classDef active fill:#3d3313,stroke:#d4a636,stroke-width:2px,color:#fff8e6
+    class PLANE,CAT,CA1,CA2,CA3,CA4,LIN,LI1,LI2,LI3,LI4,SEMP,SE1,SE2,SE3,SE4,PROV,PR1,PR2,PR3,PR4,OPS,OP1,OP2,OP3,OP4 plane
+    class ACTIVE active
+</pre></div>
+<p><strong>Figure 26.</strong> <em>The metadata plane. Five metadata classes are maintained, but the architecturally significant component is the active metadata behaviour set: metadata in this framework is not descriptive documentation but an operational control plane that triggers quarantine, policy re-evaluation, consumer notification, autonomy demotion, and re-correlation.</em></p>
+<h2 id="18.2-metadata-classes" tabindex="-1">18.2 Metadata Classes <a class="header-anchor" href="#18.2-metadata-classes">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Contents</th>
+<th>Primary consumer</th>
+<th>Update trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Catalog</strong></td>
+<td>Asset registry, schemas, contracts, correlation scopes</td>
+<td>Engineers, stewards, Scope Governor</td>
+<td>Registration, schema evolution</td>
+</tr>
+<tr>
+<td><strong>Lineage</strong></td>
+<td>Directed graph from source to outcome</td>
+<td>Audit, impact analysis, P7 gate</td>
+<td>Every event, correlation, insight, action</td>
+</tr>
+<tr>
+<td><strong>Semantics</strong></td>
+<td>Glossary, metric definitions, ontology, purpose taxonomy</td>
+<td>Humans, generative models, policy engine</td>
+<td>Governance decision</td>
+</tr>
+<tr>
+<td><strong>Provenance</strong></td>
+<td>Engine and model versions, parameters, policy decisions, human interventions</td>
+<td>Audit, reproducibility, W2 re-correlation</td>
+<td>Every execution</td>
+</tr>
+<tr>
+<td><strong>Operational</strong></td>
+<td>Freshness, volume, quality results, degradation windows, cost</td>
+<td>Operations, Scope Governor, cost management</td>
+<td>Continuous</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 35.</strong> <em>Metadata classes maintained by the plane. Lineage is unique in being updated at the event rate rather than at configuration-change rate, which is why its capture mechanism must be engineered for throughput rather than treated as an audit afterthought.</em></p>
+<h2 id="18.3-lineage-depth-requirement" tabindex="-1">18.3 Lineage Depth Requirement <a class="header-anchor" href="#18.3-lineage-depth-requirement">#</a></h2>
+<p>Conventional enterprise lineage terminates at the dataset: <em>this table was produced by that job from those tables</em>. This is insufficient for a correlation architecture, because the question an auditor asks is not “where did this table come from?” but <strong>“why did the system conclude this, and act on it?”</strong></p>
+<p>The framework therefore requires lineage at five levels:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Granularity</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>L-A Asset</strong></td>
+<td>Dataset to dataset</td>
+<td><code>silver.payments</code> derived from <code>bronze.core_banking_cdc</code></td>
+</tr>
+<tr>
+<td><strong>L-B Field</strong></td>
+<td>Column to column with transformation</td>
+<td><code>canonical.amount_gbp</code> = <code>raw.amount</code> × FX rate (rate version pinned)</td>
+</tr>
+<tr>
+<td><strong>L-C Record</strong></td>
+<td>Individual canonical event to its source record</td>
+<td>Event <code>E-88214</code> from CDC LSN <code>0x4F2A91</code>, source txn <code>T-771</code></td>
+</tr>
+<tr>
+<td><strong>L-D Correlation</strong></td>
+<td>Correlation to its exact evidence set</td>
+<td>Correlation <code>C-4471</code> from events {<code>E-88214</code>, <code>E-88301</code>}, modalities {M1: 0.35, M2: 0.90}, scope <code>fraud.cnp.v3</code>, engine <code>v2.14.1</code></td>
+</tr>
+<tr>
+<td><strong>L-E Decision</strong></td>
+<td>Insight to action to realized outcome</td>
+<td>Insight <code>I-9930</code> from {<code>C-4471</code>, <code>C-4488</code>} → action <code>hold_transaction</code> at L3 → outcome: confirmed fraud, £48,200 prevented</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 36.</strong> <em>Five levels of lineage depth. L-D and L-E are the levels conventional lineage tooling does not provide and that this framework mandates. Without L-D, a correlation cannot be defended; without L-E, confidence cannot be calibrated.</em></p>
+<h2 id="18.4-end-to-end-lineage-for-a-derived-insight" tabindex="-1">18.4 End-to-End Lineage for a Derived Insight <a class="header-anchor" href="#18.4-end-to-end-lineage-for-a-derived-insight">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart LR
+    subgraph SRC[&quot;Sources&quot;]
+        S1[&quot;Core banking&lt;br/&gt;txn T-771&quot;]
+        S2[&quot;Identity platform&lt;br/&gt;device event D-402&quot;]
+        S3[&quot;Session store&lt;br/&gt;login L-115&quot;]
+    end
+
+    subgraph CANON[&quot;Canonical Events&quot;]
+        E1[&quot;E-88214&lt;br/&gt;payment.authorization&lt;br/&gt;&lt;i&gt;clock: NTP&lt;/i&gt;&quot;]
+        E2[&quot;E-88301&lt;br/&gt;identity.device_change&lt;br/&gt;&lt;i&gt;clock: NTP&lt;/i&gt;&quot;]
+        E3[&quot;E-88298&lt;br/&gt;session.login&lt;br/&gt;&lt;i&gt;clock: best-effort&lt;/i&gt;&quot;]
+    end
+
+    subgraph RESOL[&quot;Entity Resolution&quot;]
+        ER[&quot;Resolved entity&lt;br/&gt;PARTY-55192&lt;br/&gt;&lt;i&gt;confidence 0.98&lt;/i&gt;&lt;br/&gt;model er-v4.2&quot;]
+    end
+
+    subgraph CORRS[&quot;Correlations&quot;]
+        C1[&quot;C-4471&lt;br/&gt;DEVICE_CHANGE_PRECEDES_PAYMENT&lt;br/&gt;M1: 0.41 · M2: 0.90 · M5: 0.66&lt;br/&gt;fused → calibrated &lt;b&gt;0.87&lt;/b&gt;&lt;br/&gt;scope fraud.cnp.v3&lt;br/&gt;engine v2.14.1&quot;]
+        C2[&quot;C-4488&lt;br/&gt;ANOMALOUS_SESSION_ORIGIN&lt;br/&gt;M2: 0.90 · M5: 0.71&lt;br/&gt;calibrated &lt;b&gt;0.79&lt;/b&gt;&quot;]
+    end
+
+    subgraph POL[&quot;Policy Decisions&quot;]
+        P1[&quot;Correlation-time check&lt;br/&gt;purpose: fraud-prevention&lt;br/&gt;PERMIT · policy v11&quot;]
+    end
+
+    subgraph INS[&quot;Insight&quot;]
+        I1[&quot;I-9930&lt;br/&gt;'Probable account takeover&lt;br/&gt;in progress'&lt;br/&gt;confidence 0.84&lt;br/&gt;model risk-v7.1&lt;br/&gt;autonomy L3&quot;]
+    end
+
+    subgraph ACT[&quot;Action &amp; Outcome&quot;]
+        A1[&quot;Action: hold_transaction&lt;br/&gt;+ step_up_auth&lt;br/&gt;reversible: yes&lt;br/&gt;actor: autonomy-controller&quot;]
+        O1[&quot;Outcome (T+2h)&lt;br/&gt;customer confirmed&lt;br/&gt;unauthorized&lt;br/&gt;&lt;b&gt;→ correlation VALIDATED&lt;/b&gt;&quot;]
+    end
+
+    S1 --&gt; E1
+    S2 --&gt; E2
+    S3 --&gt; E3
+    E1 &amp; E2 &amp; E3 --&gt; ER
+    ER --&gt; C1 &amp; C2
+    P1 -.permits.-&gt; C1 &amp; C2
+    C1 &amp; C2 --&gt; I1 --&gt; A1 --&gt; O1
+    O1 -.calibration signal.-&gt; C1
+
+    classDef src fill:#1b2f3d,stroke:#5b8fb0,color:#e6f2fa
+    classDef canon fill:#0d4159,stroke:#22b3d6,color:#eaf9ff
+    classDef corr fill:#0a5570,stroke:#3fd0f0,stroke-width:2px,color:#ffffff
+    classDef pol fill:#3a2540,stroke:#a878c0,color:#f6eaff
+    classDef ins fill:#3d3313,stroke:#d4a636,stroke-width:2px,color:#fff8e6
+    classDef out fill:#183028,stroke:#4caf7d,stroke-width:2px,color:#e6fff2
+    class SRC,S1,S2,S3 src
+    class CANON,E1,E2,E3,RESOL,ER canon
+    class CORRS,C1,C2 corr
+    class POL,P1 pol
+    class INS,I1 ins
+    class ACT,A1,O1 out
+</pre></div>
+<p><strong>Figure 27.</strong> <em>End-to-end lineage for a single derived insight, illustrative. Every arrow is a persisted lineage edge. The chain supports four distinct audit questions: what evidence supported the conclusion, what policy permitted the correlation to form, what authority permitted the action, and whether the conclusion proved correct. The final feedback edge is what makes the confidence figure of 0.87 an empirical claim rather than an assertion.</em></p>
+<p>The figure also illustrates a subtlety worth noting: event <code>E-88298</code> carries a clock quality of <em>best-effort</em> rather than <em>NTP</em>. A correlation relying primarily on temporal precedence involving that event would carry reduced confidence, and the lineage records this so an auditor can assess whether the temporal claim was warranted.</p>
+<h2 id="18.5-capture-mechanism" tabindex="-1">18.5 Capture Mechanism <a class="header-anchor" href="#18.5-capture-mechanism">#</a></h2>
+<div class="cal cal-success">
+<h3 id="design-principle-%E2%80%94-lineage-is-emitted%2C-not-reconstructed" tabindex="-1">Design Principle — Lineage Is Emitted, Not Reconstructed <a class="header-anchor" href="#design-principle-%E2%80%94-lineage-is-emitted%2C-not-reconstructed">#</a></h3>
+<p>Lineage MUST be emitted inline by the component performing the operation, at the time of the operation. Lineage MUST NOT be reconstructed by parsing logs, inspecting query history, or inferring from schedules. Reconstructed lineage is incomplete by construction and cannot support Principle 7.</p>
+</div>
+<p><strong>Mechanism.</strong> Each layer emits lineage events conforming to an open standard (the framework recommends OpenLineage, extended with correlation-specific facets) to a dedicated lineage topic. A consumer materializes these into the lineage graph.</p>
+<p><strong>Throughput consideration.</strong> L-C and L-D lineage is emitted at the event and correlation rate — potentially hundreds of thousands of events per second. This is the metadata plane’s dominant cost, and the framework specifies three mitigations:</p>
+<ol>
+<li><strong>Structural sharing.</strong> Correlations within a scope share a reference to the scope definition and engine version rather than repeating them. Provenance is normalized.</li>
+<li><strong>Batched emission.</strong> Lineage events are batched and compressed on the wire, with the batch boundary aligned to the checkpoint boundary so that lineage and state are consistent after recovery.</li>
+<li><strong>Tiered retention.</strong> Full L-C lineage is retained for a regulatory window (commonly 90 days to 7 years by domain); beyond that, it is aggregated to L-B while L-D and L-E are retained in full because they are the audit-relevant levels.</li>
+</ol>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Lineage cannot be sampled.</strong> Sampling is the obvious cost mitigation and it is prohibited by Principle 7. If lineage for a given insight was not captured, that insight cannot be defended, and the framework requires suppressing it. Sampled lineage means a random subset of the system’s conclusions are inadmissible — which is operationally worse than a higher metadata cost, because the organization cannot know in advance which conclusions will need defending.</p>
+</div>
+<h2 id="18.6-active-metadata-behaviours" tabindex="-1">18.6 Active Metadata Behaviours <a class="header-anchor" href="#18.6-active-metadata-behaviours">#</a></h2>
+<p>The plane is not a documentation repository. Five behaviours make it operational:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Behaviour</th>
+<th>Affected layer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contract violation detected</td>
+<td>Quarantine message, notify named owner, increment source health metric</td>
+<td>L1</td>
+</tr>
+<tr>
+<td>Classification changed on a field</td>
+<td>Re-evaluate all correlation scopes referencing it; suspend any now impermissible</td>
+<td>L3, Governance</td>
+</tr>
+<tr>
+<td>Correlation retracted</td>
+<td>Traverse lineage graph for dependent insights; notify consumers; mark insights superseded</td>
+<td>L4, L5, L6</td>
+</tr>
+<tr>
+<td>Scope precision falls below declared threshold</td>
+<td>Automatically demote scope autonomy level; notify owner</td>
+<td>L3, L5</td>
+</tr>
+<tr>
+<td>Source degradation window recorded</td>
+<td>Flag correlations produced in window; schedule W2 re-correlation</td>
+<td>L3, L5</td>
+</tr>
+<tr>
+<td>Model drift detected</td>
+<td>Demote model autonomy level; trigger retraining evaluation</td>
+<td>L4</td>
+</tr>
+<tr>
+<td>Scope review overdue</td>
+<td>Mark stale; exclude from autonomy L3+</td>
+<td>L3</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 37.</strong> <em>Active metadata behaviours. Classification-change propagation is the most consequential for compliance: when a field is reclassified as special-category data, every correlation scope using it must be re-evaluated for permissibility, and impermissible scopes suspended automatically rather than at the next manual review.</em></p>
+<h2 id="18.7-reproducibility" tabindex="-1">18.7 Reproducibility <a class="header-anchor" href="#18.7-reproducibility">#</a></h2>
+<p>The framework’s reproducibility requirement: <strong>any historical insight MUST be reproducible from its provenance record.</strong></p>
+<p>This requires pinning, in the provenance ledger, every variable input:</p>
+<ul>
+<li>Source data snapshot identifiers (lakehouse table version / snapshot ID)</li>
+<li>Canonical event schema version</li>
+<li>Entity resolution model version</li>
+<li>Correlation scope definition version</li>
+<li>Correlation engine version</li>
+<li>Confidence calibration curve version</li>
+<li>Embedding model version (where M4 participated)</li>
+<li>Predictive and generative model versions</li>
+<li>Prompt template version (where generative components participated)</li>
+<li>Policy bundle version</li>
+<li>Rule corpus version</li>
+</ul>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p><strong>Why this is achievable here and not generally.</strong> Reproducibility of analytical conclusions is notoriously difficult in conventional architectures because the inputs are mutable and unversioned. The framework achieves it through three properties inherited from its foundations: the circulation layer is an immutable replayable log, the lakehouse provides snapshot-versioned inputs, and the provenance ledger pins every code and model version. Reproducibility is a dividend of the event-sourcing posture rather than an additional feature.</p>
+<p>The residual exception is generative model output, which is not reproducible in the strict sense even with a pinned model version and temperature zero, due to inference non-determinism. This is one reason <a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">Chapter 16</a> restricts generative components to lower autonomy levels.</p>
+</div>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Metadata is an operational control plane, not documentation.</strong> It triggers quarantine, policy re-evaluation, consumer notification, autonomy demotion, and re-correlation.</li>
+<li><strong>Five lineage levels are required</strong>, and the two that conventional tooling does not provide — correlation-to-evidence (L-D) and insight-to-outcome (L-E) — are the two the framework mandates. Without L-D a correlation cannot be defended; without L-E confidence cannot be calibrated.</li>
+<li><strong>Lineage must be emitted inline, never reconstructed.</strong> Reconstructed lineage is incomplete by construction and cannot support Evidence or Silence.</li>
+<li><strong>Lineage cannot be sampled.</strong> Sampling means a random, unknowable subset of the system’s conclusions are inadmissible — operationally worse than the metadata cost it avoids.</li>
+<li><strong>Clock quality is recorded in lineage</strong>, so an auditor can assess whether a temporal correlation claim was warranted given the reliability of the participating sources’ clocks.</li>
+<li><strong>Classification-change propagation is the most consequential active behaviour</strong>, automatically suspending correlation scopes that become impermissible rather than waiting for manual review.</li>
+<li><strong>Reproducibility is a dividend of the event-sourcing posture</strong>, achieved through an immutable replayable log, snapshot-versioned lakehouse inputs, and a provenance ledger pinning every version.</li>
+<li><strong>Generative output remains non-reproducible</strong> even with pinned versions, which is a substantive reason to restrict generative components to lower autonomy levels.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/"><span>← Previous</span><b>17. Knowledge Graph Layer</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/"><span>Next →</span><b>19. Event Relationships</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#18.1-the-metadata-plane">18.1 The Metadata Plane #</a><a href="#18.2-metadata-classes">18.2 Metadata Classes #</a><a href="#18.3-lineage-depth-requirement">18.3 Lineage Depth Requirement #</a><a href="#18.4-end-to-end-lineage-for-a-derived-insight">18.4 End-to-End Lineage for a Derived Insight #</a><a href="#18.5-capture-mechanism">18.5 Capture Mechanism #</a><a href="#18.6-active-metadata-behaviours">18.6 Active Metadata Behaviours #</a><a href="#18.7-reproducibility">18.7 Reproducibility #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

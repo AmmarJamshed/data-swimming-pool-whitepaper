@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en" data-part="p2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>16. AI Insight Engine · Data Swimming Pool</title>
+<meta name="description" content="16. AI Insight Engine --- The AI Insight Engine converts correlations into decision-ready intelligence. Its defining architectural property is that it is grounded in the correlatio">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="16. AI Insight Engine — Data Swimming Pool">
+<meta property="og:description" content="16. AI Insight Engine --- The AI Insight Engine converts correlations into decision-ready intelligence. Its defining architectural property is that it is grounded in the correlatio">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" open style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/" class="on">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part II — The Data Swimming Pool</span></p>
+    <h1>16. AI Insight Engine</h1>
+    <p class="cmeta"><span class="chip">🏊 Part II — The Data Swimming Pool</span><span class="dot">·</span>7 min read</p>
+  </header>
+  <div class="prose">
+<h1>16. AI Insight Engine</h1>
+<hr>
+<p>The AI Insight Engine converts correlations into decision-ready intelligence. Its defining architectural property is that it is <strong>grounded in the correlation substrate</strong> rather than operating over raw data — which is what permits its outputs to be attributable rather than merely plausible.</p>
+<h2 id="16.1-architecture" tabindex="-1">16.1 Architecture <a class="header-anchor" href="#16.1-architecture">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph GROUND[&quot;Grounding Substrate&quot;]
+        direction LR
+        G1[(&quot;Correlation store&lt;br/&gt;&lt;i&gt;scored relationships&lt;/i&gt;&quot;)]
+        G2[(&quot;Knowledge graph&lt;br/&gt;&lt;i&gt;entities + context&lt;/i&gt;&quot;)]
+        G3[(&quot;Vector index&lt;br/&gt;&lt;i&gt;semantic embeddings&lt;/i&gt;&quot;)]
+        G4[(&quot;Lakehouse&lt;br/&gt;&lt;i&gt;historical detail&lt;/i&gt;&quot;)]
+        G5[(&quot;Feature store&lt;br/&gt;&lt;i&gt;engineered features&lt;/i&gt;&quot;)]
+    end
+
+    subgraph MODELS[&quot;Model Portfolio&quot;]
+        direction TB
+        P1[&quot;&lt;b&gt;Predictive&lt;/b&gt;&lt;br/&gt;classification · regression&lt;br/&gt;survival · time-series&quot;]
+        P2[&quot;&lt;b&gt;Anomaly&lt;/b&gt;&lt;br/&gt;density · reconstruction&lt;br/&gt;sequence deviation&quot;]
+        P3[&quot;&lt;b&gt;Graph&lt;/b&gt;&lt;br/&gt;GNN · link prediction&lt;br/&gt;community · centrality&quot;]
+        P4[&quot;&lt;b&gt;Sequence&lt;/b&gt;&lt;br/&gt;next-event · trajectory&lt;br/&gt;process mining&quot;]
+        P5[&quot;&lt;b&gt;Generative&lt;/b&gt;&lt;br/&gt;narrative synthesis&lt;br/&gt;hypothesis generation&quot;]
+        P6[&quot;&lt;b&gt;Causal / uplift&lt;/b&gt;&lt;br/&gt;treatment effect&lt;br/&gt;counterfactual&quot;]
+    end
+
+    subgraph RAG[&quot;Correlation-Grounded Retrieval&quot;]
+        direction TB
+        R1[&quot;Query understanding&lt;br/&gt;&lt;i&gt;intent + entity extraction&lt;/i&gt;&quot;]
+        R2[&quot;&lt;b&gt;Evidence subgraph retrieval&lt;/b&gt;&lt;br/&gt;traverse correlations from&lt;br/&gt;seed entities, k-bounded&quot;]
+        R3[&quot;Vector retrieval&lt;br/&gt;&lt;i&gt;semantic supplement&lt;/i&gt;&quot;]
+        R4[&quot;Evidence assembly&lt;br/&gt;&lt;i&gt;rank, dedupe, budget&lt;/i&gt;&quot;]
+        R5[&quot;Prompt construction&lt;br/&gt;&lt;i&gt;evidence + constraints&lt;/i&gt;&quot;]
+        R6[&quot;Generation with&lt;br/&gt;mandatory citation&quot;]
+        R7{&quot;Citation&lt;br/&gt;validation&quot;}
+        R1 --&gt; R2 --&gt; R3 --&gt; R4 --&gt; R5 --&gt; R6 --&gt; R7
+    end
+
+    subgraph ORCH[&quot;Agent Orchestration&quot;]
+        direction TB
+        O1[&quot;Planner&lt;br/&gt;&lt;i&gt;decompose objective&lt;/i&gt;&quot;]
+        O2[&quot;Tool registry&lt;br/&gt;&lt;i&gt;declared, permissioned&lt;/i&gt;&quot;]
+        O3[&quot;Bounded execution&lt;br/&gt;&lt;i&gt;step + cost limits&lt;/i&gt;&quot;]
+        O4[&quot;Trace capture&lt;br/&gt;&lt;i&gt;every step logged&lt;/i&gt;&quot;]
+    end
+
+    subgraph OUT[&quot;Insight Object Composition&quot;]
+        direction TB
+        I1[&quot;Assertion&quot;]
+        I2[&quot;Evidence chain&quot;]
+        I3[&quot;Confidence + uncertainty&quot;]
+        I4[&quot;Recommended action&quot;]
+        I5[&quot;Assigned autonomy level&quot;]
+        I6[&quot;Permission set + lifecycle&quot;]
+    end
+
+    GATE{&quot;&lt;b&gt;P7 Gate&lt;/b&gt;&lt;br/&gt;evidence complete?&quot;}
+    SUPP[&quot;Suppress&lt;br/&gt;&lt;i&gt;+ log for review&lt;/i&gt;&quot;]
+
+    GROUND --&gt; MODELS &amp; RAG
+    MODELS --&gt; OUT
+    R7 --&gt;|&quot;citations resolve&quot;| OUT
+    R7 --&gt;|&quot;unresolvable citation&quot;| SUPP
+    ORCH --&gt; RAG
+    ORCH --&gt; MODELS
+    OUT --&gt; GATE
+    GATE --&gt;|yes| EMIT[&quot;Emit Insight Object&lt;br/&gt;→ Decision layer&quot;]
+    GATE --&gt;|no| SUPP
+
+    classDef ground fill:#0d4159,stroke:#22b3d6,stroke-width:2px,color:#eaf9ff
+    classDef mod fill:#0a5570,stroke:#3fd0f0,color:#ffffff
+    classDef rag fill:#14415c,stroke:#4fb8d8,stroke-width:1.5px,color:#eaf6fb
+    classDef orch fill:#3a2540,stroke:#a878c0,color:#f6eaff
+    classDef out fill:#3d3313,stroke:#d4a636,stroke-width:1.5px,color:#fff8e6
+    classDef bad fill:#4a2020,stroke:#d07070,color:#ffeaea
+    class GROUND,G1,G2,G3,G4,G5 ground
+    class MODELS,P1,P2,P3,P4,P5,P6 mod
+    class RAG,R1,R2,R3,R4,R5,R6,R7 rag
+    class ORCH,O1,O2,O3,O4 orch
+    class OUT,I1,I2,I3,I4,I5,I6 out
+    class SUPP bad
+</pre></div>
+<p><strong>Figure 23.</strong> <em>AI Insight Engine architecture. Six model families operate over a five-component grounding substrate. The retrieval path is distinguished by retrieving an evidence subgraph of scored correlations rather than only semantically similar passages. Two hard gates enforce Principle 7: unresolvable citations and incomplete evidence chains cause suppression rather than emission.</em></p>
+<h2 id="16.2-the-model-portfolio" tabindex="-1">16.2 The Model Portfolio <a class="header-anchor" href="#16.2-the-model-portfolio">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Purpose in the framework</th>
+<th>Input from correlation substrate</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Predictive</strong></td>
+<td>Forecast outcomes for entities and processes</td>
+<td>Correlation features as model inputs — “customer has N active high-confidence risk correlations”</td>
+<td>Probability, expected value, time-to-event</td>
+</tr>
+<tr>
+<td><strong>Anomaly</strong></td>
+<td>Detect deviation; feeds M5 behavioural correlation</td>
+<td>Baselines maintained per entity and cohort</td>
+<td>Anomaly score with contributing features</td>
+</tr>
+<tr>
+<td><strong>Graph</strong></td>
+<td>Reason over the correlation topology itself</td>
+<td>The correlation graph as the graph</td>
+<td>Link predictions, communities, influence rankings</td>
+</tr>
+<tr>
+<td><strong>Sequence</strong></td>
+<td>Model process trajectories and next-event likelihood</td>
+<td>Ordered correlation chains</td>
+<td>Predicted next event, deviation from normal path</td>
+</tr>
+<tr>
+<td><strong>Generative</strong></td>
+<td>Synthesize narrative explanation; propose hypotheses</td>
+<td>Evidence subgraph as grounding context</td>
+<td>Cited natural-language explanation</td>
+</tr>
+<tr>
+<td><strong>Causal / uplift</strong></td>
+<td>Estimate intervention effect</td>
+<td>M3 causal correlations as candidate structures</td>
+<td>Treatment effect estimate with assumptions stated</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 28.</strong> <em>AI model portfolio. The distinguishing property throughout is that correlations are model <em>inputs</em>, not merely model <em>outputs</em> — a customer’s risk classification can be informed by the graph structure of their correlated events, not only by their own attributes. This is where the correlation substrate delivers measurable modelling value.</em></p>
+<h3 id="16.2.1-correlations-as-features" tabindex="-1">16.2.1 Correlations as Features <a class="header-anchor" href="#16.2.1-correlations-as-features">#</a></h3>
+<p>The most underappreciated benefit of a correlation substrate is its effect on feature engineering. Conventional features describe an entity in isolation: transaction count, average balance, tenure. Correlation-derived features describe an entity’s <strong>position in a relationship structure</strong>:</p>
+<ul>
+<li>Count of high-confidence correlations by type in a trailing window</li>
+<li>Number of distinct entities within two hops sharing a risk correlation</li>
+<li>Degree centrality within the correlation graph for a given relationship type</li>
+<li>Rate of change in correlation density (a rising correlation density often precedes an incident)</li>
+<li>Whether the entity participates in a detected community with adverse characteristics</li>
+</ul>
+<p>These features are frequently more predictive than attribute-based features precisely because they encode context that isolated attributes cannot. They are also unavailable to any architecture that does not persist correlations — which is a concrete, measurable argument for the framework independent of its other claims.</p>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p><strong>A testable prediction.</strong> If the framework’s central claim is correct, then adding correlation-derived features to an existing production model should improve its performance measurably, without any other change. This is the cheapest available experiment to validate the framework’s premise, and it is recommended as the first step in <a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">Chapter 40</a>.</p>
+</div>
+<h2 id="16.3-correlation-grounded-retrieval" tabindex="-1">16.3 Correlation-Grounded Retrieval <a class="header-anchor" href="#16.3-correlation-grounded-retrieval">#</a></h2>
+<p>This is the framework’s proposed extension to retrieval-augmented generation [26].</p>
+<h3 id="16.3.1-the-difference" tabindex="-1">16.3.1 The Difference <a class="header-anchor" href="#16.3.1-the-difference">#</a></h3>
+<p><strong>Conventional RAG.</strong> User question → embed → retrieve <em>k</em> semantically similar passages → construct prompt → generate. The model receives text that <em>mentions</em> relevant topics. If the answer requires connecting two facts from different passages, the model must infer the connection — and inference without verification is where fabrication occurs.</p>
+<p><strong>Correlation-grounded retrieval.</strong> User question → extract intent and seed entities → <strong>traverse the correlation graph from those entities to bounded depth, filtered by relationship type, confidence threshold, and temporal validity</strong> → supplement with vector retrieval for unstructured context → assemble evidence with explicit relationship statements → construct prompt containing <em>typed, scored relationships</em> → generate with mandatory citation → validate every citation resolves to a real correlation or event.</p>
+<p>The model no longer infers relationships. It receives them, with types and confidences, and its task reduces to explanation and synthesis — a task at which generative models are reliable — rather than relationship discovery, at which they are not.</p>
+<div class="figure"><pre class="mermaid">sequenceDiagram
+    autonumber
+    actor U as Analyst
+    participant Q as Query Understanding
+    participant KG as Knowledge Graph
+    participant CS as Correlation Store
+    participant VI as Vector Index
+    participant EA as Evidence Assembly
+    participant LLM as Generative Model
+    participant V as Citation Validator
+    participant P as Policy Engine
+
+    U-&gt;&gt;Q: &quot;Why did Northgate reduce spend in Q3?&quot;
+    Q-&gt;&gt;Q: intent = causal explanation&lt;br/&gt;seed entity = Northgate (resolved)
+    Q-&gt;&gt;P: check purpose + permissions
+    P--&gt;&gt;Q: permit (purpose: account-management)
+
+    Q-&gt;&gt;KG: resolve entity, get context
+    KG--&gt;&gt;Q: entity node, attributes, segment
+
+    Q-&gt;&gt;CS: traverse correlations from Northgate&lt;br/&gt;k≤3, confidence≥0.70,&lt;br/&gt;validity overlapping Q3
+    CS--&gt;&gt;EA: 14 correlations:&lt;br/&gt;• SERVICE_DEGRADATION_IMPACT (0.91)&lt;br/&gt;• BILLING_DISPUTE_PRECEDES_REDUCTION (0.84)&lt;br/&gt;• CONTACT_CHANGE_CORRELATION (0.78)&lt;br/&gt;• 11 others below relevance cut
+
+    Q-&gt;&gt;VI: semantic retrieval for&lt;br/&gt;unstructured context
+    VI--&gt;&gt;EA: 3 support call summaries,&lt;br/&gt;1 QBR document
+
+    EA-&gt;&gt;EA: rank by confidence × relevance&lt;br/&gt;dedupe, fit token budget&lt;br/&gt;attach evidence IDs
+
+    EA-&gt;&gt;LLM: prompt = typed relationships&lt;br/&gt;+ documents + &quot;cite every claim&quot;
+    LLM--&gt;&gt;V: narrative with [C-4471], [C-4488],&lt;br/&gt;[DOC-9912] citations
+
+    V-&gt;&gt;CS: verify each correlation citation
+    V-&gt;&gt;VI: verify each document citation
+    alt all citations resolve
+        V--&gt;&gt;U: Insight Object with&lt;br/&gt;evidence chain + confidence
+    else any citation unresolvable
+        V--&gt;&gt;U: SUPPRESSED (P7)&lt;br/&gt;+ log for model review
+    end
+</pre></div>
+<p><strong>Figure 24.</strong> <em>Correlation-grounded retrieval sequence. The critical difference from conventional RAG appears at steps 8–9: the system retrieves <em>typed, scored relationships</em> rather than only similar text. The final validation step enforces Principle 7 — any citation the validator cannot resolve causes the entire response to be suppressed, converting hallucination from a probabilistic risk into a detected failure.</em></p>
+<h3 id="16.3.2-why-citation-validation-matters" tabindex="-1">16.3.2 Why Citation Validation Matters <a class="header-anchor" href="#16.3.2-why-citation-validation-matters">#</a></h3>
+<p>Requiring citations is common practice. <strong>Validating them is not</strong>, and it is the difference between a mitigation and a control.</p>
+<p>A generative model asked to cite will produce citation-shaped tokens whether or not the referenced object exists. Validating that every cited identifier resolves to a real correlation or event in the store converts fabrication from an undetected output into a <strong>detected, suppressible, and measurable failure</strong>.</p>
+<p>The measurement matters as much as the suppression: citation validation failure rate is a direct, continuous quality metric for the generative component. A rising rate indicates model degradation, prompt drift, or an evidence-assembly defect, and it is observable without human review of outputs.</p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>What this does not solve.</strong> Citation validation confirms that cited objects exist and that the claim references them. It does not confirm that the <em>interpretation</em> of those objects is correct. A model can cite a real correlation and mischaracterize what it means. Mitigating this requires human review at lower autonomy levels and structured output constraints — and it is a residual risk the framework acknowledges rather than eliminates.</p>
+</div>
+<h2 id="16.4-ai-agents" tabindex="-1">16.4 AI Agents <a class="header-anchor" href="#16.4-ai-agents">#</a></h2>
+<p>The framework treats agents as bounded executors, not autonomous investigators.</p>
+<p><strong>Permitted agent pattern.</strong> An agent receives an objective, decomposes it into steps, and executes those steps using <strong>declared, permissioned tools</strong> — retrieve correlations for an entity, traverse the graph, run a specified model, query a specific dataset. Every step is logged. Execution is bounded by step count, wall-clock time, and cost budget. Tool access is governed by the same policy engine as human access, evaluated against the <em>requesting user’s</em> permissions and the <em>declared purpose</em>.</p>
+<p><strong>Required constraints:</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Requirement</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tool declaration</strong></td>
+<td>Agents may invoke only registered tools with declared schemas</td>
+<td>Prevents unbounded capability</td>
+</tr>
+<tr>
+<td><strong>Permission inheritance</strong></td>
+<td>Agent acts with the requesting principal’s permissions, never elevated</td>
+<td>Prevents privilege escalation via agent</td>
+</tr>
+<tr>
+<td><strong>Purpose binding</strong></td>
+<td>Agent inherits the declared purpose; tools check it</td>
+<td>Prevents purpose laundering</td>
+</tr>
+<tr>
+<td><strong>Step budget</strong></td>
+<td>Hard limit on reasoning steps</td>
+<td>Prevents runaway loops</td>
+</tr>
+<tr>
+<td><strong>Cost budget</strong></td>
+<td>Hard limit on compute and token spend</td>
+<td>Prevents cost incidents</td>
+</tr>
+<tr>
+<td><strong>Full trace</strong></td>
+<td>Every step, tool call, and intermediate result logged</td>
+<td>Enables audit and debugging</td>
+</tr>
+<tr>
+<td><strong>Write prohibition by default</strong></td>
+<td>Agents read; writes require explicit autonomy level</td>
+<td>Prevents unreviewed state change</td>
+</tr>
+<tr>
+<td><strong>No self-modification</strong></td>
+<td>Agents may not alter their own tools, prompts, or budgets</td>
+<td>Prevents constraint circumvention</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 29.</strong> <em>Required constraints on AI agents. Permission inheritance and purpose binding are the two most frequently violated in practice, and both create serious exposure: an agent operating with elevated permissions or an undeclared purpose is a governance bypass, regardless of how well-intentioned its objective.</em></p>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>Purpose laundering.</strong> A specific risk worth naming: a user permitted to access data for fraud prevention asks an agent a question whose real purpose is marketing. If the agent inherits the fraud-prevention purpose declared at session start, it may lawfully retrieve data and produce an output that is then used for a prohibited purpose. Purpose must be declared per request and validated against the output’s intended use — not inherited indefinitely from a session. The framework treats this as an unresolved problem requiring further research.</p>
+</div>
+<h2 id="16.5-the-insight-object" tabindex="-1">16.5 The Insight Object <a class="header-anchor" href="#16.5-the-insight-object">#</a></h2>
+<p>The engine’s output is the Insight Object introduced in <a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">Chapter 8</a>. Its full schema appears in <a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C</a>; its essential fields:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Content</th>
+<th>Consumed by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assertion</code></td>
+<td>The claim, in structured and natural-language form</td>
+<td>Humans, downstream systems</td>
+</tr>
+<tr>
+<td><code>evidence_chain</code></td>
+<td>Ordered references to correlations, events, models, parameters</td>
+<td>Audit, explanation UI, P7 gate</td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td>Calibrated confidence with an uncertainty interval</td>
+<td>Decision thresholds</td>
+</tr>
+<tr>
+<td><code>uncertainty_sources</code></td>
+<td>Named sources of residual uncertainty</td>
+<td>Human judgement</td>
+</tr>
+<tr>
+<td><code>recommended_action</code></td>
+<td>Structured action proposal, or explicitly none</td>
+<td>Autonomy Controller</td>
+</tr>
+<tr>
+<td><code>autonomy_level</code></td>
+<td>Assigned level (L0–L5) for this insight class</td>
+<td>Autonomy Controller</td>
+</tr>
+<tr>
+<td><code>permission_set</code></td>
+<td>Who may see this insight</td>
+<td>Serving tier</td>
+</tr>
+<tr>
+<td><code>purpose_tags</code></td>
+<td>Purposes for which this insight may be used</td>
+<td>Policy engine</td>
+</tr>
+<tr>
+<td><code>lifecycle_status</code></td>
+<td>proposed / validated / acted / superseded / retracted</td>
+<td>Consumers</td>
+</tr>
+<tr>
+<td><code>version</code> and <code>supersedes</code></td>
+<td>Version chain</td>
+<td>Audit, consumers</td>
+</tr>
+<tr>
+<td><code>provenance</code></td>
+<td>Engine version, model versions, prompt version, timestamp</td>
+<td>Reproducibility</td>
+</tr>
+<tr>
+<td><code>outcome</code></td>
+<td>Populated by feedback: what actually happened</td>
+<td>Calibration (P10)</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 30.</strong> <em>Insight Object essential fields. The <code>outcome</code> field is what makes the object a learning artifact rather than a record: populated retrospectively, it converts every insight into a labelled training example for confidence calibration.</em></p>
+<h2 id="16.6-model-governance" tabindex="-1">16.6 Model Governance <a class="header-anchor" href="#16.6-model-governance">#</a></h2>
+<p>The framework requires the following of every model in the portfolio:</p>
+<p><strong>Registration.</strong> Model, version, training data reference, hyperparameters, and evaluation metrics recorded in a registry, with the registry entry referenced in every Insight Object the model contributes to.</p>
+<p><strong>Evaluation before deployment.</strong> Performance measured on a held-out set representative of production distribution, including subgroup performance to detect disparate impact.</p>
+<p><strong>Shadow deployment.</strong> New model versions run in parallel with the incumbent, with divergence measured, before taking traffic.</p>
+<p><strong>Drift monitoring.</strong> Input distribution drift, prediction distribution drift, and — where outcomes are available — realized performance drift, each monitored with alert thresholds.</p>
+<p><strong>Automatic demotion.</strong> A model whose realized performance falls below its declared threshold is automatically demoted to a lower autonomy level, exactly as a correlation scope is. This is the same safeguard applied consistently.</p>
+<p><strong>Explainability requirement scaled to autonomy.</strong> At autonomy levels 0–2, feature attribution is sufficient. At levels 3 and above, the framework requires either an inherently interpretable model or an attribution method whose fidelity has been validated — because at those levels the explanation may be the only human-reviewable artifact.</p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>On generative models at high autonomy levels.</strong> The framework’s position is that generative models SHOULD NOT be assigned autonomy levels above L2 for actions with material consequence. Their outputs are not reproducible in the strict sense, their failure modes are not well characterized, and their explanations are post-hoc narratives rather than causal accounts of their own computation. They are extremely valuable at L0–L2 — summarizing, explaining, drafting, proposing — and the framework recommends confining them there until the field’s understanding matures.</p>
+</div>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>The engine is grounded in the correlation substrate</strong>, which is what allows its outputs to be attributable rather than merely plausible.</li>
+<li><strong>Correlations are model inputs, not only outputs.</strong> Correlation-derived features — graph position, correlation density, community membership — encode context that attribute-based features cannot.</li>
+<li><strong>Adding correlation-derived features to an existing model is the cheapest available test of the framework’s premise</strong>, and should be the first experiment any organization runs.</li>
+<li><strong>Correlation-grounded retrieval returns typed, scored relationships</strong>, reducing the generative model’s task from relationship discovery — at which it is unreliable — to explanation and synthesis, at which it is reliable.</li>
+<li><strong>Citation validation converts hallucination from an undetected probabilistic risk into a detected, suppressible, measurable failure</strong>, and its failure rate is a continuous quality metric requiring no human review.</li>
+<li><strong>Citation validation does not verify interpretation.</strong> A model can cite a real correlation and mischaracterize it; this residual risk is acknowledged, not eliminated.</li>
+<li><strong>Agents are bounded executors</strong> with declared tools, inherited (never elevated) permissions, step and cost budgets, full traces, and no self-modification.</li>
+<li><strong>Purpose laundering is an unresolved problem.</strong> Purpose must be declared per request rather than inherited from a session, and the framework identifies this as requiring further research.</li>
+<li><strong>Generative models should not be assigned autonomy above L2</strong> for materially consequential actions, given non-reproducibility, poorly characterized failure modes, and post-hoc explanations.</li>
+<li><strong>Models are automatically demoted on performance drift</strong>, applying the same safeguard used for correlation scopes.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/"><span>← Previous</span><b>15. Rules Engine</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/"><span>Next →</span><b>17. Knowledge Graph Layer</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#16.1-architecture">16.1 Architecture #</a><a href="#16.2-the-model-portfolio">16.2 The Model Portfolio #</a><a href="#16.3-correlation-grounded-retrieval">16.3 Correlation-Grounded Retrieval #</a><a href="#16.4-ai-agents">16.4 AI Agents #</a><a href="#16.5-the-insight-object">16.5 The Insight Object #</a><a href="#16.6-model-governance">16.6 Model Governance #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

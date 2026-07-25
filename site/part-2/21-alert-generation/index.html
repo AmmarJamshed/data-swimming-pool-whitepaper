@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en" data-part="p2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>21. Alert Generation · Data Swimming Pool</title>
+<meta name="description" content="21. Alert Generation --- 21.1 Alert Fatigue Is a Correlation Failure Chapter 5 ../part-1/05-current-challenges.md argued that alert fatigue is not a threshold-tuning problem but a ">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="21. Alert Generation — Data Swimming Pool">
+<meta property="og:description" content="21. Alert Generation --- 21.1 Alert Fatigue Is a Correlation Failure Chapter 5 ../part-1/05-current-challenges.md argued that alert fatigue is not a threshold-tuning problem but a ">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" open style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/" class="on">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part II — The Data Swimming Pool</span></p>
+    <h1>21. Alert Generation</h1>
+    <p class="cmeta"><span class="chip">🏊 Part II — The Data Swimming Pool</span><span class="dot">·</span>5 min read</p>
+  </header>
+  <div class="prose">
+<h1>21. Alert Generation</h1>
+<hr>
+<h2 id="21.1-alert-fatigue-is-a-correlation-failure" tabindex="-1">21.1 Alert Fatigue Is a Correlation Failure <a class="header-anchor" href="#21.1-alert-fatigue-is-a-correlation-failure">#</a></h2>
+<p><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">Chapter 5</a> argued that alert fatigue is not a threshold-tuning problem but a correlation failure expressed as a volume problem. This chapter specifies the alerting architecture that follows from that diagnosis.</p>
+<p>The conventional model generates one alert per detector per triggering condition. Four independent detectors observing four facets of a single underlying event produce four alerts, each individually low-severity, none conveying the conjunction that makes them collectively critical. The analyst is asked to perform the correlation — which is the expensive, error-prone, human-latency operation the platform was supposed to eliminate.</p>
+<div class="cal cal-success">
+<h3 id="design-principle-%E2%80%94-alert-on-correlations%2C-not-on-events" tabindex="-1">Design Principle — Alert on Correlations, Not on Events <a class="header-anchor" href="#design-principle-%E2%80%94-alert-on-correlations%2C-not-on-events">#</a></h3>
+<p>An alert MUST be generated from a correlation or an Insight Object, never directly from a single raw event or single-signal threshold breach. Single-signal detection remains valuable as <em>input</em> to correlation; it MUST NOT be an output to a human.</p>
+</div>
+<p>The consequence is a substantial reduction in volume with an increase in precision — the two moving together rather than trading against each other, which is the specific improvement threshold tuning cannot deliver.</p>
+<h2 id="21.2-alert-pipeline" tabindex="-1">21.2 Alert Pipeline <a class="header-anchor" href="#21.2-alert-pipeline">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    IN1[(&quot;Correlations&lt;br/&gt;confidence-scored&quot;)]
+    IN2[(&quot;Insight Objects&lt;br/&gt;with recommended action&quot;)]
+
+    subgraph GEN[&quot;1. Generation&quot;]
+        direction TB
+        G1[&quot;Alert-worthy determination&lt;br/&gt;&lt;i&gt;severity model + rules&lt;/i&gt;&quot;]
+        G2[&quot;Severity assignment&lt;br/&gt;&lt;i&gt;impact × confidence × urgency&lt;/i&gt;&quot;]
+        G3[&quot;Compose alert with&lt;br/&gt;evidence chain attached&quot;]
+    end
+
+    subgraph DEDUP[&quot;2. Deduplication&quot;]
+        direction TB
+        D1[&quot;Fingerprint&lt;br/&gt;&lt;i&gt;entity + type + window&lt;/i&gt;&quot;]
+        D2{&quot;Seen&lt;br/&gt;before?&quot;}
+        D3[&quot;Increment occurrence count&lt;br/&gt;update existing alert&quot;]
+        D4[&quot;New alert&quot;]
+        D1 --&gt; D2
+        D2 --&gt;|yes| D3
+        D2 --&gt;|no| D4
+    end
+
+    subgraph CLUSTER[&quot;3. Clustering&quot;]
+        direction TB
+        CL1[&quot;Group by shared entity&quot;]
+        CL2[&quot;Group by correlation chain&quot;]
+        CL3[&quot;Group by root-cause hypothesis&quot;]
+        CL4[&quot;&lt;b&gt;Emit ONE incident&lt;/b&gt;&lt;br/&gt;containing N alerts&quot;]
+        CL1 &amp; CL2 &amp; CL3 --&gt; CL4
+    end
+
+    subgraph SUPP[&quot;4. Suppression&quot;]
+        direction TB
+        S1[&quot;Maintenance window active&quot;]
+        S2[&quot;Known-issue matcher&quot;]
+        S3[&quot;Downstream of a&lt;br/&gt;declared upstream incident&quot;]
+        S4[&quot;Source degraded&lt;br/&gt;&lt;i&gt;absence-confound guard&lt;/i&gt;&quot;]
+        S5[&quot;Below dynamic volume budget&quot;]
+    end
+
+    subgraph ENRICH[&quot;5. Enrichment&quot;]
+        direction TB
+        E1[&quot;Attach evidence subgraph&quot;]
+        E2[&quot;Attach historical precedent&lt;br/&gt;&lt;i&gt;similar past alerts + outcomes&lt;/i&gt;&quot;]
+        E3[&quot;Attach recommended action&lt;br/&gt;+ autonomy level&quot;]
+        E4[&quot;Attach competing hypothesis&lt;br/&gt;&lt;i&gt;if any&lt;/i&gt;&quot;]
+    end
+
+    subgraph ROUTE[&quot;6. Routing&quot;]
+        direction TB
+        R1[&quot;Ownership resolution&lt;br/&gt;&lt;i&gt;via knowledge graph&lt;/i&gt;&quot;]
+        R2[&quot;Skill + capacity matching&quot;]
+        R3[&quot;Escalation ladder&lt;br/&gt;with timers&quot;]
+        R4[&quot;Channel selection&lt;br/&gt;&lt;i&gt;severity-appropriate&lt;/i&gt;&quot;]
+    end
+
+    subgraph FB[&quot;7. Feedback&quot;]
+        direction TB
+        F1[&quot;Disposition capture&lt;br/&gt;&lt;i&gt;true positive / false / duplicate /&lt;br/&gt;not actionable&lt;/i&gt;&quot;]
+        F2[&quot;Time-to-acknowledge&lt;br/&gt;+ time-to-resolve&quot;]
+        F3[&quot;→ Correlation calibration&quot;]
+        F4[&quot;→ Severity model retraining&quot;]
+        F5[&quot;→ Suppression rule proposal&quot;]
+    end
+
+    IN1 &amp; IN2 --&gt; GEN --&gt; DEDUP --&gt; CLUSTER --&gt; SUPP --&gt; ENRICH --&gt; ROUTE --&gt; OUT[&quot;Recipient&quot;]
+    OUT --&gt; FB
+    F3 -.-&gt; IN1
+    F5 -.-&gt; SUPP
+
+    classDef gen fill:#0a5570,stroke:#3fd0f0,stroke-width:2px,color:#ffffff
+    classDef proc fill:#14415c,stroke:#4fb8d8,color:#eaf6fb
+    classDef supp fill:#3a2540,stroke:#a878c0,color:#f6eaff
+    classDef fb fill:#183028,stroke:#4caf7d,stroke-width:2px,color:#e6fff2
+    class GEN,G1,G2,G3 gen
+    class DEDUP,D1,D2,D3,D4,CLUSTER,CL1,CL2,CL3,CL4,ENRICH,E1,E2,E3,E4,ROUTE,R1,R2,R3,R4 proc
+    class SUPP,S1,S2,S3,S4,S5 supp
+    class FB,F1,F2,F3,F4,F5 fb
+</pre></div>
+<p><strong>Figure 33.</strong> <em>Alert generation and suppression pipeline. Seven stages transform correlations into routed, enriched incidents. Stage 3 (clustering) produces the largest volume reduction by emitting one incident containing many alerts rather than many independent alerts. Stage 7 (feedback) closes the loop, using disposition data to recalibrate correlation confidence, retrain severity, and propose new suppression rules.</em></p>
+<h2 id="21.3-severity-assignment" tabindex="-1">21.3 Severity Assignment <a class="header-anchor" href="#21.3-severity-assignment">#</a></h2>
+<p>Severity is computed rather than declared, as a function of three factors:</p>
+<p><strong>Impact</strong> — the magnitude of consequence if the correlation is correct, derived from the entities involved (a critical asset, a high-value customer, a regulated process), the estimated financial or safety exposure, and blast radius via graph traversal.</p>
+<p><strong>Confidence</strong> — the calibrated correlation confidence. A high-impact correlation at 0.55 confidence is not a critical alert; it is an investigation request.</p>
+<p><strong>Urgency</strong> — the remaining window of actionability. A correlation whose actionable window closes in four minutes outranks a higher-impact correlation whose window is three weeks.</p>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p><strong>Urgency is the factor conventional alerting omits.</strong> Most severity models consider impact and sometimes confidence, but treat all alerts as equally time-sensitive. Incorporating remaining actionability window means the queue is ordered by <em>what will be lost by waiting</em> rather than by <em>what is largest</em>, which is a materially different and generally better ordering for operational response.</p>
+</div>
+<h2 id="21.4-the-absence%E2%80%93degradation-guard" tabindex="-1">21.4 The Absence–Degradation Guard <a class="header-anchor" href="#21.4-the-absence%E2%80%93degradation-guard">#</a></h2>
+<p>Suppression stage S4 in Figure 33 implements the guard described in <a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">Chapter 19</a>, and it deserves restatement because it prevents the framework’s most damaging plausible failure.</p>
+<p>If a source stops producing, every EXPECTED_ABSENT correlation dependent on it fires. In a hospital, this would generate an alert for every medication scheduled but not recorded as administered — thousands of critical alerts, all false, during a systems outage, at precisely the moment clinical staff are least able to absorb them.</p>
+<p><strong>Required behaviour:</strong> the alert pipeline consults source health before emitting any alert derived from a negative relationship. Where the relevant source is degraded, quarantining, or silent beyond its expected volume band, the pipeline MUST emit a <strong>single infrastructure alert</strong> stating that absence detection is unavailable for that source, and MUST suppress the individual absence alerts.</p>
+<p>This converts a catastrophic alert storm into one accurate operational notification.</p>
+<h2 id="21.5-clustering-into-incidents" tabindex="-1">21.5 Clustering into Incidents <a class="header-anchor" href="#21.5-clustering-into-incidents">#</a></h2>
+<p>Clustering is where the volume reduction is realized. Three mechanisms operate together:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>Basis</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Entity clustering</strong></td>
+<td>Alerts concerning the same resolved entity within a window</td>
+<td>Twelve alerts about one customer’s account become one customer incident</td>
+</tr>
+<tr>
+<td><strong>Chain clustering</strong></td>
+<td>Alerts whose underlying correlations form a connected chain</td>
+<td>Authentication anomaly → payee addition → transfer attempt become one takeover incident</td>
+</tr>
+<tr>
+<td><strong>Root-cause clustering</strong></td>
+<td>Alerts sharing a common upstream cause identified by graph traversal</td>
+<td>Forty service alerts across regions trace to one dependency and become one incident</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 42.</strong> <em>Alert clustering mechanisms. Root-cause clustering delivers the largest reduction in incident-driven environments, and it is only possible because the correlation substrate persists the dependency relationships that permit the traversal.</em></p>
+<p>Root-cause clustering illustrates the framework’s value directly: in a conventional architecture, determining that forty alerts share one cause is the analyst’s job, performed after the alerts arrive. Here it is performed before, and the analyst receives one incident with forty pieces of supporting evidence attached.</p>
+<h2 id="21.6-alert-quality-metrics" tabindex="-1">21.6 Alert Quality Metrics <a class="header-anchor" href="#21.6-alert-quality-metrics">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Definition</th>
+<th>Target posture</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precision</strong></td>
+<td>True positives / all alerts</td>
+<td>Improve continuously</td>
+<td>The primary quality measure</td>
+</tr>
+<tr>
+<td><strong>Recall</strong></td>
+<td>Detected / all genuine occurrences</td>
+<td>Improve continuously</td>
+<td>Requires ground truth; frequently unmeasurable, and its absence should be stated honestly rather than assumed adequate</td>
+</tr>
+<tr>
+<td><strong>Alerts per analyst-hour</strong></td>
+<td>Volume normalized to capacity</td>
+<td>Match capacity</td>
+<td>Above capacity, additional precision is wasted because alerts go untriaged</td>
+</tr>
+<tr>
+<td><strong>Compression ratio</strong></td>
+<td>Raw correlations / emitted incidents</td>
+<td>Higher is better</td>
+<td>Direct measure of clustering effectiveness</td>
+</tr>
+<tr>
+<td><strong>Time to acknowledge</strong></td>
+<td>Emission to first human action</td>
+<td>Within SLA by severity</td>
+<td>Rising times indicate volume exceeds capacity</td>
+</tr>
+<tr>
+<td><strong>Time to resolve</strong></td>
+<td>Emission to disposition</td>
+<td>Domain-specific</td>
+<td>Long tails indicate insufficient enrichment</td>
+</tr>
+<tr>
+<td><strong>Disposition distribution</strong></td>
+<td>Share by true/false/duplicate/not-actionable</td>
+<td>Monitor for shift</td>
+<td>“Not actionable” share is the most informative signal</td>
+</tr>
+<tr>
+<td><strong>Actioned-within-window rate</strong></td>
+<td>Resolved before actionability window closed</td>
+<td>Maximize</td>
+<td>The metric that connects alerting to actual outcomes</td>
+</tr>
+<tr>
+<td><strong>Suppression accuracy</strong></td>
+<td>Suppressed alerts later found significant</td>
+<td>Near zero</td>
+<td>Suppression errors are silent and require deliberate audit</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 43.</strong> <em>Alert quality metrics. Two deserve emphasis: the “not actionable” disposition share indicates that the system is correctly detecting things nobody can do anything about — a scope design problem, not a precision problem — and suppression accuracy requires deliberate periodic audit because suppression failures are invisible by construction.</em></p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Auditing suppression is non-optional and frequently neglected.</strong> Every suppressed alert is a decision the system made silently. If suppression is wrong, nobody finds out, because the alert never appeared. The framework requires a periodic sampled review of suppressed alerts against subsequently-known outcomes, with the review owned by a party independent of the team that authored the suppression rules.</p>
+</div>
+<h2 id="21.7-routing-and-ownership" tabindex="-1">21.7 Routing and Ownership <a class="header-anchor" href="#21.7-routing-and-ownership">#</a></h2>
+<p>Routing uses the knowledge graph rather than a static routing table.</p>
+<p>An alert concerning an entity traverses the graph to determine: who owns this entity, who owns the affected process, who owns the implicated asset, and which team currently has capacity and the relevant skill. This means routing remains correct as organizational structure changes, because the graph is updated by the same mechanisms that maintain the rest of the system — rather than requiring a routing table to be maintained separately and, inevitably, to drift.</p>
+<p><strong>Escalation ladders</strong> are attached to severity, with timers. Unacknowledged alerts escalate on a defined schedule. Escalation events are themselves recorded as events, which means escalation patterns become correlatable — persistent escalation for a particular alert type is a signal about either the alert type or the receiving team’s capacity.</p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Alerts are generated from correlations and Insight Objects, never from single events.</strong> Single-signal detection remains valuable as correlation input but must not reach a human directly.</li>
+<li><strong>Volume falls and precision rises together</strong>, which is the specific improvement threshold tuning cannot deliver, because it can only trade false positives against false negatives.</li>
+<li><strong>Severity incorporates remaining actionability window</strong>, ordering the queue by what will be lost by waiting rather than by what is largest.</li>
+<li><strong>The absence–degradation guard prevents the framework’s most damaging plausible failure:</strong> a source outage generating a mass false alert storm from negative relationships. One infrastructure alert replaces thousands of false ones.</li>
+<li><strong>Root-cause clustering delivers the largest reduction</strong> and is only possible because the correlation substrate persists the dependency relationships required for the traversal.</li>
+<li><strong>The “not actionable” disposition share is the most informative quality signal</strong>, indicating a scope design problem rather than a precision problem.</li>
+<li><strong>Suppression must be deliberately audited</strong> by an independent party, because suppression failures are silent by construction and will otherwise never be discovered.</li>
+<li><strong>Routing traverses the knowledge graph rather than a static table</strong>, remaining correct as organizational structure changes.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/"><span>← Previous</span><b>20. Autonomous Decision Support</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/"><span>Next →</span><b>22. Enterprise Integration</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#21.1-alert-fatigue-is-a-correlation-failure">21.1 Alert Fatigue Is a Correlation Failure #</a><a href="#21.2-alert-pipeline">21.2 Alert Pipeline #</a><a href="#21.3-severity-assignment">21.3 Severity Assignment #</a><a href="#21.4-the-absence%E2%80%93degradation-guard">21.4 The Absence–Degradation Guard #</a><a href="#21.5-clustering-into-incidents">21.5 Clustering into Incidents #</a><a href="#21.6-alert-quality-metrics">21.6 Alert Quality Metrics #</a><a href="#21.7-routing-and-ownership">21.7 Routing and Ownership #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-2/21-alert-generation/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

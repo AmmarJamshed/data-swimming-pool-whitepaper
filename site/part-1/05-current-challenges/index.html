@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en" data-part="p1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5. Current Challenges in Enterprise Data · Data Swimming Pool</title>
+<meta name="description" content="5. Current Challenges in Enterprise Data --- This chapter catalogues the operational failures that motivate the proposed framework. The discipline applied throughout is to distingu">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="5. Current Challenges in Enterprise Data — Data Swimming Pool">
+<meta property="og:description" content="5. Current Challenges in Enterprise Data --- This chapter catalogues the operational failures that motivate the proposed framework. The discipline applied throughout is to distingu">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" open style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/" class="on">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part I — Context and Motivation</span></p>
+    <h1>5. Current Challenges in Enterprise Data</h1>
+    <p class="cmeta"><span class="chip">🔍 Part I — Context and Motivation</span><span class="dot">·</span>8 min read</p>
+  </header>
+  <div class="prose">
+<h1>5. Current Challenges in Enterprise Data</h1>
+<hr>
+<p>This chapter catalogues the operational failures that motivate the proposed framework. The discipline applied throughout is to distinguish <strong>symptoms</strong> — which are widely reported and widely lamented — from <strong>structural causes</strong>, which are less frequently examined. Most enterprise data remediation programmes fail because they treat symptoms.</p>
+<h2 id="5.1-the-symptom%E2%80%93cause-distinction" tabindex="-1">5.1 The Symptom–Cause Distinction <a class="header-anchor" href="#5.1-the-symptom%E2%80%93cause-distinction">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Reported Symptom</th>
+<th>Conventional Diagnosis</th>
+<th>Structural Cause</th>
+<th style="text-align:center">Addressed by DSP?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>“We have data silos”</td>
+<td>Insufficient integration</td>
+<td>Integration moves <em>copies</em>; it does not create <em>relationships</em></td>
+<td style="text-align:center">✔ Direct</td>
+</tr>
+<tr>
+<td>2</td>
+<td>“Time to insight is too slow”</td>
+<td>Insufficient compute or tooling</td>
+<td>Analysts manually reconstruct correlations that are then discarded</td>
+<td style="text-align:center">✔ Direct</td>
+</tr>
+<tr>
+<td>3</td>
+<td>“Alert fatigue is overwhelming teams”</td>
+<td>Thresholds need tuning</td>
+<td>Alerts are single-signal because signals are never correlated</td>
+<td style="text-align:center">✔ Direct</td>
+</tr>
+<tr>
+<td>4</td>
+<td>“We can’t trust the numbers”</td>
+<td>Data quality problem</td>
+<td>No lineage from conclusion back to evidence</td>
+<td style="text-align:center">✔ Direct</td>
+</tr>
+<tr>
+<td>5</td>
+<td>“The same metric differs by system”</td>
+<td>Lack of a semantic layer</td>
+<td>No canonical entity resolution across domains</td>
+<td style="text-align:center">✔ Partial</td>
+</tr>
+<tr>
+<td>6</td>
+<td>“Our ML models degrade in production”</td>
+<td>Model drift</td>
+<td>Features lack cross-domain context; the world changed, not the model</td>
+<td style="text-align:center">✔ Partial</td>
+</tr>
+<tr>
+<td>7</td>
+<td>“AI copilots hallucinate about our business”</td>
+<td>Model limitation</td>
+<td>Retrieval layer contains facts but no governed relationships</td>
+<td style="text-align:center">✔ Direct</td>
+</tr>
+<tr>
+<td>8</td>
+<td>“We detect problems after the damage”</td>
+<td>Need faster dashboards</td>
+<td>Detection requires cross-domain correlation performed at human latency</td>
+<td style="text-align:center">✔ Direct</td>
+</tr>
+<tr>
+<td>9</td>
+<td>“Governance slows everything down”</td>
+<td>Too much process</td>
+<td>Governance applied manually at access time rather than computationally at flow time</td>
+<td style="text-align:center">✔ Partial</td>
+</tr>
+<tr>
+<td>10</td>
+<td>“Nobody can find anything”</td>
+<td>Need a better catalog</td>
+<td>Catalogs index assets, not the relationships between them</td>
+<td style="text-align:center">✔ Partial</td>
+</tr>
+<tr>
+<td>11</td>
+<td>“Every project rebuilds the same joins”</td>
+<td>Poor reuse culture</td>
+<td>Correlation logic has no home in the platform, so it lives in applications</td>
+<td style="text-align:center">✔ Direct</td>
+</tr>
+<tr>
+<td>12</td>
+<td>“Data platform costs keep rising”</td>
+<td>Inefficient queries</td>
+<td>Redundant recomputation of identical relationships by independent consumers</td>
+<td style="text-align:center">✔ Partial</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 3.</strong> <em>Symptoms and structural causes of enterprise data underperformance. The recurring pattern is that conventional diagnoses target the presentation of the problem, while the structural cause in the majority of cases is the absence of persistent, governed relationships between data.</em></p>
+<h2 id="5.2-challenge-one-%E2%80%94-integration-without-association" tabindex="-1">5.2 Challenge One — Integration Without Association <a class="header-anchor" href="#5.2-challenge-one-%E2%80%94-integration-without-association">#</a></h2>
+<p>The dominant enterprise response to fragmentation over the past fifteen years has been <strong>integration</strong>: build pipelines, land everything in a common substrate, and the fragmentation will resolve.</p>
+<p>It did not resolve. Co-location is not connection.</p>
+<p>Consider an enterprise that has successfully landed its CRM, ERP, service desk, web analytics, and IoT telemetry into a single lakehouse. It now possesses five schemas in one storage account. The customer identifier in CRM is a GUID; in ERP it is a numeric account code; in the service desk it is an email address; in web analytics it is a cookie ID; in telemetry it is a device serial. There is no table that states these refer to the same commercial entity, because no system was ever responsible for asserting that.</p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>The integration illusion.</strong> Physical consolidation produces the <em>appearance</em> of integration while leaving the semantic work undone. An organization can complete a multi-year, multi-million-currency-unit consolidation programme and emerge with precisely the same inability to answer cross-domain questions — now with a single, very large bill.</p>
+</div>
+<p>The residual work — entity resolution, temporal alignment, semantic reconciliation — is the expensive part, and it is systematically underestimated because it is invisible in architecture diagrams. Every downstream consumer performs it independently, incompatibly, and without recording what they did.</p>
+<h2 id="5.3-challenge-two-%E2%80%94-the-correlation-tax" tabindex="-1">5.3 Challenge Two — The Correlation Tax <a class="header-anchor" href="#5.3-challenge-two-%E2%80%94-the-correlation-tax">#</a></h2>
+<p>The author proposes the term <strong>correlation tax</strong> for a cost that is real, substantial, and almost never measured.</p>
+<div class="cal cal-info">
+<h3 id="definition-%E2%80%94-correlation-tax" tabindex="-1">Definition — Correlation Tax <a class="header-anchor" href="#definition-%E2%80%94-correlation-tax">#</a></h3>
+<p>The <strong>correlation tax</strong> is the cumulative organizational cost of repeatedly reconstructing the same cross-domain relationships, incurred independently by each consumer of the data, with no mechanism for capturing, validating, or reusing the result.</p>
+</div>
+<p>The tax has four components:</p>
+<p><strong>Discovery cost.</strong> Determining which systems hold relevant facts, who owns them, and how to obtain access. In large organizations this routinely consumes more elapsed time than the analysis itself.</p>
+<p><strong>Reconciliation cost.</strong> Resolving identifiers, aligning timestamps across differing clock and time-zone semantics, harmonizing units and currencies, and reconciling conflicting definitions of shared concepts such as “active customer” or “shipment complete.”</p>
+<p><strong>Validation cost.</strong> Determining whether an observed co-occurrence is meaningful. This is where the majority of analytical judgement is expended, and where it is most frequently expended incorrectly.</p>
+<p><strong>Decay cost.</strong> The reconstructed correlation is not persisted in any queryable form. It exists in a notebook, a slide, or an analyst’s memory. When the analyst changes role, it is gone. The next enquiry pays the full tax again.</p>
+<div class="figure"><pre class="mermaid">flowchart LR
+    Q1[&quot;Question 1&lt;br/&gt;&lt;i&gt;Q4 churn analysis&lt;/i&gt;&quot;] --&gt; T1[&quot;Full correlation tax&lt;br/&gt;~14 days&quot;]
+    Q2[&quot;Question 2&lt;br/&gt;&lt;i&gt;Churn by region&lt;/i&gt;&quot;] --&gt; T2[&quot;Full correlation tax&lt;br/&gt;~11 days&quot;]
+    Q3[&quot;Question 3&lt;br/&gt;&lt;i&gt;Churn vs. service quality&lt;/i&gt;&quot;] --&gt; T3[&quot;Full correlation tax&lt;br/&gt;~16 days&quot;]
+    T1 --&gt; D1[&quot;Result → slide deck&lt;br/&gt;correlation discarded&quot;]
+    T2 --&gt; D2[&quot;Result → dashboard&lt;br/&gt;correlation discarded&quot;]
+    T3 --&gt; D3[&quot;Result → report&lt;br/&gt;correlation discarded&quot;]
+
+    Q4[&quot;Question 4&lt;br/&gt;&lt;i&gt;any adjacent question&lt;/i&gt;&quot;] --&gt; T4[&quot;Full correlation tax&lt;br/&gt;AGAIN&quot;]
+
+    classDef q fill:#1d3b52,stroke:#4aa3c4,color:#eaf6fb
+    classDef t fill:#5c2b2b,stroke:#c47a7a,color:#fbeaea
+    classDef d fill:#3a3a3a,stroke:#888,color:#e8e8e8
+    class Q1,Q2,Q3,Q4 q
+    class T1,T2,T3,T4 t
+    class D1,D2,D3 d
+</pre></div>
+<p><strong>Figure 4.</strong> <em>The correlation tax cycle. Each cross-domain enquiry incurs the full cost of discovery, reconciliation, and validation. The resulting correlation is delivered as a presentation artifact rather than as a platform asset, so the next enquiry — however adjacent — begins from zero. Durations shown are illustrative.</em></p>
+<p>The economic significance of the correlation tax is that it is <strong>recurring and invisible</strong>. It appears in the labour budget of analytics teams rather than in the technology budget, and therefore never appears in the business case for platform investment.</p>
+<h2 id="5.4-challenge-three-%E2%80%94-alert-fatigue-as-a-correlation-failure" tabindex="-1">5.4 Challenge Three — Alert Fatigue as a Correlation Failure <a class="header-anchor" href="#5.4-challenge-three-%E2%80%94-alert-fatigue-as-a-correlation-failure">#</a></h2>
+<p>Alert fatigue is typically framed as a threshold-tuning problem. It is not. It is a <strong>correlation failure expressed as a volume problem</strong>.</p>
+<p>A security operations centre monitoring endpoint, network, identity, and cloud telemetry generates alerts from each domain independently. Each domain-level detector is tuned to its own local notion of anomaly. None can distinguish between four unrelated benign anomalies and four stages of a single coordinated intrusion, because none has visibility into the others.</p>
+<p>The consequences are well documented and severe:</p>
+<ul>
+<li>Analysts triage in isolation and close individually low-severity alerts that are collectively critical.</li>
+<li>Detection thresholds are progressively relaxed to reduce volume, systematically raising false-negative rates.</li>
+<li>Mean time to detection is dominated not by detector sensitivity but by the human effort required to assemble a narrative.</li>
+</ul>
+<p>The same structure recurs outside security. Manufacturing plants generate independent alarms for vibration, temperature, and throughput deviation. Clinical monitoring generates independent alarms for heart rate, oxygen saturation, and blood pressure. Network operations centres generate independent alarms per element. In every case, <strong>the meaningful signal is the conjunction, and the conjunction is precisely what no system computes.</strong></p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Corollary.</strong> Reducing alert volume by raising thresholds trades false positives for false negatives at an unfavourable rate. Reducing alert volume by <em>correlating signals</em> improves both simultaneously. These are not equivalent interventions, and organizations routinely choose the first because the second requires architecture they do not have.</p>
+</div>
+<h2 id="5.5-challenge-four-%E2%80%94-ungrounded-ai" tabindex="-1">5.5 Challenge Four — Ungrounded AI <a class="header-anchor" href="#5.5-challenge-four-%E2%80%94-ungrounded-ai">#</a></h2>
+<p>Enterprises are deploying large language models against their data estates at speed. The dominant grounding pattern is retrieval-augmented generation over a vector index of documents and, increasingly, table summaries.</p>
+<p>This pattern grounds <strong>facts</strong>. It does not ground <strong>relationships</strong>.</p>
+<p>When a user asks a copilot <em>“why did our margin decline in the Northern region?”</em>, the retrieval layer surfaces passages and rows that mention margin and the Northern region. The model then does what generative models do: it constructs a plausible causal narrative connecting them. The narrative is fluent, confident, well-formatted, and — because no relationship in it was verified against anything — potentially fabricated.</p>
+<p>This is not a model defect. It is a <strong>retrieval substrate defect</strong>. The model was asked to supply a relationship, and the substrate contained none, so the model generated one. The failure is architectural.</p>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>A structural risk.</strong> As AI copilots become the primary interface to enterprise data, the absence of a governed relationship substrate converts a latent architectural gap into an active source of confidently-stated misinformation at organizational scale. The volume of ungrounded correlation an enterprise produces will scale with its AI adoption.</p>
+</div>
+<h2 id="5.6-challenge-five-%E2%80%94-latency-mismatch-between-insight-and-action" tabindex="-1">5.6 Challenge Five — Latency Mismatch Between Insight and Action <a class="header-anchor" href="#5.6-challenge-five-%E2%80%94-latency-mismatch-between-insight-and-action">#</a></h2>
+<p>Every correlation has a <strong>window of actionability</strong> — the interval during which knowing it permits changing the outcome.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Illustrative correlation</th>
+<th>Approximate window of actionability</th>
+<th>Typical detection latency today</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Card fraud</td>
+<td>Device change + geo-velocity + merchant risk shift</td>
+<td>Seconds to minutes</td>
+<td>Minutes to hours</td>
+</tr>
+<tr>
+<td>Clinical deterioration</td>
+<td>Vitals trend + lab drift + medication timing</td>
+<td>Minutes to hours</td>
+<td>Hours</td>
+</tr>
+<tr>
+<td>Equipment failure</td>
+<td>Vibration harmonic + thermal drift + supplier batch</td>
+<td>Hours to days</td>
+<td>Days to weeks</td>
+</tr>
+<tr>
+<td>Supply disruption</td>
+<td>Port congestion + weather + inventory position</td>
+<td>Days</td>
+<td>Weeks</td>
+</tr>
+<tr>
+<td>Customer churn</td>
+<td>Usage decline + support sentiment + billing dispute</td>
+<td>Weeks</td>
+<td>Post-hoc</td>
+</tr>
+<tr>
+<td>Intrusion campaign</td>
+<td>Credential anomaly + lateral movement + exfiltration pattern</td>
+<td>Minutes to hours</td>
+<td>Weeks to months</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 4.</strong> <em>Windows of actionability versus typical detection latency. Where detection latency exceeds the window, the correlation retains forensic value but has lost preventive value. Figures are illustrative estimates drawn from published industry reporting rather than measurements.</em></p>
+<p>The pattern in Table 4 is uniform: <strong>detection latency exceeds the window of actionability in every row</strong>. The gap is not attributable to slow compute — modern infrastructure evaluates these conditions in milliseconds. It is attributable to the fact that no system is continuously evaluating them, because continuous cross-domain evaluation is nobody’s architectural responsibility.</p>
+<h2 id="5.7-challenge-six-%E2%80%94-governance-applied-at-the-wrong-point" tabindex="-1">5.7 Challenge Six — Governance Applied at the Wrong Point <a class="header-anchor" href="#5.7-challenge-six-%E2%80%94-governance-applied-at-the-wrong-point">#</a></h2>
+<p>Enterprise governance is overwhelmingly enforced at the point of <strong>access</strong>: who may query which table, which columns are masked, which rows are visible.</p>
+<p>Access-time governance is necessary and insufficient. It cannot express the class of constraint that matters most as correlation capability increases:</p>
+<ul>
+<li><em>This dataset may be joined with that one for fraud prevention but not for marketing.</em></li>
+<li><em>This inference may be drawn for clinical care but not for underwriting.</em></li>
+<li><em>This correlation is statistically sound but constitutes prohibited profiling under applicable regulation.</em></li>
+<li><em>This relationship may be surfaced to a human reviewer but must never trigger automated action.</em></li>
+</ul>
+<p>These are constraints on <strong>inference and purpose</strong>, not on access. An architecture that discovers relationships automatically will discover impermissible ones automatically, and access controls will not prevent it — because no access rule was violated. Each constituent dataset was legitimately accessible; it is the <em>joining of them for a particular purpose</em> that is prohibited.</p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>A prerequisite, not an optional feature.</strong> Any architecture that industrializes correlation must industrialize correlation governance in the same motion. Building the first without the second creates a compliance liability that scales with the system’s effectiveness. This requirement drives the purpose-binding design in <a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">Chapter 24</a>.</p>
+</div>
+<h2 id="5.8-challenge-seven-%E2%80%94-organizational-incentives-against-correlation" tabindex="-1">5.8 Challenge Seven — Organizational Incentives Against Correlation <a class="header-anchor" href="#5.8-challenge-seven-%E2%80%94-organizational-incentives-against-correlation">#</a></h2>
+<p>A structural cause that is rarely stated: <strong>no one is accountable for cross-domain relationships.</strong></p>
+<p>Domain teams are accountable for their domain’s data quality, availability, and cost. Platform teams are accountable for infrastructure reliability and spend. Governance teams are accountable for compliance. Analytics teams are accountable for delivering answers to specific questions.</p>
+<p>Cross-domain correlation falls between all of these. It benefits everyone and is owned by no one. Under data mesh in particular, where domain ownership is a foundational principle, the <em>inter-domain</em> space can become explicitly ownerless — an unintended consequence of an otherwise sound organizational model.</p>
+<p>Data Swimming Pool responds by making the correlation substrate <strong>a platform-owned product with a named owner, an SLA, and a budget</strong>, discussed in <a href="/data-swimming-pool-whitepaper/part-3/25-governance/">Chapter 25</a>.</p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>The recurring structural cause behind twelve common symptoms</strong> is the absence of persistent, governed relationships between data — not insufficient storage, compute, integration, or tooling.</li>
+<li><strong>Integration produces co-location, not connection.</strong> Landing all data in one substrate leaves entity resolution, temporal alignment, and semantic reconciliation undone, and every consumer redoes that work independently.</li>
+<li><strong>The correlation tax is a real, recurring, and unmeasured cost</strong> comprising discovery, reconciliation, validation, and decay components, borne in analytics labour budgets where platform business cases never see it.</li>
+<li><strong>Alert fatigue is a correlation failure, not a threshold problem.</strong> Raising thresholds trades false positives for false negatives; correlating signals improves both.</li>
+<li><strong>RAG over documents grounds facts but not relationships</strong>, so AI copilots asked cross-domain questions fabricate the connective tissue. The defect is in the retrieval substrate, not the model.</li>
+<li><strong>Detection latency exceeds the window of actionability in essentially every domain</strong>, because continuous cross-domain evaluation is nobody’s architectural responsibility.</li>
+<li><strong>Access-time governance cannot express purpose and inference constraints</strong>, which are exactly the constraints that matter once correlation is automated.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-1/04-background/"><span>← Previous</span><b>4. Background</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-1/06-evolution/"><span>Next →</span><b>6. Evolution of Enterprise Data Architecture</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#5.1-the-symptom%E2%80%93cause-distinction">5.1 The Symptom–Cause Distinction #</a><a href="#5.2-challenge-one-%E2%80%94-integration-without-association">5.2 Challenge One — Integration Without Association #</a><a href="#5.3-challenge-two-%E2%80%94-the-correlation-tax">5.3 Challenge Two — The Correlation Tax #</a><a href="#5.4-challenge-three-%E2%80%94-alert-fatigue-as-a-correlation-failure">5.4 Challenge Three — Alert Fatigue as a Correlation Failure #</a><a href="#5.5-challenge-four-%E2%80%94-ungrounded-ai">5.5 Challenge Four — Ungrounded AI #</a><a href="#5.6-challenge-five-%E2%80%94-latency-mismatch-between-insight-and-action">5.6 Challenge Five — Latency Mismatch Between Insight and Action #</a><a href="#5.7-challenge-six-%E2%80%94-governance-applied-at-the-wrong-point">5.7 Challenge Six — Governance Applied at the Wrong Point #</a><a href="#5.8-challenge-seven-%E2%80%94-organizational-incentives-against-correlation">5.8 Challenge Seven — Organizational Incentives Against Correlation #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-1/05-current-challenges/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

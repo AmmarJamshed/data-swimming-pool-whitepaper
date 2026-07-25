@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en" data-part="p4">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>34. Cybersecurity Use Case · Data Swimming Pool</title>
+<meta name="description" content="34. Cybersecurity Use Case --- Illustrative scenario. Synthetic and constructed. All figures are reasoned estimates, not measurements. 34.1 Scenario Context &quot;Vantis Group&quot; is a con">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="34. Cybersecurity Use Case — Data Swimming Pool">
+<meta property="og:description" content="34. Cybersecurity Use Case --- Illustrative scenario. Synthetic and constructed. All figures are reasoned estimates, not measurements. 34.1 Scenario Context &quot;Vantis Group&quot; is a con">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" open style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/" class="on">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part IV — Illustrative Enterprise Scenarios</span></p>
+    <h1>34. Cybersecurity Use Case</h1>
+    <p class="cmeta"><span class="chip">🏭 Part IV — Illustrative Enterprise Scenarios</span><span class="dot">·</span>4 min read</p>
+  </header>
+  <div class="prose">
+<h1>34. Cybersecurity Use Case</h1>
+<hr>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>Illustrative scenario.</strong> Synthetic and constructed. All figures are reasoned estimates, not measurements.</p>
+</div>
+<h2 id="34.1-scenario-context" tabindex="-1">34.1 Scenario Context <a class="header-anchor" href="#34.1-scenario-context">#</a></h2>
+<p><strong>“Vantis Group”</strong> is a constructed multinational: 34,000 employees, hybrid cloud estate, 180 SaaS applications, an operational technology environment in three manufacturing sites, and a security operations centre processing approximately 2.1 million events per day into roughly 4,200 alerts, of which 180 receive human triage.</p>
+<p><strong>The problem it cannot solve.</strong> Sophisticated intrusion is cross-telemetry by design. An attacker who understands that endpoint, network, identity, cloud, and application telemetry are analysed by separate detectors will deliberately keep each individual signal below its detector’s threshold. The campaign is invisible in every domain and obvious across all of them.</p>
+<p>This is the purest expression of the thesis in <a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">Chapter 5</a>: alert fatigue is a correlation failure, and adversaries exploit it deliberately.</p>
+<h2 id="34.2-cross-telemetry-correlation" tabindex="-1">34.2 Cross-Telemetry Correlation <a class="header-anchor" href="#34.2-cross-telemetry-correlation">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph TEL[&quot;Telemetry Sources&quot;]
+        direction LR
+        T1[&quot;Endpoint&lt;br/&gt;&lt;i&gt;process, file, registry&lt;/i&gt;&quot;]
+        T2[&quot;Network&lt;br/&gt;&lt;i&gt;flow, DNS, TLS metadata&lt;/i&gt;&quot;]
+        T3[&quot;Identity&lt;br/&gt;&lt;i&gt;auth, MFA, privilege change&lt;/i&gt;&quot;]
+        T4[&quot;Cloud control plane&lt;br/&gt;&lt;i&gt;API calls, config change&lt;/i&gt;&quot;]
+        T5[&quot;SaaS&lt;br/&gt;&lt;i&gt;access, sharing, export&lt;/i&gt;&quot;]
+        T6[&quot;Email&lt;br/&gt;&lt;i&gt;delivery, click, attachment&lt;/i&gt;&quot;]
+        T7[&quot;OT / ICS&lt;br/&gt;&lt;i&gt;controller access, setpoints&lt;/i&gt;&quot;]
+        T8[&quot;Data platform&lt;br/&gt;&lt;i&gt;query patterns, volume&lt;/i&gt;&quot;]
+        T9[&quot;HR&lt;br/&gt;&lt;i&gt;joiners, movers, leavers&lt;/i&gt;&quot;]
+        T10[&quot;Threat intel&lt;br/&gt;&lt;i&gt;IOCs, TTPs, actor profiles&lt;/i&gt;&quot;]
+    end
+
+    subgraph CAMP[&quot;Illustrative Campaign — each stage sub-threshold&quot;]
+        direction TB
+        K1[&quot;&lt;b&gt;T-14d&lt;/b&gt; Email — targeted message&lt;br/&gt;to 3 finance staff&lt;br/&gt;&lt;i&gt;no attachment, no known-bad link&lt;br/&gt;→ no alert&lt;/i&gt;&quot;]
+        K2[&quot;&lt;b&gt;T-11d&lt;/b&gt; Identity — one recipient&lt;br/&gt;authenticates from new ASN&lt;br/&gt;&lt;i&gt;MFA satisfied → no alert&lt;/i&gt;&quot;]
+        K3[&quot;&lt;b&gt;T-9d&lt;/b&gt; Endpoint — legitimate&lt;br/&gt;remote tool installed&lt;br/&gt;&lt;i&gt;signed binary → no alert&lt;/i&gt;&quot;]
+        K4[&quot;&lt;b&gt;T-6d&lt;/b&gt; Cloud — service principal&lt;br/&gt;granted additional read scope&lt;br/&gt;&lt;i&gt;within admin's rights → no alert&lt;/i&gt;&quot;]
+        K5[&quot;&lt;b&gt;T-4d&lt;/b&gt; Data platform — query volume&lt;br/&gt;+340% for that principal&lt;br/&gt;&lt;i&gt;below anomaly threshold → no alert&lt;/i&gt;&quot;]
+        K6[&quot;&lt;b&gt;T-1d&lt;/b&gt; Network — TLS to a new&lt;br/&gt;cloud storage domain&lt;br/&gt;&lt;i&gt;reputable provider → no alert&lt;/i&gt;&quot;]
+        K7[&quot;&lt;b&gt;T-0&lt;/b&gt; SaaS — bulk external&lt;br/&gt;share created&lt;br/&gt;&lt;i&gt;permitted action → low alert&lt;/i&gt;&quot;]
+        K1 --&gt; K2 --&gt; K3 --&gt; K4 --&gt; K5 --&gt; K6 --&gt; K7
+    end
+
+    subgraph CE[&quot;Correlation Engine — sec.campaign.v4&quot;]
+        direction TB
+        C1[&quot;&lt;b&gt;M2 Entity&lt;/b&gt;&lt;br/&gt;all stages resolve to one&lt;br/&gt;IDENTITY + one DEVICE&lt;br/&gt;0.96&quot;]
+        C2[&quot;&lt;b&gt;M1 Temporal (CEP)&lt;/b&gt;&lt;br/&gt;ordered sequence matches&lt;br/&gt;known TTP chain,&lt;br/&gt;timing consistent&lt;br/&gt;0.74&quot;]
+        C3[&quot;&lt;b&gt;M5 Behavioural&lt;/b&gt;&lt;br/&gt;each stage individually&lt;br/&gt;sub-threshold; joint deviation&lt;br/&gt;at p99.94 for this identity&lt;br/&gt;0.83&quot;]
+        C4[&quot;&lt;b&gt;M4 Semantic&lt;/b&gt;&lt;br/&gt;threat-intel TTP descriptions&lt;br/&gt;align with observed sequence&lt;br/&gt;0.69&quot;]
+        C5[&quot;&lt;b&gt;Negative&lt;/b&gt;&lt;br/&gt;EXPECTED_ABSENT: no change&lt;br/&gt;ticket for the scope grant&lt;br/&gt;0.91&quot;]
+    end
+
+    FUSE[&quot;&lt;b&gt;Fused, calibrated 0.88&lt;/b&gt;&lt;br/&gt;MULTI_STAGE_INTRUSION_CAMPAIGN&lt;br/&gt;Stage: exfiltration in progress&lt;br/&gt;Evidence: 7 events, 5 modalities&lt;br/&gt;&lt;b&gt;Time from first signal: 14 days&lt;/b&gt;&lt;br/&gt;&lt;b&gt;Time from correlation to alert: 40 s&lt;/b&gt;&quot;]
+
+    ACT[&quot;&lt;b&gt;ONE incident&lt;/b&gt; replaces&lt;br/&gt;7 sub-threshold signals&lt;br/&gt;&lt;br/&gt;&lt;b&gt;L4:&lt;/b&gt; revoke session tokens&lt;br/&gt;&lt;i&gt;reversible&lt;/i&gt;&lt;br/&gt;&lt;b&gt;L4:&lt;/b&gt; suspend the external share&lt;br/&gt;&lt;i&gt;reversible&lt;/i&gt;&lt;br/&gt;&lt;b&gt;L3:&lt;/b&gt; stage principal scope revert&lt;br/&gt;&lt;b&gt;L2:&lt;/b&gt; recommend endpoint isolation&lt;br/&gt;&lt;b&gt;L1:&lt;/b&gt; full attack narrative&lt;br/&gt;with evidence for the analyst&quot;]
+
+    TEL --&gt; CAMP --&gt; CE --&gt; FUSE --&gt; ACT
+
+    classDef tel fill:#1b2f3d,stroke:#5b8fb0,color:#e6f2fa
+    classDef camp fill:#4a2020,stroke:#d07070,color:#ffeaea
+    classDef ce fill:#0a5570,stroke:#3fd0f0,stroke-width:2px,color:#ffffff
+    classDef out fill:#3d3313,stroke:#d4a636,stroke-width:2px,color:#fff8e6
+    class TEL,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10 tel
+    class CAMP,K1,K2,K3,K4,K5,K6,K7 camp
+    class CE,C1,C2,C3,C4,C5 ce
+    class FUSE,ACT out
+</pre></div>
+<p><strong>Figure 48.</strong> <em>Cybersecurity cross-telemetry threat correlation workflow (illustrative). Seven campaign stages, each deliberately below its domain detector’s threshold, spanning fourteen days and six telemetry sources. Five modalities contribute, including a negative relationship — the change ticket that should have accompanied the privilege grant and did not. The output is one incident with a complete narrative, replacing seven signals that individually generated no alert.</em></p>
+<h2 id="34.3-why-security-is-the-framework%E2%80%99s-most-natural-fit" tabindex="-1">34.3 Why Security Is the Framework’s Most Natural Fit <a class="header-anchor" href="#34.3-why-security-is-the-framework%E2%80%99s-most-natural-fit">#</a></h2>
+<p>Four properties make security an unusually good match:</p>
+<p><strong>The adversary is optimizing against uncorrelated detection.</strong> This is not an incidental benefit; it is the entire game. Every mature attack framework assumes siloed detection and is designed to stay beneath per-domain thresholds. Correlation directly attacks the adversary’s core assumption.</p>
+<p><strong>Actions are frequently reversible.</strong> Revoking a session token, suspending a share, blocking an IP, or disabling an account are reversible in the strict sense — which is why security supports higher autonomy levels than most domains.</p>
+<p><strong>Ground truth arrives, eventually.</strong> Incident investigation produces definitive labels. Confidence calibration is tractable.</p>
+<p><strong>The volume problem is acute and measurable.</strong> The compression ratio from raw signals to triaged incidents is directly measurable and directly valuable, giving the framework an unambiguous success metric.</p>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p><strong>The security-specific argument.</strong> In most domains, correlation infrastructure competes with alternative investments. In security, the alternative — hiring analysts proportional to alert volume — does not scale and is not available in the labour market. Correlation is not an optimization; it is the only path to coverage.</p>
+</div>
+<h2 id="34.4-correlation-scopes" tabindex="-1">34.4 Correlation Scopes <a class="header-anchor" href="#34.4-correlation-scopes">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Purpose</th>
+<th>Modalities</th>
+<th>Window</th>
+<th>Autonomy</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sec.campaign.v4</code></td>
+<td>Multi-stage intrusion detection</td>
+<td>M1, M2, M4, M5, negative</td>
+<td>30 d</td>
+<td>L4 (reversible actions)</td>
+<td>Adversarial — continuous review</td>
+</tr>
+<tr>
+<td><code>sec.insider.v3</code></td>
+<td>Insider data movement</td>
+<td>M2, M5, negative</td>
+<td>90 d</td>
+<td><strong>L2 only</strong></td>
+<td>Employment consequence; never automated</td>
+</tr>
+<tr>
+<td><code>sec.lateral.v3</code></td>
+<td>Lateral movement within estate</td>
+<td>M1, M2</td>
+<td>24 h</td>
+<td>L4</td>
+<td>High confidence, fast window</td>
+</tr>
+<tr>
+<td><code>sec.supply_chain.v2</code></td>
+<td>Third-party and vendor compromise</td>
+<td>M2, M4</td>
+<td>60 d</td>
+<td>L3</td>
+<td>Depends on external telemetry quality</td>
+</tr>
+<tr>
+<td><code>sec.ot_boundary.v2</code></td>
+<td>IT-to-OT boundary crossing</td>
+<td>M1, M2</td>
+<td>7 d</td>
+<td>L3</td>
+<td>OT actions are <strong>not</strong> reversible — capped</td>
+</tr>
+<tr>
+<td><code>sec.platform_self.v1</code></td>
+<td>The pool monitoring itself</td>
+<td>M2, M5</td>
+<td>30 d</td>
+<td>L2</td>
+<td>Must not be sole monitoring (<a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">Chapter 23</a>)</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 69.</strong> <em>Cybersecurity correlation scopes (illustrative). Two are deliberately capped: insider detection at L2 because the consequence is employment-related and irreversible, and OT boundary at L3 because an automated action against operational technology can cause physical harm.</em></p>
+<h2 id="34.5-adversarial-considerations" tabindex="-1">34.5 Adversarial Considerations <a class="header-anchor" href="#34.5-adversarial-considerations">#</a></h2>
+<p>Security is the one domain where the correlation system itself is a target.</p>
+<p><strong>Correlation evasion.</strong> An adversary who knows correlation windows and scopes can space activity to fall outside them. Mitigation: window widths and scope definitions should be treated as sensitive, varied where feasible, and supplemented by wide-window batch correlation that is harder to evade by timing alone.</p>
+<p><strong>Baseline poisoning.</strong> An adversary with early, low-privilege access can shape M5 baselines over weeks so that later malicious activity appears normal. Mitigation: baseline change-rate limits, robust statistics resistant to gradual shift, and cross-checking individual baselines against cohort baselines — an entity whose baseline drifts while its cohort’s does not is itself a signal.</p>
+<p><strong>Correlation store as target.</strong> The correlation store contains a map of the organization’s detection capability. An adversary who reads it knows exactly what is and is not detected. It requires protection commensurate with the most sensitive security tooling, and access to it should be more restricted than access to raw telemetry.</p>
+<p><strong>Alert-flooding as cover.</strong> Generating high volumes of low-severity events to exhaust correlation capacity and trigger load shedding. Mitigation: the load-shedding hierarchy in <a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">Chapter 11</a> sheds by scope priority, and security scopes should hold the highest priority so that they are shed last.</p>
+<h2 id="34.6-illustrative-outcomes" tabindex="-1">34.6 Illustrative Outcomes <a class="header-anchor" href="#34.6-illustrative-outcomes">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Plausible direction</th>
+<th>Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alerts requiring human triage</td>
+<td>Substantial reduction</td>
+<td>Clustering and correlation replace independent signals</td>
+</tr>
+<tr>
+<td>Detection of deliberately sub-threshold campaigns</td>
+<td>New capability</td>
+<td>Joint deviation detection across telemetry domains</td>
+</tr>
+<tr>
+<td>Mean time to detect multi-stage intrusion</td>
+<td>Substantial reduction</td>
+<td>Continuous cross-telemetry evaluation</td>
+</tr>
+<tr>
+<td>Mean time to investigate</td>
+<td>Substantial reduction</td>
+<td>Attack narrative and evidence pre-assembled</td>
+</tr>
+<tr>
+<td>False positive rate</td>
+<td>Reduction</td>
+<td>Multi-modal reinforcement raises precision</td>
+</tr>
+<tr>
+<td>Analyst coverage of alert volume</td>
+<td>Improvement</td>
+<td>Fewer, richer incidents within triage capacity</td>
+</tr>
+<tr>
+<td>Detection of privilege changes without change control</td>
+<td>New capability</td>
+<td>Negative relationship across ITSM and cloud telemetry</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 70.</strong> <em>Illustrative outcome directions for cybersecurity. The final row illustrates a distinctive pattern: correlating a security event with the absence of its expected governance artifact is frequently more informative than the event itself.</em></p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Sophisticated intrusion is cross-telemetry by design</strong>, deliberately keeping each signal below its domain detector’s threshold — making security the purest expression of the correlation thesis.</li>
+<li><strong>Correlation directly attacks the adversary’s core assumption</strong> that detection is siloed, which is not an incidental benefit but the central one.</li>
+<li><strong>Security supports higher autonomy than most domains</strong> because token revocation, share suspension, and account disabling are genuinely reversible.</li>
+<li><strong>Insider detection and OT boundary scopes are deliberately capped</strong>, at L2 and L3 respectively, because employment consequences and physical-harm potential are irreversible.</li>
+<li><strong>In security, correlation is not an optimization but the only path to coverage</strong>, since hiring analysts proportional to alert volume neither scales nor is available in the labour market.</li>
+<li><strong>The correlation store is itself a target</strong> containing a map of detection capability, and warrants more restricted access than raw telemetry.</li>
+<li><strong>Baseline poisoning is countered by cross-checking individual baselines against cohort baselines</strong> — an entity drifting while its cohort does not is itself a signal.</li>
+<li><strong>Security scopes must hold the highest load-shedding priority</strong>, since alert flooding to exhaust correlation capacity is a viable attack.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/"><span>← Previous</span><b>33. Smart Cities Use Case</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-4/35-government/"><span>Next →</span><b>35. Government Use Case</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#34.1-scenario-context">34.1 Scenario Context #</a><a href="#34.2-cross-telemetry-correlation">34.2 Cross-Telemetry Correlation #</a><a href="#34.3-why-security-is-the-framework%E2%80%99s-most-natural-fit">34.3 Why Security Is the Framework’s Most Natural Fit #</a><a href="#34.4-correlation-scopes">34.4 Correlation Scopes #</a><a href="#34.5-adversarial-considerations">34.5 Adversarial Considerations #</a><a href="#34.6-illustrative-outcomes">34.6 Illustrative Outcomes #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

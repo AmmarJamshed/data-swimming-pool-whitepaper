@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en" data-part="p1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>7. Why Another Architecture? · Data Swimming Pool</title>
+<meta name="description" content="7. Why Another Architecture? --- The enterprise data field does not suffer from a shortage of architectural paradigms. It arguably suffers from a surplus. Any proposal for a new on">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="7. Why Another Architecture? — Data Swimming Pool">
+<meta property="og:description" content="7. Why Another Architecture? --- The enterprise data field does not suffer from a shortage of architectural paradigms. It arguably suffers from a surplus. Any proposal for a new on">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" open style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/" class="on">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part I — Context and Motivation</span></p>
+    <h1>7. Why Another Architecture?</h1>
+    <p class="cmeta"><span class="chip">🔍 Part I — Context and Motivation</span><span class="dot">·</span>10 min read</p>
+  </header>
+  <div class="prose">
+<h1>7. Why Another Architecture?</h1>
+<hr>
+<p>The enterprise data field does not suffer from a shortage of architectural paradigms. It arguably suffers from a surplus. Any proposal for a new one therefore carries a burden of proof, and this chapter attempts to discharge it explicitly.</p>
+<h2 id="7.1-the-burden-of-proof" tabindex="-1">7.1 The Burden of Proof <a class="header-anchor" href="#7.1-the-burden-of-proof">#</a></h2>
+<p>A new architectural paradigm is justified only if it satisfies all four of the following tests. Failing any one of them, the correct response is to extend an existing paradigm rather than propose a new one.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Test</th>
+<th>Question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T1</strong></td>
+<td><strong>Gap</strong></td>
+<td>Is there a class of problem that no existing paradigm treats as a first-class concern?</td>
+</tr>
+<tr>
+<td><strong>T2</strong></td>
+<td><strong>Insufficiency</strong></td>
+<td>Would extending an existing paradigm be inadequate, rather than merely inconvenient?</td>
+</tr>
+<tr>
+<td><strong>T3</strong></td>
+<td><strong>Feasibility</strong></td>
+<td>Do the technical preconditions for the proposal now exist?</td>
+</tr>
+<tr>
+<td><strong>T4</strong></td>
+<td><strong>Materiality</strong></td>
+<td>Is the value at stake large enough to justify the cost and risk of adoption?</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 6.</strong> <em>Tests applied to justify a new architectural paradigm. Each is addressed in turn below. The author regards T2 as the most demanding and treats it at greatest length.</em></p>
+<h2 id="7.2-test-one-%E2%80%94-is-there-a-genuine-gap%3F" tabindex="-1">7.2 Test One — Is There a Genuine Gap? <a class="header-anchor" href="#7.2-test-one-%E2%80%94-is-there-a-genuine-gap%3F">#</a></h2>
+<p><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">Chapter 6</a> established that no generation persists relationships as governed platform assets. This section decomposes that observation into four distinct structural deficits, so that the proposed architecture can be evaluated against each specifically.</p>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph GAPS[&quot;The Four Structural Deficits&quot;]
+        direction TB
+        G1[&quot;&lt;b&gt;Deficit 1 — Relationship Amnesia&lt;/b&gt;&lt;br/&gt;Cross-domain relationships are reconstructed&lt;br/&gt;per query and discarded after use.&lt;br/&gt;&lt;i&gt;No system owns them.&lt;/i&gt;&quot;]
+        G2[&quot;&lt;b&gt;Deficit 2 — Passive Evaluation&lt;/b&gt;&lt;br/&gt;Systems answer questions that are asked.&lt;br/&gt;Nothing continuously evaluates&lt;br/&gt;conditions nobody thought to ask about.&quot;]
+        G3[&quot;&lt;b&gt;Deficit 3 — Ungoverned Inference&lt;/b&gt;&lt;br/&gt;Policy is enforced at access time.&lt;br/&gt;Purpose, inference and correlation&lt;br/&gt;constraints are inexpressible.&quot;]
+        G4[&quot;&lt;b&gt;Deficit 4 — Ungrounded Intelligence&lt;/b&gt;&lt;br/&gt;AI is grounded in facts but not in&lt;br/&gt;verified relationships, so it fabricates&lt;br/&gt;the connective tissue it is asked for.&quot;]
+    end
+
+    G1 --&gt; C1[&quot;Correlation tax&lt;br/&gt;recurring, unmeasured&quot;]
+    G2 --&gt; C2[&quot;Detection latency exceeds&lt;br/&gt;window of actionability&quot;]
+    G3 --&gt; C3[&quot;Compliance liability scales&lt;br/&gt;with system effectiveness&quot;]
+    G4 --&gt; C4[&quot;Confident misinformation&lt;br/&gt;at organizational scale&quot;]
+
+    classDef gap fill:#4a2c2c,stroke:#d68a8a,stroke-width:1.5px,color:#ffeaea
+    classDef con fill:#2c3a4a,stroke:#7fa8cc,stroke-width:1.5px,color:#eaf2ff
+    class GAPS,G1,G2,G3,G4 gap
+    class C1,C2,C3,C4 con
+</pre></div>
+<p><strong>Figure 7.</strong> <em>The four structural deficits and their operational consequences. Each deficit is independently addressable in principle; the argument for a unified architecture is that they share a single root cause and that addressing them separately produces four partially-overlapping systems.</em></p>
+<h3 id="deficit-1-%E2%80%94-relationship-amnesia" tabindex="-1">Deficit 1 — Relationship Amnesia <a class="header-anchor" href="#deficit-1-%E2%80%94-relationship-amnesia">#</a></h3>
+<p>The system has no memory of what it learned. A correlation established by an analyst in March is unavailable to a model in June. This is the correlation tax formalized: the platform’s inability to retain relational knowledge means the organization pays for the same discovery repeatedly.</p>
+<h3 id="deficit-2-%E2%80%94-passive-evaluation" tabindex="-1">Deficit 2 — Passive Evaluation <a class="header-anchor" href="#deficit-2-%E2%80%94-passive-evaluation">#</a></h3>
+<p>Every incumbent paradigm is fundamentally <strong>interrogative</strong>: it responds to queries. Streaming is the partial exception, evaluating continuously <em>within</em> a declared stream topology. But no paradigm continuously evaluates the <em>cross-product</em> of domains looking for conditions that were never declared.</p>
+<p>This matters because the highest-value correlations are frequently the ones nobody anticipated. A pre-declared rule catches known fraud patterns. It does not catch the pattern that emerged last week.</p>
+<h3 id="deficit-3-%E2%80%94-ungoverned-inference" tabindex="-1">Deficit 3 — Ungoverned Inference <a class="header-anchor" href="#deficit-3-%E2%80%94-ungoverned-inference">#</a></h3>
+<p>Developed in <a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">Chapter 5</a>. Access controls govern <em>retrieval</em>. They cannot govern <em>derivation</em>. As inference becomes automated, the ungoverned surface grows in direct proportion to capability.</p>
+<h3 id="deficit-4-%E2%80%94-ungrounded-intelligence" tabindex="-1">Deficit 4 — Ungrounded Intelligence <a class="header-anchor" href="#deficit-4-%E2%80%94-ungrounded-intelligence">#</a></h3>
+<p>Also developed in <a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">Chapter 5</a>. As AI becomes the dominant interface to enterprise data, the absence of a relationship substrate converts a latent gap into an active generator of plausible fabrication.</p>
+<p><strong>T1 verdict: satisfied.</strong> Four distinct deficits, sharing a root cause, unaddressed as first-class concerns by any incumbent paradigm.</p>
+<h2 id="7.3-test-two-%E2%80%94-could-an-existing-paradigm-be-extended%3F" tabindex="-1">7.3 Test Two — Could an Existing Paradigm Be Extended? <a class="header-anchor" href="#7.3-test-two-%E2%80%94-could-an-existing-paradigm-be-extended%3F">#</a></h2>
+<p>This is the strongest objection to the whitepaper and deserves the most careful treatment. The author examines each candidate extension on its merits and concedes where the objection has force.</p>
+<h3 id="7.3.1-%E2%80%9Cextend-the-lakehouse%E2%80%9D" tabindex="-1">7.3.1 “Extend the Lakehouse” <a class="header-anchor" href="#7.3.1-%E2%80%9Cextend-the-lakehouse%E2%80%9D">#</a></h3>
+<p><strong>The proposal.</strong> Add correlation tables to a lakehouse. Persist discovered relationships as Iceberg or Delta tables. Query them with SQL.</p>
+<p><strong>What works.</strong> A great deal. Correlation results genuinely <em>should</em> be persisted in lakehouse-class storage, and <a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">Chapter 10</a> specifies exactly that. The lakehouse gives ACID guarantees, time travel, and schema evolution — all of which correlation artifacts need.</p>
+<p><strong>Where it is insufficient.</strong> Three specific places.</p>
+<p><em>Traversal performance.</em> The dominant access pattern over correlations is multi-hop traversal — <em>“what is connected to this, and what is connected to that, to depth four?”</em> Expressed in SQL this is a recursive common table expression, and recursive CTEs over columnar storage perform poorly relative to native graph traversal, typically by one to two orders of magnitude at depth three and beyond. This is a structural property of the storage layout, not a tuning problem.</p>
+<p><em>Continuous evaluation.</em> A lakehouse table is written by a job. Correlation requires a continuously-running stateful process observing streams, maintaining windows, and emitting relationships as they form. That process is not a lakehouse feature; it is a separate architectural component that happens to write to the lakehouse.</p>
+<p><em>Semantics.</em> A correlation is not a row. It has a confidence score requiring calibration, an evidence set requiring lineage, a temporal validity requiring expiry, a policy classification requiring enforcement, and a supersession relationship to prior versions of itself. These semantics can be encoded in table columns, but encoding semantics in columns and relying on every consumer to honour them is precisely the pattern that produced the problems in <a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">Chapter 5</a>.</p>
+<p><strong>Concession.</strong> For an organization with modest correlation ambitions — perhaps a few dozen well-understood relationship types within two or three domains — extending the lakehouse is very likely the correct and proportionate choice. The author states this plainly: <strong>most organizations should not build a Data Swimming Pool.</strong> They should extend what they have.</p>
+<h3 id="7.3.2-%E2%80%9Cextend-the-data-fabric%E2%80%9D" tabindex="-1">7.3.2 “Extend the Data Fabric” <a class="header-anchor" href="#7.3.2-%E2%80%9Cextend-the-data-fabric%E2%80%9D">#</a></h3>
+<p><strong>The proposal.</strong> Data fabric already has an active metadata catalog and a knowledge graph. Extend the graph from assets to instances.</p>
+<p><strong>Where it is insufficient.</strong> This is a larger change than it appears. Fabric graphs are <strong>metadata-scale</strong>: thousands to hundreds of thousands of nodes describing tables, columns, pipelines, and owners. An instance-level correlation graph is <strong>data-scale</strong>: potentially billions of nodes and tens of billions of edges, with high write throughput and continuous expiry.</p>
+<p>These are different systems with different storage engines, different consistency requirements, different cost profiles, and different operational disciplines. The metadata catalog is a control plane; the correlation graph is a data plane. Conflating them would degrade both — the catalog would inherit the correlation graph’s write amplification, and the correlation graph would inherit the catalog’s assumption of low churn.</p>
+<p><strong>Concession.</strong> Data fabric’s <em>philosophy</em> — active metadata driving automated behaviour — is correct and is adopted wholesale by this framework. The disagreement is about the scale and placement of the graph, not about the value of graphs.</p>
+<h3 id="7.3.3-%E2%80%9Cextend-complex-event-processing%E2%80%9D" tabindex="-1">7.3.3 “Extend Complex Event Processing” <a class="header-anchor" href="#7.3.3-%E2%80%9Cextend-complex-event-processing%E2%80%9D">#</a></h3>
+<p><strong>The proposal.</strong> CEP already detects cross-event patterns. Scale it up and persist the results.</p>
+<p><strong>Where it is insufficient.</strong> CEP is <strong>declarative by construction</strong>. Its power derives from the ability to state a pattern precisely and match it efficiently. That same property is its limitation: a CEP engine finds what you told it to find.</p>
+<p>Extending CEP to <em>discover</em> undeclared relationships requires adding statistical inference, entity resolution across heterogeneous identifiers, semantic similarity via embeddings, and learned behavioural models. At the point where all four have been added, the result is no longer a CEP engine — it is a correlation engine that includes a CEP engine as one of five modalities. That is precisely the design of <a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">Chapter 14</a>, and the framework acknowledges CEP as its most direct antecedent.</p>
+<p><strong>Concession.</strong> If an organization’s correlation needs are entirely expressible as declared patterns, CEP is sufficient and considerably simpler. Use it.</p>
+<h3 id="7.3.4-%E2%80%9Cextend-the-data-mesh%E2%80%9D" tabindex="-1">7.3.4 “Extend the Data Mesh” <a class="header-anchor" href="#7.3.4-%E2%80%9Cextend-the-data-mesh%E2%80%9D">#</a></h3>
+<p><strong>The proposal.</strong> Make cross-domain correlations a data product owned by a domain.</p>
+<p><strong>Where it is insufficient.</strong> Which domain owns the relationship between payments and customer service? If payments owns it, payments must acquire and maintain expertise in customer-service semantics — violating the domain-expertise principle that motivates mesh. If a new “correlation domain” is created, it is a centralized team by another name — violating the decentralization principle.</p>
+<p>The correlation substrate is more accurately characterized as <strong>self-serve platform capability</strong>, which is mesh’s third principle. This is exactly what <a href="/data-swimming-pool-whitepaper/part-3/25-governance/">Chapter 25</a> proposes, making the framework a mesh-compatible platform component rather than a mesh alternative.</p>
+<p><strong>Concession.</strong> Substantial. Data Swimming Pool can and arguably should be operated <em>within</em> a data mesh. The framework does not require abandoning mesh and is more likely to succeed alongside it.</p>
+<h3 id="7.3.5-%E2%80%9Cjust-use-a-graph-database%E2%80%9D" tabindex="-1">7.3.5 “Just Use a Graph Database” <a class="header-anchor" href="#7.3.5-%E2%80%9Cjust-use-a-graph-database%E2%80%9D">#</a></h3>
+<p><strong>The proposal.</strong> Load everything into Neo4j and traverse.</p>
+<p><strong>Where it is insufficient.</strong> A graph database is storage and query. It does not ingest from heterogeneous sources, does not resolve entities, does not maintain streaming state, does not score confidence, does not calibrate against ground truth, does not expire stale edges, and does not enforce purpose-binding policy. It is one component of the architecture — an important one, specified in <a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">Chapter 17</a> — and not a substitute for it.</p>
+<p>Additionally, indiscriminate loading of enterprise data into a graph produces a graph with poor edge quality, which is worse than no graph: it invites confident traversal over unverified relationships.</p>
+<h3 id="7.3.6-verdict-on-t2" tabindex="-1">7.3.6 Verdict on T2 <a class="header-anchor" href="#7.3.6-verdict-on-t2">#</a></h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Candidate extension</th>
+<th>Sufficient for</th>
+<th>Insufficient because</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Extend the lakehouse</td>
+<td>Modest, well-understood correlation within 2–3 domains</td>
+<td>Traversal performance, no continuous evaluation, correlation semantics unenforced</td>
+</tr>
+<tr>
+<td>Extend the data fabric</td>
+<td>Asset-level relationship discovery</td>
+<td>Metadata-scale control plane cannot absorb data-scale correlation plane</td>
+</tr>
+<tr>
+<td>Extend CEP</td>
+<td>Fully declarable pattern sets</td>
+<td>No discovery of undeclared relationships; adding it produces a correlation engine</td>
+</tr>
+<tr>
+<td>Extend the data mesh</td>
+<td>Organizational scaling of ownership</td>
+<td>Inter-domain space has no natural owner; correlation is platform capability</td>
+</tr>
+<tr>
+<td>Use a graph database</td>
+<td>Storage and traversal of correlations</td>
+<td>Not ingestion, resolution, scoring, calibration, expiry or policy</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 7.</strong> <em>Assessment of extending existing paradigms. Each extension is sufficient within a bounded scope, and organizations within that scope should take it. The composite requirement — continuous, cross-domain, discovered, scored, persisted, governed correlation — is not met by any single extension.</em></p>
+<p><strong>T2 verdict: satisfied, with significant concessions.</strong> The framework is justified only for organizations whose requirements exceed all five bounded scopes above. That is a minority of organizations, and the whitepaper states so.</p>
+<h2 id="7.4-test-three-%E2%80%94-are-the-preconditions-now-met%3F" tabindex="-1">7.4 Test Three — Are the Preconditions Now Met? <a class="header-anchor" href="#7.4-test-three-%E2%80%94-are-the-preconditions-now-met%3F">#</a></h2>
+<p>An architecture proposed before its enabling technologies exist is speculation. The relevant question is whether the preconditions for industrialized correlation are now satisfied. The author assesses that they are, and that most became true within the last five years.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Precondition</th>
+<th>Status</th>
+<th>Enabling development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Durable, replayable, high-throughput event substrate</td>
+<td>✔ Mature</td>
+<td>Kafka, Pulsar, Kinesis at millions of events/second</td>
+</tr>
+<tr>
+<td>Exactly-once stateful stream processing with event-time correctness</td>
+<td>✔ Mature</td>
+<td>Flink, Spark Structured Streaming, Dataflow model</td>
+</tr>
+<tr>
+<td>Transactional storage with time travel at object-storage cost</td>
+<td>✔ Mature</td>
+<td>Iceberg, Delta Lake, Hudi</td>
+</tr>
+<tr>
+<td>Graph storage at billions of edges with sub-second traversal</td>
+<td>✔ Adequate</td>
+<td>Neo4j, TigerGraph, Neptune, JanusGraph</td>
+</tr>
+<tr>
+<td>Semantic similarity at scale</td>
+<td>✔ Mature</td>
+<td>Embedding models, HNSW/IVF indices, vector databases</td>
+</tr>
+<tr>
+<td>Reasoning over retrieved structured evidence</td>
+<td>✔ Emerging</td>
+<td>Foundation models, RAG, tool use, structured output</td>
+</tr>
+<tr>
+<td>Machine-enforceable policy</td>
+<td>✔ Adequate</td>
+<td>OPA/Rego, Cedar, purpose-based access control research</td>
+</tr>
+<tr>
+<td>Standardized lineage capture</td>
+<td>✔ Emerging</td>
+<td>OpenLineage, OpenTelemetry, Marquez</td>
+</tr>
+<tr>
+<td>Elastic compute economics</td>
+<td>✔ Mature</td>
+<td>Cloud autoscaling, spot capacity, serverless execution</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 8.</strong> <em>Technical preconditions for industrialized correlation. Seven of nine are mature; two are adequate-to-emerging. The composite has been feasible for approximately three to five years, which is a plausible explanation for why the pattern has not yet been named.</em></p>
+<p><strong>T3 verdict: satisfied.</strong> No component requires invention. The composition requires engineering, not research.</p>
+<h2 id="7.5-test-four-%E2%80%94-is-the-value-material%3F" tabindex="-1">7.5 Test Four — Is the Value Material? <a class="header-anchor" href="#7.5-test-four-%E2%80%94-is-the-value-material%3F">#</a></h2>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>Illustrative reasoning.</strong> The following is a structured argument about value, not a measurement or a forecast. No deployment exists from which to derive real figures.</p>
+</div>
+<p>Value materiality is assessed by considering where correlation is the <em>binding constraint</em> on an outcome the organization already values:</p>
+<p><strong>Where value is likely material.</strong> Fraud and financial crime detection, where the majority of sophisticated schemes are cross-domain by design and detection precision is directly monetized. Security operations, where alert correlation is the dominant cost driver and dwell time the dominant risk. Industrial reliability, where failure is multi-causal and unplanned downtime is expensive per hour. Clinical deterioration detection, where signals are individually weak and collectively strong. Customer retention in high-value B2B segments, where churn causes are cross-domain and account value justifies investigation cost.</p>
+<p><strong>Where value is likely immaterial.</strong> Single-domain reporting. Regulatory submissions with fixed, well-defined schemas. Organizations with fewer than roughly five substantive data domains. Organizations whose analytical questions are stable and well-served by existing dimensional models. Organizations that have not yet achieved reliable data quality — where the framework will amplify rather than remedy the deficiency.</p>
+<p><strong>T4 verdict: conditionally satisfied.</strong> Material for a specific class of organization characterized by high domain count, high cross-domain interaction, short windows of actionability, and existing data maturity. Not material for the majority.</p>
+<h2 id="7.6-what-would-falsify-this-proposal" tabindex="-1">7.6 What Would Falsify This Proposal <a class="header-anchor" href="#7.6-what-would-falsify-this-proposal">#</a></h2>
+<p>Intellectual honesty requires stating the conditions under which the author would consider the framework refuted. The following would each constitute meaningful evidence against it:</p>
+<ol>
+<li><strong>A controlled comparison</strong> in which a correlation-first architecture produces no improvement in decision quality or time-to-insight relative to a well-engineered lakehouse with the same data.</li>
+<li><strong>Demonstration that correlation precision cannot be maintained</strong> above a useful threshold at enterprise scale — that is, that spurious correlations dominate genuine ones irrecoverably as domain count grows.</li>
+<li><strong>Demonstration that the operational cost</strong> of maintaining a correlation substrate exceeds the correlation tax it eliminates, across a representative range of organizations.</li>
+<li><strong>Emergence of a foundation-model capability</strong> that performs reliable, attributable, governed cross-domain correlation directly over raw enterprise data without a dedicated substrate — rendering the architectural tier unnecessary.</li>
+</ol>
+<p>The fourth is, in the author’s view, the most plausible falsification route and is discussed further in <a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">Chapter 40</a>.</p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>A new paradigm must pass four tests</strong> — genuine gap, insufficiency of extension, technical feasibility, and material value. The author regards the second as the most demanding.</li>
+<li><strong>Four structural deficits share one root cause:</strong> relationship amnesia, passive evaluation, ungoverned inference, and ungrounded intelligence.</li>
+<li><strong>Every candidate extension is sufficient within a bounded scope.</strong> Organizations inside those bounds should extend rather than adopt. This is stated as a recommendation, not a caveat.</li>
+<li><strong>Most organizations should not build a Data Swimming Pool.</strong> The framework is justified for enterprises with high domain count, high cross-domain interaction, short actionability windows, and existing data maturity.</li>
+<li><strong>The preconditions became true only recently.</strong> Seven of nine enabling technologies are mature and two are emerging; the composite has been feasible for roughly three to five years.</li>
+<li><strong>Data Swimming Pool is mesh-compatible and lakehouse-dependent.</strong> It is best understood as a platform capability operating alongside these paradigms rather than replacing them.</li>
+<li><strong>Four explicit falsification conditions are stated</strong>, the most plausible being that foundation models eventually perform governed cross-domain correlation without a dedicated substrate.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-1/06-evolution/"><span>← Previous</span><b>6. Evolution of Enterprise Data Architecture</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/"><span>Next →</span><b>8. Introducing Data Swimming Pool</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#7.1-the-burden-of-proof">7.1 The Burden of Proof #</a><a href="#7.2-test-one-%E2%80%94-is-there-a-genuine-gap%3F">7.2 Test One — Is There a Genuine Gap? #</a><a href="#7.3-test-two-%E2%80%94-could-an-existing-paradigm-be-extended%3F">7.3 Test Two — Could an Existing Paradigm Be Extended? #</a><a href="#7.4-test-three-%E2%80%94-are-the-preconditions-now-met%3F">7.4 Test Three — Are the Preconditions Now Met? #</a><a href="#7.5-test-four-%E2%80%94-is-the-value-material%3F">7.5 Test Four — Is the Value Material? #</a><a href="#7.6-what-would-falsify-this-proposal">7.6 What Would Falsify This Proposal #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

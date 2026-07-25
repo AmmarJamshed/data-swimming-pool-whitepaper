@@ -10,6 +10,8 @@
     "build:html": "node build/build.mjs --html-only",
     "build:pdf": "node build/build.mjs",
     "build": "node build/build.mjs",
+    "build:site": "node build/site.mjs",
+    "serve": "node build/serve.mjs",
     "index": "node build/gen-index.mjs",
     "lint:links": "node build/check-links.mjs",
     "lint:mermaid": "node build/check-mermaid.mjs",

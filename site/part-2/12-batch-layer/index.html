@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en" data-part="p2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12. Batch Layer · Data Swimming Pool</title>
+<meta name="description" content="12. Batch Layer --- 12.1 Why a Batch Layer Still Exists The Kappa position 12 holds that a batch layer is unnecessary when the log retains sufficient history and reprocessing is ch">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="12. Batch Layer — Data Swimming Pool">
+<meta property="og:description" content="12. Batch Layer --- 12.1 Why a Batch Layer Still Exists The Kappa position 12 holds that a batch layer is unnecessary when the log retains sufficient history and reprocessing is ch">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" open style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/" class="on">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part II — The Data Swimming Pool</span></p>
+    <h1>12. Batch Layer</h1>
+    <p class="cmeta"><span class="chip">🏊 Part II — The Data Swimming Pool</span><span class="dot">·</span>6 min read</p>
+  </header>
+  <div class="prose">
+<h1>12. Batch Layer</h1>
+<hr>
+<h2 id="12.1-why-a-batch-layer-still-exists" tabindex="-1">12.1 Why a Batch Layer Still Exists <a class="header-anchor" href="#12.1-why-a-batch-layer-still-exists">#</a></h2>
+<p>The Kappa position [12] holds that a batch layer is unnecessary when the log retains sufficient history and reprocessing is cheap. For many workloads this is correct, and the framework does not dispute it.</p>
+<p>For correlation, however, four requirements are not well served by streaming alone:</p>
+<p><strong>Wide-window correlation.</strong> A behavioural baseline over twenty-four months, a seasonality model, or a cohort analysis spanning multiple years cannot be maintained as streaming state at acceptable cost. State size scales with window width, and a two-year window over millions of entities is economically prohibitive as keyed state.</p>
+<p><strong>Retrospective re-correlation.</strong> When correlation logic improves — a better entity resolution model, a revised confidence calibration, a new relationship type — the correct response is to recompute historical correlations. This is a bounded, parallelizable, throughput-optimized job: precisely a batch workload.</p>
+<p><strong>Global operations.</strong> Some correlation modalities require a global view. Community detection in a graph, clustering to establish behavioural cohorts, and training the models that streaming operators subsequently apply are all inherently non-incremental.</p>
+<p><strong>Ground-truth reconciliation.</strong> Confidence calibration (Principle 6) requires comparing historical correlations against subsequently-observed outcomes. Outcomes arrive weeks or months after the correlation, so calibration is necessarily retrospective.</p>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p><strong>Reframing the Lambda/Kappa debate.</strong> The framework’s position is that the debate conflates two separable questions: <em>how fresh must this be?</em> and <em>how complete must this be?</em> Streaming optimizes freshness at bounded completeness. Batch optimizes completeness at bounded freshness. The correct answer varies <strong>per correlation type</strong>, not per architecture. The framework therefore provides both, unified by a shared canonical event model so that business logic is written once.</p>
+</div>
+<h2 id="12.2-architecture" tabindex="-1">12.2 Architecture <a class="header-anchor" href="#12.2-architecture">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph SRC[&quot;Batch Inputs&quot;]
+        direction LR
+        BS1[&quot;Circulation log&lt;br/&gt;replayed from tiered storage&quot;]
+        BS2[&quot;Direct batch feeds&lt;br/&gt;files · extracts · partner&quot;]
+        BS3[&quot;Correlation store&lt;br/&gt;historical correlations&quot;]
+        BS4[&quot;Outcome records&lt;br/&gt;ground truth labels&quot;]
+    end
+
+    subgraph MED[&quot;Medallion Zones — Lakehouse&quot;]
+        direction TB
+        BZ[&quot;&lt;b&gt;Bronze&lt;/b&gt;&lt;br/&gt;raw fidelity · append-only · immutable&lt;br/&gt;&lt;i&gt;source of truth for replay&lt;/i&gt;&quot;]
+        SZ[&quot;&lt;b&gt;Silver&lt;/b&gt;&lt;br/&gt;canonicalized · entity-resolved · deduplicated&lt;br/&gt;&lt;i&gt;conforms to canonical event schema&lt;/i&gt;&quot;]
+        GZ[&quot;&lt;b&gt;Gold&lt;/b&gt;&lt;br/&gt;correlation-ready aggregates · features · baselines&lt;br/&gt;&lt;i&gt;consumed by streaming operators&lt;/i&gt;&quot;]
+        BZ --&gt; SZ --&gt; GZ
+    end
+
+    subgraph WORK[&quot;Batch Workload Classes&quot;]
+        direction TB
+        W1[&quot;&lt;b&gt;W1 Wide-window correlation&lt;/b&gt;&lt;br/&gt;multi-month baselines, seasonality&quot;]
+        W2[&quot;&lt;b&gt;W2 Retrospective re-correlation&lt;/b&gt;&lt;br/&gt;replay under revised logic&quot;]
+        W3[&quot;&lt;b&gt;W3 Global graph operations&lt;/b&gt;&lt;br/&gt;community detection, centrality&quot;]
+        W4[&quot;&lt;b&gt;W4 Model training&lt;/b&gt;&lt;br/&gt;features → models for streaming&quot;]
+        W5[&quot;&lt;b&gt;W5 Calibration&lt;/b&gt;&lt;br/&gt;correlations vs. outcomes&quot;]
+        W6[&quot;&lt;b&gt;W6 Compliance&lt;/b&gt;&lt;br/&gt;retention, erasure, audit extracts&quot;]
+    end
+
+    subgraph OUT[&quot;Batch Outputs&quot;]
+        direction LR
+        O1[&quot;Correlations&lt;br/&gt;→ correlation store&quot;]
+        O2[&quot;Baselines &amp; features&lt;br/&gt;→ streaming operators&quot;]
+        O3[&quot;Models&lt;br/&gt;→ AI insight engine&quot;]
+        O4[&quot;Calibration curves&lt;br/&gt;→ confidence scorer&quot;]
+    end
+
+    SRC --&gt; MED --&gt; WORK --&gt; OUT
+    O2 -.deployed to.-&gt; STREAM[&quot;Streaming Layer&lt;br/&gt;Ch. 11&quot;]
+    O3 -.deployed to.-&gt; AIE[&quot;AI Insight Engine&lt;br/&gt;Ch. 16&quot;]
+    O4 -.deployed to.-&gt; CONF[&quot;Confidence Scorer&lt;br/&gt;Ch. 14&quot;]
+
+    classDef src fill:#1b2f3d,stroke:#5b8fb0,color:#e6f2fa
+    classDef med fill:#0d4159,stroke:#22b3d6,stroke-width:2px,color:#eaf9ff
+    classDef work fill:#14415c,stroke:#4fb8d8,color:#eaf6fb
+    classDef out fill:#183028,stroke:#4caf7d,color:#e6fff2
+    class SRC,BS1,BS2,BS3,BS4 src
+    class MED,BZ,SZ,GZ med
+    class WORK,W1,W2,W3,W4,W5,W6 work
+    class OUT,O1,O2,O3,O4 out
+</pre></div>
+<p><strong>Figure 15.</strong> <em>Batch layer architecture. Medallion zones provide progressive refinement, with Silver conforming to the same canonical event schema as the streaming layer — the mechanism by which business logic is shared. Six workload classes are served, and four output types feed directly back into streaming components.</em></p>
+<h2 id="12.3-workload-classes" tabindex="-1">12.3 Workload Classes <a class="header-anchor" href="#12.3-workload-classes">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Purpose</th>
+<th>Typical cadence</th>
+<th>Latency tolerance</th>
+<th>Compute profile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>W1</strong> Wide-window correlation</td>
+<td>Multi-month baselines, seasonal patterns, long-horizon cohorts</td>
+<td>Daily to weekly</td>
+<td>Hours</td>
+<td>Large scan, moderate shuffle</td>
+</tr>
+<tr>
+<td><strong>W2</strong> Retrospective re-correlation</td>
+<td>Recompute history under revised logic or new relationship types</td>
+<td>On change</td>
+<td>Hours to days</td>
+<td>Very large scan, high parallelism</td>
+</tr>
+<tr>
+<td><strong>W3</strong> Global graph operations</td>
+<td>Community detection, centrality, path enumeration, ring detection</td>
+<td>Daily</td>
+<td>Hours</td>
+<td>Graph-parallel, iterative</td>
+</tr>
+<tr>
+<td><strong>W4</strong> Model training</td>
+<td>Train models deployed to streaming operators and the insight engine</td>
+<td>Weekly to monthly</td>
+<td>Days</td>
+<td>GPU-accelerated where applicable</td>
+</tr>
+<tr>
+<td><strong>W5</strong> Calibration</td>
+<td>Compare historical correlations against realized outcomes</td>
+<td>Weekly</td>
+<td>Days</td>
+<td>Moderate scan, statistical</td>
+</tr>
+<tr>
+<td><strong>W6</strong> Compliance</td>
+<td>Retention enforcement, right-to-erasure propagation, audit extract</td>
+<td>Daily, plus on demand</td>
+<td>Hours (regulatory SLA)</td>
+<td>Targeted scan and rewrite</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 16.</strong> <em>Batch workload classes. W2 is architecturally the most significant, because the ability to recompute the entire correlation history under revised logic is what makes correlation methodology improvable rather than frozen — a direct consequence of the event-sourcing posture.</em></p>
+<h3 id="12.3.1-w2-%E2%80%94-retrospective-re-correlation-in-detail" tabindex="-1">12.3.1 W2 — Retrospective Re-Correlation in Detail <a class="header-anchor" href="#12.3.1-w2-%E2%80%94-retrospective-re-correlation-in-detail">#</a></h3>
+<p>W2 deserves elaboration because it is the workload that makes the framework’s methodology improvable.</p>
+<p>When entity resolution improves — say, a new matching model correctly unifies two customer records previously treated as distinct — every correlation involving either record is potentially affected. Some correlations become valid that were previously missed; some become invalid. Without W2, the correlation store contains a permanent record of decisions made under obsolete logic, and confidence in the store degrades over time.</p>
+<p>W2 executes as follows:</p>
+<ol>
+<li><strong>Declare the change.</strong> A new engine version, model version, or scope definition is registered with an effective date.</li>
+<li><strong>Determine affected scope.</strong> Query the provenance ledger for correlations produced by the superseded version.</li>
+<li><strong>Replay.</strong> Read Bronze/Silver history for the affected entities and time range; execute correlation logic at the new version.</li>
+<li><strong>Diff and supersede.</strong> Emit new correlation versions; mark prior versions superseded with an explicit reason.</li>
+<li><strong>Propagate.</strong> Notify consumers whose Insight Objects depended on superseded correlations.</li>
+<li><strong>Record.</strong> Write the re-correlation run into the provenance ledger so the change is itself auditable.</li>
+</ol>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>W2 is expensive and must be governed.</strong> A full retrospective re-correlation over years of history across many scopes can dominate the platform’s compute budget. The framework requires W2 runs to be scoped — by time range, entity class, and correlation type — and to carry a cost estimate approved before execution. Unbounded re-correlation is as dangerous as unbounded correlation.</p>
+</div>
+<h2 id="12.4-the-reconciliation-protocol" tabindex="-1">12.4 The Reconciliation Protocol <a class="header-anchor" href="#12.4-the-reconciliation-protocol">#</a></h2>
+<p>The framework’s answer to Lambda’s dual-implementation problem is a <strong>shared canonical event model plus an explicit reconciliation protocol</strong>.</p>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph SHARED[&quot;Shared Definitions — written once&quot;]
+        direction LR
+        SD1[&quot;Canonical event schema&quot;]
+        SD2[&quot;Entity resolution logic&quot;]
+        SD3[&quot;Correlation scope definitions&quot;]
+        SD4[&quot;Confidence scoring functions&quot;]
+    end
+
+    subgraph STREAM[&quot;Streaming Execution&quot;]
+        direction TB
+        ST1[&quot;Low latency&lt;br/&gt;seconds&quot;]
+        ST2[&quot;Bounded window&lt;br/&gt;partial evidence&quot;]
+        ST3[&quot;Emits: &lt;b&gt;provisional&lt;/b&gt;&lt;br/&gt;correlations&quot;]
+    end
+
+    subgraph BATCH[&quot;Batch Execution&quot;]
+        direction TB
+        BA1[&quot;High latency&lt;br/&gt;hours&quot;]
+        BA2[&quot;Complete window&lt;br/&gt;full evidence&quot;]
+        BA3[&quot;Emits: &lt;b&gt;authoritative&lt;/b&gt;&lt;br/&gt;correlations&quot;]
+    end
+
+    subgraph RECON[&quot;Reconciliation&quot;]
+        direction TB
+        RC1{&quot;Batch result&lt;br/&gt;vs. streaming result&quot;}
+        RC2[&quot;&lt;b&gt;Agree&lt;/b&gt;&lt;br/&gt;→ promote provisional&lt;br/&gt;to authoritative&quot;]
+        RC3[&quot;&lt;b&gt;Batch stronger&lt;/b&gt;&lt;br/&gt;→ supersede with&lt;br/&gt;batch version&quot;]
+        RC4[&quot;&lt;b&gt;Streaming had false positive&lt;/b&gt;&lt;br/&gt;→ retract + notify&lt;br/&gt;+ log for tuning&quot;]
+        RC5[&quot;&lt;b&gt;Streaming missed it&lt;/b&gt;&lt;br/&gt;→ insert + log&lt;br/&gt;recall gap&quot;]
+        RC1 --&gt; RC2 &amp; RC3 &amp; RC4 &amp; RC5
+    end
+
+    DIV[&quot;&lt;b&gt;Divergence Metrics&lt;/b&gt;&lt;br/&gt;streaming precision · streaming recall&lt;br/&gt;tracked per scope, per release&quot;]
+
+    SHARED --&gt; STREAM &amp; BATCH
+    STREAM --&gt; RECON
+    BATCH --&gt; RECON
+    RECON --&gt; DIV
+    DIV -.tunes.-&gt; STREAM
+
+    classDef shared fill:#183028,stroke:#4caf7d,stroke-width:2px,color:#e6fff2
+    classDef stream fill:#0a5570,stroke:#3fd0f0,color:#ffffff
+    classDef batch fill:#14415c,stroke:#4fb8d8,color:#eaf6fb
+    classDef recon fill:#3d3313,stroke:#d4a636,stroke-width:2px,color:#fff8e6
+    class SHARED,SD1,SD2,SD3,SD4 shared
+    class STREAM,ST1,ST2,ST3 stream
+    class BATCH,BA1,BA2,BA3 batch
+    class RECON,RC1,RC2,RC3,RC4,RC5,DIV recon
+</pre></div>
+<p><strong>Figure 16.</strong> <em>The reconciliation protocol. Definitions are authored once and executed by both substrates. Streaming emits provisional correlations for immediate action; batch emits authoritative correlations on complete evidence. Reconciliation resolves the four possible outcomes and produces divergence metrics that quantify streaming precision and recall per scope — turning the Lambda dual-path problem into a continuous quality measurement.</em></p>
+<p>The protocol’s most useful property is that <strong>divergence becomes a measured quantity rather than a latent risk</strong>. In classical Lambda architectures, batch and speed layer disagreement was a known hazard managed by convention. Here, disagreement is captured per scope, per release, as an explicit precision and recall measurement of the streaming path against the batch path. That measurement is directly actionable: a scope whose streaming precision falls below its declared threshold is either retuned or restricted to a lower autonomy level.</p>
+<p><strong>Precedence rule.</strong> Where batch and streaming disagree, <strong>batch prevails</strong> for the persisted correlation, because it operated on complete evidence. Streaming’s provisional correlation is not deleted — it is superseded, and the supersession record is retained for divergence measurement.</p>
+<h2 id="12.5-storage-layout-and-optimization" tabindex="-1">12.5 Storage Layout and Optimization <a class="header-anchor" href="#12.5-storage-layout-and-optimization">#</a></h2>
+<p>The batch layer assumes an open table format (Iceberg, Delta Lake, or Hudi) and relies on several of its properties:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Correlation use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ACID transactions</strong></td>
+<td>Concurrent correlation writes from multiple scopes without corruption</td>
+</tr>
+<tr>
+<td><strong>Time travel / snapshots</strong></td>
+<td>Reproduce the exact input state for any historical correlation — essential for audit and for W2</td>
+</tr>
+<tr>
+<td><strong>Schema evolution</strong></td>
+<td>Add correlation attributes without rewriting history</td>
+</tr>
+<tr>
+<td><strong>Partition evolution</strong></td>
+<td>Repartition as correlation access patterns change, without full rewrite</td>
+</tr>
+<tr>
+<td><strong>Efficient upsert / merge</strong></td>
+<td>Supersede correlation versions in place</td>
+</tr>
+<tr>
+<td><strong>Row-level delete</strong></td>
+<td>Right-to-erasure propagation (W6)</td>
+</tr>
+<tr>
+<td><strong>Hidden partitioning</strong></td>
+<td>Prevent consumer queries from accidentally full-scanning</td>
+</tr>
+<tr>
+<td><strong>Metadata pruning</strong></td>
+<td>Skip files by min/max statistics — critical for time-range correlation queries</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 17.</strong> <em>Open table format properties and their correlation applications. Time travel is the most architecturally significant: it is what allows an auditor to ask “what did the system know at the moment it made this decision?” and receive a verifiable answer.</em></p>
+<p><strong>Layout recommendations:</strong></p>
+<ul>
+<li><strong>Partition Silver by event date and domain</strong>, cluster within partitions by resolved entity key. This serves both time-range scans (W1) and entity-focused replay (W2).</li>
+<li><strong>Partition correlations by validity start date</strong>, cluster by correlation type. Most correlation queries are time-bounded and type-filtered.</li>
+<li><strong>Compact aggressively.</strong> Streaming writes into the lakehouse produce many small files; correlation scans over unopacted data perform poorly. Compaction is an operational requirement with an owner.</li>
+<li><strong>Z-order or cluster on the highest-selectivity correlation predicates</strong>, determined empirically from query telemetry rather than assumed.</li>
+</ul>
+<h2 id="12.6-batch-and-streaming-cost-comparison" tabindex="-1">12.6 Batch and Streaming Cost Comparison <a class="header-anchor" href="#12.6-batch-and-streaming-cost-comparison">#</a></h2>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>Illustrative.</strong> The following is a structural cost comparison intended to convey relative shape, not absolute figures. Real costs depend on data volume, cloud pricing, and implementation quality.</p>
+</div>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Correlation characteristic</th>
+<th>Streaming cost driver</th>
+<th>Batch cost driver</th>
+<th>Generally cheaper</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Narrow window (&lt; 1 hour), high value</td>
+<td>Small state, continuous compute</td>
+<td>Full scan per run</td>
+<td><strong>Streaming</strong></td>
+</tr>
+<tr>
+<td>Wide window (&gt; 30 days)</td>
+<td>State size prohibitive</td>
+<td>Bounded scan, parallelizable</td>
+<td><strong>Batch</strong></td>
+</tr>
+<tr>
+<td>Low event rate, wide window</td>
+<td>Idle compute waiting</td>
+<td>Efficient scan</td>
+<td><strong>Batch</strong></td>
+</tr>
+<tr>
+<td>High event rate, narrow window</td>
+<td>Efficient incremental</td>
+<td>Repeated large scans</td>
+<td><strong>Streaming</strong></td>
+</tr>
+<tr>
+<td>One-off retrospective question</td>
+<td>Not applicable</td>
+<td>Single job</td>
+<td><strong>Batch</strong></td>
+</tr>
+<tr>
+<td>Continuous monitoring requirement</td>
+<td>Designed for it</td>
+<td>Cannot meet latency</td>
+<td><strong>Streaming</strong> (only option)</td>
+</tr>
+<tr>
+<td>Global graph algorithm</td>
+<td>Not expressible incrementally</td>
+<td>Natural fit</td>
+<td><strong>Batch</strong> (only option)</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 18.</strong> <em>Cost and suitability by correlation characteristic. The framework’s guidance is to place each correlation scope on the substrate its characteristics indicate, rather than adopting a substrate-first posture — which is the practical content of declining to choose between Lambda and Kappa.</em></p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>A batch layer remains necessary for four requirements</strong> streaming cannot economically serve: wide-window baselines, retrospective re-correlation, global graph operations, and ground-truth calibration.</li>
+<li><strong>The Lambda/Kappa debate conflates freshness with completeness.</strong> The correct substrate varies per correlation type, so the framework provides both, unified by a shared canonical event model.</li>
+<li><strong>Retrospective re-correlation (W2) is what makes correlation methodology improvable</strong> rather than frozen, allowing the entire correlation history to be recomputed under revised logic — but it must be scoped and cost-approved, because unbounded re-correlation is as dangerous as unbounded correlation.</li>
+<li><strong>The reconciliation protocol converts Lambda’s latent divergence risk into a measured quantity</strong>, producing per-scope streaming precision and recall metrics that directly gate autonomy level.</li>
+<li><strong>Batch prevails over streaming on disagreement</strong>, because it operated on complete evidence; the superseded streaming correlation is retained for divergence measurement rather than deleted.</li>
+<li><strong>Time travel in the open table format is what makes audit possible</strong> — it allows verifiable reconstruction of what the system knew at the moment of any historical decision.</li>
+<li><strong>Compaction is an operational requirement with an owner</strong>, not an optimization, because correlation scans over unopacted streaming writes perform poorly enough to undermine the batch layer’s purpose.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/"><span>← Previous</span><b>11. Streaming Layer</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/"><span>Next →</span><b>13. Data Ingestion Layer</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#12.1-why-a-batch-layer-still-exists">12.1 Why a Batch Layer Still Exists #</a><a href="#12.2-architecture">12.2 Architecture #</a><a href="#12.3-workload-classes">12.3 Workload Classes #</a><a href="#12.4-the-reconciliation-protocol">12.4 The Reconciliation Protocol #</a><a href="#12.5-storage-layout-and-optimization">12.5 Storage Layout and Optimization #</a><a href="#12.6-batch-and-streaming-cost-comparison">12.6 Batch and Streaming Cost Comparison #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-2/12-batch-layer/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

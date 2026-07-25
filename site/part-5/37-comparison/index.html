@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en" data-part="p5">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>37. Comparison with Existing Technologies · Data Swimming Pool</title>
+<meta name="description" content="37. Comparison with Existing Technologies --- 37.1 Methodology and Its Limits This chapter compares Data Swimming Pool against five incumbent paradigms across twelve capability dim">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="37. Comparison with Existing Technologies — Data Swimming Pool">
+<meta property="og:description" content="37. Comparison with Existing Technologies --- 37.1 Methodology and Its Limits This chapter compares Data Swimming Pool against five incumbent paradigms across twelve capability dim">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" open style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/" class="on">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part V — Evaluation and Outlook</span></p>
+    <h1>37. Comparison with Existing Technologies</h1>
+    <p class="cmeta"><span class="chip">⚖️ Part V — Evaluation and Outlook</span><span class="dot">·</span>6 min read</p>
+  </header>
+  <div class="prose">
+<h1>37. Comparison with Existing Technologies</h1>
+<hr>
+<h2 id="37.1-methodology-and-its-limits" tabindex="-1">37.1 Methodology and Its Limits <a class="header-anchor" href="#37.1-methodology-and-its-limits">#</a></h2>
+<p>This chapter compares Data Swimming Pool against five incumbent paradigms across twelve capability dimensions.</p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Three honest caveats about this comparison.</strong></p>
+<p><strong>It compares architectural intent, not achievable outcome.</strong> Any capability can be built into any architecture with sufficient custom engineering. The ratings reflect what each paradigm provides <em>natively</em>, by design, without substantial bespoke work.</p>
+<p><strong>It is authored by the proposer of one of the paradigms.</strong> The author has attempted to compensate by rating Data Swimming Pool lowest on enterprise readiness, operational simplicity, and cost — where it genuinely is worst — and by conceding throughout <a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">Chapter 7</a> that most organizations should extend an incumbent rather than adopt this framework. Readers should nonetheless apply appropriate scepticism.</p>
+<p><strong>No empirical basis exists for the Data Swimming Pool column.</strong> Every other column reflects observable deployed systems. This one reflects a design. That asymmetry is real and is why the Enterprise Readiness row exists.</p>
+</div>
+<p><strong>Rating scale:</strong> ●●●●● native and comprehensive · ●●●●○ strong · ●●●○○ moderate · ●●○○○ limited · ●○○○○ minimal or absent.</p>
+<h2 id="37.2-master-comparison-matrix" tabindex="-1">37.2 Master Comparison Matrix <a class="header-anchor" href="#37.2-master-comparison-matrix">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Capability Dimension</th>
+<th style="text-align:center">Data Warehouse</th>
+<th style="text-align:center">Data Lake</th>
+<th style="text-align:center">Data Lakehouse</th>
+<th style="text-align:center">Data Fabric</th>
+<th style="text-align:center">Data Mesh</th>
+<th style="text-align:center"><strong>Data Swimming Pool</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Batch Processing</strong></td>
+<td style="text-align:center">●●●●●</td>
+<td style="text-align:center">●●●●○</td>
+<td style="text-align:center">●●●●●</td>
+<td style="text-align:center">●●●○○</td>
+<td style="text-align:center">●●●●○</td>
+<td style="text-align:center">●●●●●</td>
+</tr>
+<tr>
+<td><strong>2. Streaming</strong></td>
+<td style="text-align:center">●○○○○</td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center">●●●○○</td>
+<td style="text-align:center">●●●○○</td>
+<td style="text-align:center">●●●○○</td>
+<td style="text-align:center">●●●●●</td>
+</tr>
+<tr>
+<td><strong>3. AI Integration</strong></td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center">●●●○○</td>
+<td style="text-align:center">●●●●○</td>
+<td style="text-align:center">●●●○○</td>
+<td style="text-align:center">●●●○○</td>
+<td style="text-align:center">●●●●●</td>
+</tr>
+<tr>
+<td><strong>4. Event Correlation</strong></td>
+<td style="text-align:center">●○○○○</td>
+<td style="text-align:center">●○○○○</td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center"><strong>●●●●●</strong></td>
+</tr>
+<tr>
+<td><strong>5. Cross-Domain Intelligence</strong></td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center">●●●○○</td>
+<td style="text-align:center">●●●●○</td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center"><strong>●●●●●</strong></td>
+</tr>
+<tr>
+<td><strong>6. Autonomous Insights</strong></td>
+<td style="text-align:center">●○○○○</td>
+<td style="text-align:center">●○○○○</td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center"><strong>●●●●●</strong></td>
+</tr>
+<tr>
+<td><strong>7. Knowledge Graph Support</strong></td>
+<td style="text-align:center">●○○○○</td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center">●●●●○</td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center">●●●●●</td>
+</tr>
+<tr>
+<td><strong>8. Governance</strong></td>
+<td style="text-align:center">●●●●●</td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center">●●●●○</td>
+<td style="text-align:center">●●●●●</td>
+<td style="text-align:center">●●●●○</td>
+<td style="text-align:center">●●●●●</td>
+</tr>
+<tr>
+<td><strong>9. Scalability</strong></td>
+<td style="text-align:center">●●●○○</td>
+<td style="text-align:center">●●●●●</td>
+<td style="text-align:center">●●●●●</td>
+<td style="text-align:center">●●●●○</td>
+<td style="text-align:center">●●●●●</td>
+<td style="text-align:center">●●●●○</td>
+</tr>
+<tr>
+<td><strong>10. Flexibility</strong></td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center">●●●●●</td>
+<td style="text-align:center">●●●●○</td>
+<td style="text-align:center">●●●●○</td>
+<td style="text-align:center">●●●●●</td>
+<td style="text-align:center">●●●●○</td>
+</tr>
+<tr>
+<td><strong>11. Enterprise Readiness</strong></td>
+<td style="text-align:center">●●●●●</td>
+<td style="text-align:center">●●●●○</td>
+<td style="text-align:center">●●●●○</td>
+<td style="text-align:center">●●●●○</td>
+<td style="text-align:center">●●●○○</td>
+<td style="text-align:center"><strong>●●○○○</strong></td>
+</tr>
+<tr>
+<td><strong>12. Decision Support</strong></td>
+<td style="text-align:center">●●●○○</td>
+<td style="text-align:center">●●○○○</td>
+<td style="text-align:center">●●●○○</td>
+<td style="text-align:center">●●●○○</td>
+<td style="text-align:center">●●●○○</td>
+<td style="text-align:center">●●●●●</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 76.</strong> <em>Master architectural comparison matrix. The pattern is deliberate and instructive: Data Swimming Pool leads decisively on rows 4, 5, and 6 — the dimensions it was designed around — and trails materially on row 11, which is its most significant real-world limitation.</em></p>
+<h2 id="37.3-dimension-by-dimension-analysis" tabindex="-1">37.3 Dimension-by-Dimension Analysis <a class="header-anchor" href="#37.3-dimension-by-dimension-analysis">#</a></h2>
+<p><strong>1. Batch Processing.</strong> Warehouses and lakehouses are the reference standard. Data Swimming Pool inherits lakehouse batch capability directly, adding correlation-specific workload classes (<a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">Chapter 12</a>). No architectural advantage is claimed; the rating reflects inheritance.</p>
+<p><strong>2. Streaming.</strong> Warehouses are fundamentally batch. Lakes and lakehouses support streaming ingestion but not stateful streaming computation as a first-class concern. Fabric federates rather than streams. Mesh is agnostic. Data Swimming Pool makes stateful stream processing its primary execution model.</p>
+<p><strong>3. AI Integration.</strong> Lakehouses are strong, providing feature engineering and ML pipeline support. Data Swimming Pool’s differentiation is not that it runs models — everything runs models — but that models consume <em>correlations as features</em> and generation is <em>grounded in a relationship substrate</em> (<a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">Chapter 16</a>).</p>
+<p><strong>4. Event Correlation.</strong> The decisive dimension. No incumbent treats cross-domain correlation as a first-class architectural concern with persistence, scoring, governance, and lifecycle. Lakehouses support query-time joins. Streaming supports declared windowed joins. Fabric relates assets. None persists scored, expiring, governed relationships between instances.</p>
+<p><strong>5. Cross-Domain Intelligence.</strong> Data fabric is the strongest incumbent, and the distinction from it is precise: fabric provides cross-domain <em>access</em>, Data Swimming Pool provides cross-domain <em>inference</em>. Fabric can bring the data together; it does not tell you what the relationship between the data is.</p>
+<p><strong>6. Autonomous Insights.</strong> All incumbents are interrogative — they answer questions asked. Continuous evaluation of undeclared conditions is the framework’s Principle 4, with the Autonomy Ladder providing the governance that makes acting on it defensible.</p>
+<p><strong>7. Knowledge Graph Support.</strong> Fabric is strong at asset-level graphs. Data Swimming Pool’s living graph operates at instance level with derived, expiring, confidence-scored edges — different scale, different volatility, different purpose (<a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">Table 34</a>).</p>
+<p><strong>8. Governance.</strong> Warehouses and fabric are excellent. Data Swimming Pool matches them and extends to a novel object — the correlation scope — and to a novel enforcement point — correlation formation. The rating is equal rather than superior because incumbent governance is genuinely mature and this framework’s is theoretical.</p>
+<p><strong>9. Scalability.</strong> Lakes, lakehouses, and mesh scale essentially without limit on volume. Data Swimming Pool is rated one level lower <strong>because correlation cost is super-linear in domain count</strong> (<a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">Chapter 26</a>). This is an honest structural limitation, not a tuning gap.</p>
+<p><strong>10. Flexibility.</strong> Lakes and mesh are maximally flexible. Data Swimming Pool imposes a canonical event model and declared correlation scopes, which is deliberate constraint in exchange for tractability — but constraint nonetheless.</p>
+<p><strong>11. Enterprise Readiness.</strong> The framework’s weakest dimension by a wide margin. No production deployment, no operational playbooks, no trained practitioner population, no vendor support, no reference implementation, no benchmarks. Two dots reflects a coherent design with mature underlying components, and nothing more.</p>
+<p><strong>12. Decision Support.</strong> Incumbents deliver data from which decisions are made. Data Swimming Pool delivers Insight Objects with evidence, confidence, recommended action, and governed autonomy — a categorically different output.</p>
+<h2 id="37.4-radar-comparison" tabindex="-1">37.4 Radar Comparison <a class="header-anchor" href="#37.4-radar-comparison">#</a></h2>
+<div class="figure"><pre class="mermaid">xychart-beta
+    title &quot;Capability Profile Comparison (5-point scale)&quot;
+    x-axis [&quot;Batch&quot;, &quot;Stream&quot;, &quot;AI&quot;, &quot;Correlation&quot;, &quot;Cross-Domain&quot;, &quot;Autonomy&quot;, &quot;Graph&quot;, &quot;Governance&quot;, &quot;Scale&quot;, &quot;Flexibility&quot;, &quot;Readiness&quot;, &quot;Decision&quot;]
+    y-axis &quot;Capability Rating&quot; 0 --&gt; 5
+    line &quot;Data Warehouse&quot; [5, 1, 2, 1, 2, 1, 1, 5, 3, 2, 5, 3]
+    line &quot;Data Lakehouse&quot; [5, 3, 4, 2, 3, 2, 2, 4, 5, 4, 4, 3]
+    line &quot;Data Fabric&quot; [3, 3, 3, 2, 4, 2, 4, 5, 4, 4, 4, 3]
+    line &quot;Data Mesh&quot; [4, 3, 3, 2, 2, 2, 2, 4, 5, 5, 3, 3]
+    line &quot;Data Swimming Pool&quot; [5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 2, 5]
+</pre></div>
+<p><strong>Figure 53.</strong> <em>Capability profile comparison. The Data Swimming Pool line is high and flat across capability dimensions and drops sharply at Readiness. The incumbent lines show the opposite shape — moderate capability with high readiness. This is the honest trade-off the framework presents: capability that does not yet exist in deployable form.</em></p>
+<h2 id="37.5-feature-matrix-%E2%80%94-detailed" tabindex="-1">37.5 Feature Matrix — Detailed <a class="header-anchor" href="#37.5-feature-matrix-%E2%80%94-detailed">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th style="text-align:center">DW</th>
+<th style="text-align:center">DL</th>
+<th style="text-align:center">DLH</th>
+<th style="text-align:center">DF</th>
+<th style="text-align:center">DM</th>
+<th style="text-align:center"><strong>DSP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Schema-on-write</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">✔ (canonical event)</td>
+</tr>
+<tr>
+<td>Schema-on-read</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">◐ (raw zone only)</td>
+</tr>
+<tr>
+<td>ACID transactions</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">✔ (inherited)</td>
+</tr>
+<tr>
+<td>Time travel</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">✔ (required for audit)</td>
+</tr>
+<tr>
+<td>Native streaming compute</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">✔</td>
+</tr>
+<tr>
+<td>Event-time semantics</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">✔ (mandatory)</td>
+</tr>
+<tr>
+<td>Exactly-once processing</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">✔ (required)</td>
+</tr>
+<tr>
+<td>Entity resolution at ingestion</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔</td>
+</tr>
+<tr>
+<td>Persistent typed relationships</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">◐ asset-level</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔ instance-level</td>
+</tr>
+<tr>
+<td>Confidence scoring on relationships</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔ calibrated</td>
+</tr>
+<tr>
+<td>Relationship expiry</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔</td>
+</tr>
+<tr>
+<td>Continuous undeclared-condition evaluation</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔</td>
+</tr>
+<tr>
+<td>Complex event processing</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔ (as M1)</td>
+</tr>
+<tr>
+<td>Correlation-grounded RAG</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔</td>
+</tr>
+<tr>
+<td>Instance-level knowledge graph</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔</td>
+</tr>
+<tr>
+<td>Record-level lineage</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">✔</td>
+</tr>
+<tr>
+<td>Inference-level lineage</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔</td>
+</tr>
+<tr>
+<td>Outcome feedback to calibration</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔</td>
+</tr>
+<tr>
+<td>Policy at correlation formation</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔</td>
+</tr>
+<tr>
+<td>Purpose binding with intersection</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">✔</td>
+</tr>
+<tr>
+<td>Graduated autonomy model</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✔</td>
+</tr>
+<tr>
+<td>Federated domain ownership</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔ (adopted)</td>
+</tr>
+<tr>
+<td>Data-as-product</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">✘</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">◐</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔ (extended to insights)</td>
+</tr>
+<tr>
+<td>Production deployments</td>
+<td style="text-align:center">✔✔✔</td>
+<td style="text-align:center">✔✔✔</td>
+<td style="text-align:center">✔✔</td>
+<td style="text-align:center">✔✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center"><strong>✘ none</strong></td>
+</tr>
+<tr>
+<td>Vendor support</td>
+<td style="text-align:center">✔✔✔</td>
+<td style="text-align:center">✔✔✔</td>
+<td style="text-align:center">✔✔✔</td>
+<td style="text-align:center">✔✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center"><strong>✘ none</strong></td>
+</tr>
+<tr>
+<td>Trained practitioner population</td>
+<td style="text-align:center">✔✔✔</td>
+<td style="text-align:center">✔✔✔</td>
+<td style="text-align:center">✔✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center">✔</td>
+<td style="text-align:center"><strong>✘ none</strong></td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 77.</strong> <em>Detailed feature matrix. Legend: ✔ supported natively, ◐ partial, ✘ absent. The final three rows are the ones a decision-maker should weigh most heavily.</em></p>
+<h2 id="37.6-cost-comparison" tabindex="-1">37.6 Cost Comparison <a class="header-anchor" href="#37.6-cost-comparison">#</a></h2>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>Structural, not quantitative.</strong> Actual costs depend entirely on scale, cloud pricing, and implementation quality. This table compares cost <em>shape</em>.</p>
+</div>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Cost component</th>
+<th style="text-align:center">DW</th>
+<th style="text-align:center">DL</th>
+<th style="text-align:center">DLH</th>
+<th style="text-align:center">DF</th>
+<th style="text-align:center">DM</th>
+<th style="text-align:center"><strong>DSP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Storage</td>
+<td style="text-align:center">High</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">Low–Medium</td>
+</tr>
+<tr>
+<td>Compute — batch</td>
+<td style="text-align:center">High</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">Medium</td>
+</tr>
+<tr>
+<td>Compute — streaming</td>
+<td style="text-align:center">N/A</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center"><strong>High</strong></td>
+</tr>
+<tr>
+<td>Correlation state</td>
+<td style="text-align:center">N/A</td>
+<td style="text-align:center">N/A</td>
+<td style="text-align:center">N/A</td>
+<td style="text-align:center">N/A</td>
+<td style="text-align:center">N/A</td>
+<td style="text-align:center"><strong>High</strong></td>
+</tr>
+<tr>
+<td>Graph infrastructure</td>
+<td style="text-align:center">N/A</td>
+<td style="text-align:center">N/A</td>
+<td style="text-align:center">N/A</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">N/A</td>
+<td style="text-align:center"><strong>Medium–High</strong></td>
+</tr>
+<tr>
+<td>Metadata / lineage</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center"><strong>High</strong> (no sampling)</td>
+</tr>
+<tr>
+<td>Integration engineering</td>
+<td style="text-align:center">High</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">High</td>
+<td style="text-align:center">Medium</td>
+</tr>
+<tr>
+<td><strong>Ongoing governance labour</strong></td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">High</td>
+<td style="text-align:center"><strong>High</strong></td>
+</tr>
+<tr>
+<td><strong>Specialist skills premium</strong></td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center"><strong>Very high</strong></td>
+</tr>
+<tr>
+<td>Vendor licensing</td>
+<td style="text-align:center">High</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">High</td>
+<td style="text-align:center">Low</td>
+<td style="text-align:center">Variable</td>
+</tr>
+<tr>
+<td><strong>Correlation tax (avoided)</strong></td>
+<td style="text-align:center">Incurred</td>
+<td style="text-align:center">Incurred</td>
+<td style="text-align:center">Incurred</td>
+<td style="text-align:center">Partially</td>
+<td style="text-align:center">Incurred</td>
+<td style="text-align:center"><strong>Reduced</strong></td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 78.</strong> <em>Total cost of ownership considerations. Data Swimming Pool is more expensive on nearly every line except the last. The economic case rests entirely on whether the correlation tax avoided — an unmeasured cost carried in analytics labour budgets — exceeds the substantial costs added. <strong>This is an open empirical question, and the author does not claim to know the answer.</strong></em></p>
+<h2 id="37.7-selection-guidance" tabindex="-1">37.7 Selection Guidance <a class="header-anchor" href="#37.7-selection-guidance">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>If your primary need is…</th>
+<th>Choose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Governed, consistent financial and regulatory reporting</td>
+<td><strong>Data Warehouse</strong></td>
+</tr>
+<tr>
+<td>Low-cost retention of high-variety data for future use</td>
+<td><strong>Data Lake</strong></td>
+</tr>
+<tr>
+<td>A single platform for BI and ML with transactional guarantees</td>
+<td><strong>Data Lakehouse</strong></td>
+</tr>
+<tr>
+<td>Unified access across distributed, heterogeneous sources without consolidation</td>
+<td><strong>Data Fabric</strong></td>
+</tr>
+<tr>
+<td>Scaling data ownership across many autonomous domains</td>
+<td><strong>Data Mesh</strong></td>
+</tr>
+<tr>
+<td>Continuous cross-domain relationship discovery driving governed action</td>
+<td><strong>Data Swimming Pool</strong></td>
+</tr>
+<tr>
+<td>Any of the above, and you are not already mature in quality and governance</td>
+<td><strong>Fix that first</strong></td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 79.</strong> <em>Selection guidance. The final row is the most important. Data Swimming Pool amplifies existing data maturity; it does not create it. An organization with unreliable data quality, poor entity resolution, and weak governance will build a correlation system that confidently relates wrong things to other wrong things.</em></p>
+<h2 id="37.8-complementarity%2C-not-replacement" tabindex="-1">37.8 Complementarity, Not Replacement <a class="header-anchor" href="#37.8-complementarity%2C-not-replacement">#</a></h2>
+<p>The comparison format implies competition. In practice the relationships are largely complementary:</p>
+<ul>
+<li><strong>Data Swimming Pool requires a lakehouse.</strong> It does not replace one.</li>
+<li><strong>Data Swimming Pool operates well within a data mesh</strong>, as the platform-provided correlation capability.</li>
+<li><strong>Data Swimming Pool consumes a data fabric’s catalog</strong> as its metadata plane.</li>
+<li><strong>Data Swimming Pool sources from a warehouse</strong> and can write curated correlations back into one.</li>
+</ul>
+<p>The only paradigm it genuinely displaces is the practice of implementing cross-domain correlation independently in every consuming application — which is not a paradigm so much as an absence of one.</p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>The comparison is authored by the framework’s proposer</strong>, compensated for by rating it lowest where it genuinely is worst, and readers should apply appropriate scepticism regardless.</li>
+<li><strong>Data Swimming Pool leads decisively on event correlation, cross-domain intelligence, and autonomous insights</strong> — the three dimensions it was designed around and where no incumbent treats the capability as first-class.</li>
+<li><strong>Data fabric provides cross-domain access; Data Swimming Pool provides cross-domain inference.</strong> This is the precise distinction between the two closest paradigms.</li>
+<li><strong>Enterprise readiness is the framework’s weakest dimension by a wide margin</strong>, with no production deployment, vendor support, practitioner population, or benchmarks.</li>
+<li><strong>Scalability is rated below incumbents honestly</strong>, because correlation cost is super-linear in domain count — a structural limitation, not a tuning gap.</li>
+<li><strong>The framework is more expensive on nearly every cost line</strong>, and its economic case rests entirely on whether the avoided correlation tax exceeds the added cost — an open empirical question the author does not claim to have answered.</li>
+<li><strong>Organizations not already mature in data quality and governance should fix that first</strong>, because the framework amplifies maturity rather than creating it.</li>
+<li><strong>The relationships are complementary, not competitive.</strong> The only practice genuinely displaced is implementing correlation independently in every application.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/"><span>← Previous</span><b>36A. Insurance, Logistics, Energy and Aviation</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-5/38-benefits/"><span>Next →</span><b>38. Benefits</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#37.1-methodology-and-its-limits">37.1 Methodology and Its Limits #</a><a href="#37.2-master-comparison-matrix">37.2 Master Comparison Matrix #</a><a href="#37.3-dimension-by-dimension-analysis">37.3 Dimension-by-Dimension Analysis #</a><a href="#37.4-radar-comparison">37.4 Radar Comparison #</a><a href="#37.5-feature-matrix-%E2%80%94-detailed">37.5 Feature Matrix — Detailed #</a><a href="#37.6-cost-comparison">37.6 Cost Comparison #</a><a href="#37.7-selection-guidance">37.7 Selection Guidance #</a><a href="#37.8-complementarity%2C-not-replacement">37.8 Complementarity, Not Replacement #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-5/37-comparison/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

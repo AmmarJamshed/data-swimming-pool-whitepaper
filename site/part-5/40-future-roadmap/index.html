@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en" data-part="p5">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>40. Future Roadmap · Data Swimming Pool</title>
+<meta name="description" content="40. Future Roadmap --- 40.1 Two Roadmaps This chapter presents two distinct roadmaps that should not be conflated: - The research roadmap — open problems the author cannot solve al">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="40. Future Roadmap — Data Swimming Pool">
+<meta property="og:description" content="40. Future Roadmap --- 40.1 Two Roadmaps This chapter presents two distinct roadmaps that should not be conflated: - The research roadmap — open problems the author cannot solve al">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" open style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/" class="on">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part V — Evaluation and Outlook</span></p>
+    <h1>40. Future Roadmap</h1>
+    <p class="cmeta"><span class="chip">⚖️ Part V — Evaluation and Outlook</span><span class="dot">·</span>3 min read</p>
+  </header>
+  <div class="prose">
+<h1>40. Future Roadmap</h1>
+<hr>
+<h2 id="40.1-two-roadmaps" tabindex="-1">40.1 Two Roadmaps <a class="header-anchor" href="#40.1-two-roadmaps">#</a></h2>
+<p>This chapter presents two distinct roadmaps that should not be conflated:</p>
+<ul>
+<li><strong>The research roadmap</strong> — open problems the author cannot solve alone and invites the community to address.</li>
+<li><strong>The adoption roadmap</strong> — a phased path for an organization that has read <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Chapter 39</a> and still wishes to proceed.</li>
+</ul>
+<h2 id="40.2-research-roadmap" tabindex="-1">40.2 Research Roadmap <a class="header-anchor" href="#40.2-research-roadmap">#</a></h2>
+<div class="figure"><pre class="mermaid">timeline
+    title Research Agenda — Horizons
+    section Horizon 1 · Foundations
+        Formal correlation semantics : Confidence algebra for composed relationships
+                                     : Multiple-comparison correction for streaming
+        Reference implementation     : Open-source correlation engine
+                                     : Canonical event schema specification
+        Benchmark suite              : Synthetic multi-domain event generator
+                                     : Ground-truth correlation labels
+    section Horizon 2 · Validation
+        Empirical evaluation         : Controlled comparison vs. incumbent stacks
+                                     : Correlation reuse rate measurement
+        Calibration research         : Convergence under delayed ground truth
+                                     : Transfer of calibration across scopes
+        Privacy formalism            : Inference-risk metrics for correlation scopes
+                                     : Erasure propagation completeness proofs
+    section Horizon 3 · Maturity
+        Autonomy governance          : Empirical promotion criteria
+                                     : Automation-bias countermeasures
+        Causal integration           : Interventional design within correlation scopes
+                                     : Uplift modelling on correlation features
+        Standardization              : Interoperable correlation exchange format
+                                     : Lineage standard extension for inference
+    section Horizon 4 · Frontier
+        Federated correlation        : Cross-organization without data sharing
+                                     : Secure multi-party correlation
+        Self-governing scopes        : Automated scope proposal and retirement
+                                     : Cost-aware correlation scheduling
+        Correlation-native models    : Architectures consuming graph and stream jointly
+</pre></div>
+<p><strong>Figure 57.</strong> <em>Research agenda across four horizons. Horizon 1 items are prerequisites for anything else: <strong>without a benchmark suite and a reference implementation, none of the framework’s claims can be tested by anyone other than an organization willing to fund a full build.</strong> That is the single largest barrier to the framework being taken seriously.</em></p>
+<h3 id="priority-open-problems" tabindex="-1">Priority open problems <a class="header-anchor" href="#priority-open-problems">#</a></h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Problem</th>
+<th>Why it matters</th>
+<th>Discipline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R1</strong></td>
+<td>Confidence algebra for composed correlations</td>
+<td>Chained relationships currently use a conservative product rule with no theoretical justification</td>
+<td>Statistics, probabilistic reasoning</td>
+</tr>
+<tr>
+<td><strong>R2</strong></td>
+<td>Multiple-comparison correction for continuous, unbounded hypothesis spaces</td>
+<td>Classical FDR control assumes a fixed hypothesis set; correlation scopes generate hypotheses continuously</td>
+<td>Statistics</td>
+</tr>
+<tr>
+<td><strong>R3</strong></td>
+<td>Inference-risk quantification for a correlation scope</td>
+<td>Governance currently relies on human judgement about what a scope could reveal</td>
+<td>Privacy engineering, formal methods</td>
+</tr>
+<tr>
+<td><strong>R4</strong></td>
+<td>Calibration convergence under sparse, delayed ground truth</td>
+<td>Healthcare, credit, and safety domains may never provide enough labels</td>
+<td>Machine learning</td>
+</tr>
+<tr>
+<td><strong>R5</strong></td>
+<td>Automated scope cost-benefit scheduling</td>
+<td>Scope admission is currently a manual governance decision</td>
+<td>Systems, optimization</td>
+</tr>
+<tr>
+<td><strong>R6</strong></td>
+<td>Federated correlation without data movement</td>
+<td>Cross-organization correlation has clear value and no acceptable mechanism</td>
+<td>Cryptography, distributed systems</td>
+</tr>
+<tr>
+<td><strong>R7</strong></td>
+<td>Automation-bias countermeasures that survive routine use</td>
+<td>Every known countermeasure degrades as operators habituate</td>
+<td>Human factors</td>
+</tr>
+<tr>
+<td><strong>R8</strong></td>
+<td>Standard exchange format for scored, expiring relationships</td>
+<td>No interoperable representation exists</td>
+<td>Standards bodies</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 84.</strong> <em>Priority open problems. <strong>R2 and R3 are the two the author considers most urgent</strong>: without principled multiple-comparison control, spurious correlation undermines the framework’s credibility; without inference-risk quantification, privacy governance remains subjective.</em></p>
+<h2 id="40.3-adoption-roadmap" tabindex="-1">40.3 Adoption Roadmap <a class="header-anchor" href="#40.3-adoption-roadmap">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart LR
+    P0[&quot;&lt;b&gt;Phase 0&lt;/b&gt;&lt;br/&gt;Readiness&lt;br/&gt;0–3 months&quot;]
+    P1[&quot;&lt;b&gt;Phase 1&lt;/b&gt;&lt;br/&gt;Foundation&lt;br/&gt;3–9 months&quot;]
+    P2[&quot;&lt;b&gt;Phase 2&lt;/b&gt;&lt;br/&gt;First scope&lt;br/&gt;9–15 months&quot;]
+    P3[&quot;&lt;b&gt;Phase 3&lt;/b&gt;&lt;br/&gt;Expansion&lt;br/&gt;15–24 months&quot;]
+    P4[&quot;&lt;b&gt;Phase 4&lt;/b&gt;&lt;br/&gt;Integration&lt;br/&gt;24–36 months&quot;]
+    P5[&quot;&lt;b&gt;Phase 5&lt;/b&gt;&lt;br/&gt;Compounding&lt;br/&gt;36 months+&quot;]
+
+    P0 --&gt;|&quot;Gate: quality&lt;br/&gt;and ER baseline&quot;| P1
+    P1 --&gt;|&quot;Gate: canonical&lt;br/&gt;events flowing&quot;| P2
+    P2 --&gt;|&quot;Gate: precision&lt;br/&gt;&gt; 0.6 in shadow&quot;| P3
+    P3 --&gt;|&quot;Gate: reuse rate&lt;br/&gt;&gt; 2 consumers&quot;| P4
+    P4 --&gt;|&quot;Gate: L3 actions&lt;br/&gt;sustained 90 days&quot;| P5
+
+    P0 -.-&gt;|fail| STOP1[&quot;Fix data quality first&quot;]
+    P2 -.-&gt;|fail| STOP2[&quot;Retire scope,&lt;br/&gt;reassess premise&quot;]
+    P3 -.-&gt;|fail| STOP3[&quot;Correlation not&lt;br/&gt;reusable here&quot;]
+
+    classDef phase fill:#0d4159,stroke:#22b3d6,stroke-width:2px,color:#eaf9ff
+    classDef stop fill:#3d1f28,stroke:#d64550,color:#ffe8ec
+    class P0,P1,P2,P3,P4,P5 phase
+    class STOP1,STOP2,STOP3 stop
+</pre></div>
+<p><strong>Figure 58.</strong> <em>Phased adoption with explicit exit gates. <strong>The exit paths are as important as the progression paths.</strong> A programme without a defined way to conclude that the premise does not hold in its context will continue consuming resources long after that conclusion should have been drawn.</em></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Objective</th>
+<th>Key deliverables</th>
+<th>Exit gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0 — Readiness</strong></td>
+<td>0–3 mo</td>
+<td>Determine whether to proceed at all</td>
+<td>Data quality baseline; entity resolution assessment; correlation tax measurement; disqualifier review (§39.5)</td>
+<td>No disqualifier present; ER accuracy above agreed threshold</td>
+</tr>
+<tr>
+<td><strong>1 — Foundation</strong></td>
+<td>3–9 mo</td>
+<td>Canonical events and metadata</td>
+<td>Canonical event schema; 3–5 sources ingested with contracts; entity resolution service; metadata and lineage plane; governance body constituted</td>
+<td>Canonical events flowing with lineage; contracts enforced</td>
+</tr>
+<tr>
+<td><strong>2 — First scope</strong></td>
+<td>9–15 mo</td>
+<td>One scope, shadow mode only</td>
+<td>Single high-value cross-domain scope; correlation engine (M1 + M2); confidence scoring; Insight Object; L1 shadow operation; disposition tracking</td>
+<td>Precision above 0.6 with expert adjudication over 90 days</td>
+</tr>
+<tr>
+<td><strong>3 — Expansion</strong></td>
+<td>15–24 mo</td>
+<td>Prove reuse</td>
+<td>3–5 scopes; knowledge graph hot tier; M3/M4 modalities; alert clustering; L2 advisory operation; correlation-grounded RAG</td>
+<td>Reuse rate above 2 consumers per correlation type</td>
+</tr>
+<tr>
+<td><strong>4 — Integration</strong></td>
+<td>24–36 mo</td>
+<td>Production decision integration</td>
+<td>Batch layer W1–W4; multi-region HA; calibration loop closed; first L3 actions with reversibility windows; full autonomy governance</td>
+<td>L3 actions sustained 90 days without demotion</td>
+</tr>
+<tr>
+<td><strong>5 — Compounding</strong></td>
+<td>36 mo+</td>
+<td>Institutional capability</td>
+<td>Scope portfolio management; retrospective re-correlation cycles; cross-domain agent operation; L4 in narrow reversible domains</td>
+<td>Ongoing; measured by cost per acted-upon insight trend</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 85.</strong> <em>Adoption phases with objectives, deliverables, and gates. Note that <strong>Phase 2 delivers exactly one scope in shadow mode after fifteen months.</strong> Any vendor or internal proposal promising materially faster time-to-value for a correlation platform should be treated with suspicion.</em></p>
+<h2 id="40.4-anti-patterns-in-adoption-sequencing" tabindex="-1">40.4 Anti-Patterns in Adoption Sequencing <a class="header-anchor" href="#40.4-anti-patterns-in-adoption-sequencing">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Anti-pattern</th>
+<th>Why it fails</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Building the knowledge graph first</td>
+<td>Without canonical events and entity resolution, the graph encodes existing inconsistency</td>
+</tr>
+<tr>
+<td>Starting with AI/LLM layer</td>
+<td>Grounding requires a correlation substrate that does not yet exist; result is document RAG with extra steps</td>
+</tr>
+<tr>
+<td>Launching multiple scopes simultaneously</td>
+<td>No capacity to adjudicate precision; failures cannot be attributed</td>
+</tr>
+<tr>
+<td>Skipping shadow mode</td>
+<td>Trust is destroyed by early false positives and is very difficult to rebuild</td>
+</tr>
+<tr>
+<td>Deferring governance to Phase 3</td>
+<td>Scopes deployed without purpose binding cannot be retrofitted; erasure obligations accumulate</td>
+</tr>
+<tr>
+<td>Treating it as a tooling procurement</td>
+<td>No product exists; the work is architecture and governance, not purchase</td>
+</tr>
+<tr>
+<td>Measuring only technical metrics</td>
+<td>Latency and throughput are satisfied long before value is delivered</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 86.</strong> <em>Adoption anti-patterns. The first two are the most common, because they are the most visible and demonstrable to executives — and both produce impressive demonstrations that cannot scale into production value.</em></p>
+<h2 id="40.5-technology-evolution-that-would-help" tabindex="-1">40.5 Technology Evolution That Would Help <a class="header-anchor" href="#40.5-technology-evolution-that-would-help">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Development</th>
+<th>Effect on the framework</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Streaming engines with native graph state</td>
+<td>Removes the graph write bottleneck (<a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">C7</a>)</td>
+</tr>
+<tr>
+<td>Cheaper long-horizon streaming state</td>
+<td>Widens economically viable correlation windows</td>
+</tr>
+<tr>
+<td>Standardized inference lineage</td>
+<td>Reduces bespoke metadata engineering</td>
+</tr>
+<tr>
+<td>Practical secure multi-party computation at event scale</td>
+<td>Enables federated correlation (R6)</td>
+</tr>
+<tr>
+<td>Regulator-published guidance on inferred data</td>
+<td>Reduces the largest source of legal uncertainty</td>
+</tr>
+<tr>
+<td>Smaller models with strong structured-data reasoning</td>
+<td>Reduces cost of the insight layer and improves grounding fidelity</td>
+</tr>
+<tr>
+<td>Mature open-source entity resolution</td>
+<td>Addresses the framework’s most binding quality constraint</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 87.</strong> <em>External developments that would materially improve the framework’s viability. Mature open-source entity resolution would have the largest single effect, because <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">L3</a> bounds everything downstream.</em></p>
+<h2 id="40.6-an-invitation" tabindex="-1">40.6 An Invitation <a class="header-anchor" href="#40.6-an-invitation">#</a></h2>
+<p>This framework is published without patent, licence restriction, or commercial interest. The author invites:</p>
+<ul>
+<li><strong>Critique</strong> — particularly arguments that the correlation tax is smaller than claimed, or that incumbent architectures already address it adequately.</li>
+<li><strong>Implementation</strong> — any partial implementation, especially of the correlation engine and confidence calibration.</li>
+<li><strong>Absorption</strong> — adoption of individual concepts into existing platforms, with or without attribution to this framework.</li>
+<li><strong>Empirical testing</strong> — the falsification conditions in <a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">Chapter 38</a> and <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">§39.6</a> are stated precisely so that they can be tested.</li>
+</ul>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Two roadmaps must not be conflated:</strong> a research agenda addressing problems the author cannot solve alone, and an adoption path for organizations that have read the limitations and still wish to proceed.</li>
+<li><strong>A benchmark suite and reference implementation are prerequisites for everything else</strong>, and their absence is the single largest barrier to the framework being taken seriously.</li>
+<li><strong>Principled multiple-comparison control and inference-risk quantification are the two most urgent open problems</strong>, one governing credibility and the other governing privacy legitimacy.</li>
+<li><strong>Adoption exit gates matter as much as progression gates.</strong> A programme with no defined way to conclude the premise does not hold will consume resources long past that point.</li>
+<li><strong>Phase 2 delivers one scope in shadow mode after fifteen months.</strong> Any proposal promising materially faster time-to-value for a correlation platform warrants suspicion.</li>
+<li><strong>Building the graph first or starting with the AI layer are the most common sequencing failures</strong>, precisely because both produce impressive demonstrations that cannot scale.</li>
+<li><strong>Mature open-source entity resolution would improve the framework’s viability more than any other external development</strong>, because entity resolution quality bounds everything downstream.</li>
+<li><strong>The framework is published without patent or commercial interest</strong>, and absorption of its concepts into existing platforms is an explicitly welcome outcome.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/"><span>← Previous</span><b>39. Challenges and Limitations</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-5/41-conclusion/"><span>Next →</span><b>41. Conclusion</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#40.1-two-roadmaps">40.1 Two Roadmaps #</a><a href="#40.2-research-roadmap">40.2 Research Roadmap #</a><a href="#40.3-adoption-roadmap">40.3 Adoption Roadmap #</a><a href="#40.4-anti-patterns-in-adoption-sequencing">40.4 Anti-Patterns in Adoption Sequencing #</a><a href="#40.5-technology-evolution-that-would-help">40.5 Technology Evolution That Would Help #</a><a href="#40.6-an-invitation">40.6 An Invitation #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

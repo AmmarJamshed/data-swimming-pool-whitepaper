@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en" data-part="p2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>20. Autonomous Decision Support · Data Swimming Pool</title>
+<meta name="description" content="20. Autonomous Decision Support --- 20.1 Autonomy as a Graduated Property The prevailing framing of enterprise AI autonomy is binary: a system is either human-in-the-loop or automa">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="20. Autonomous Decision Support — Data Swimming Pool">
+<meta property="og:description" content="20. Autonomous Decision Support --- 20.1 Autonomy as a Graduated Property The prevailing framing of enterprise AI autonomy is binary: a system is either human-in-the-loop or automa">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" open style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/" class="on">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part II — The Data Swimming Pool</span></p>
+    <h1>20. Autonomous Decision Support</h1>
+    <p class="cmeta"><span class="chip">🏊 Part II — The Data Swimming Pool</span><span class="dot">·</span>5 min read</p>
+  </header>
+  <div class="prose">
+<h1>20. Autonomous Decision Support</h1>
+<hr>
+<h2 id="20.1-autonomy-as-a-graduated-property" tabindex="-1">20.1 Autonomy as a Graduated Property <a class="header-anchor" href="#20.1-autonomy-as-a-graduated-property">#</a></h2>
+<p>The prevailing framing of enterprise AI autonomy is binary: a system is either human-in-the-loop or automated. This framing is unhelpful, because it forces a single decision across a heterogeneous population of actions with radically different consequence profiles.</p>
+<p>The same platform may reasonably suppress a duplicate alert without asking anyone — fully reversible, trivial consequence, thousands of times per day — and must not autonomously decline a credit application — materially irreversible, regulated, consequential to a person’s life. A system-level autonomy setting forces a choice between paralysis and recklessness.</p>
+<div class="cal cal-info">
+<h3 id="definition-%E2%80%94-the-autonomy-ladder" tabindex="-1">Definition — The Autonomy Ladder <a class="header-anchor" href="#definition-%E2%80%94-the-autonomy-ladder">#</a></h3>
+<p>The <strong>Autonomy Ladder</strong> is a six-level model in which machine decision authority is assigned <strong>per action class</strong>, with each level specifying its reversibility requirement, evidentiary standard, human control point, escalation path, and audit obligation. Autonomy level is runtime-adjustable, independently auditable, and automatically demoted on performance degradation.</p>
+</div>
+<h2 id="20.2-the-six-levels" tabindex="-1">20.2 The Six Levels <a class="header-anchor" href="#20.2-the-six-levels">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    L0[&quot;&lt;b&gt;L0 — OBSERVE&lt;/b&gt;&lt;br/&gt;System detects and records.&lt;br/&gt;No output to any actor.&lt;br/&gt;&lt;i&gt;Used for: shadow evaluation of new scopes&lt;/i&gt;&quot;]
+    L1[&quot;&lt;b&gt;L1 — INFORM&lt;/b&gt;&lt;br/&gt;System surfaces information passively.&lt;br/&gt;Human seeks it out.&lt;br/&gt;&lt;i&gt;Used for: dashboards, context panels&lt;/i&gt;&quot;]
+    L2[&quot;&lt;b&gt;L2 — RECOMMEND&lt;/b&gt;&lt;br/&gt;System proactively proposes an action&lt;br/&gt;with evidence. Human decides and executes.&lt;br/&gt;&lt;i&gt;Used for: next-best-action, triage suggestions&lt;/i&gt;&quot;]
+    L3[&quot;&lt;b&gt;L3 — ACT WITH CONFIRMATION&lt;/b&gt;&lt;br/&gt;System prepares and stages the action.&lt;br/&gt;Human approves; system executes.&lt;br/&gt;&lt;i&gt;Used for: transaction holds, ticket routing&lt;/i&gt;&quot;]
+    L4[&quot;&lt;b&gt;L4 — ACT WITH OVERSIGHT&lt;/b&gt;&lt;br/&gt;System executes immediately.&lt;br/&gt;Human notified, can reverse within a&lt;br/&gt;defined window.&lt;br/&gt;&lt;i&gt;Used for: reversible protective actions&lt;/i&gt;&quot;]
+    L5[&quot;&lt;b&gt;L5 — ACT AUTONOMOUSLY&lt;/b&gt;&lt;br/&gt;System executes and reports.&lt;br/&gt;Human reviews in aggregate, periodically.&lt;br/&gt;&lt;i&gt;Used for: high-volume reversible operations&lt;/i&gt;&quot;]
+
+    L0 --&gt; L1 --&gt; L2 --&gt; L3 --&gt; L4 --&gt; L5
+
+    subgraph GATE[&quot;Promotion Requirements — cumulative&quot;]
+        direction TB
+        G1[&quot;L1: scope declared + owned&quot;]
+        G2[&quot;L2: evidence chain complete (P7)&quot;]
+        G3[&quot;L3: calibrated confidence +&lt;br/&gt;precision ≥ declared threshold,&lt;br/&gt;measured ≥ 90 days&quot;]
+        G4[&quot;L4: &lt;b&gt;reversibility proven&lt;/b&gt; +&lt;br/&gt;reversal window defined +&lt;br/&gt;precision ≥ 0.95 +&lt;br/&gt;independent validation&quot;]
+        G5[&quot;L5: L4 sustained ≥ 180 days +&lt;br/&gt;zero material incidents +&lt;br/&gt;risk function approval +&lt;br/&gt;documented rollback drill&quot;]
+    end
+
+    subgraph LIMITS[&quot;Absolute Prohibitions&quot;]
+        direction TB
+        X1[&quot;No L4+ for irreversible actions&quot;]
+        X2[&quot;No L4+ on provisional correlations&quot;]
+        X3[&quot;No L4+ on uncalibrated confidence&quot;]
+        X4[&quot;No L3+ for generative-model-originated&lt;br/&gt;actions of material consequence&quot;]
+        X5[&quot;No L3+ on stale or unreviewed scopes&quot;]
+        X6[&quot;No L4+ where regulation requires&lt;br/&gt;human determination&quot;]
+    end
+
+    GATE -.gates.- L1 &amp; L2 &amp; L3 &amp; L4 &amp; L5
+    LIMITS -.caps.- L3 &amp; L4 &amp; L5
+
+    classDef low fill:#183028,stroke:#4caf7d,color:#e6fff2
+    classDef mid fill:#3d3313,stroke:#d4a636,color:#fff8e6
+    classDef high fill:#4a2020,stroke:#d07070,stroke-width:2px,color:#ffeaea
+    classDef gate fill:#14415c,stroke:#4fb8d8,color:#eaf6fb
+    classDef lim fill:#3a2540,stroke:#a878c0,stroke-width:2px,color:#f6eaff
+    class L0,L1,L2 low
+    class L3 mid
+    class L4,L5 high
+    class GATE,G1,G2,G3,G4,G5 gate
+    class LIMITS,X1,X2,X3,X4,X5,X6 lim
+</pre></div>
+<p><strong>Figure 30.</strong> <em>The Autonomy Ladder. Six levels with cumulative promotion requirements and six absolute prohibitions. Promotion above L3 requires proven reversibility and sustained measured precision; promotion to L5 requires 180 days at L4 without material incident plus a documented rollback drill. Colour indicates increasing risk posture, not increasing desirability.</em></p>
+<h2 id="20.3-level-specifications" tabindex="-1">20.3 Level Specifications <a class="header-anchor" href="#20.3-level-specifications">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Human role</th>
+<th>Reversibility requirement</th>
+<th>Evidentiary standard</th>
+<th>Escalation trigger</th>
+<th>Audit obligation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>L0 Observe</strong></td>
+<td>None</td>
+<td>N/A — no action</td>
+<td>None</td>
+<td>N/A</td>
+<td>Aggregate metrics only</td>
+</tr>
+<tr>
+<td><strong>L1 Inform</strong></td>
+<td>Seeks information</td>
+<td>N/A — no action</td>
+<td>Evidence chain available on request</td>
+<td>N/A</td>
+<td>Access log</td>
+</tr>
+<tr>
+<td><strong>L2 Recommend</strong></td>
+<td>Decides and executes</td>
+<td>N/A — human acts</td>
+<td>Evidence chain presented with recommendation</td>
+<td>Human declines repeatedly → review scope</td>
+<td>Recommendation + human decision recorded</td>
+</tr>
+<tr>
+<td><strong>L3 Confirm</strong></td>
+<td>Approves staged action</td>
+<td>Action must be describable and its effects previewable</td>
+<td>Calibrated confidence above declared threshold; complete evidence</td>
+<td>Approval rate below 70% → automatic demotion</td>
+<td>Full: staged action, evidence, approver, timestamp</td>
+</tr>
+<tr>
+<td><strong>L4 Oversee</strong></td>
+<td>Notified; may reverse</td>
+<td><strong>Reversal must be technically demonstrated</strong>, with a defined reversal window</td>
+<td>Precision ≥ 0.95 sustained ≥ 90 days; independent validation</td>
+<td>Any reversal → incident review; 3 reversals in window → demotion</td>
+<td>Full: action, evidence, notification, reversal window, outcome</td>
+</tr>
+<tr>
+<td><strong>L5 Autonomous</strong></td>
+<td>Reviews in aggregate</td>
+<td>Reversal demonstrated; rollback drill documented</td>
+<td>L4 sustained ≥ 180 days, zero material incidents</td>
+<td>Any material incident → immediate demotion to L2</td>
+<td>Full plus periodic aggregate review with named reviewer</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 40.</strong> <em>Autonomy Ladder level specifications. The L4 requirement that reversal be <strong>technically demonstrated</strong> rather than merely asserted is the most important control in the framework: an organization must show that it has actually reversed such an action successfully, in a test, before granting the level.</em></p>
+<h2 id="20.4-reversibility-as-the-governing-criterion" tabindex="-1">20.4 Reversibility as the Governing Criterion <a class="header-anchor" href="#20.4-reversibility-as-the-governing-criterion">#</a></h2>
+<p>The framework’s central claim about autonomy: <strong>reversibility, not confidence, is the primary determinant of permissible autonomy level.</strong></p>
+<p>A highly confident conclusion supporting an irreversible action warrants less autonomy than a moderately confident conclusion supporting a fully reversible one. This inverts the intuitive framing, and the inversion is deliberate.</p>
+<div class="figure"><pre class="mermaid">quadrantChart
+    title Autonomy Assignment by Reversibility and Confidence
+    x-axis &quot;Low Confidence&quot; --&gt; &quot;High Confidence&quot;
+    y-axis &quot;Irreversible&quot; --&gt; &quot;Fully Reversible&quot;
+    quadrant-1 &quot;L4–L5 permissible&quot;
+    quadrant-2 &quot;L3–L4 permissible&quot;
+    quadrant-3 &quot;L0–L1 only&quot;
+    quadrant-4 &quot;L2–L3 maximum&quot;
+    &quot;Suppress duplicate alert&quot;: [0.75, 0.95]
+    &quot;Route case to specialist team&quot;: [0.70, 0.88]
+    &quot;Enrich record with derived attribute&quot;: [0.80, 0.90]
+    &quot;Hold transaction pending review&quot;: [0.85, 0.72]
+    &quot;Trigger equipment inspection&quot;: [0.68, 0.80]
+    &quot;Adjust inventory reorder point&quot;: [0.62, 0.75]
+    &quot;Notify customer of suspected fraud&quot;: [0.80, 0.35]
+    &quot;Decline credit application&quot;: [0.88, 0.08]
+    &quot;Terminate service contract&quot;: [0.72, 0.10]
+    &quot;Escalate to law enforcement&quot;: [0.78, 0.05]
+    &quot;Propose causal explanation&quot;: [0.35, 0.60]
+    &quot;Flag entity for enhanced review&quot;: [0.45, 0.70]
+</pre></div>
+<p><strong>Figure 31.</strong> <em>Autonomy assignment by reversibility and confidence. Actions in the upper region — reversible — may be granted high autonomy even at moderate confidence. Actions in the lower region — irreversible or materially consequential — are capped regardless of confidence. Positions are illustrative and organization-specific; the axes and the capping principle are the transferable content.</em></p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Reversibility is frequently overestimated.</strong> An action is genuinely reversible only if reversing it restores the prior state <em>including all downstream effects</em>. Reversing a transaction hold restores the transaction, but does not un-notify the customer, un-trigger the partner system’s risk flag, or un-record the event in a third party’s file. Assessment of reversibility MUST consider the full effect graph, not only the primary action.</p>
+<p>The framework’s practical test: <strong>an action is reversible if, after reversal, no external party retains a record of it having occurred, and no downstream process behaves differently than if it had not.</strong> Very few actions genuinely pass this test, which is why L4 and L5 should be rare.</p>
+</div>
+<h2 id="20.5-decision-flow" tabindex="-1">20.5 Decision Flow <a class="header-anchor" href="#20.5-decision-flow">#</a></h2>
+<div class="figure"><pre class="mermaid">sequenceDiagram
+    autonumber
+    participant I as Insight Object
+    participant AC as Autonomy Controller
+    participant RE as Rules Engine
+    participant PE as Policy Engine
+    participant RV as Reversibility Register
+    participant EX as Execution
+    participant H as Human
+    participant OB as Outcome Capture
+
+    I-&gt;&gt;AC: insight, confidence 0.91,&lt;br/&gt;recommended action, proposed L4
+    AC-&gt;&gt;RE: evaluate guardrail + safety rules
+    RE--&gt;&gt;AC: no prohibition
+    AC-&gt;&gt;PE: policy check — purpose, jurisdiction, subject rights
+    PE--&gt;&gt;AC: permit
+    AC-&gt;&gt;RV: is this action class reversal-proven?
+    RV--&gt;&gt;AC: yes — reversal window 30 min,&lt;br/&gt;last drill 2026-06-14
+    AC-&gt;&gt;AC: verify correlation status = CONFIRMED&lt;br/&gt;(not provisional)
+    AC-&gt;&gt;AC: verify scope precision ≥ 0.95&lt;br/&gt;over trailing 90d → 0.963 ✓
+    AC-&gt;&gt;AC: verify scope not stale → reviewed 2026-05-02 ✓
+
+    alt all gates pass
+        AC-&gt;&gt;EX: execute at L4
+        EX--&gt;&gt;AC: executed, reversal token issued
+        AC-&gt;&gt;H: notify — action taken,&lt;br/&gt;evidence, reverse-by 14:32
+        AC-&gt;&gt;OB: register outcome expectation
+        alt human reverses within window
+            H-&gt;&gt;EX: reverse using token
+            EX--&gt;&gt;OB: reversed
+            OB-&gt;&gt;AC: record reversal → incident review
+            AC-&gt;&gt;AC: 3rd reversal in window →&lt;br/&gt;&lt;b&gt;demote action class to L3&lt;/b&gt;
+        else window elapses
+            OB-&gt;&gt;OB: await ground truth
+            OB--&gt;&gt;AC: outcome confirmed correct
+            AC-&gt;&gt;AC: feed calibration (P10)
+        end
+    else any gate fails
+        AC-&gt;&gt;H: escalate at L2 — recommend only&lt;br/&gt;+ reason for downgrade
+        AC-&gt;&gt;OB: record downgrade event
+    end
+</pre></div>
+<p><strong>Figure 32.</strong> <em>Autonomy Controller decision flow for a proposed L4 action. Seven gates are evaluated before execution: safety rules, policy, reversal provenance, correlation confirmation status, scope precision, scope freshness, and reversibility register currency. Failure of any gate downgrades to L2 rather than blocking outright — the system still delivers value as a recommendation.</em></p>
+<p>The downgrade-rather-than-block behaviour is deliberate. A system that fails closed entirely when a gate fails delivers nothing; a system that degrades to recommendation still delivers the insight while withholding the authority.</p>
+<h2 id="20.6-human-factors" tabindex="-1">20.6 Human Factors <a class="header-anchor" href="#20.6-human-factors">#</a></h2>
+<p>Automation research consistently identifies failure modes that architecture must anticipate.</p>
+<p><strong>Automation bias.</strong> Humans approve machine recommendations at high rates, particularly under time pressure, and particularly when the machine is usually correct. An L3 “approval” gate degenerates into a rubber stamp unless designed against.</p>
+<p><em>Framework requirement:</em> L3 interfaces MUST present the evidence chain, not merely the recommendation, and MUST require the approver to interact with at least one evidence element before approving. Approval rate is monitored: a rate above 95% is treated as a signal that the gate is not functioning as a control and triggers review of whether L4 is more honest than a nominal L3.</p>
+<p><strong>Skill degradation.</strong> Operators who do not exercise a judgement lose the ability to exercise it. When the automation fails, the humans who must take over have atrophied.</p>
+<p><em>Framework requirement:</em> Periodic manual-mode operation for a sample of cases, and inclusion of deliberate hard cases in the human review queue rather than routing only ambiguous ones.</p>
+<p><strong>Responsibility diffusion.</strong> When a system recommends and a human approves, neither feels accountable for the outcome.</p>
+<p><em>Framework requirement:</em> Every action records a named accountable human, even at L4 and L5, where accountability attaches to the person who authorized the autonomy level for that action class rather than to an approver of the individual action.</p>
+<p><strong>Alarm-driven tunnel vision.</strong> Operators presented with a confident machine conclusion tend to stop looking for alternatives.</p>
+<p><em>Framework requirement:</em> Where the Correlation Engine identified competing explanations, the interface MUST present the top alternative alongside the primary conclusion, with its confidence. A single confident answer is more dangerous than two competing ones.</p>
+<h2 id="20.7-failure-handling-and-kill-switches" tabindex="-1">20.7 Failure Handling and Kill Switches <a class="header-anchor" href="#20.7-failure-handling-and-kill-switches">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Scope</th>
+<th>Activation</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Action-class kill switch</strong></td>
+<td>One action class</td>
+<td>Owner or on-call</td>
+<td>All actions in class drop to L2</td>
+</tr>
+<tr>
+<td><strong>Scope kill switch</strong></td>
+<td>One correlation scope</td>
+<td>Scope owner, Governor, or on-call</td>
+<td>Scope stops emitting; dependent actions drop to L0</td>
+</tr>
+<tr>
+<td><strong>Global autonomy freeze</strong></td>
+<td>All action classes</td>
+<td>Incident commander</td>
+<td>Everything drops to L2; system remains informative</td>
+</tr>
+<tr>
+<td><strong>Automatic demotion</strong></td>
+<td>Per action class or scope</td>
+<td>Precision breach, reversal threshold, staleness</td>
+<td>One level down, owner notified</td>
+</tr>
+<tr>
+<td><strong>Circuit breaker</strong></td>
+<td>Per action class</td>
+<td>Action failure rate above threshold</td>
+<td>Suspend execution, continue recommending</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 41.</strong> <em>Autonomy failure controls. The global autonomy freeze deliberately drops to L2 rather than L0: during an incident, the organization still benefits from the system’s analysis even while withdrawing its authority to act. Removing the analysis as well would degrade incident response at precisely the wrong moment.</em></p>
+<div class="cal cal-success">
+<h3 id="design-principle-%E2%80%94-degrade-to-advisory%2C-not-to-silence" tabindex="-1">Design Principle — Degrade to Advisory, Not to Silence <a class="header-anchor" href="#design-principle-%E2%80%94-degrade-to-advisory%2C-not-to-silence">#</a></h3>
+<p>When autonomy controls activate, the system MUST continue to inform and recommend. It MUST NOT go silent. Withdrawing decision authority and withdrawing decision support are different actions, and only the former is warranted by an autonomy failure.</p>
+</div>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Autonomy is a per-action-class property, not a system setting.</strong> A binary framing forces an unacceptable choice between paralysis and recklessness across a heterogeneous action population.</li>
+<li><strong>Six levels run from Observe to Autonomous</strong>, with cumulative promotion requirements and six absolute prohibitions that cap autonomy regardless of measured performance.</li>
+<li><strong>Reversibility, not confidence, is the primary determinant of permissible autonomy.</strong> A highly confident conclusion supporting an irreversible action warrants less autonomy than a moderate conclusion supporting a reversible one.</li>
+<li><strong>Reversibility is frequently overestimated.</strong> The practical test is that after reversal no external party retains a record and no downstream process behaves differently — a test very few actions pass, which is why L4 and L5 should be rare.</li>
+<li><strong>L4 requires reversal to be technically demonstrated</strong>, not asserted: the organization must show it has successfully reversed such an action in a drill.</li>
+<li><strong>Seven gates precede an L4 action</strong>, and gate failure downgrades to recommendation rather than blocking, preserving value while withholding authority.</li>
+<li><strong>Automation bias is designed against</strong>, requiring evidence interaction before approval and treating approval rates above 95% as evidence the gate is not functioning.</li>
+<li><strong>Where competing explanations exist, the interface must show the alternative.</strong> A single confident answer is more dangerous than two competing ones.</li>
+<li><strong>Autonomy controls degrade to advisory, never to silence.</strong> Withdrawing decision authority and withdrawing decision support are different actions.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/"><span>← Previous</span><b>19. Event Relationships</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/"><span>Next →</span><b>21. Alert Generation</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#20.1-autonomy-as-a-graduated-property">20.1 Autonomy as a Graduated Property #</a><a href="#20.2-the-six-levels">20.2 The Six Levels #</a><a href="#20.3-level-specifications">20.3 Level Specifications #</a><a href="#20.4-reversibility-as-the-governing-criterion">20.4 Reversibility as the Governing Criterion #</a><a href="#20.5-decision-flow">20.5 Decision Flow #</a><a href="#20.6-human-factors">20.6 Human Factors #</a><a href="#20.7-failure-handling-and-kill-switches">20.7 Failure Handling and Kill Switches #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

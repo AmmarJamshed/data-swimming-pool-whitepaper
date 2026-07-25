@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en" data-part="p2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>19. Event Relationships · Data Swimming Pool</title>
+<meta name="description" content="19. Event Relationships --- This chapter specifies the taxonomy of relationships the framework recognizes and the lifecycle of the events that participate in them. A shared, explic">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="19. Event Relationships — Data Swimming Pool">
+<meta property="og:description" content="19. Event Relationships --- This chapter specifies the taxonomy of relationships the framework recognizes and the lifecycle of the events that participate in them. A shared, explic">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" open style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/" class="on">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part II — The Data Swimming Pool</span></p>
+    <h1>19. Event Relationships</h1>
+    <p class="cmeta"><span class="chip">🏊 Part II — The Data Swimming Pool</span><span class="dot">·</span>5 min read</p>
+  </header>
+  <div class="prose">
+<h1>19. Event Relationships</h1>
+<hr>
+<p>This chapter specifies the taxonomy of relationships the framework recognizes and the lifecycle of the events that participate in them. A shared, explicit taxonomy matters because it is what allows a correlation to be interpreted consistently by a rule, a model, an analyst, and an auditor.</p>
+<h2 id="19.1-event-lifecycle" tabindex="-1">19.1 Event Lifecycle <a class="header-anchor" href="#19.1-event-lifecycle">#</a></h2>
+<div class="figure"><pre class="mermaid">stateDiagram-v2
+    [*] --&gt; Occurred: business fact happens&lt;br/&gt;&lt;i&gt;event time established here&lt;/i&gt;
+    Occurred --&gt; Captured: source system records
+    Captured --&gt; Emitted: change feed or emitter
+    Emitted --&gt; Landed: raw.* + Bronze&lt;br/&gt;&lt;i&gt;immutable, source fidelity&lt;/i&gt;
+    Landed --&gt; Validated: contract + quality
+    Landed --&gt; Quarantined: contract or quality failure
+    Quarantined --&gt; Landed: remediated at source
+    Quarantined --&gt; Excluded: accepted exclusion,&lt;br/&gt;documented
+    Validated --&gt; Canonicalized: schema mapping,&lt;br/&gt;normalization
+    Canonicalized --&gt; Resolved: entity resolution
+    Resolved --&gt; Held: resolution ambiguous,&lt;br/&gt;steward queue
+    Held --&gt; Resolved: adjudicated
+    Resolved --&gt; Classified: sensitivity + purpose tags
+    Classified --&gt; Circulating: canonical.* + Silver&lt;br/&gt;&lt;i&gt;available for correlation&lt;/i&gt;
+    Circulating --&gt; Correlated: participates in ≥1 correlation
+    Circulating --&gt; Uncorrelated: no relationship found&lt;br/&gt;&lt;i&gt;still retained&lt;/i&gt;
+    Correlated --&gt; Reinforcing: further evidence&lt;br/&gt;strengthens relationships
+    Correlated --&gt; Contradicted: later evidence weakens&lt;br/&gt;or retracts
+    Uncorrelated --&gt; Correlated: later event creates&lt;br/&gt;relationship
+    Correlated --&gt; Archived: retention tier transition
+    Uncorrelated --&gt; Archived: retention tier transition
+    Archived --&gt; Purged: retention expiry&lt;br/&gt;or erasure request
+    Excluded --&gt; [*]
+    Purged --&gt; [*]
+
+    note right of Occurred
+        Event time is a property of
+        the business fact, not of
+        any system. All correlation
+        uses this timestamp. (P5)
+    end note
+
+    note right of Uncorrelated
+        Uncorrelated events are NOT
+        discarded. A future event may
+        create a relationship, and
+        absence of correlation is
+        itself informative.
+    end note
+
+    note right of Purged
+        Purge must propagate to
+        correlations and insights
+        derived from the event.
+        See Ch. 24.
+    end note
+</pre></div>
+<p><strong>Figure 28.</strong> <em>Canonical event lifecycle. Fourteen states from business occurrence to purge. Two properties are architecturally significant: event time is established at occurrence and never revised, and uncorrelated events are retained because a later arrival may create a relationship and because the absence of expected correlation is itself a signal.</em></p>
+<h3 id="19.1.1-why-uncorrelated-events-are-retained" tabindex="-1">19.1.1 Why Uncorrelated Events Are Retained <a class="header-anchor" href="#19.1.1-why-uncorrelated-events-are-retained">#</a></h3>
+<p>A tempting optimization is to discard events that participate in no correlation. The framework prohibits it, for three reasons:</p>
+<p><strong>Retrospective correlation.</strong> An event uncorrelated today may correlate tomorrow when a related event arrives, or next quarter when a new scope is declared. Discarding it forecloses relationships that have not yet become discoverable.</p>
+<p><strong>Absence as signal.</strong> An event that <em>should</em> have correlated and did not is informative. A shipment dispatch with no corresponding delivery confirmation, a treatment order with no administration record, a trade with no settlement — the missing counterpart is frequently the finding. Detecting absence requires retaining the present half.</p>
+<p><strong>Baseline integrity.</strong> M5 behavioural baselines are computed over all events, not correlated ones. Discarding uncorrelated events biases every baseline toward correlated behaviour.</p>
+<h2 id="19.2-relationship-taxonomy" tabindex="-1">19.2 Relationship Taxonomy <a class="header-anchor" href="#19.2-relationship-taxonomy">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    ROOT[&quot;&lt;b&gt;Event Relationship&lt;/b&gt;&quot;]
+
+    ROOT --&gt; TEMP[&quot;&lt;b&gt;Temporal&lt;/b&gt;&quot;]
+    ROOT --&gt; STRUCT[&quot;&lt;b&gt;Structural&lt;/b&gt;&quot;]
+    ROOT --&gt; CAUS[&quot;&lt;b&gt;Causal&lt;/b&gt;&quot;]
+    ROOT --&gt; SEMANT[&quot;&lt;b&gt;Semantic&lt;/b&gt;&quot;]
+    ROOT --&gt; STAT[&quot;&lt;b&gt;Statistical&lt;/b&gt;&quot;]
+    ROOT --&gt; NEG[&quot;&lt;b&gt;Negative&lt;/b&gt;&quot;]
+
+    TEMP --&gt; T1[&quot;PRECEDES / FOLLOWS&lt;br/&gt;&lt;i&gt;ordered in event time&lt;/i&gt;&quot;]
+    TEMP --&gt; T2[&quot;CONCURRENT_WITH&lt;br/&gt;&lt;i&gt;overlapping, unordered&lt;/i&gt;&quot;]
+    TEMP --&gt; T3[&quot;PERIODIC_WITH&lt;br/&gt;&lt;i&gt;recurring interval&lt;/i&gt;&quot;]
+    TEMP --&gt; T4[&quot;ACCELERATING / DECELERATING&lt;br/&gt;&lt;i&gt;changing rate&lt;/i&gt;&quot;]
+
+    STRUCT --&gt; S1[&quot;SAME_ENTITY&lt;br/&gt;&lt;i&gt;shared resolved entity&lt;/i&gt;&quot;]
+    STRUCT --&gt; S2[&quot;RELATED_ENTITY&lt;br/&gt;&lt;i&gt;k-hop graph proximity&lt;/i&gt;&quot;]
+    STRUCT --&gt; S3[&quot;SHARED_ATTRIBUTE&lt;br/&gt;&lt;i&gt;device, address, instrument&lt;/i&gt;&quot;]
+    STRUCT --&gt; S4[&quot;PART_OF_PROCESS&lt;br/&gt;&lt;i&gt;same business process instance&lt;/i&gt;&quot;]
+    STRUCT --&gt; S5[&quot;HIERARCHICAL&lt;br/&gt;&lt;i&gt;parent/child, group membership&lt;/i&gt;&quot;]
+
+    CAUS --&gt; CA1[&quot;PLAUSIBLY_CAUSES&lt;br/&gt;&lt;i&gt;hypothesis, assumptions stated&lt;/i&gt;&quot;]
+    CAUS --&gt; CA2[&quot;MEDIATES&lt;br/&gt;&lt;i&gt;intermediate in a chain&lt;/i&gt;&quot;]
+    CAUS --&gt; CA3[&quot;CONFOUNDED_BY&lt;br/&gt;&lt;i&gt;common cause identified&lt;/i&gt;&quot;]
+    CAUS --&gt; CA4[&quot;AMPLIFIES / DAMPENS&lt;br/&gt;&lt;i&gt;modifies magnitude&lt;/i&gt;&quot;]
+
+    SEMANT --&gt; SE1[&quot;DESCRIBES&lt;br/&gt;&lt;i&gt;one event documents another&lt;/i&gt;&quot;]
+    SEMANT --&gt; SE2[&quot;SEMANTICALLY_SIMILAR&lt;br/&gt;&lt;i&gt;embedding proximity&lt;/i&gt;&quot;]
+    SEMANT --&gt; SE3[&quot;CONTRADICTS&lt;br/&gt;&lt;i&gt;logically inconsistent&lt;/i&gt;&quot;]
+    SEMANT --&gt; SE4[&quot;ELABORATES&lt;br/&gt;&lt;i&gt;adds detail to another&lt;/i&gt;&quot;]
+
+    STAT --&gt; ST1[&quot;CO_ANOMALOUS&lt;br/&gt;&lt;i&gt;simultaneous baseline deviation&lt;/i&gt;&quot;]
+    STAT --&gt; ST2[&quot;CORRELATED_SERIES&lt;br/&gt;&lt;i&gt;association at discovered lag&lt;/i&gt;&quot;]
+    STAT --&gt; ST3[&quot;COHORT_DIVERGENT&lt;br/&gt;&lt;i&gt;departs from peer group&lt;/i&gt;&quot;]
+    STAT --&gt; ST4[&quot;CLUSTER_MEMBER&lt;br/&gt;&lt;i&gt;same detected community&lt;/i&gt;&quot;]
+
+    NEG --&gt; N1[&quot;EXPECTED_ABSENT&lt;br/&gt;&lt;i&gt;counterpart did not occur&lt;/i&gt;&quot;]
+    NEG --&gt; N2[&quot;MUTUALLY_EXCLUSIVE_VIOLATED&lt;br/&gt;&lt;i&gt;both occurred impossibly&lt;/i&gt;&quot;]
+    NEG --&gt; N3[&quot;SEQUENCE_BROKEN&lt;br/&gt;&lt;i&gt;required step skipped&lt;/i&gt;&quot;]
+
+    classDef root fill:#0a5570,stroke:#3fd0f0,stroke-width:3px,color:#ffffff
+    classDef cat fill:#0d4159,stroke:#22b3d6,stroke-width:2px,color:#eaf9ff
+    classDef leaf fill:#14415c,stroke:#4fb8d8,color:#eaf6fb
+    classDef negc fill:#4a3020,stroke:#d09a60,stroke-width:2px,color:#fff4e6
+    class ROOT root
+    class TEMP,STRUCT,CAUS,SEMANT,STAT cat
+    class NEG negc
+    class T1,T2,T3,T4,S1,S2,S3,S4,S5,CA1,CA2,CA3,CA4,SE1,SE2,SE3,SE4,ST1,ST2,ST3,ST4 leaf
+    class N1,N2,N3 negc
+</pre></div>
+<p><strong>Figure 29.</strong> <em>Event relationship taxonomy. Six categories and twenty-four relationship types. The <strong>Negative</strong> category is highlighted because it is the category most commonly absent from correlation systems and frequently the most valuable: the relationship that should exist and does not is often the finding.</em></p>
+<h2 id="19.3-relationship-types-in-detail" tabindex="-1">19.3 Relationship Types in Detail <a class="header-anchor" href="#19.3-relationship-types-in-detail">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Type</th>
+<th>Detection modality</th>
+<th>Evidence required</th>
+<th>Typical confidence ceiling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Temporal</td>
+<td>PRECEDES / FOLLOWS</td>
+<td>M1</td>
+<td>2 events, reliable clocks</td>
+<td>0.95 (bounded by clock quality)</td>
+</tr>
+<tr>
+<td>Temporal</td>
+<td>CONCURRENT_WITH</td>
+<td>M1</td>
+<td>2 events within window</td>
+<td>0.90</td>
+</tr>
+<tr>
+<td>Temporal</td>
+<td>PERIODIC_WITH</td>
+<td>M1 + M5</td>
+<td>≥3 occurrences</td>
+<td>0.92</td>
+</tr>
+<tr>
+<td>Temporal</td>
+<td>ACCELERATING / DECELERATING</td>
+<td>M1 + M5</td>
+<td>Rate series</td>
+<td>0.85</td>
+</tr>
+<tr>
+<td>Structural</td>
+<td>SAME_ENTITY</td>
+<td>M2</td>
+<td>Resolved entity match</td>
+<td>0.99 (bounded by resolution confidence)</td>
+</tr>
+<tr>
+<td>Structural</td>
+<td>RELATED_ENTITY</td>
+<td>M2</td>
+<td>Graph path, k bounded</td>
+<td>0.95 decreasing with k</td>
+</tr>
+<tr>
+<td>Structural</td>
+<td>SHARED_ATTRIBUTE</td>
+<td>M2</td>
+<td>Matching distinguishing attribute</td>
+<td>0.97</td>
+</tr>
+<tr>
+<td>Structural</td>
+<td>PART_OF_PROCESS</td>
+<td>M2</td>
+<td>Shared process instance ID</td>
+<td>0.99</td>
+</tr>
+<tr>
+<td>Structural</td>
+<td>HIERARCHICAL</td>
+<td>M2</td>
+<td>Curated or derived hierarchy</td>
+<td>0.98</td>
+</tr>
+<tr>
+<td>Causal</td>
+<td>PLAUSIBLY_CAUSES</td>
+<td>M3</td>
+<td>Precedence + statistical test + assumptions</td>
+<td><strong>0.75 (capped)</strong></td>
+</tr>
+<tr>
+<td>Causal</td>
+<td>MEDIATES</td>
+<td>M3</td>
+<td>Chain with tested links</td>
+<td><strong>0.70 (capped)</strong></td>
+</tr>
+<tr>
+<td>Causal</td>
+<td>CONFOUNDED_BY</td>
+<td>M3</td>
+<td>Identified common cause</td>
+<td>0.80</td>
+</tr>
+<tr>
+<td>Causal</td>
+<td>AMPLIFIES / DAMPENS</td>
+<td>M3 + M5</td>
+<td>Interaction effect</td>
+<td><strong>0.70 (capped)</strong></td>
+</tr>
+<tr>
+<td>Semantic</td>
+<td>DESCRIBES</td>
+<td>M4</td>
+<td>Explicit reference or strong alignment</td>
+<td>0.90</td>
+</tr>
+<tr>
+<td>Semantic</td>
+<td>SEMANTICALLY_SIMILAR</td>
+<td>M4</td>
+<td>Embedding distance below threshold</td>
+<td><strong>0.65 (capped)</strong></td>
+</tr>
+<tr>
+<td>Semantic</td>
+<td>CONTRADICTS</td>
+<td>M4 + rules</td>
+<td>Logical inconsistency detected</td>
+<td>0.92</td>
+</tr>
+<tr>
+<td>Semantic</td>
+<td>ELABORATES</td>
+<td>M4</td>
+<td>Containment or extension relation</td>
+<td>0.85</td>
+</tr>
+<tr>
+<td>Statistical</td>
+<td>CO_ANOMALOUS</td>
+<td>M5</td>
+<td>Simultaneous deviation, baselines established</td>
+<td>0.88</td>
+</tr>
+<tr>
+<td>Statistical</td>
+<td>CORRELATED_SERIES</td>
+<td>M1 + M5</td>
+<td>Series association, FDR-corrected</td>
+<td>0.85</td>
+</tr>
+<tr>
+<td>Statistical</td>
+<td>COHORT_DIVERGENT</td>
+<td>M5</td>
+<td>Cohort baseline + deviation</td>
+<td>0.85</td>
+</tr>
+<tr>
+<td>Statistical</td>
+<td>CLUSTER_MEMBER</td>
+<td>M2 + M5</td>
+<td>Community detection result</td>
+<td>0.90</td>
+</tr>
+<tr>
+<td>Negative</td>
+<td>EXPECTED_ABSENT</td>
+<td>M1 + rules</td>
+<td>Expectation declared, window elapsed</td>
+<td>0.95</td>
+</tr>
+<tr>
+<td>Negative</td>
+<td>MUTUALLY_EXCLUSIVE_VIOLATED</td>
+<td>Rules</td>
+<td>Both events present</td>
+<td>0.99</td>
+</tr>
+<tr>
+<td>Negative</td>
+<td>SEQUENCE_BROKEN</td>
+<td>M1 (CEP)</td>
+<td>Pattern with negation matched</td>
+<td>0.96</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 38.</strong> <em>Relationship types with detection modalities and confidence ceilings. Three ceilings are deliberately capped below what a scoring function might otherwise produce: causal types because causality cannot be established observationally, and semantic similarity because embedding proximity is weak evidence of an actual relationship between specific instances. Capping is a design decision to prevent overconfidence in structurally uncertain inferences.</em></p>
+<h3 id="19.3.1-negative-relationships" tabindex="-1">19.3.1 Negative Relationships <a class="header-anchor" href="#19.3.1-negative-relationships">#</a></h3>
+<p>Negative relationships require explicit discussion because they invert the usual detection logic.</p>
+<p>Detecting that something happened is straightforward: an event arrives. Detecting that something <em>did not happen</em> requires:</p>
+<ol>
+<li><strong>A declared expectation.</strong> The system must know that event type B is expected within interval T of event type A. This is configuration, not discovery — negative relationships are the one category the framework cannot discover without prior declaration.</li>
+<li><strong>A timer.</strong> A registered expectation with a deadline, evaluated on expiry rather than on arrival.</li>
+<li><strong>Careful absence semantics.</strong> Absence must be distinguished from three alternatives: the event occurred but is late, the event occurred but its source is degraded, and the event occurred but was quarantined. Only the first is a genuine EXPECTED_ABSENT; the others are data quality findings.</li>
+</ol>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>The absence–degradation confound.</strong> This is the framework’s most dangerous ambiguity. If a source stops producing, every expectation dependent on it will fire as EXPECTED_ABSENT. In a clinical setting, this would report that thousands of medications were not administered. In a logistics setting, that every shipment failed to arrive.</p>
+<p>The framework requires that negative relationship detection be <strong>gated on source health</strong>: an EXPECTED_ABSENT relationship MUST NOT be emitted when the source that would have produced the expected event is in a degraded or quarantining state. This is why the volume-absence detection in <a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">Chapter 13</a> is described as the most operationally valuable ingestion metric.</p>
+</div>
+<h3 id="19.3.2-relationship-composition" tabindex="-1">19.3.2 Relationship Composition <a class="header-anchor" href="#19.3.2-relationship-composition">#</a></h3>
+<p>Relationships compose into chains and structures, and the framework supports higher-order correlation over them:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Structure</th>
+<th>Form</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Chain</strong></td>
+<td>A PRECEDES B PRECEDES C</td>
+<td>Candidate process trajectory or attack sequence</td>
+</tr>
+<tr>
+<td><strong>Convergence</strong></td>
+<td>A, B, C all PLAUSIBLY_CAUSE D</td>
+<td>Multi-factor contribution to an outcome</td>
+</tr>
+<tr>
+<td><strong>Divergence</strong></td>
+<td>A PLAUSIBLY_CAUSES B, C, D</td>
+<td>Common-cause cascade</td>
+</tr>
+<tr>
+<td><strong>Cycle</strong></td>
+<td>A → B → C → A</td>
+<td>Feedback loop, or an artifact of over-inference (must be flagged)</td>
+</tr>
+<tr>
+<td><strong>Community</strong></td>
+<td>Dense mutual SHARED_ATTRIBUTE</td>
+<td>Coordinated group — the fraud-ring signature</td>
+</tr>
+<tr>
+<td><strong>Star</strong></td>
+<td>Many events SAME_ENTITY as one hub</td>
+<td>Entity under concentrated activity</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 39.</strong> <em>Relationship composition structures. Cycles warrant particular attention: a genuine feedback loop is a valuable finding, but cycles are also the characteristic artifact of over-inference in causal correlation. The framework requires cycles in causal relationship graphs to be flagged for review rather than accepted, since causal cycles in event time are frequently impossible and indicate a detection error.</em></p>
+<h2 id="19.4-relationship-confidence-semantics" tabindex="-1">19.4 Relationship Confidence Semantics <a class="header-anchor" href="#19.4-relationship-confidence-semantics">#</a></h2>
+<p>Because the taxonomy is shared across rules, models, and human consumers, the <em>meaning</em> of a confidence score must be consistent. The framework specifies:</p>
+<blockquote>
+<p>A correlation of type <em>T</em> with confidence <em>c</em> asserts that, among historical correlations of type <em>T</em> assigned confidence in the neighbourhood of <em>c</em> and for which ground truth was subsequently established, approximately a proportion <em>c</em> were confirmed correct.</p>
+</blockquote>
+<p>This is a <strong>frequentist calibration claim</strong>, and it has three important consequences:</p>
+<p><strong>It is verifiable.</strong> The claim can be tested by comparing predicted confidence against realized outcomes and plotting a reliability diagram. A well-calibrated system’s diagram lies on the diagonal.</p>
+<p><strong>It requires ground truth.</strong> For correlation types where outcomes are never observed, confidence cannot be calibrated and must be labelled as <strong>uncalibrated</strong>. The framework requires uncalibrated confidence to be visually and structurally distinguished from calibrated confidence in every consumer interface, and prohibits uncalibrated correlations from gating autonomy levels 3 and above.</p>
+<p><strong>It is type-specific.</strong> A confidence of 0.85 on a SAME_ENTITY relationship and a confidence of 0.85 on a PLAUSIBLY_CAUSES relationship are calibrated against different populations and are not interchangeable in a decision rule. Rules that compare confidences across types must be authored with this in mind.</p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Event time is established at business occurrence and never revised</strong>, and all correlation uses it. Fourteen lifecycle states track an event from occurrence to purge.</li>
+<li><strong>Uncorrelated events are retained</strong>, because they may correlate later, because their expected-but-missing counterparts are frequently the finding, and because discarding them biases behavioural baselines.</li>
+<li><strong>Twenty-four relationship types span six categories.</strong> A shared explicit taxonomy is what allows a correlation to be interpreted consistently by rules, models, analysts, and auditors.</li>
+<li><strong>Negative relationships — the expected event that did not occur — are frequently the most valuable</strong> and are the one category requiring prior declaration rather than discovery.</li>
+<li><strong>The absence–degradation confound is the framework’s most dangerous ambiguity.</strong> Negative relationship detection MUST be gated on source health, or a source outage will report mass operational failure.</li>
+<li><strong>Causal and semantic-similarity confidence is deliberately capped</strong> below what scoring functions would produce, because causality cannot be established observationally and embedding proximity is weak evidence about specific instances.</li>
+<li><strong>Cycles in causal relationship graphs must be flagged rather than accepted</strong>, since they are the characteristic artifact of over-inference.</li>
+<li><strong>Confidence is a verifiable frequentist calibration claim</strong>, which means uncalibrated correlations must be visually distinguished and prohibited from gating higher autonomy levels, and confidences are not comparable across relationship types.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/"><span>← Previous</span><b>18. Metadata and Data Lineage</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/"><span>Next →</span><b>20. Autonomous Decision Support</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#19.1-event-lifecycle">19.1 Event Lifecycle #</a><a href="#19.2-relationship-taxonomy">19.2 Relationship Taxonomy #</a><a href="#19.3-relationship-types-in-detail">19.3 Relationship Types in Detail #</a><a href="#19.4-relationship-confidence-semantics">19.4 Relationship Confidence Semantics #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-2/19-event-relationships/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

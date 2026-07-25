@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en" data-part="p2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9. Core Design Principles · Data Swimming Pool</title>
+<meta name="description" content="9. Core Design Principles --- Ten principles govern the Data Swimming Pool framework. They are stated normatively using RFC 2119 conventions MUST , SHOULD , MAY , applicable to the">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="9. Core Design Principles — Data Swimming Pool">
+<meta property="og:description" content="9. Core Design Principles --- Ten principles govern the Data Swimming Pool framework. They are stated normatively using RFC 2119 conventions MUST , SHOULD , MAY , applicable to the">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" open style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/" class="on">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part II — The Data Swimming Pool</span></p>
+    <h1>9. Core Design Principles</h1>
+    <p class="cmeta"><span class="chip">🏊 Part II — The Data Swimming Pool</span><span class="dot">·</span>9 min read</p>
+  </header>
+  <div class="prose">
+<h1>9. Core Design Principles</h1>
+<hr>
+<p>Ten principles govern the Data Swimming Pool framework. They are stated normatively using RFC 2119 conventions (<strong>MUST</strong>, <strong>SHOULD</strong>, <strong>MAY</strong>), applicable to the proposed framework only. Each principle is stated, justified, given an architectural implication, and paired with the failure mode that results from violating it.</p>
+<div class="figure"><pre class="mermaid">mindmap
+  root((&quot;Ten Core&lt;br/&gt;Design&lt;br/&gt;Principles&quot;))
+    Structural
+      P1 Correlation is Infrastructure
+      P2 Relationships are First-Class Assets
+      P3 Bounded Scope by Construction
+    Temporal
+      P4 Continuous over Interrogative
+      P5 Event Time is Canonical
+    Epistemic
+      P6 Confidence over Assertion
+      P7 Evidence or Silence
+    Governance
+      P8 Policy at Every Boundary
+      P9 Graduated Autonomy
+    Adaptive
+      P10 Outcomes Close the Loop
+</pre></div>
+<p><strong>Figure 9.</strong> <em>The ten core design principles, grouped into five thematic clusters. Structural principles define what the architecture is; temporal principles define when it acts; epistemic principles define what it may claim; governance principles define what it is permitted to do; the adaptive principle defines how it improves.</em></p>
+<hr>
+<h2 id="principle-1-%E2%80%94-correlation-is-infrastructure" tabindex="-1">Principle 1 — Correlation Is Infrastructure <a class="header-anchor" href="#principle-1-%E2%80%94-correlation-is-infrastructure">#</a></h2>
+<div class="cal cal-success">
+<p class="cal-label"><span class="cal-dot">✓</span>In plain English</p>
+<p><strong>P1.</strong> Cross-domain correlation MUST be provided as platform infrastructure with a named owner, a service level objective, and a budget. It MUST NOT be delegated to consuming applications.</p>
+</div>
+<p><strong>Justification.</strong> When correlation lives in applications, it is rebuilt per application, with inconsistent methodology, no shared provenance, and no reuse. This is the correlation tax of <a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">Chapter 5</a>. Infrastructure status is what converts a recurring cost into a one-time investment.</p>
+<p><strong>Architectural implication.</strong> A dedicated Correlation Engine tier (<a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">Chapter 14</a>) exists between the circulation layer and the intelligence tier. Applications consume correlations; they do not compute them.</p>
+<p><strong>Failure mode if violated.</strong> The framework degenerates into a conventional streaming platform with a graph database attached, and every consumer resumes paying the correlation tax.</p>
+<hr>
+<h2 id="principle-2-%E2%80%94-relationships-are-first-class-assets" tabindex="-1">Principle 2 — Relationships Are First-Class Assets <a class="header-anchor" href="#principle-2-%E2%80%94-relationships-are-first-class-assets">#</a></h2>
+<div class="cal cal-success">
+<p class="cal-label"><span class="cal-dot">✓</span>In plain English</p>
+<p><strong>P2.</strong> A discovered relationship MUST be persisted as a typed, addressable, versioned artifact carrying confidence, evidence, provenance, temporal validity, and policy classification. Relationships MUST NOT exist only as transient query results.</p>
+</div>
+<p><strong>Justification.</strong> A relationship that is not persisted cannot be reused, audited, contested, corrected, or improved. Persisting it converts institutional knowledge from tacit to explicit.</p>
+<p><strong>Architectural implication.</strong> The correlation store (<a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">Chapter 17</a>) is a system of record with the same operational standing as the lakehouse — backed up, versioned, access-controlled, and subject to retention policy.</p>
+<p><strong>Failure mode if violated.</strong> Relationship amnesia persists. The system computes correlations expensively and forgets them, which is worse than not computing them because the cost is incurred without the compounding benefit.</p>
+<hr>
+<h2 id="principle-3-%E2%80%94-bounded-scope-by-construction" tabindex="-1">Principle 3 — Bounded Scope by Construction <a class="header-anchor" href="#principle-3-%E2%80%94-bounded-scope-by-construction">#</a></h2>
+<div class="cal cal-success">
+<p class="cal-label"><span class="cal-dot">✓</span>In plain English</p>
+<p><strong>P3.</strong> Correlation scope MUST be explicitly declared, budgeted, and reviewable. The architecture MUST reject unbounded all-pairs correlation. Every correlation scope MUST specify its participating domains, its temporal window, its entity classes, and its computational budget.</p>
+</div>
+<p><strong>Justification.</strong> Naïve correlation is O(n²) in event count. At one million events per hour, all-pairs evaluation is 10¹² comparisons per hour — economically impossible and, more importantly, statistically catastrophic. At conventional significance thresholds, a system performing 10¹² tests will surface billions of spurious “significant” relationships. <strong>Unbounded correlation does not merely cost too much; it produces noise indistinguishable from signal.</strong></p>
+<p><strong>Architectural implication.</strong> Correlation scopes are declarative configuration artifacts, version-controlled, reviewed, and cost-attributed. The engine refuses to execute an undeclared scope. Partitioning strategies (<a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">Chapter 26</a>) enforce the bound physically.</p>
+<p><strong>Failure mode if violated.</strong> Simultaneous cost explosion and precision collapse — the two failure modes that would most rapidly discredit the framework.</p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>This is the most important principle in the framework.</strong> An implementation that gets everything else right and this wrong will fail. An implementation that gets only this right will at least fail cheaply.</p>
+</div>
+<hr>
+<h2 id="principle-4-%E2%80%94-continuous-over-interrogative" tabindex="-1">Principle 4 — Continuous over Interrogative <a class="header-anchor" href="#principle-4-%E2%80%94-continuous-over-interrogative">#</a></h2>
+<div class="cal cal-success">
+<p class="cal-label"><span class="cal-dot">✓</span>In plain English</p>
+<p><strong>P4.</strong> The system MUST evaluate declared correlation scopes continuously, independent of query activity. High-value conditions MUST be detected without a human having asked.</p>
+</div>
+<p><strong>Justification.</strong> <a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">Table 4</a> established that detection latency exceeds the window of actionability across essentially every domain, because evaluation is triggered by human curiosity rather than by data arrival. Continuous evaluation is what closes that gap.</p>
+<p><strong>Architectural implication.</strong> Stateful stream processing is the primary execution model (<a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">Chapter 11</a>). Batch is a complement for wide-window and retrospective correlation (<a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">Chapter 12</a>), not the default.</p>
+<p><strong>Failure mode if violated.</strong> The system becomes an expensive query accelerator. It answers faster but still only answers what it is asked, retaining the fundamental latency problem.</p>
+<hr>
+<h2 id="principle-5-%E2%80%94-event-time-is-canonical" tabindex="-1">Principle 5 — Event Time Is Canonical <a class="header-anchor" href="#principle-5-%E2%80%94-event-time-is-canonical">#</a></h2>
+<div class="cal cal-success">
+<p class="cal-label"><span class="cal-dot">✓</span>In plain English</p>
+<p><strong>P5.</strong> All correlation MUST be performed in event time, not processing time. Every canonical event MUST carry event time, ingestion time, and a source clock quality indicator. Late-arriving data MUST be handled explicitly, and correlations MUST be revisable upon late arrival.</p>
+</div>
+<p><strong>Justification.</strong> Correlating in processing time correlates the behaviour of the <em>network and the pipeline</em>, not the behaviour of the <em>business</em>. A sensor reading delayed by a connectivity outage will appear temporally adjacent to unrelated events and temporally distant from its true companions. Processing-time correlation is systematically and invisibly wrong.</p>
+<p><strong>Architectural implication.</strong> Watermark-based windowing per the Dataflow model [19], with allowed-lateness configuration per correlation scope and a defined revision protocol for correlations invalidated by late arrival.</p>
+<p><strong>Failure mode if violated.</strong> Silent, systematic false correlation that is extremely difficult to detect because the system’s outputs remain superficially plausible.</p>
+<hr>
+<h2 id="principle-6-%E2%80%94-confidence-over-assertion" tabindex="-1">Principle 6 — Confidence over Assertion <a class="header-anchor" href="#principle-6-%E2%80%94-confidence-over-assertion">#</a></h2>
+<div class="cal cal-success">
+<p class="cal-label"><span class="cal-dot">✓</span>In plain English</p>
+<p><strong>P6.</strong> Every correlation MUST carry a calibrated confidence score with a stated interpretation. The system MUST NOT assert unqualified relationships. Confidence MUST be validated against ground truth where available, and calibration drift MUST trigger recalibration.</p>
+</div>
+<p><strong>Justification.</strong> Lamport’s constraint [5] is fundamental: cross-system causality cannot be established, only hypothesized. A system that asserts relationships without qualification is asserting something it cannot know. Worse, uncalibrated confidence is arguably more dangerous than no confidence, because it invites trust it has not earned.</p>
+<p><strong>Architectural implication.</strong> A confidence scoring subsystem within the Correlation Engine (<a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">Chapter 14</a>) with defined semantics per modality, calibration against labelled outcomes, and reliability-diagram monitoring.</p>
+<p><strong>Failure mode if violated.</strong> Downstream consumers treat all correlations as equally valid, spurious relationships propagate into decisions, and the system’s credibility collapses after the first well-publicized false positive.</p>
+<hr>
+<h2 id="principle-7-%E2%80%94-evidence-or-silence" tabindex="-1">Principle 7 — Evidence or Silence <a class="header-anchor" href="#principle-7-%E2%80%94-evidence-or-silence">#</a></h2>
+<div class="cal cal-success">
+<p class="cal-label"><span class="cal-dot">✓</span>In plain English</p>
+<p><strong>P7.</strong> Every insight, alert, prediction, recommendation, and action MUST resolve to the specific canonical events, correlations, models, and parameters that produced it. Any output whose evidence chain cannot be reconstructed MUST be suppressed rather than emitted.</p>
+</div>
+<p><strong>Justification.</strong> Three converging requirements. Regulatory frameworks increasingly mandate explainability and the right to contest automated decisions. Operational trust depends on the ability to interrogate a surprising conclusion. And AI-generated outputs are worthless as decision inputs unless attributable.</p>
+<p>The principle is deliberately strict: <strong>silence is preferable to an unattributable conclusion.</strong> An organization that cannot explain why it took an action is exposed regardless of whether the action was correct.</p>
+<p><strong>Architectural implication.</strong> Lineage capture is mandatory and inline (<a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">Chapter 18</a>), not sampled or asynchronous. The emission path checks evidence completeness before release.</p>
+<p><strong>Failure mode if violated.</strong> Unauditable automated decisions — a regulatory, reputational, and operational liability that scales with system adoption.</p>
+<hr>
+<h2 id="principle-8-%E2%80%94-policy-at-every-boundary" tabindex="-1">Principle 8 — Policy at Every Boundary <a class="header-anchor" href="#principle-8-%E2%80%94-policy-at-every-boundary">#</a></h2>
+<div class="cal cal-success">
+<p class="cal-label"><span class="cal-dot">✓</span>In plain English</p>
+<p><strong>P8.</strong> Policy MUST be evaluated at five boundaries: ingestion, correlation, inference, action, and access. Correlation-time policy MUST be capable of prohibiting the formation of a relationship, not merely the viewing of it.</p>
+</div>
+<p><strong>Justification.</strong> <a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">Chapter 5</a> established that access-time governance cannot express purpose and inference constraints. A correlation between protected health data and financial behaviour may be statistically valid, technically discoverable, and legally prohibited. Preventing its <em>viewing</em> is insufficient; the architecture must be able to prevent its <em>formation</em>.</p>
+<p><strong>Architectural implication.</strong> A policy decision point invoked at each boundary, with correlation scopes carrying explicit purpose declarations and a policy engine capable of denying scope execution. See <a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">Chapter 24</a> and <a href="/data-swimming-pool-whitepaper/part-3/25-governance/">Chapter 25</a>.</p>
+<p><strong>Failure mode if violated.</strong> The system’s effectiveness becomes its compliance exposure. Every improvement in correlation capability enlarges the surface of impermissible inference.</p>
+<hr>
+<h2 id="principle-9-%E2%80%94-graduated-autonomy" tabindex="-1">Principle 9 — Graduated Autonomy <a class="header-anchor" href="#principle-9-%E2%80%94-graduated-autonomy">#</a></h2>
+<div class="cal cal-success">
+<p class="cal-label"><span class="cal-dot">✓</span>In plain English</p>
+<p><strong>P9.</strong> Machine decision authority MUST be expressed on the Autonomy Ladder (L0–L5). Each level MUST specify its reversibility requirement, its evidentiary standard, its human control point, and its escalation path. Autonomy level MUST be assigned per action class, MUST be independently auditable, and MUST be revocable at runtime without redeployment.</p>
+</div>
+<p><strong>Justification.</strong> Autonomy is not a binary property of a system; it is a per-decision property. The same platform may appropriately auto-suppress a duplicate alert (fully reversible, low stakes) and must not auto-decline a mortgage application (materially irreversible, high stakes, regulated). Treating autonomy as a system-level setting forces an unacceptable choice between paralysis and recklessness.</p>
+<p><strong>Architectural implication.</strong> The Autonomy Ladder (<a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">Chapter 20</a>) is enforced in the action layer, with runtime-adjustable levels, mandatory reversibility metadata, and a kill switch per action class.</p>
+<p><strong>Failure mode if violated.</strong> Either the system is too timid to deliver value, or it takes an irreversible action it should not have. The second failure ends programmes.</p>
+<hr>
+<h2 id="principle-10-%E2%80%94-outcomes-close-the-loop" tabindex="-1">Principle 10 — Outcomes Close the Loop <a class="header-anchor" href="#principle-10-%E2%80%94-outcomes-close-the-loop">#</a></h2>
+<div class="cal cal-success">
+<p class="cal-label"><span class="cal-dot">✓</span>In plain English</p>
+<p><strong>P10.</strong> Decision outcomes MUST be captured and fed back as supervision signal. The system MUST measure whether its correlations predicted reality and MUST adjust confidence models accordingly. Correlations that consistently fail to predict outcomes MUST be deprecated automatically.</p>
+</div>
+<p><strong>Justification.</strong> Without outcome feedback, a correlation system cannot distinguish genuine relationships from persistent artifacts of its own methodology. Feedback is what makes the system’s accuracy improve rather than drift.</p>
+<p><strong>Architectural implication.</strong> An outcome capture path from the action layer back to the Correlation Engine, an experiment framework for controlled comparison, and automated deprecation of chronically under-performing correlation types.</p>
+<p><strong>Failure mode if violated.</strong> Confidence scores become decoration. The system’s precision degrades silently as the business changes, and nobody notices until a significant failure.</p>
+<hr>
+<h2 id="9.1-principles-summary" tabindex="-1">9.1 Principles Summary <a class="header-anchor" href="#9.1-principles-summary">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Principle</th>
+<th>Cluster</th>
+<th>Primary architectural realization</th>
+<th>Failure mode if violated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>Correlation Is Infrastructure</td>
+<td>Structural</td>
+<td>Dedicated Correlation Engine tier</td>
+<td>Correlation tax returns</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Relationships Are First-Class Assets</td>
+<td>Structural</td>
+<td>Correlation store as system of record</td>
+<td>Relationship amnesia persists</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>Bounded Scope by Construction</td>
+<td>Structural</td>
+<td>Declarative, budgeted correlation scopes</td>
+<td>Cost explosion and precision collapse</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>Continuous over Interrogative</td>
+<td>Temporal</td>
+<td>Stateful stream processing as default</td>
+<td>Expensive query accelerator</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>Event Time Is Canonical</td>
+<td>Temporal</td>
+<td>Watermark windowing, revision protocol</td>
+<td>Silent systematic false correlation</td>
+</tr>
+<tr>
+<td>P6</td>
+<td>Confidence over Assertion</td>
+<td>Epistemic</td>
+<td>Calibrated scoring with drift monitoring</td>
+<td>Spurious correlations trusted equally</td>
+</tr>
+<tr>
+<td>P7</td>
+<td>Evidence or Silence</td>
+<td>Epistemic</td>
+<td>Mandatory inline lineage; suppress if incomplete</td>
+<td>Unauditable automated decisions</td>
+</tr>
+<tr>
+<td>P8</td>
+<td>Policy at Every Boundary</td>
+<td>Governance</td>
+<td>Five-boundary policy decision points</td>
+<td>Effectiveness becomes exposure</td>
+</tr>
+<tr>
+<td>P9</td>
+<td>Graduated Autonomy</td>
+<td>Governance</td>
+<td>Autonomy Ladder with runtime revocation</td>
+<td>Paralysis or irreversible error</td>
+</tr>
+<tr>
+<td>P10</td>
+<td>Outcomes Close the Loop</td>
+<td>Adaptive</td>
+<td>Outcome capture and auto-deprecation</td>
+<td>Silent precision decay</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 11.</strong> <em>The ten core design principles with their architectural realizations and violation consequences. P3 is regarded by the author as the most critical; P7 as the most frequently compromised under delivery pressure.</em></p>
+<h2 id="9.2-principle-conflicts-and-resolution" tabindex="-1">9.2 Principle Conflicts and Resolution <a class="header-anchor" href="#9.2-principle-conflicts-and-resolution">#</a></h2>
+<p>Principles conflict in practice. The framework specifies resolution precedence:</p>
+<p><strong>P3 (Bounded Scope) versus P4 (Continuous Evaluation).</strong> Continuous evaluation of a broad scope is expensive. <strong>Resolution: P3 prevails.</strong> Narrow the scope rather than reduce evaluation frequency, because a narrow scope evaluated continuously beats a broad scope evaluated rarely on both cost and value.</p>
+<p><strong>P6 (Confidence) versus P7 (Evidence or Silence).</strong> A low-confidence correlation with complete evidence may still be worth surfacing. <strong>Resolution: both must hold independently.</strong> Evidence completeness is a gate; confidence is a graded attribute communicated to the consumer. Low confidence plus complete evidence is emitted with an explicit qualification. Any confidence plus incomplete evidence is suppressed.</p>
+<p><strong>P8 (Policy) versus P4 (Continuous Evaluation).</strong> Policy evaluation at correlation time adds latency to the hot path. <strong>Resolution: P8 prevails absolutely.</strong> Policy decisions are cached and pre-compiled to minimize cost, but a correlation MUST NOT form while its policy decision is pending.</p>
+<p><strong>P9 (Graduated Autonomy) versus business demand for speed.</strong> Stakeholders will request higher autonomy levels than evidence supports. <strong>Resolution: autonomy level advances only on demonstrated precision</strong> against a pre-registered threshold, measured over a defined period, with the measurement owned by a party independent of the requesting function.</p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Ten normative principles govern the framework</strong>, clustered as structural, temporal, epistemic, governance, and adaptive.</li>
+<li><strong>P3 — Bounded Scope by Construction — is the most critical.</strong> Unbounded correlation fails on both cost and statistical validity simultaneously; an implementation that violates it will not recover.</li>
+<li><strong>Event time is canonical because processing-time correlation is systematically and invisibly wrong</strong>, correlating pipeline behaviour rather than business behaviour.</li>
+<li><strong>Evidence or Silence is deliberately strict:</strong> an unattributable conclusion MUST be suppressed rather than emitted, regardless of its apparent value.</li>
+<li><strong>Policy must be enforceable at correlation time</strong>, capable of preventing a relationship from forming — not merely preventing it from being viewed.</li>
+<li><strong>Autonomy is a per-decision property</strong>, expressed on a six-level ladder with explicit reversibility, evidentiary, and escalation requirements at each level.</li>
+<li><strong>Principle conflicts have stated resolution precedence</strong>, with bounded scope and policy enforcement taking absolute priority over evaluation breadth and latency.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/"><span>← Previous</span><b>8. Introducing Data Swimming Pool</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/"><span>Next →</span><b>10. System Architecture</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#principle-1-%E2%80%94-correlation-is-infrastructure">Principle 1 — Correlation Is Infrastructure #</a><a href="#principle-2-%E2%80%94-relationships-are-first-class-assets">Principle 2 — Relationships Are First-Class Assets #</a><a href="#principle-3-%E2%80%94-bounded-scope-by-construction">Principle 3 — Bounded Scope by Construction #</a><a href="#principle-4-%E2%80%94-continuous-over-interrogative">Principle 4 — Continuous over Interrogative #</a><a href="#principle-5-%E2%80%94-event-time-is-canonical">Principle 5 — Event Time Is Canonical #</a><a href="#principle-6-%E2%80%94-confidence-over-assertion">Principle 6 — Confidence over Assertion #</a><a href="#principle-7-%E2%80%94-evidence-or-silence">Principle 7 — Evidence or Silence #</a><a href="#principle-8-%E2%80%94-policy-at-every-boundary">Principle 8 — Policy at Every Boundary #</a><a href="#principle-9-%E2%80%94-graduated-autonomy">Principle 9 — Graduated Autonomy #</a><a href="#principle-10-%E2%80%94-outcomes-close-the-loop">Principle 10 — Outcomes Close the Loop #</a><a href="#9.1-principles-summary">9.1 Principles Summary #</a><a href="#9.2-principle-conflicts-and-resolution">9.2 Principle Conflicts and Resolution #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en" data-part="p2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10. System Architecture · Data Swimming Pool</title>
+<meta name="description" content="10. System Architecture --- This chapter specifies the reference architecture. It defines seven layers and two cross-cutting planes, states each layer&#39;s responsibility and interfac">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="10. System Architecture — Data Swimming Pool">
+<meta property="og:description" content="10. System Architecture --- This chapter specifies the reference architecture. It defines seven layers and two cross-cutting planes, states each layer&#39;s responsibility and interfac">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" open style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/" class="on">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part II — The Data Swimming Pool</span></p>
+    <h1>10. System Architecture</h1>
+    <p class="cmeta"><span class="chip">🏊 Part II — The Data Swimming Pool</span><span class="dot">·</span>5 min read</p>
+  </header>
+  <div class="prose">
+<h1>10. System Architecture</h1>
+<hr>
+<p>This chapter specifies the reference architecture. It defines seven layers and two cross-cutting planes, states each layer’s responsibility and interface contract, identifies candidate technologies, and describes the principal data flows. Subsequent chapters (<a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11</a>–<a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21</a>) elaborate individual layers.</p>
+<h2 id="10.1-layered-reference-architecture" tabindex="-1">10.1 Layered Reference Architecture <a class="header-anchor" href="#10.1-layered-reference-architecture">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph L0[&quot;LAYER 0 — SOURCE PLANE&quot;]
+        direction LR
+        SA[&quot;Transactional&lt;br/&gt;OLTP · CDC&quot;]
+        SB[&quot;Operational&lt;br/&gt;ERP · CRM · ITSM&quot;]
+        SC[&quot;Telemetry&lt;br/&gt;IoT · Logs · Metrics&quot;]
+        SD[&quot;Digital&lt;br/&gt;Web · Mobile · API&quot;]
+        SE[&quot;External&lt;br/&gt;Market · Partner · Registry&quot;]
+        SF[&quot;Unstructured&lt;br/&gt;Docs · Voice · Image&quot;]
+    end
+
+    subgraph L1[&quot;LAYER 1 — INGESTION LAYER&quot;]
+        direction LR
+        I1[&quot;Connectors&lt;br/&gt;CDC · batch · stream · pull&quot;]
+        I2[&quot;Contract&lt;br/&gt;Validation&quot;]
+        I3[&quot;Canonicalization&lt;br/&gt;+ Entity Resolution&quot;]
+        I4[&quot;Classification&lt;br/&gt;+ Quarantine&quot;]
+    end
+
+    subgraph L2[&quot;LAYER 2 — CIRCULATION LAYER&quot;]
+        direction LR
+        C1[&quot;Streaming Substrate&lt;br/&gt;partitioned log · replay&quot;]
+        C2[&quot;Batch Substrate&lt;br/&gt;lakehouse · medallion&quot;]
+        C3[&quot;Reconciliation&lt;br/&gt;Protocol&quot;]
+    end
+
+    subgraph L3[&quot;LAYER 3 — CORRELATION ENGINE&quot;]
+        direction LR
+        R1[&quot;Temporal&quot;]
+        R2[&quot;Entity&quot;]
+        R3[&quot;Causal&quot;]
+        R4[&quot;Semantic&quot;]
+        R5[&quot;Behavioural&quot;]
+        R6[&quot;Confidence&lt;br/&gt;Scoring&quot;]
+        R7[&quot;Scope&lt;br/&gt;Governor&quot;]
+    end
+
+    subgraph L4[&quot;LAYER 4 — INTELLIGENCE TIER&quot;]
+        direction LR
+        T1[&quot;Rules Engine&lt;br/&gt;deterministic&quot;]
+        T2[&quot;AI Insight Engine&lt;br/&gt;ML · CEP · GenAI&quot;]
+        T3[&quot;Knowledge Graph&lt;br/&gt;living semantic layer&quot;]
+    end
+
+    subgraph L5[&quot;LAYER 5 — DECISION &amp; ACTION LAYER&quot;]
+        direction LR
+        D1[&quot;Insight&lt;br/&gt;Objects&quot;]
+        D2[&quot;Alert&lt;br/&gt;Pipeline&quot;]
+        D3[&quot;Recommendation&lt;br/&gt;Service&quot;]
+        D4[&quot;Autonomy&lt;br/&gt;Controller&quot;]
+    end
+
+    subgraph L6[&quot;LAYER 6 — CONSUMPTION PLANE&quot;]
+        direction LR
+        U1[&quot;Human&lt;br/&gt;UI · BI · Copilot&quot;]
+        U2[&quot;System&lt;br/&gt;API · Webhook · Workflow&quot;]
+        U3[&quot;Agent&lt;br/&gt;MCP · Tool-use&quot;]
+    end
+
+    subgraph PM[&quot;METADATA PLANE&quot;]
+        direction TB
+        M1[&quot;Catalog · Schema Registry&quot;]
+        M2[&quot;Lineage Graph&quot;]
+        M3[&quot;Semantic Ontology&quot;]
+        M4[&quot;Provenance Ledger&quot;]
+    end
+
+    subgraph PG[&quot;GOVERNANCE PLANE&quot;]
+        direction TB
+        G1[&quot;Policy Decision Point&quot;]
+        G2[&quot;Identity · AuthZ&quot;]
+        G3[&quot;Privacy · Purpose Binding&quot;]
+        G4[&quot;Audit · Observability&quot;]
+    end
+
+    L0 --&gt; L1 --&gt; L2 --&gt; L3 --&gt; L4 --&gt; L5 --&gt; L6
+    L5 -.outcome feedback.-&gt; L3
+    L4 -.enrichment.-&gt; L2
+    PM -.describes.- L1
+    PM -.describes.- L2
+    PM -.describes.- L3
+    PM -.describes.- L4
+    PM -.describes.- L5
+    PG -.enforces.- L1
+    PG -.enforces.- L3
+    PG -.enforces.- L4
+    PG -.enforces.- L5
+    PG -.enforces.- L6
+
+    classDef src fill:#1b2f3d,stroke:#5b8fb0,stroke-width:1.5px,color:#e6f2fa
+    classDef ing fill:#123a4d,stroke:#3d9dc4,stroke-width:1.5px,color:#e8f6fc
+    classDef cir fill:#0d4159,stroke:#22b3d6,stroke-width:2px,color:#eaf9ff
+    classDef cor fill:#0a5570,stroke:#3fd0f0,stroke-width:2.5px,color:#ffffff
+    classDef intl fill:#14415c,stroke:#4fb8d8,stroke-width:1.5px,color:#eaf6fb
+    classDef dec fill:#3d3313,stroke:#d4a636,stroke-width:1.5px,color:#fff8e6
+    classDef con fill:#233240,stroke:#7f9db5,stroke-width:1.5px,color:#e8f0f7
+    classDef meta fill:#183028,stroke:#4caf7d,stroke-width:1.5px,color:#e6fff2
+    classDef gov fill:#3a2540,stroke:#a878c0,stroke-width:1.5px,color:#f6eaff
+    class L0,SA,SB,SC,SD,SE,SF src
+    class L1,I1,I2,I3,I4 ing
+    class L2,C1,C2,C3 cir
+    class L3,R1,R2,R3,R4,R5,R6,R7 cor
+    class L4,T1,T2,T3 intl
+    class L5,D1,D2,D3,D4 dec
+    class L6,U1,U2,U3 con
+    class PM,M1,M2,M3,M4 meta
+    class PG,G1,G2,G3,G4 gov
+</pre></div>
+<p><strong>Figure 10.</strong> <em>Data Swimming Pool layered reference architecture. Seven horizontal layers carry data from source to consumption. Two vertical planes — metadata and governance — intersect every layer. Two feedback paths are architecturally significant: decision outcomes return to the Correlation Engine as supervision signal (P10), and intelligence-tier enrichments are written back into the circulation layer for reuse.</em></p>
+<h2 id="10.2-layer-responsibilities" tabindex="-1">10.2 Layer Responsibilities <a class="header-anchor" href="#10.2-layer-responsibilities">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Responsibility</th>
+<th>MUST NOT do</th>
+<th>Candidate technologies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>L0 — Source</strong></td>
+<td>Produce facts in native form; expose change feeds</td>
+<td>Be modified to accommodate the pool</td>
+<td>Existing enterprise systems</td>
+</tr>
+<tr>
+<td><strong>L1 — Ingestion</strong></td>
+<td>Connect, validate against contract, canonicalize, resolve entities, classify, quarantine</td>
+<td>Apply business logic or transformation beyond canonicalization</td>
+<td>Debezium, Kafka Connect, Airbyte, Fivetran, custom SDKs</td>
+</tr>
+<tr>
+<td><strong>L2 — Circulation</strong></td>
+<td>Durable, replayable, ordered transport; unified batch/stream persistence; reconciliation</td>
+<td>Interpret domain semantics</td>
+<td>Kafka, Pulsar, Kinesis; Iceberg, Delta Lake, Hudi</td>
+</tr>
+<tr>
+<td><strong>L3 — Correlation</strong></td>
+<td>Discover, score, persist, expire relationships within declared scopes</td>
+<td>Exceed declared scope; assert causality; emit without confidence</td>
+<td>Flink, Spark Structured Streaming, Esper, custom operators</td>
+</tr>
+<tr>
+<td><strong>L4 — Intelligence</strong></td>
+<td>Deterministic rules, ML inference, generative reasoning, graph maintenance</td>
+<td>Bypass the correlation substrate to re-derive relationships</td>
+<td>Drools, OPA; MLflow, feature stores; Neo4j, TigerGraph; vector DBs; LLM gateways</td>
+</tr>
+<tr>
+<td><strong>L5 — Decision &amp; Action</strong></td>
+<td>Compose Insight Objects, correlate and suppress alerts, enforce Autonomy Ladder</td>
+<td>Take action above its assigned autonomy level</td>
+<td>Temporal, Camunda, custom controllers</td>
+</tr>
+<tr>
+<td><strong>L6 — Consumption</strong></td>
+<td>Deliver to humans, systems, and agents with permission enforcement</td>
+<td>Cache correlations without honouring expiry</td>
+<td>BI tools, APIs, MCP servers, notification services</td>
+</tr>
+<tr>
+<td><strong>P-Meta — Metadata</strong></td>
+<td>Catalog, lineage, semantics, provenance</td>
+<td>Store instance-level correlations (that is L3/L4)</td>
+<td>OpenLineage, DataHub, Collibra, OpenMetadata</td>
+</tr>
+<tr>
+<td><strong>P-Gov — Governance</strong></td>
+<td>Policy decisions at five boundaries, identity, purpose binding, audit</td>
+<td>Be advisory rather than enforcing</td>
+<td>OPA/Rego, Cedar, IAM, SIEM</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 12.</strong> <em>Layer responsibilities, prohibitions, and candidate technologies. The “MUST NOT do” column is as architecturally load-bearing as the responsibility column; most architectural erosion occurs when a layer quietly absorbs an adjacent layer’s concerns.</em></p>
+<h2 id="10.3-component-interaction-topology" tabindex="-1">10.3 Component Interaction Topology <a class="header-anchor" href="#10.3-component-interaction-topology">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart LR
+    subgraph WRITE[&quot;Write Path — continuous&quot;]
+        direction TB
+        W1[&quot;Source event&quot;] --&gt; W2[&quot;Connector&quot;]
+        W2 --&gt; W3{&quot;Contract&lt;br/&gt;valid?&quot;}
+        W3 --&gt;|no| WQ[&quot;Quarantine&lt;br/&gt;+ notify owner&quot;]
+        W3 --&gt;|yes| W4[&quot;Canonicalize&quot;]
+        W4 --&gt; W5[&quot;Resolve entities&quot;]
+        W5 --&gt; W6[&quot;Classify + tag policy&quot;]
+        W6 --&gt; W7[(&quot;Circulation log&quot;)]
+        W7 --&gt; W8[&quot;Correlation operators&lt;br/&gt;(per declared scope)&quot;]
+        W8 --&gt; W9{&quot;Policy&lt;br/&gt;permits?&quot;}
+        W9 --&gt;|no| WD[&quot;Deny + audit&quot;]
+        W9 --&gt;|yes| W10[&quot;Score confidence&quot;]
+        W10 --&gt; W11{&quot;Above&lt;br/&gt;threshold?&quot;}
+        W11 --&gt;|no| WX[&quot;Discard&lt;br/&gt;+ count&quot;]
+        W11 --&gt;|yes| W12[(&quot;Correlation store&lt;br/&gt;graph + lakehouse&quot;)]
+        W12 --&gt; W13[&quot;Rules + AI evaluation&quot;]
+        W13 --&gt; W14[&quot;Insight Object&quot;]
+        W14 --&gt; W15[&quot;Autonomy Controller&quot;]
+    end
+
+    subgraph READ[&quot;Read Path — on demand&quot;]
+        direction TB
+        Q1[&quot;Consumer query&quot;] --&gt; Q2[&quot;AuthZ + purpose check&quot;]
+        Q2 --&gt; Q3[&quot;Graph traversal&lt;br/&gt;+ vector retrieval&quot;]
+        Q3 --&gt; Q4[&quot;Evidence assembly&quot;]
+        Q4 --&gt; Q5{&quot;Evidence&lt;br/&gt;complete?&quot;}
+        Q5 --&gt;|no| Q6[&quot;Suppress&lt;br/&gt;(P7)&quot;]
+        Q5 --&gt;|yes| Q7[&quot;Return with lineage&quot;]
+    end
+
+    W12 -.serves.-&gt; Q3
+    W15 -.outcome.-&gt; W8
+
+    classDef ok fill:#183028,stroke:#4caf7d,color:#e6fff2
+    classDef bad fill:#4a2020,stroke:#d07070,color:#ffeaea
+    classDef store fill:#0d4159,stroke:#22b3d6,color:#eaf9ff
+    class WQ,WD,WX,Q6 bad
+    class W7,W12 store
+</pre></div>
+<p><strong>Figure 11.</strong> <em>Component interaction topology, separating the continuous write path from the on-demand read path. Three rejection points are architecturally mandatory: contract failure quarantines to the source owner, policy denial produces an audit record without forming the correlation (P8), and incomplete evidence suppresses the output rather than emitting it (P7).</em></p>
+<h2 id="10.4-the-two-feedback-loops" tabindex="-1">10.4 The Two Feedback Loops <a class="header-anchor" href="#10.4-the-two-feedback-loops">#</a></h2>
+<p>The architecture contains two feedback paths that distinguish it from a conventional pipeline.</p>
+<p><strong>Loop 1 — Outcome supervision (L5 → L3).</strong> When an action is taken or an insight is acted upon, the resulting outcome is captured and returned to the Correlation Engine. Did the predicted failure occur? Was the flagged transaction genuinely fraudulent? Did the recommended intervention retain the customer? This is P10, and it is what converts a static correlation system into a learning one. Without it, confidence scores are assertions rather than measurements.</p>
+<p><strong>Loop 2 — Enrichment writeback (L4 → L2).</strong> Derived attributes — a computed risk score, a resolved entity cluster, a semantic classification — are written back into the circulation layer as canonical events in their own right. This means derived intelligence becomes available for further correlation, enabling multi-order reasoning: a correlation over correlations.</p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Loop 2 requires care.</strong> Writing derived events back into the circulation layer creates the possibility of feedback amplification, where a derived event triggers a correlation that produces another derived event, recursively. The architecture MUST enforce a <strong>derivation depth limit</strong> and MUST tag derived events with their derivation order so that correlation scopes can exclude them where appropriate. Failure to do so produces runaway event generation — a failure mode observed in poorly-designed event-driven systems generally.</p>
+</div>
+<h2 id="10.5-deployment-topology" tabindex="-1">10.5 Deployment Topology <a class="header-anchor" href="#10.5-deployment-topology">#</a></h2>
+<p>The reference architecture is deployment-agnostic but assumes a specific set of operational properties.</p>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph REGION_A[&quot;Primary Region&quot;]
+        direction TB
+        A1[&quot;Ingestion cluster&lt;br/&gt;autoscaled, stateless&quot;]
+        A2[&quot;Streaming cluster&lt;br/&gt;3+ brokers, RF=3&quot;]
+        A3[&quot;Correlation cluster&lt;br/&gt;stateful, checkpointed&quot;]
+        A4[(&quot;Graph cluster&lt;br/&gt;causal cluster, 3+ cores&quot;)]
+        A5[(&quot;Lakehouse&lt;br/&gt;object storage&quot;)]
+        A6[&quot;Serving tier&lt;br/&gt;stateless, autoscaled&quot;]
+    end
+
+    subgraph REGION_B[&quot;Secondary Region&quot;]
+        direction TB
+        B1[&quot;Ingestion — warm&quot;]
+        B2[&quot;Streaming — mirrored&quot;]
+        B3[&quot;Correlation — warm standby&lt;br/&gt;checkpoint-restorable&quot;]
+        B4[(&quot;Graph — async replica&quot;)]
+        B5[(&quot;Lakehouse — cross-region replicated&quot;)]
+        B6[&quot;Serving — warm&quot;]
+    end
+
+    CTRL[&quot;Control Plane&lt;br/&gt;metadata · policy · scope registry · observability&quot;]
+
+    A2 ==&gt;|&quot;async mirror&quot;| B2
+    A4 ==&gt;|&quot;async replication&quot;| B4
+    A5 ==&gt;|&quot;storage replication&quot;| B5
+    CTRL -.-&gt; REGION_A
+    CTRL -.-&gt; REGION_B
+
+    classDef prim fill:#0d4159,stroke:#22b3d6,stroke-width:2px,color:#eaf9ff
+    classDef sec fill:#243447,stroke:#7f96ad,stroke-width:1.5px,color:#e6edf3
+    classDef ctrl fill:#3a2540,stroke:#a878c0,stroke-width:2px,color:#f6eaff
+    class REGION_A,A1,A2,A3,A4,A5,A6 prim
+    class REGION_B,B1,B2,B3,B4,B5,B6 sec
+    class CTRL ctrl
+</pre></div>
+<p><strong>Figure 12.</strong> <em>Reference deployment topology. Stateless tiers (ingestion, serving) scale horizontally and fail over trivially. Stateful tiers (correlation, graph) require checkpoint-based recovery and asynchronous replication. A single logical control plane holds the scope registry, policy definitions, and metadata, and is the component whose availability most constrains the system.</em></p>
+<p><strong>Operational assumptions:</strong></p>
+<ul>
+<li><strong>Stateless where possible.</strong> Ingestion and serving tiers hold no durable state and are trivially replaceable.</li>
+<li><strong>Checkpointed where stateful.</strong> The correlation tier holds substantial window state; it MUST checkpoint to durable storage at an interval bounded by the acceptable reprocessing window.</li>
+<li><strong>Replay as the recovery primitive.</strong> Because the circulation layer retains an ordered log, recovery from correlation-tier failure is a replay operation rather than a restore operation. This is a significant operational advantage and is a direct benefit of the log-as-substrate decision.</li>
+<li><strong>The control plane is the critical dependency.</strong> Correlation cannot proceed without the scope registry and the policy decision point. <a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">Chapter 27</a> treats its availability requirements specifically.</li>
+</ul>
+<h2 id="10.6-interface-contracts" tabindex="-1">10.6 Interface Contracts <a class="header-anchor" href="#10.6-interface-contracts">#</a></h2>
+<p>Layers communicate through explicit contracts rather than shared state. The three most significant:</p>
+<p><strong>L1 → L2: the Canonical Event contract.</strong> Every event entering circulation conforms to the canonical event schema (<a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C</a>), carrying identity, event time, ingestion time, clock quality, resolved entity references, original identifiers, source lineage pointer, policy classification, derivation order, and payload. Schema evolution is governed by the schema registry with backward compatibility enforced.</p>
+<p><strong>L3 → L4: the Correlation contract.</strong> Every correlation exposes type, modality, participant set, confidence, evidence set, temporal validity, provenance, policy classification, and supersession link. Consumers MUST honour temporal validity and MUST NOT cache correlations past their expiry.</p>
+<p><strong>L5 → L6: the Insight Object contract.</strong> Every insight exposes assertion, evidence chain, confidence, recommended action, autonomy level, permission set, lifecycle status, and version. Consumers MUST present confidence and MUST make the evidence chain accessible to the recipient.</p>
+<div class="cal cal-success">
+<h3 id="design-principle-%E2%80%94-contracts-are-enforced%2C-not-documented" tabindex="-1">Design Principle — Contracts Are Enforced, Not Documented <a class="header-anchor" href="#design-principle-%E2%80%94-contracts-are-enforced%2C-not-documented">#</a></h3>
+<p>Interface contracts MUST be machine-validated at runtime, not described in documentation. A message failing its contract MUST be rejected at the boundary with an audit record and notification to the producing owner, never silently coerced or accepted.</p>
+</div>
+<h2 id="10.7-what-this-architecture-deliberately-omits" tabindex="-1">10.7 What This Architecture Deliberately Omits <a class="header-anchor" href="#10.7-what-this-architecture-deliberately-omits">#</a></h2>
+<p><strong>No unified query engine.</strong> The framework does not propose a single query language spanning graph, lakehouse, and vector stores. Federated query across heterogeneous engines has a long history of disappointing performance. Consumers use the appropriate engine per access pattern, mediated by the serving tier.</p>
+<p><strong>No custom storage engine.</strong> All persistence is delegated to mature systems. The framework contributes the <em>model</em>, not the storage.</p>
+<p><strong>No mandated orchestration technology.</strong> Workflow, scheduling, and orchestration are treated as implementation choices.</p>
+<p><strong>No prescribed cloud or vendor.</strong> Every layer names multiple viable candidates.</p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Seven layers and two cross-cutting planes</strong> constitute the reference architecture, with the Correlation Engine at L3 as the architectural centre of gravity.</li>
+<li><strong>Each layer’s prohibitions matter as much as its responsibilities.</strong> Architectural erosion occurs when a layer quietly absorbs adjacent concerns — most commonly when applications re-derive correlations the platform already holds.</li>
+<li><strong>Three rejection points are mandatory:</strong> contract failure quarantines, policy denial prevents correlation formation, and incomplete evidence suppresses output.</li>
+<li><strong>Two feedback loops distinguish the architecture from a pipeline:</strong> outcome supervision returning to correlation, and enrichment writeback into circulation enabling multi-order reasoning.</li>
+<li><strong>Enrichment writeback requires a derivation depth limit</strong> to prevent runaway feedback amplification.</li>
+<li><strong>Replay is the recovery primitive.</strong> Because circulation retains an ordered log, correlation-tier recovery is replay rather than restore — a direct dividend of the log-as-substrate decision.</li>
+<li><strong>The control plane is the critical availability dependency</strong>, since correlation cannot proceed without the scope registry and policy decision point.</li>
+<li><strong>The architecture deliberately omits a unified query engine and a custom storage engine.</strong> It contributes a model, not infrastructure.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/"><span>← Previous</span><b>9. Core Design Principles</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/"><span>Next →</span><b>11. Streaming Layer</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#10.1-layered-reference-architecture">10.1 Layered Reference Architecture #</a><a href="#10.2-layer-responsibilities">10.2 Layer Responsibilities #</a><a href="#10.3-component-interaction-topology">10.3 Component Interaction Topology #</a><a href="#10.4-the-two-feedback-loops">10.4 The Two Feedback Loops #</a><a href="#10.5-deployment-topology">10.5 Deployment Topology #</a><a href="#10.6-interface-contracts">10.6 Interface Contracts #</a><a href="#10.7-what-this-architecture-deliberately-omits">10.7 What This Architecture Deliberately Omits #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-2/10-system-architecture/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

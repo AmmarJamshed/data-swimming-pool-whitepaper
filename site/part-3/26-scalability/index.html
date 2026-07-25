@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en" data-part="p3">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>26. Scalability · Data Swimming Pool</title>
+<meta name="description" content="26. Scalability --- 26.1 The Dimension That Matters Conventional data platforms scale along a familiar axis: data volume. A Data Swimming Pool has a second axis that dominates it. ">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="26. Scalability — Data Swimming Pool">
+<meta property="og:description" content="26. Scalability --- 26.1 The Dimension That Matters Conventional data platforms scale along a familiar axis: data volume. A Data Swimming Pool has a second axis that dominates it. ">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" open style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/" class="on">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part III — Enterprise Qualities</span></p>
+    <h1>26. Scalability</h1>
+    <p class="cmeta"><span class="chip">🛡️ Part III — Enterprise Qualities</span><span class="dot">·</span>5 min read</p>
+  </header>
+  <div class="prose">
+<h1>26. Scalability</h1>
+<hr>
+<h2 id="26.1-the-dimension-that-matters" tabindex="-1">26.1 The Dimension That Matters <a class="header-anchor" href="#26.1-the-dimension-that-matters">#</a></h2>
+<p>Conventional data platforms scale along a familiar axis: data volume. A Data Swimming Pool has a second axis that dominates it.</p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>The scaling insight.</strong> Data volume scales <strong>linearly</strong> with business activity. Correlation cost scales with the <strong>product</strong> of participating event types, entity cardinality, window width, and modality count. The second grows far faster than the first, and it is the binding constraint on every implementation.</p>
+</div>
+<p>An organization can double its event volume and add roughly double the storage and ingestion capacity. If it doubles the number of <em>domains participating in correlation</em>, the number of potential cross-domain relationships grows quadratically, and if scopes are declared naïvely the cost grows with it.</p>
+<p>This is why Principle 3 exists, and why scalability in this framework is primarily a <strong>governance</strong> problem expressed as an engineering one.</p>
+<h2 id="26.2-scaling-dimensions" tabindex="-1">26.2 Scaling Dimensions <a class="header-anchor" href="#26.2-scaling-dimensions">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Growth driver</th>
+<th>Cost behaviour</th>
+<th>Primary strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Event volume</strong></td>
+<td>Business activity</td>
+<td>Linear</td>
+<td>Horizontal partition scaling</td>
+</tr>
+<tr>
+<td><strong>Event types</strong></td>
+<td>New sources onboarded</td>
+<td>Linear in ingestion, <strong>quadratic in potential correlation</strong></td>
+<td>Scope declaration discipline</td>
+</tr>
+<tr>
+<td><strong>Entity cardinality</strong></td>
+<td>Customer, device, asset growth</td>
+<td>Linear in state</td>
+<td>Key-space partitioning, state TTL</td>
+</tr>
+<tr>
+<td><strong>Window width</strong></td>
+<td>Correlation requirements</td>
+<td>Linear in state per scope</td>
+<td>Substrate selection (stream vs. batch)</td>
+</tr>
+<tr>
+<td><strong>Modality count</strong></td>
+<td>Scopes enabling more modalities</td>
+<td>Multiplicative per scope</td>
+<td>Enable only modalities that demonstrably contribute</td>
+</tr>
+<tr>
+<td><strong>Scope count</strong></td>
+<td>Organizational demand</td>
+<td>Additive, but each carries fixed and variable cost</td>
+<td>Hard cap with review</td>
+</tr>
+<tr>
+<td><strong>Graph edges</strong></td>
+<td>Correlation emission rate × validity</td>
+<td>Grows until expiry balances creation</td>
+<td>Aggressive expiry; hot/cold tiering</td>
+</tr>
+<tr>
+<td><strong>Query concurrency</strong></td>
+<td>Consumer population</td>
+<td>Linear in serving tier</td>
+<td>Stateless horizontal scaling, caching</td>
+</tr>
+<tr>
+<td><strong>Traversal depth</strong></td>
+<td>Query complexity</td>
+<td><strong>Exponential in k</strong></td>
+<td>Hard depth caps, budget enforcement</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 53.</strong> <em>Scaling dimensions and strategies. Two dimensions exhibit non-linear growth and require architectural rather than capacity responses: potential correlation grows quadratically in event types, and traversal cost grows exponentially in depth. Both are addressed by hard limits rather than by adding resources.</em></p>
+<h2 id="26.3-partitioning-strategy" tabindex="-1">26.3 Partitioning Strategy <a class="header-anchor" href="#26.3-partitioning-strategy">#</a></h2>
+<p>Partitioning determines whether correlation is cheap or expensive, and the framework’s strategy is layered.</p>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph L1P[&quot;Level 1 — Entity Partitioning&quot;]
+        direction TB
+        E1[&quot;Partition by resolved entity key&quot;]
+        E2[&quot;&lt;b&gt;Effect:&lt;/b&gt; all events for an entity&lt;br/&gt;are co-located → M2 correlation&lt;br/&gt;is local, no shuffle&quot;]
+        E3[&quot;&lt;b&gt;Risk:&lt;/b&gt; hot keys — a single&lt;br/&gt;high-activity entity overloads&lt;br/&gt;one partition&quot;]
+        E4[&quot;&lt;b&gt;Mitigation:&lt;/b&gt; composite key with&lt;br/&gt;salt for known hot entities;&lt;br/&gt;hot-key detection and split&quot;]
+    end
+
+    subgraph L2P[&quot;Level 2 — Temporal Partitioning&quot;]
+        direction TB
+        T1[&quot;Partition state by time bucket&quot;]
+        T2[&quot;&lt;b&gt;Effect:&lt;/b&gt; window expiry is a&lt;br/&gt;bucket drop, not a scan&quot;]
+        T3[&quot;&lt;b&gt;Benefit:&lt;/b&gt; O(1) expiry instead&lt;br/&gt;of O(n) eviction&quot;]
+    end
+
+    subgraph L3P[&quot;Level 3 — Scope Isolation&quot;]
+        direction TB
+        S1[&quot;Each scope runs as an&lt;br/&gt;independent job&quot;]
+        S2[&quot;&lt;b&gt;Effect:&lt;/b&gt; scope failure is&lt;br/&gt;contained; scope cost is&lt;br/&gt;directly attributable&quot;]
+        S3[&quot;&lt;b&gt;Cost:&lt;/b&gt; duplicated event&lt;br/&gt;consumption across scopes&quot;]
+        S4[&quot;&lt;b&gt;Mitigation:&lt;/b&gt; co-schedule scopes&lt;br/&gt;sharing event types&quot;]
+    end
+
+    subgraph L4P[&quot;Level 4 — Tenant / Domain Lanes&quot;]
+        direction TB
+        D1[&quot;Physical isolation where&lt;br/&gt;regulation or residency requires&quot;]
+        D2[&quot;&lt;b&gt;Effect:&lt;/b&gt; compliance boundary&lt;br/&gt;is also a failure boundary&quot;]
+        D3[&quot;&lt;b&gt;Cost:&lt;/b&gt; cross-lane correlation&lt;br/&gt;requires explicit, governed bridge&quot;]
+    end
+
+    L1P --&gt; L2P --&gt; L3P --&gt; L4P
+
+    classDef p fill:#0d4159,stroke:#22b3d6,stroke-width:1.5px,color:#eaf9ff
+    class L1P,E1,E2,E3,E4,L2P,T1,T2,T3,L3P,S1,S2,S3,S4,L4P,D1,D2,D3 p
+</pre></div>
+<p><strong>Figure 38.</strong> <em>Four-level partitioning strategy. Entity partitioning makes the dominant correlation modality local. Temporal bucketing converts window expiry from an O(n) eviction scan into an O(1) bucket drop. Scope isolation makes cost attributable and failures contained. Domain lanes align the compliance boundary with the failure boundary.</em></p>
+<h3 id="26.3.1-the-hot-key-problem" tabindex="-1">26.3.1 The Hot Key Problem <a class="header-anchor" href="#26.3.1-the-hot-key-problem">#</a></h3>
+<p>Entity partitioning has a characteristic failure: a small number of entities generate a disproportionate share of events. A corporate account with ten thousand subsidiaries, a shared device, a default null entity that resolution failures collapse into.</p>
+<p>The framework’s mitigations, in order of preference:</p>
+<ol>
+<li><strong>Detect and split.</strong> Monitor per-key event rates; automatically apply a salt to keys exceeding a threshold, accepting that correlation for those keys becomes a two-stage aggregation.</li>
+<li><strong>Reject the null attractor.</strong> Resolution failures MUST NOT collapse into a shared “unknown” entity, which becomes an artificial hub correlating everything with everything. Unresolved events receive distinct placeholder identities and are excluded from entity-modality correlation until adjudicated.</li>
+<li><strong>Cap per-entity state.</strong> A single entity’s window state is bounded; exceeding it sheds oldest content and records that recall was reduced for that entity.</li>
+</ol>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>The null attractor is a specific and severe failure mode.</strong> If unresolved entities share one identifier, the graph acquires a hub node connected to a large fraction of all events. Any traversal touching it explodes, community detection places everything in one community, and entity-modality correlation produces spurious relationships at enormous volume. This is one of the fastest ways to render a correlation system useless, and it happens through an apparently reasonable engineering shortcut.</p>
+</div>
+<h2 id="26.4-elasticity" tabindex="-1">26.4 Elasticity <a class="header-anchor" href="#26.4-elasticity">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Elasticity characteristic</th>
+<th>Scaling trigger</th>
+<th>Constraint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ingestion</td>
+<td>Stateless — scales freely</td>
+<td>Ingestion lag</td>
+<td>Source rate limits</td>
+</tr>
+<tr>
+<td>Circulation log</td>
+<td>Partition count — scales with rebalance</td>
+<td>Throughput, retention</td>
+<td>Partition increase is disruptive; over-provision partitions initially</td>
+</tr>
+<tr>
+<td>Correlation operators</td>
+<td>Stateful — scales with state redistribution</td>
+<td>Backpressure, state size</td>
+<td>Rescaling requires checkpoint restore; not instantaneous</td>
+</tr>
+<tr>
+<td>Graph hot tier</td>
+<td>Read replicas scale reads; writes do not scale freely</td>
+<td>Query latency, write lag</td>
+<td>Write scaling requires sharding, which complicates traversal</td>
+</tr>
+<tr>
+<td>Lakehouse</td>
+<td>Compute scales freely; storage unbounded</td>
+<td>Query concurrency</td>
+<td>Small-file accumulation degrades scans</td>
+</tr>
+<tr>
+<td>Serving tier</td>
+<td>Stateless — scales freely</td>
+<td>Request rate</td>
+<td>Downstream capacity</td>
+</tr>
+<tr>
+<td>Control plane</td>
+<td>Should not need to scale</td>
+<td>—</td>
+<td>Its availability, not capacity, is the constraint</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 54.</strong> <em>Elasticity by component. The correlation tier is the framework’s least elastic component: rescaling a stateful job requires redistributing large keyed state, which takes minutes rather than seconds. Capacity planning must therefore anticipate load rather than react to it.</em></p>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p><strong>Plan the correlation tier for peak, not average.</strong> Because stateful rescaling is slow, the correlation tier should be provisioned for anticipated peak load with headroom, and elasticity should be treated as a cost-optimization mechanism for sustained load changes rather than as a response to spikes. This is the opposite of the posture appropriate for the stateless tiers.</p>
+</div>
+<h2 id="26.5-cost-control" tabindex="-1">26.5 Cost Control <a class="header-anchor" href="#26.5-cost-control">#</a></h2>
+<p>Cost in this framework is dominated by three items: correlation state, correlation compute, and graph storage. All three are governed by scope declarations, which is why cost control is a governance function.</p>
+<p><strong>Cost attribution.</strong> Every scope carries its cost, computed from its state footprint, its compute consumption, and its emission volume. Cost is reported per scope, per owner, per domain — which makes the conversation about whether a scope is worth its cost possible.</p>
+<p><strong>Cost per outcome.</strong> The framework recommends tracking cost per <em>acted-upon insight</em> rather than cost per correlation. A scope producing a million correlations of which none is acted upon has infinite cost per outcome and should be retired regardless of how cheap its correlations are individually.</p>
+<p><strong>Tiering.</strong> Recent correlations live in the graph hot tier; older ones move to the lakehouse. Recent events live on local disk; older ones move to object storage. Both transitions are automated and both are substantial cost levers.</p>
+<p><strong>Modality economics.</strong> Enabling all five modalities on every scope is the most common and most expensive design error. M3 (causal) in particular is orders of magnitude more expensive than M2 (entity) and should be enabled only where causal hypotheses are genuinely required and will genuinely be used.</p>
+<h2 id="26.6-scale-limits-and-honest-boundaries" tabindex="-1">26.6 Scale Limits and Honest Boundaries <a class="header-anchor" href="#26.6-scale-limits-and-honest-boundaries">#</a></h2>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>Illustrative reasoning, not measurement.</strong> The following boundaries are engineering estimates derived from the published characteristics of the underlying technologies. No deployment exists from which to measure them.</p>
+</div>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Comfortable</th>
+<th>Demanding</th>
+<th>Beyond practical bounds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Canonical events per second</td>
+<td>&lt; 100k</td>
+<td>100k – 1M</td>
+<td>&gt; 1M without substantial custom engineering</td>
+</tr>
+<tr>
+<td>Active correlation scopes</td>
+<td>&lt; 50</td>
+<td>50 – 200</td>
+<td>&gt; 200 — governance failure precedes technical failure</td>
+</tr>
+<tr>
+<td>Entity cardinality in hot state</td>
+<td>&lt; 10M</td>
+<td>10M – 100M</td>
+<td>&gt; 100M requires aggressive TTL</td>
+</tr>
+<tr>
+<td>Graph hot-tier edges</td>
+<td>&lt; 1B</td>
+<td>1B – 10B</td>
+<td>&gt; 10B — interactive traversal degrades</td>
+</tr>
+<tr>
+<td>Correlation window width (streaming)</td>
+<td>&lt; 24h</td>
+<td>24h – 7d</td>
+<td>&gt; 7d — move to batch</td>
+</tr>
+<tr>
+<td>Traversal depth (interactive)</td>
+<td>≤ 3</td>
+<td>4</td>
+<td>≥ 5 — exponential blowup</td>
+</tr>
+<tr>
+<td>Participating domains</td>
+<td>&lt; 10</td>
+<td>10 – 25</td>
+<td>&gt; 25 — scope combinatorics dominate</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 55.</strong> <em>Estimated practical scale boundaries. The most important row is active correlation scopes: the framework’s governance capacity — the ability to review, calibrate, and retire scopes meaningfully — fails well before its technical capacity does. An organization that cannot govern fifty scopes will not be rescued by infrastructure that can execute two hundred.</em></p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Correlation cost scales with the product of event types, entity cardinality, window width, and modality count</strong> — far faster than data volume, making this the binding constraint on every implementation.</li>
+<li><strong>Scalability is primarily a governance problem expressed as an engineering one</strong>, which is why Principle 3 is the framework’s most critical constraint.</li>
+<li><strong>Four-level partitioning</strong> — entity, temporal, scope, and domain lane — makes the dominant correlation modality local, converts window expiry to O(1), attributes cost, and aligns compliance with failure boundaries.</li>
+<li><strong>The null attractor is a severe and easily-introduced failure mode.</strong> Collapsing unresolved entities into one identifier creates a graph hub that renders traversal, community detection, and entity correlation useless.</li>
+<li><strong>The correlation tier is the least elastic component</strong> and should be provisioned for peak with headroom, treating elasticity as a cost lever for sustained changes rather than a spike response.</li>
+<li><strong>Track cost per acted-upon insight, not cost per correlation.</strong> A scope whose output is never used has infinite cost per outcome regardless of unit economics.</li>
+<li><strong>Enabling all modalities on every scope is the most common expensive error</strong>, with causal correlation orders of magnitude more costly than entity correlation.</li>
+<li><strong>Governance capacity fails before technical capacity.</strong> An organization unable to meaningfully govern fifty scopes will not be rescued by infrastructure capable of executing two hundred.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-3/25-governance/"><span>← Previous</span><b>25. Governance</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-3/27-high-availability/"><span>Next →</span><b>27. High Availability</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#26.1-the-dimension-that-matters">26.1 The Dimension That Matters #</a><a href="#26.2-scaling-dimensions">26.2 Scaling Dimensions #</a><a href="#26.3-partitioning-strategy">26.3 Partitioning Strategy #</a><a href="#26.4-elasticity">26.4 Elasticity #</a><a href="#26.5-cost-control">26.5 Cost Control #</a><a href="#26.6-scale-limits-and-honest-boundaries">26.6 Scale Limits and Honest Boundaries #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-3/26-scalability/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

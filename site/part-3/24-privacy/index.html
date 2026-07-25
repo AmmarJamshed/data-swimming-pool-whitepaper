@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en" data-part="p3">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>24. Privacy · Data Swimming Pool</title>
+<meta name="description" content="24. Privacy --- Not legal advice. This chapter discusses privacy at an architectural level. Regulatory references are conceptual summaries, not legal interpretations. Organizations">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="24. Privacy — Data Swimming Pool">
+<meta property="og:description" content="24. Privacy --- Not legal advice. This chapter discusses privacy at an architectural level. Regulatory references are conceptual summaries, not legal interpretations. Organizations">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" open style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/" class="on">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part III — Enterprise Qualities</span></p>
+    <h1>24. Privacy</h1>
+    <p class="cmeta"><span class="chip">🛡️ Part III — Enterprise Qualities</span><span class="dot">·</span>6 min read</p>
+  </header>
+  <div class="prose">
+<h1>24. Privacy</h1>
+<hr>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Not legal advice.</strong> This chapter discusses privacy at an architectural level. Regulatory references are conceptual summaries, not legal interpretations. Organizations must obtain qualified counsel.</p>
+</div>
+<h2 id="24.1-the-privacy-problem-correlation-creates" tabindex="-1">24.1 The Privacy Problem Correlation Creates <a class="header-anchor" href="#24.1-the-privacy-problem-correlation-creates">#</a></h2>
+<p>Data protection regimes are built around a model in which an organization <em>collects</em> personal data for a <em>stated purpose</em>, <em>retains</em> it for a <em>defined period</em>, and <em>processes</em> it within <em>declared bounds</em>. The data subject’s rights — access, rectification, erasure, portability, objection — attach to that collected data.</p>
+<p>A correlation architecture strains this model in five specific ways:</p>
+<p><strong>Inference is not collection.</strong> A correlation between store visits, purchase patterns, and appointment timings may reveal a pregnancy that was never disclosed. The organization did not collect that fact. It derived it. Whether derived special-category data attracts the same protections as collected special-category data is legally contested in most jurisdictions and, in the author’s assessment, will be resolved against organizations that assumed it does not.</p>
+<p><strong>Purpose limitation becomes purpose <em>combination</em>.</strong> Data collected for fraud prevention and data collected for service delivery may each be lawfully held. Correlating them may constitute processing for a purpose neither collection contemplated.</p>
+<p><strong>Erasure must propagate to derivations.</strong> Deleting an event does not delete the correlations derived from it, nor the insights derived from those correlations, nor the model weights influenced by them. A naïve erasure implementation leaves the derived knowledge intact — which defeats the right.</p>
+<p><strong>Automated decision-making rights engage earlier.</strong> Where correlations drive decisions with legal or similarly significant effect, rights to explanation, human intervention, and contest engage. The framework’s evidence chain is well suited to satisfying these, but only if the architecture is designed for it from the outset.</p>
+<p><strong>Data minimization conflicts with correlation.</strong> Correlation improves with more data. Minimization requires less. This tension is genuine and cannot be engineered away — it can only be managed through explicit scoping.</p>
+<h2 id="24.2-purpose-binding" tabindex="-1">24.2 Purpose Binding <a class="header-anchor" href="#24.2-purpose-binding">#</a></h2>
+<p>The framework’s principal privacy mechanism is <strong>purpose binding</strong>: purpose travels with data and is evaluated at every boundary, including correlation formation.</p>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph COLLECT[&quot;Collection&quot;]
+        C1[&quot;Event ingested&quot;]
+        C2[&quot;Lawful basis recorded&lt;br/&gt;&lt;i&gt;consent / contract /&lt;br/&gt;legitimate interest / obligation&lt;/i&gt;&quot;]
+        C3[&quot;Permitted purposes tagged&lt;br/&gt;&lt;i&gt;from consent scope or&lt;br/&gt;documented assessment&lt;/i&gt;&quot;]
+        C1 --&gt; C2 --&gt; C3
+    end
+
+    subgraph CORR[&quot;Correlation Boundary&quot;]
+        direction TB
+        R1[&quot;Scope declares its purpose&quot;]
+        R2{&quot;Purpose of scope ⊆&lt;br/&gt;permitted purposes of&lt;br/&gt;&lt;b&gt;every&lt;/b&gt; participating event?&quot;}
+        R3{&quot;Any participant is&lt;br/&gt;special category?&quot;}
+        R4{&quot;Explicit basis for&lt;br/&gt;special-category&lt;br/&gt;processing?&quot;}
+        R5[&quot;&lt;b&gt;PERMIT&lt;/b&gt;&lt;br/&gt;correlation forms&quot;]
+        R6[&quot;&lt;b&gt;DENY&lt;/b&gt;&lt;br/&gt;correlation does not form&lt;br/&gt;+ audit record&quot;]
+        R1 --&gt; R2
+        R2 --&gt;|no| R6
+        R2 --&gt;|yes| R3
+        R3 --&gt;|no| R5
+        R3 --&gt;|yes| R4
+        R4 --&gt;|no| R6
+        R4 --&gt;|yes| R5
+    end
+
+    subgraph INHERIT[&quot;Derivation&quot;]
+        I1[&quot;Correlation inherits&lt;br/&gt;&lt;b&gt;intersection&lt;/b&gt; of participants'&lt;br/&gt;permitted purposes&quot;]
+        I2[&quot;Correlation inherits&lt;br/&gt;&lt;b&gt;most restrictive&lt;/b&gt;&lt;br/&gt;sensitivity classification&quot;]
+        I3[&quot;Insight inherits from&lt;br/&gt;its correlations, recursively&quot;]
+    end
+
+    subgraph USE[&quot;Use Boundary&quot;]
+        U1{&quot;Requested purpose ⊆&lt;br/&gt;inherited permitted&lt;br/&gt;purposes?&quot;}
+        U2[&quot;Serve&quot;]
+        U3[&quot;Refuse + audit&quot;]
+        U1 --&gt;|yes| U2
+        U1 --&gt;|no| U3
+    end
+
+    subgraph WITHDRAW[&quot;Withdrawal / Erasure&quot;]
+        W1[&quot;Consent withdrawn or&lt;br/&gt;erasure requested&quot;]
+        W2[&quot;Traverse lineage graph&lt;br/&gt;for all derivations&quot;]
+        W3[&quot;Retract correlations&lt;br/&gt;lacking remaining basis&quot;]
+        W4[&quot;Supersede dependent insights&quot;]
+        W5[&quot;Flag models for&lt;br/&gt;retraining assessment&quot;]
+        W6[&quot;Notify consumers&quot;]
+        W1 --&gt; W2 --&gt; W3 --&gt; W4 --&gt; W5 --&gt; W6
+    end
+
+    COLLECT --&gt; CORR
+    R5 --&gt; INHERIT --&gt; USE
+    WITHDRAW -.invalidates.-&gt; INHERIT
+
+    classDef col fill:#183028,stroke:#4caf7d,color:#e6fff2
+    classDef corr fill:#3a2540,stroke:#a878c0,stroke-width:2px,color:#f6eaff
+    classDef inh fill:#0d4159,stroke:#22b3d6,color:#eaf9ff
+    classDef wd fill:#4a3020,stroke:#d09a60,stroke-width:2px,color:#fff4e6
+    classDef bad fill:#4a2020,stroke:#d07070,color:#ffeaea
+    class COLLECT,C1,C2,C3 col
+    class CORR,R1,R2,R3,R4 corr
+    class R5 col
+    class R6,U3 bad
+    class INHERIT,I1,I2,I3,USE,U1,U2 inh
+    class WITHDRAW,W1,W2,W3,W4,W5,W6 wd
+</pre></div>
+<p><strong>Figure 36.</strong> <em>Privacy-by-design data flow with purpose binding. The decisive control is at the correlation boundary: a correlation whose declared purpose is not permitted by <strong>every</strong> participating event <strong>does not form</strong>. This is a stronger control than access restriction, because the impermissible inference is never derived and therefore cannot leak, be subpoenaed, or be discovered later.</em></p>
+<h3 id="24.2.1-purpose-intersection" tabindex="-1">24.2.1 Purpose Intersection <a class="header-anchor" href="#24.2.1-purpose-intersection">#</a></h3>
+<p>The inheritance rule is deliberately conservative. A correlation between an event permitting <code>{fraud-prevention, service-delivery}</code> and an event permitting <code>{fraud-prevention, analytics}</code> inherits only <code>{fraud-prevention}</code>.</p>
+<p>This is restrictive by design. The alternative — union, or the correlation’s own declared purpose — would permit purpose expansion through correlation, which is precisely the harm the mechanism exists to prevent.</p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>A practical consequence.</strong> Under intersection semantics, correlations across domains with divergent lawful bases will frequently have very narrow permitted purposes, and some will have an empty intersection and therefore not form at all. This will feel like the system refusing to do useful work. It is the system correctly declining to do impermissible work, and the appropriate response is to revisit consent and lawful basis at collection — not to relax the intersection rule.</p>
+</div>
+<h2 id="24.3-erasure-propagation" tabindex="-1">24.3 Erasure Propagation <a class="header-anchor" href="#24.3-erasure-propagation">#</a></h2>
+<p>The right to erasure is where correlation architectures most obviously fail if not designed for it.</p>
+<p><strong>The requirement.</strong> When a data subject’s data is erased, the derived knowledge must not survive.</p>
+<p><strong>The mechanism:</strong></p>
+<ol>
+<li><strong>Identify.</strong> Resolve the subject to their entity identifier and all historical identifiers.</li>
+<li><strong>Traverse.</strong> Use the lineage graph to enumerate every canonical event, correlation, insight, action record, and feature derived from the subject’s data.</li>
+<li><strong>Assess remaining basis.</strong> A correlation involving multiple subjects may retain a lawful basis with respect to others. Erasure removes the erased subject’s contribution; it does not necessarily void the correlation entirely.</li>
+<li><strong>Retract.</strong> Correlations with no remaining basis are retracted; dependent insights are superseded; consumers are notified.</li>
+<li><strong>Tombstone.</strong> Erasure is recorded as a tombstone in the log so that replay does not resurrect the data. This is essential: an append-only log without tombstones cannot honour erasure, and W2 re-correlation would reintroduce the erased subject.</li>
+<li><strong>Model assessment.</strong> Models trained on the subject’s data are flagged. Full retraining is frequently disproportionate; the framework requires a documented assessment of whether the model retains identifiable influence, with the assessment reviewable.</li>
+<li><strong>Verify and evidence.</strong> Erasure completeness is verified by re-traversing lineage, and the verification is retained as evidence of compliance.</li>
+</ol>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>The unresolved problem: model memorization.</strong> Erasing training data does not erase its influence on a trained model. Machine unlearning is an active research area without a production-ready general solution. The framework’s honest position is that this is <strong>unresolved</strong>, that organizations should minimize training on erasable personal data where alternatives exist, prefer architectures where personal data is retrieved at inference rather than embedded in weights, and document their assessment rather than claim a completeness they cannot deliver.</p>
+</div>
+<h2 id="24.4-privacy-enhancing-techniques" tabindex="-1">24.4 Privacy-Enhancing Techniques <a class="header-anchor" href="#24.4-privacy-enhancing-techniques">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>Mechanism</th>
+<th>Applicability in the framework</th>
+<th>Limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pseudonymization</strong></td>
+<td>Replace identifiers with tokens</td>
+<td>Default for the correlation store; correlation operates on tokens</td>
+<td>Reversible by the token holder; not anonymization</td>
+</tr>
+<tr>
+<td><strong>Tokenization with separated vault</strong></td>
+<td>Token–identity mapping held under separate control</td>
+<td>Strong: correlation compute never sees direct identifiers</td>
+<td>Vault is a high-value target</td>
+</tr>
+<tr>
+<td><strong>Field-level encryption</strong></td>
+<td>Encrypt special-category fields</td>
+<td>Protects at rest and from operators</td>
+<td>Encrypted fields cannot participate in correlation</td>
+</tr>
+<tr>
+<td><strong>Differential privacy</strong></td>
+<td>Calibrated noise on aggregate outputs</td>
+<td>Suitable for published statistics and cohort analytics</td>
+<td>Unsuitable for individual-level correlation, which requires exactness</td>
+</tr>
+<tr>
+<td><strong>k-anonymity / l-diversity</strong></td>
+<td>Suppress or generalize small groups</td>
+<td>Suitable for correlation outputs over populations</td>
+<td>Weak against auxiliary-information attacks</td>
+</tr>
+<tr>
+<td><strong>Federated computation</strong></td>
+<td>Compute without centralizing raw data</td>
+<td>Suitable for cross-organization correlation</td>
+<td>Substantially higher complexity; limited modality support</td>
+</tr>
+<tr>
+<td><strong>Secure enclaves</strong></td>
+<td>Hardware-isolated computation</td>
+<td>Suitable for the most sensitive correlation scopes</td>
+<td>Cost, attestation complexity, side-channel exposure</td>
+</tr>
+<tr>
+<td><strong>Synthetic data</strong></td>
+<td>Statistically similar artificial data</td>
+<td>Suitable for development, testing, demonstration</td>
+<td>Does not preserve genuine correlations; unsuitable for production</td>
+</tr>
+<tr>
+<td><strong>Purpose binding</strong></td>
+<td>Policy-enforced purpose propagation</td>
+<td><strong>Primary mechanism</strong> — enforced at correlation formation</td>
+<td>Depends on correct purpose declaration at collection</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 48.</strong> <em>Privacy techniques and their applicability. Differential privacy is included with an explicit caveat: it is frequently proposed as a general solution and is largely inapplicable to the framework’s core function, because individual-level correlation requires exact relationships. Noise added to protect individuals destroys the signal the system exists to find.</em></p>
+<h2 id="24.5-data-subject-rights" tabindex="-1">24.5 Data Subject Rights <a class="header-anchor" href="#24.5-data-subject-rights">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Right</th>
+<th>Framework capability</th>
+<th>Residual difficulty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Access</strong></td>
+<td>Lineage traversal returns all events, correlations, and insights concerning the subject</td>
+<td>Correlations involving multiple subjects require redaction of other parties</td>
+</tr>
+<tr>
+<td><strong>Rectification</strong></td>
+<td>Corrected event enters the log; W2 re-correlation recomputes derived correlations</td>
+<td>Downstream consumers who acted on prior correlations must be notified</td>
+</tr>
+<tr>
+<td><strong>Erasure</strong></td>
+<td>Propagation mechanism per §24.3</td>
+<td>Model memorization unresolved</td>
+</tr>
+<tr>
+<td><strong>Restriction</strong></td>
+<td>Subject’s events excluded from correlation scopes via policy tag</td>
+<td>Historical correlations must be marked restricted, not deleted</td>
+</tr>
+<tr>
+<td><strong>Portability</strong></td>
+<td>Canonical events exported in structured format</td>
+<td>Correlations are arguably the controller’s derived work, not the subject’s data — legally unsettled</td>
+</tr>
+<tr>
+<td><strong>Objection</strong></td>
+<td>Purpose tags revoked; scopes re-evaluated</td>
+<td>Legitimate-interest balancing must be documented per scope</td>
+</tr>
+<tr>
+<td><strong>Explanation of automated decision</strong></td>
+<td>Evidence chain provides the specific correlations and their confidence</td>
+<td>Explaining <em>why the confidence was 0.87</em> to a lay person is genuinely difficult</td>
+</tr>
+<tr>
+<td><strong>Human intervention</strong></td>
+<td>Autonomy Ladder provides the control point</td>
+<td>Requires the intervention to be meaningful rather than nominal</td>
+</tr>
+<tr>
+<td><strong>Contest</strong></td>
+<td>Full evidence chain supports substantive challenge</td>
+<td>Contesting a probabilistic inference is harder than contesting a factual error</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 49.</strong> <em>Data subject rights and framework capability. The framework is unusually well positioned on access, explanation, and contest because of its lineage requirements — arguably better positioned than conventional architectures. It is poorly positioned on model memorization, and honest about it.</em></p>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p><strong>An underappreciated advantage.</strong> Principle 7 (Evidence or Silence) was motivated by operational trust, but it produces a compliance dividend: a system that can always produce the evidence chain for a decision is far better placed to satisfy explanation and contest rights than a system that cannot. Organizations facing increasing automated-decision-making obligations may find this the framework’s most immediately valuable property.</p>
+</div>
+<h2 id="24.6-privacy-governance-for-correlation-scopes" tabindex="-1">24.6 Privacy Governance for Correlation Scopes <a class="header-anchor" href="#24.6-privacy-governance-for-correlation-scopes">#</a></h2>
+<p>Every correlation scope touching personal data requires, before approval:</p>
+<ol>
+<li><strong>Purpose specification</strong> — the specific purpose, not a category.</li>
+<li><strong>Lawful basis</strong> per participating event type.</li>
+<li><strong>Necessity assessment</strong> — why this correlation is necessary for the stated purpose, and why a less intrusive alternative is insufficient.</li>
+<li><strong>Proportionality assessment</strong> — the benefit weighed against the intrusion.</li>
+<li><strong>Special-category determination</strong> — whether the correlation could reveal special-category data even if no input is so classified. This is the assessment most frequently omitted and most consequential.</li>
+<li><strong>Data protection impact assessment</strong> where the risk threshold is met.</li>
+<li><strong>Retention justification</strong> for the correlation, distinct from the retention of its inputs.</li>
+<li><strong>Subject transparency</strong> — how the processing is disclosed.</li>
+</ol>
+<p>Point 5 warrants emphasis. A scope correlating retail purchases with delivery timing contains no special-category inputs. It may nonetheless reveal health conditions, religious observance, or pregnancy. <strong>The assessment must consider what the correlation could reveal, not merely what its inputs contain</strong> — and this is a question that requires imagination rather than classification.</p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Inference is not collection, and this is the framework’s central privacy problem.</strong> Derived special-category data will, in the author’s assessment, be resolved legally against organizations that assumed it escapes protection.</li>
+<li><strong>Purpose binding is the primary mechanism</strong>, enforced at correlation formation so that impermissible inferences are never derived — a stronger control than access restriction because the inference cannot subsequently leak or be discovered.</li>
+<li><strong>Purpose inheritance uses intersection, not union</strong>, deliberately preventing purpose expansion through correlation, and accepting that some useful-seeming correlations will not form.</li>
+<li><strong>Erasure must propagate through the lineage graph</strong> to correlations, insights, actions, and features, with tombstones in the log so that replay does not resurrect erased data.</li>
+<li><strong>Model memorization is unresolved.</strong> Organizations should minimize training on erasable personal data, prefer retrieval-at-inference architectures, and document their assessment rather than claim completeness they cannot deliver.</li>
+<li><strong>Differential privacy is largely inapplicable</strong> to individual-level correlation, because the noise that protects individuals destroys the signal the system exists to find.</li>
+<li><strong>The framework is unusually strong on explanation and contest rights</strong> because of its mandatory evidence chains — potentially its most immediately valuable compliance property.</li>
+<li><strong>Scope assessment must consider what a correlation could reveal</strong>, not what its inputs contain — a question requiring imagination rather than classification, and the assessment most frequently omitted.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/"><span>← Previous</span><b>23. Security Architecture</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-3/25-governance/"><span>Next →</span><b>25. Governance</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#24.1-the-privacy-problem-correlation-creates">24.1 The Privacy Problem Correlation Creates #</a><a href="#24.2-purpose-binding">24.2 Purpose Binding #</a><a href="#24.3-erasure-propagation">24.3 Erasure Propagation #</a><a href="#24.4-privacy-enhancing-techniques">24.4 Privacy-Enhancing Techniques #</a><a href="#24.5-data-subject-rights">24.5 Data Subject Rights #</a><a href="#24.6-privacy-governance-for-correlation-scopes">24.6 Privacy Governance for Correlation Scopes #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-3/24-privacy/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

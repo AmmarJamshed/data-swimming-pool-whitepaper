@@ -10,6 +10,7 @@ This index is generated from the manuscript. Figures, tables, and listings are n
 
 | # | Caption | Chapter |
 | --- | --- | --- |
+| **Figure S-1** | The idea in five steps | [Start Here — The Simple Version](../front-matter/start-here.md) |
 | **Figure ES-1** | Data Swimming Pool — high-level architecture | [1. Executive Summary](../part-1/01-executive-summary.md) |
 | **Figure 1** | The enterprise data value gap | [3. Introduction](../part-1/03-introduction.md) |
 | **Figure 2** | Reservoir versus circulating medium | [3. Introduction](../part-1/03-introduction.md) |
@@ -184,7 +185,7 @@ This index is generated from the manuscript. Figures, tables, and listings are n
 
 ---
 
-**Totals:** 62 figures · 95 tables · 4 schema listings.
+**Totals:** 63 figures · 95 tables · 4 schema listings.
 
 ---
 

@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en" data-part="p4">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>31. Manufacturing Use Case · Data Swimming Pool</title>
+<meta name="description" content="31. Manufacturing Use Case --- Illustrative scenario. Synthetic and constructed. All figures are reasoned estimates, not measurements. 31.1 Scenario Context &quot;Halden Precision Compo">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="31. Manufacturing Use Case — Data Swimming Pool">
+<meta property="og:description" content="31. Manufacturing Use Case --- Illustrative scenario. Synthetic and constructed. All figures are reasoned estimates, not measurements. 31.1 Scenario Context &quot;Halden Precision Compo">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" open style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/" class="on">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part IV — Illustrative Enterprise Scenarios</span></p>
+    <h1>31. Manufacturing Use Case</h1>
+    <p class="cmeta"><span class="chip">🏭 Part IV — Illustrative Enterprise Scenarios</span><span class="dot">·</span>5 min read</p>
+  </header>
+  <div class="prose">
+<h1>31. Manufacturing Use Case</h1>
+<hr>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>Illustrative scenario.</strong> Synthetic and constructed. All figures are reasoned estimates, not measurements.</p>
+</div>
+<h2 id="31.1-scenario-context" tabindex="-1">31.1 Scenario Context <a class="header-anchor" href="#31.1-scenario-context">#</a></h2>
+<p><strong>“Halden Precision Components”</strong> is a constructed tier-one automotive supplier: four plants, 61 CNC and injection-moulding lines, 14,000 sensor points, and a supplier base of 230 material vendors. It runs a modern MES, a condition-monitoring platform, an SPC quality system, and an ERP.</p>
+<p><strong>The problem it cannot solve.</strong> Defects and failures are almost never single-cause. A batch of out-of-tolerance parts traces to a combination of a marginally different resin lot, an ambient humidity excursion, a tool approaching its wear limit, and an operator new to that line. Each factor alone is within tolerance. The condition-monitoring system watches the tool. The SPC system watches the output. The ERP records the lot. Nobody correlates them until a customer rejects a shipment three weeks later — by which point 40,000 parts have been produced.</p>
+<h2 id="31.2-correlation-architecture-and-flow" tabindex="-1">31.2 Correlation Architecture and Flow <a class="header-anchor" href="#31.2-correlation-architecture-and-flow">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph SRC[&quot;Sources&quot;]
+        direction LR
+        S1[&quot;Machine telemetry&lt;br/&gt;&lt;i&gt;vibration, spindle load,&lt;br/&gt;temperature — 50 Hz&lt;/i&gt;&quot;]
+        S2[&quot;MES&lt;br/&gt;&lt;i&gt;work orders, routings,&lt;br/&gt;operator assignment&lt;/i&gt;&quot;]
+        S3[&quot;SPC / metrology&lt;br/&gt;&lt;i&gt;dimensional measurements&lt;/i&gt;&quot;]
+        S4[&quot;Tool management&lt;br/&gt;&lt;i&gt;tool life, changes, regrinds&lt;/i&gt;&quot;]
+        S5[&quot;Environmental&lt;br/&gt;&lt;i&gt;temp, humidity, particulates&lt;/i&gt;&quot;]
+        S6[&quot;ERP / supply&lt;br/&gt;&lt;i&gt;material lots, COAs, suppliers&lt;/i&gt;&quot;]
+        S7[&quot;Maintenance&lt;br/&gt;&lt;i&gt;work orders, interventions&lt;/i&gt;&quot;]
+        S8[&quot;Customer quality&lt;br/&gt;&lt;i&gt;returns, complaints, 8Ds&lt;/i&gt;&quot;]
+    end
+
+    subgraph SCOPES[&quot;Correlation Scopes&quot;]
+        direction TB
+        SC1[&quot;&lt;b&gt;qual.multifactor_defect.v4&lt;/b&gt;&lt;br/&gt;M1·M2·M3·M5 · 14 d&lt;br/&gt;Which combination of&lt;br/&gt;conditions precedes&lt;br/&gt;out-of-tolerance output?&quot;]
+        SC2[&quot;&lt;b&gt;maint.failure_precursor.v3&lt;/b&gt;&lt;br/&gt;M1·M2·M5 · 30 d&lt;br/&gt;Which telemetry signatures&lt;br/&gt;precede unplanned stops?&quot;]
+        SC3[&quot;&lt;b&gt;supply.lot_impact.v2&lt;/b&gt;&lt;br/&gt;M2·M3 · 90 d · batch&lt;br/&gt;Which material lots&lt;br/&gt;correlate with downstream&lt;br/&gt;quality deviation?&quot;]
+        SC4[&quot;&lt;b&gt;ops.changeover_risk.v2&lt;/b&gt;&lt;br/&gt;M1·M5 · 7 d&lt;br/&gt;Which changeover conditions&lt;br/&gt;correlate with startup scrap?&quot;]
+    end
+
+    subgraph FIND[&quot;Illustrative Correlation&quot;]
+        direction TB
+        F1[&quot;&lt;b&gt;C-22841&lt;/b&gt; confidence 0.86&lt;br/&gt;MULTIFACTOR_DEFECT_PRECURSOR&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Conjunction:&lt;/b&gt;&lt;br/&gt;• resin lot RL-8823 (viscosity at&lt;br/&gt;&amp;nbsp;&amp;nbsp;upper spec, within tolerance)&lt;br/&gt;• ambient humidity &gt; 62% RH&lt;br/&gt;&amp;nbsp;&amp;nbsp;for &gt; 4h&lt;br/&gt;• tool T-441 at 84% of rated life&lt;br/&gt;• operator with &lt; 20h on this line&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Predicted:&lt;/b&gt; dimensional drift on&lt;br/&gt;feature D within 6–10 h&lt;br/&gt;&lt;b&gt;Modality support:&lt;/b&gt; M1 0.62 ·&lt;br/&gt;M2 0.94 · M3 0.58 · M5 0.79&lt;br/&gt;&lt;b&gt;Historical precision:&lt;/b&gt; 0.86 (n=41)&quot;]
+    end
+
+    subgraph ACT[&quot;Actions by Autonomy Level&quot;]
+        direction TB
+        A1[&quot;&lt;b&gt;L4&lt;/b&gt; — increase metrology&lt;br/&gt;sampling on this line&lt;br/&gt;&lt;i&gt;fully reversible&lt;/i&gt;&quot;]
+        A2[&quot;&lt;b&gt;L3&lt;/b&gt; — stage tool change&lt;br/&gt;ahead of schedule&lt;br/&gt;&lt;i&gt;confirm with production&lt;/i&gt;&quot;]
+        A3[&quot;&lt;b&gt;L3&lt;/b&gt; — stage dehumidification&lt;br/&gt;setpoint change&quot;]
+        A4[&quot;&lt;b&gt;L2&lt;/b&gt; — recommend operator&lt;br/&gt;pairing with experienced staff&quot;]
+        A5[&quot;&lt;b&gt;L2&lt;/b&gt; — recommend supplier&lt;br/&gt;engagement on lot variance&quot;]
+        A6[&quot;&lt;b&gt;L1&lt;/b&gt; — quarantine advisory&lt;br/&gt;for parts already produced&quot;]
+    end
+
+    SRC --&gt; SCOPES --&gt; FIND --&gt; ACT
+
+    classDef src fill:#1b2f3d,stroke:#5b8fb0,color:#e6f2fa
+    classDef sc fill:#0a5570,stroke:#3fd0f0,stroke-width:2px,color:#ffffff
+    classDef find fill:#3d3313,stroke:#d4a636,stroke-width:2px,color:#fff8e6
+    classDef act fill:#183028,stroke:#4caf7d,color:#e6fff2
+    class SRC,S1,S2,S3,S4,S5,S6,S7,S8 src
+    class SCOPES,SC1,SC2,SC3,SC4 sc
+    class FIND,F1 find
+    class ACT,A1,A2,A3,A4,A5,A6 act
+</pre></div>
+<p><strong>Figure 45.</strong> <em>Manufacturing predictive quality and maintenance workflow (illustrative). A single correlation identifies a four-factor conjunction, none of whose components violates a tolerance individually. Six actions follow at four different autonomy levels — with increased metrology sampling at L4 because it is genuinely reversible and costs only measurement time.</em></p>
+<h2 id="31.3-why-manufacturing-suits-this-architecture" tabindex="-1">31.3 Why Manufacturing Suits This Architecture <a class="header-anchor" href="#31.3-why-manufacturing-suits-this-architecture">#</a></h2>
+<p>Manufacturing is, in the author’s assessment, among the strongest candidate domains for the framework, for four reasons:</p>
+<p><strong>Ground truth is crisp and fast.</strong> A part is in tolerance or it is not. Metrology provides objective, timely outcome labels, which makes confidence calibration (Principle 6) genuinely tractable — unlike domains where outcomes are ambiguous or delayed by months.</p>
+<p><strong>Causality is more accessible than usual.</strong> Physical processes obey physical laws. A causal hypothesis linking humidity to resin viscosity to dimensional drift can be tested experimentally, and frequently is. M3 causal correlation is more defensible here than in social or commercial domains.</p>
+<p><strong>Actions are often genuinely reversible.</strong> Increasing sampling frequency, adjusting a setpoint within a permitted range, or scheduling an early tool change are all reversible in the strict sense of <a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">Chapter 20</a> — no external party retains a record and no downstream process behaves differently.</p>
+<p><strong>The window of actionability is favourable.</strong> Hours to days, rather than the seconds of fraud or the minutes of clinical deterioration. This tolerates batch-substrate correlation for many scopes and reduces engineering demand substantially.</p>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p><strong>A recommendation.</strong> Organizations seeking to validate the framework empirically should consider manufacturing as the pilot domain, precisely because crisp ground truth makes the central claim — that multi-modal correlation maintains useful precision across domains — directly measurable.</p>
+</div>
+<h2 id="31.4-supply-chain-correlation" tabindex="-1">31.4 Supply Chain Correlation <a class="header-anchor" href="#31.4-supply-chain-correlation">#</a></h2>
+<p><code>supply.lot_impact.v2</code> deserves specific attention because it crosses an organizational boundary.</p>
+<p>The scope correlates incoming material lot characteristics — from certificates of analysis, supplier telemetry where shared, and inbound inspection — with downstream quality outcomes measured weeks later and frequently at a different plant. This is a wide-window, cross-facility, batch-substrate correlation, and it produces findings that are commercially significant: <em>this supplier’s lots within this parameter band correlate with elevated defect rates in this process</em>.</p>
+<p><strong>Two cautions:</strong></p>
+<p>Findings of this kind have contractual and commercial consequence, and correlation is not causation. A supplier lot correlating with defects may reflect a genuine material issue, or a confound — perhaps that supplier’s lots are preferentially routed to an older line. Before any commercial action, the M3 causal hypothesis requires confirmation through designed experiment, and the framework’s role is to direct that experiment rather than to substitute for it.</p>
+<p>Sharing correlation findings with suppliers requires care about what is disclosed. A finding may reveal the organization’s own process capability, which is commercially sensitive in the opposite direction.</p>
+<h2 id="31.5-illustrative-outcomes" tabindex="-1">31.5 Illustrative Outcomes <a class="header-anchor" href="#31.5-illustrative-outcomes">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Plausible direction</th>
+<th>Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Multi-factor defect detection lead time</td>
+<td>Hours rather than weeks</td>
+<td>Continuous conjunction evaluation vs. customer return</td>
+</tr>
+<tr>
+<td>Scrap volume from undetected drift</td>
+<td>Reduction</td>
+<td>Earlier detection bounds affected production</td>
+</tr>
+<tr>
+<td>Unplanned downtime</td>
+<td>Reduction</td>
+<td>Precursor signatures detected across telemetry and maintenance history</td>
+</tr>
+<tr>
+<td>Maintenance intervention precision</td>
+<td>Improvement</td>
+<td>Multi-modal support replaces single-parameter thresholds</td>
+</tr>
+<tr>
+<td>Supplier quality issues attributed correctly</td>
+<td>Improvement</td>
+<td>Cross-facility lot correlation over long windows</td>
+</tr>
+<tr>
+<td>Engineering investigation time per issue</td>
+<td>Substantial reduction</td>
+<td>Evidence pre-assembled; conjunctions identified</td>
+</tr>
+<tr>
+<td>False alarm rate on condition monitoring</td>
+<td>Reduction</td>
+<td>Correlation replaces independent threshold alerts</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 66.</strong> <em>Illustrative outcome directions for manufacturing. All are directional estimates, not measurements.</em></p>
+<h2 id="31.6-what-makes-this-hard" tabindex="-1">31.6 What Makes This Hard <a class="header-anchor" href="#31.6-what-makes-this-hard">#</a></h2>
+<p><strong>Sensor data volume.</strong> Fourteen thousand points at 50 Hz is 700,000 events per second before any filtering — beyond the comfortable range in <a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">Table 55</a>. Edge aggregation is mandatory: raw telemetry is summarized at the gateway into features (rolling statistics, spectral bands, threshold crossings) and only features enter the pool. This is a design requirement, not an optimization.</p>
+<p><strong>Time synchronization on the plant floor.</strong> Industrial controllers frequently lack reliable time synchronization. Correlating a vibration event with a metrology result requires both timestamps to be trustworthy to within the correlation window. Deploying PTP or equivalent is a prerequisite, and the clock quality indicator must reflect actual synchronization status.</p>
+<p><strong>Operator attribution is sensitive.</strong> Correlating operator assignment with defect rates is analytically valid and industrially fraught. The framework’s position mirrors the healthcare staffing case: the correlation is legitimate as a <em>training and support</em> signal, must be purpose-bound to exclude individual performance management, and the exclusion must be enforced computationally.</p>
+<p><strong>Confounded process changes.</strong> Manufacturing processes change continuously — new tooling, revised parameters, different materials. A behavioural baseline established before a process change is invalid after it. Baselines must be versioned against process configuration, and process change must trigger baseline reset rather than being absorbed as drift.</p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Manufacturing defects are conjunctions of individually in-tolerance conditions</strong>, which is precisely the pattern no single monitoring system detects.</li>
+<li><strong>Manufacturing is the strongest candidate pilot domain</strong> because ground truth is crisp and fast, causality is experimentally testable, many actions are genuinely reversible, and actionability windows are favourable.</li>
+<li><strong>Increased metrology sampling is a rare genuine L4 action</strong> — fully reversible, low cost, and directly risk-reducing.</li>
+<li><strong>Cross-facility supplier lot correlation produces commercially consequential findings</strong> that must be confirmed by designed experiment before action, with the framework directing the experiment rather than substituting for it.</li>
+<li><strong>Edge aggregation is mandatory, not optional</strong>, at plant sensor volumes; only derived features should enter the pool.</li>
+<li><strong>Plant-floor time synchronization is a prerequisite</strong>, and clock quality metadata must reflect actual synchronization status.</li>
+<li><strong>Operator attribution must be purpose-bound to training and support</strong>, with exclusion from performance management enforced computationally.</li>
+<li><strong>Baselines must be versioned against process configuration</strong>, since process change invalidates them and must trigger reset rather than being absorbed as drift.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-4/30-healthcare/"><span>← Previous</span><b>30. Healthcare Use Case</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-4/32-retail/"><span>Next →</span><b>32. Retail Use Case</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#31.1-scenario-context">31.1 Scenario Context #</a><a href="#31.2-correlation-architecture-and-flow">31.2 Correlation Architecture and Flow #</a><a href="#31.3-why-manufacturing-suits-this-architecture">31.3 Why Manufacturing Suits This Architecture #</a><a href="#31.4-supply-chain-correlation">31.4 Supply Chain Correlation #</a><a href="#31.5-illustrative-outcomes">31.5 Illustrative Outcomes #</a><a href="#31.6-what-makes-this-hard">31.6 What Makes This Hard #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-4/31-manufacturing/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

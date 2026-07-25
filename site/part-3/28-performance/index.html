@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en" data-part="p3">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>28. Performance Considerations · Data Swimming Pool</title>
+<meta name="description" content="28. Performance Considerations --- 28.1 Performance Is Path-Dependent There is no single performance figure for a Data Swimming Pool. The system serves several distinct paths with ">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="28. Performance Considerations — Data Swimming Pool">
+<meta property="og:description" content="28. Performance Considerations --- 28.1 Performance Is Path-Dependent There is no single performance figure for a Data Swimming Pool. The system serves several distinct paths with ">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" open style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/" class="on">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part III — Enterprise Qualities</span></p>
+    <h1>28. Performance Considerations</h1>
+    <p class="cmeta"><span class="chip">🛡️ Part III — Enterprise Qualities</span><span class="dot">·</span>5 min read</p>
+  </header>
+  <div class="prose">
+<h1>28. Performance Considerations</h1>
+<hr>
+<h2 id="28.1-performance-is-path-dependent" tabindex="-1">28.1 Performance Is Path-Dependent <a class="header-anchor" href="#28.1-performance-is-path-dependent">#</a></h2>
+<p>There is no single performance figure for a Data Swimming Pool. The system serves several distinct paths with objectives that differ by orders of magnitude, and specifying one number for all of them produces either unaffordable over-engineering or unusable under-engineering.</p>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>Illustrative targets.</strong> All figures in this chapter are <strong>proposed service level objectives</strong> derived from the published characteristics of the underlying technologies and the actionability requirements analysed in <a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">Chapter 5</a>. They are <strong>not measurements</strong> of any deployed system.</p>
+</div>
+<h2 id="28.2-service-level-objectives-by-path" tabindex="-1">28.2 Service Level Objectives by Path <a class="header-anchor" href="#28.2-service-level-objectives-by-path">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Definition</th>
+<th>Proposed p50</th>
+<th>Proposed p99</th>
+<th>Dominant cost</th>
+<th>Failure consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P1 Ingestion</strong></td>
+<td>Source event → available in circulation</td>
+<td>200 ms</td>
+<td>2 s</td>
+<td>Entity resolution lookup</td>
+<td>Correlation freshness</td>
+</tr>
+<tr>
+<td><strong>P2 Hot correlation</strong></td>
+<td>Event availability → correlation emitted (narrow window)</td>
+<td>500 ms</td>
+<td>3 s</td>
+<td>State access, modality evaluation</td>
+<td>Missed short-window actions</td>
+</tr>
+<tr>
+<td><strong>P3 Warm correlation</strong></td>
+<td>Event availability → correlation emitted (wide window)</td>
+<td>30 s</td>
+<td>5 min</td>
+<td>Window state size</td>
+<td>Delayed detection</td>
+</tr>
+<tr>
+<td><strong>P4 Insight composition</strong></td>
+<td>Correlation → Insight Object emitted</td>
+<td>1 s</td>
+<td>10 s</td>
+<td>Model inference</td>
+<td>Delayed decision support</td>
+</tr>
+<tr>
+<td><strong>P5 Generative explanation</strong></td>
+<td>Insight → cited narrative</td>
+<td>3 s</td>
+<td>15 s</td>
+<td>LLM inference + citation validation</td>
+<td>Analyst wait time</td>
+</tr>
+<tr>
+<td><strong>P6 Graph traversal (k≤2)</strong></td>
+<td>Query → result</td>
+<td>50 ms</td>
+<td>300 ms</td>
+<td>Graph index</td>
+<td>Interactive UX</td>
+</tr>
+<tr>
+<td><strong>P7 Graph traversal (k=3)</strong></td>
+<td>Query → result</td>
+<td>300 ms</td>
+<td>2 s</td>
+<td>Fan-out</td>
+<td>Interactive UX</td>
+</tr>
+<tr>
+<td><strong>P8 Evidence retrieval</strong></td>
+<td>Insight ID → full evidence chain</td>
+<td>100 ms</td>
+<td>500 ms</td>
+<td>Lineage graph traversal</td>
+<td>Audit and trust</td>
+</tr>
+<tr>
+<td><strong>P9 Autonomy decision</strong></td>
+<td>Insight → action executed</td>
+<td>200 ms</td>
+<td>1 s</td>
+<td>Seven gate evaluations</td>
+<td>Protective action delay</td>
+</tr>
+<tr>
+<td><strong>P10 Analytical query</strong></td>
+<td>SQL over correlation tables</td>
+<td>2 s</td>
+<td>30 s</td>
+<td>Scan volume</td>
+<td>Analyst productivity</td>
+</tr>
+<tr>
+<td><strong>P11 Batch re-correlation</strong></td>
+<td>W2 job over 90 days, one scope</td>
+<td>45 min</td>
+<td>4 h</td>
+<td>Scan and shuffle</td>
+<td>Methodology iteration speed</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 60.</strong> <em>Proposed service level objectives by path. Note the three orders of magnitude between P2 (hot correlation) and P11 (batch re-correlation). Designing a single system to satisfy both is the framework’s core engineering challenge, and it is resolved by substrate selection per correlation scope rather than by attempting uniform performance.</em></p>
+<h2 id="28.3-the-latency-budget-for-hot-correlation" tabindex="-1">28.3 The Latency Budget for Hot Correlation <a class="header-anchor" href="#28.3-the-latency-budget-for-hot-correlation">#</a></h2>
+<p>P2 is the framework’s most demanding path and the one that justifies the streaming architecture. Its budget decomposes:</p>
+<div class="figure"><pre class="mermaid">flowchart LR
+    A[&quot;&lt;b&gt;Event available&lt;/b&gt;&lt;br/&gt;t=0&quot;] --&gt; B[&quot;Deserialize + route&lt;br/&gt;&lt;b&gt;~5 ms&lt;/b&gt;&quot;]
+    B --&gt; C[&quot;Scope matching&lt;br/&gt;which scopes want this?&lt;br/&gt;&lt;b&gt;~2 ms&lt;/b&gt;&quot;]
+    C --&gt; D[&quot;Policy check&lt;br/&gt;&lt;i&gt;cached decision&lt;/i&gt;&lt;br/&gt;&lt;b&gt;~1 ms&lt;/b&gt;&quot;]
+    D --&gt; E[&quot;State access&lt;br/&gt;window buffer read&lt;br/&gt;&lt;b&gt;~15 ms&lt;/b&gt;&quot;]
+    E --&gt; F[&quot;Modality evaluation&lt;br/&gt;M1 ~3ms · M2 ~2ms · M5 ~40ms&lt;br/&gt;&lt;b&gt;~45 ms&lt;/b&gt;&quot;]
+    F --&gt; G[&quot;Confidence pipeline&lt;br/&gt;fusion, base rate,&lt;br/&gt;FDR, calibration&lt;br/&gt;&lt;b&gt;~8 ms&lt;/b&gt;&quot;]
+    G --&gt; H[&quot;Threshold gate&lt;br/&gt;&lt;b&gt;~1 ms&lt;/b&gt;&quot;]
+    H --&gt; I[&quot;Persist correlation&lt;br/&gt;graph write + log emit&lt;br/&gt;&lt;b&gt;~120 ms&lt;/b&gt;&quot;]
+    I --&gt; J[&quot;&lt;b&gt;Correlation available&lt;/b&gt;&lt;br/&gt;t≈200 ms typical&quot;]
+
+    classDef fast fill:#183028,stroke:#4caf7d,color:#e6fff2
+    classDef med fill:#3d3313,stroke:#d4a636,color:#fff8e6
+    classDef slow fill:#4a3020,stroke:#d09a60,stroke-width:2px,color:#fff4e6
+    class B,C,D,H fast
+    class E,G med
+    class F,I slow
+</pre></div>
+<p><strong>Figure 40.</strong> <em>Illustrative latency budget for the hot correlation path. Two stages dominate: behavioural modality evaluation (M5, requiring baseline comparison) and correlation persistence (a graph write plus a log emit). These are the two stages where optimization effort returns most, and both admit well-understood mitigations.</em></p>
+<p><strong>Optimization levers, in order of return:</strong></p>
+<ol>
+<li><strong>Asynchronous graph persistence.</strong> Emit the correlation to the log synchronously and write to the graph asynchronously. The log emit is the durability guarantee; the graph write is a materialization. This removes roughly 100 ms from the critical path at the cost of brief read-after-write inconsistency in the graph.</li>
+<li><strong>Selective M5 evaluation.</strong> Behavioural modality is expensive. Evaluate it only when cheaper modalities have already produced a partial signal, rather than unconditionally. This is a cascade design and typically reduces mean cost substantially while preserving recall on the correlations that matter.</li>
+<li><strong>Policy decision caching.</strong> Policy decisions for a (scope, purpose, classification) tuple change rarely. Cache aggressively with invalidation on policy bundle change.</li>
+<li><strong>State locality.</strong> Ensure entity partitioning is correct so that state access is local. A remote state lookup costs one to two orders of magnitude more than a local one, and mis-partitioning is the most common cause of unexpected latency.</li>
+</ol>
+<h2 id="28.4-throughput-characteristics" tabindex="-1">28.4 Throughput Characteristics <a class="header-anchor" href="#28.4-throughput-characteristics">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Throughput driver</th>
+<th>Scaling behaviour</th>
+<th>Practical bottleneck</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ingestion</td>
+<td>Events/sec × validation cost</td>
+<td>Linear with instances</td>
+<td>Entity resolution lookups</td>
+</tr>
+<tr>
+<td>Circulation log</td>
+<td>Bytes/sec, partitions</td>
+<td>Linear with partitions and brokers</td>
+<td>Network, then disk</td>
+</tr>
+<tr>
+<td>Correlation operator</td>
+<td>Events/sec × scopes × modalities</td>
+<td>Linear with parallelism, <strong>bounded by state</strong></td>
+<td>State access, then CPU</td>
+</tr>
+<tr>
+<td>Graph writes</td>
+<td>Correlations/sec</td>
+<td><strong>Sub-linear</strong> — write contention</td>
+<td>Index maintenance</td>
+</tr>
+<tr>
+<td>Graph reads</td>
+<td>Queries/sec × traversal cost</td>
+<td>Linear with replicas</td>
+<td>Fan-out at depth</td>
+</tr>
+<tr>
+<td>Vector index</td>
+<td>Queries/sec</td>
+<td>Linear with replicas</td>
+<td>Recall/latency trade-off</td>
+</tr>
+<tr>
+<td>Model inference</td>
+<td>Requests/sec</td>
+<td>Linear with replicas or GPUs</td>
+<td>Batch size vs. latency trade-off</td>
+</tr>
+<tr>
+<td>Lakehouse scan</td>
+<td>Bytes scanned</td>
+<td>Linear with compute</td>
+<td>Small files, poor pruning</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 61.</strong> <em>Throughput characteristics. Graph writes are the framework’s principal throughput bottleneck: property graph databases do not scale writes as freely as logs or object storage, and correlation emission rate can exceed graph write capacity. This is the primary architectural justification for asynchronous, batched graph persistence with the log as the authoritative durability layer.</em></p>
+<h2 id="28.5-anti-patterns" tabindex="-1">28.5 Anti-Patterns <a class="header-anchor" href="#28.5-anti-patterns">#</a></h2>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Six performance anti-patterns specific to this architecture.</strong></p>
+<p><strong>Unbounded traversal.</strong> A query without a depth cap will, in a dense graph, traverse a large fraction of it. Depth caps must be enforced by the API, not left to the caller.</p>
+<p><strong>Synchronous graph write on the hot path.</strong> The single most common cause of correlation latency exceeding budget. The log is the durability guarantee; the graph is a materialization.</p>
+<p><strong>All modalities on every scope.</strong> Multiplies per-event cost with, typically, marginal recall improvement. Cascade instead.</p>
+<p><strong>Cross-partition correlation.</strong> Requires shuffle or remote state access. If a scope requires it frequently, the partitioning key is wrong for that scope, and the scope should be re-partitioned rather than the shuffle accepted.</p>
+<p><strong>Small-file accumulation.</strong> Streaming writes into the lakehouse produce many small files. Analytical scans over them degrade by an order of magnitude or more. Compaction is not optional.</p>
+<p><strong>Uncapped evidence assembly for generative paths.</strong> Retrieving an unbounded evidence subgraph to construct a prompt produces both latency and token cost blowup, and beyond a modest evidence volume, generation quality degrades rather than improves. Evidence budgets must be enforced.</p>
+</div>
+<h2 id="28.6-benchmarking-approach" tabindex="-1">28.6 Benchmarking Approach <a class="header-anchor" href="#28.6-benchmarking-approach">#</a></h2>
+<p>The framework has not been benchmarked. Were an implementation to be built, the author proposes the following methodology, offered so that any evaluation is comparable:</p>
+<p><strong>Workload definition.</strong> A synthetic enterprise generating events across a defined number of domains, with a declared entity cardinality, a controlled proportion of genuinely related event pairs (the ground truth), and injected noise.</p>
+<p><strong>Primary metrics.</strong></p>
+<ul>
+<li><em>Correlation precision and recall</em> against injected ground truth — the only metrics that matter for validating the framework’s premise.</li>
+<li><em>End-to-end latency distributions</em> per path in Table 60.</li>
+<li><em>Cost per correlation</em> and <em>cost per true-positive correlation</em> — the second being the economically meaningful figure.</li>
+<li><em>Calibration error</em> — measured as expected calibration error against the reliability diagram.</li>
+</ul>
+<p><strong>Comparison baseline.</strong> The same workload served by a lakehouse with query-time joins and by a streaming platform with declared stream-stream joins, measuring time-to-answer and answer quality for a fixed question set.</p>
+<p><strong>Scaling curves.</strong> Each metric measured while independently varying event rate, domain count, entity cardinality, scope count, and window width — to empirically establish the boundaries estimated in <a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">Table 55</a>.</p>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p><strong>The benchmark that would matter most.</strong> Not throughput. <strong>Precision at a fixed recall, as domain count increases.</strong> The framework’s central claim is that bounded, governed, multi-modal correlation can maintain useful precision as cross-domain scope grows. The falsification condition in <a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">Chapter 7</a> is that it cannot. A benchmark plotting precision against domain count would resolve the question more decisively than any other measurement, and the author regards constructing it as the highest-value next step.</p>
+</div>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Performance is path-dependent</strong>, spanning three orders of magnitude from hot correlation to batch re-correlation. Substrate selection per scope, not uniform engineering, resolves this.</li>
+<li><strong>Behavioural modality evaluation and graph persistence dominate the hot path budget</strong>, and both admit well-understood mitigations.</li>
+<li><strong>Asynchronous graph persistence with the log as durability guarantee</strong> is the highest-return optimization, removing roughly half the hot-path latency.</li>
+<li><strong>Cascade modality evaluation</strong> — running expensive modalities only after cheaper ones signal — substantially reduces mean cost while preserving recall where it matters.</li>
+<li><strong>Graph writes are the principal throughput bottleneck</strong>, because property graphs do not scale writes as freely as logs or object storage.</li>
+<li><strong>Mis-partitioning is the most common cause of unexpected latency</strong>, since remote state access costs one to two orders of magnitude more than local.</li>
+<li><strong>Six anti-patterns are specific to this architecture</strong>, of which synchronous graph writes and uncapped traversal are the most frequently encountered.</li>
+<li><strong>The benchmark that would matter most is precision at fixed recall as domain count increases</strong>, because it directly tests the framework’s central claim and its stated falsification condition.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-3/27-high-availability/"><span>← Previous</span><b>27. High Availability</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-4/29-banking/"><span>Next →</span><b>29. Banking Use Case</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#28.1-performance-is-path-dependent">28.1 Performance Is Path-Dependent #</a><a href="#28.2-service-level-objectives-by-path">28.2 Service Level Objectives by Path #</a><a href="#28.3-the-latency-budget-for-hot-correlation">28.3 The Latency Budget for Hot Correlation #</a><a href="#28.4-throughput-characteristics">28.4 Throughput Characteristics #</a><a href="#28.5-anti-patterns">28.5 Anti-Patterns #</a><a href="#28.6-benchmarking-approach">28.6 Benchmarking Approach #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-3/28-performance/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en" data-part="p4">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>29. Banking Use Case · Data Swimming Pool</title>
+<meta name="description" content="29. Banking Use Case --- Illustrative scenario. This chapter describes a synthetic, constructed scenario. It does not describe any real institution, incident, customer, or dataset.">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="29. Banking Use Case — Data Swimming Pool">
+<meta property="og:description" content="29. Banking Use Case --- Illustrative scenario. This chapter describes a synthetic, constructed scenario. It does not describe any real institution, incident, customer, or dataset.">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" open style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/" class="on">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part IV — Illustrative Enterprise Scenarios</span></p>
+    <h1>29. Banking Use Case</h1>
+    <p class="cmeta"><span class="chip">🏭 Part IV — Illustrative Enterprise Scenarios</span><span class="dot">·</span>4 min read</p>
+  </header>
+  <div class="prose">
+<h1>29. Banking Use Case</h1>
+<hr>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>Illustrative scenario.</strong> This chapter describes a synthetic, constructed scenario. It does not describe any real institution, incident, customer, or dataset. All figures are reasoned estimates presented to make the scenario concrete and internally consistent; they are <strong>not</strong> measurements of a deployed Data Swimming Pool.</p>
+</div>
+<h2 id="29.1-scenario-context" tabindex="-1">29.1 Scenario Context <a class="header-anchor" href="#29.1-scenario-context">#</a></h2>
+<p><strong>“Meridian Retail Bank”</strong> is a constructed mid-sized European retail and commercial bank: 4.2 million retail customers, 180,000 SME accounts, 340 branches, and a digital channel handling 78% of interactions. It operates a modern lakehouse, a Kafka backbone, a rules-based fraud engine, and separate analytics functions for fraud, credit risk, collections, and customer experience.</p>
+<p><strong>The problem it cannot solve.</strong> Each function performs well in isolation. Fraud detection catches known patterns. Credit risk models are well calibrated at origination. Collections operates efficient contact strategies. But phenomena that manifest across all four are invisible: a customer whose behaviour indicates emerging financial distress, whose account is simultaneously being targeted for social-engineering fraud, whose SME entity shares a director with three other deteriorating accounts, and whose recent card activity is consistent with a merchant compromise.</p>
+<p>Each function sees one facet. No function sees the picture. The customer’s outcome is determined by whichever function acts first, on the least complete information.</p>
+<h2 id="29.2-correlation-architecture" tabindex="-1">29.2 Correlation Architecture <a class="header-anchor" href="#29.2-correlation-architecture">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph SRC[&quot;Data Sources&quot;]
+        direction TB
+        S1[&quot;Core banking&lt;br/&gt;&lt;i&gt;CDC · balances, transactions&lt;/i&gt;&quot;]
+        S2[&quot;Card authorization&lt;br/&gt;&lt;i&gt;stream · 2.4k TPS peak&lt;/i&gt;&quot;]
+        S3[&quot;Digital channel&lt;br/&gt;&lt;i&gt;stream · sessions, device, behaviour&lt;/i&gt;&quot;]
+        S4[&quot;Identity &amp; access&lt;br/&gt;&lt;i&gt;stream · auth, step-up, device change&lt;/i&gt;&quot;]
+        S5[&quot;Contact centre&lt;br/&gt;&lt;i&gt;stream · calls, transcripts, sentiment&lt;/i&gt;&quot;]
+        S6[&quot;Payments rails&lt;br/&gt;&lt;i&gt;stream · SEPA, faster payments&lt;/i&gt;&quot;]
+        S7[&quot;Credit bureau&lt;br/&gt;&lt;i&gt;batch · daily&lt;/i&gt;&quot;]
+        S8[&quot;Corporate registry&lt;br/&gt;&lt;i&gt;batch · directorships, ownership&lt;/i&gt;&quot;]
+        S9[&quot;Collections&lt;br/&gt;&lt;i&gt;CDC · arrears, arrangements&lt;/i&gt;&quot;]
+        S10[&quot;Merchant risk feed&lt;br/&gt;&lt;i&gt;batch · compromise notifications&lt;/i&gt;&quot;]
+    end
+
+    subgraph POOL[&quot;Data Swimming Pool&quot;]
+        direction TB
+        ING[&quot;Ingestion&lt;br/&gt;&lt;i&gt;entity resolution to&lt;br/&gt;CUSTOMER + LEGAL_ENTITY&lt;/i&gt;&quot;]
+        subgraph SCOPES[&quot;Correlation Scopes&quot;]
+            direction LR
+            SC1[&quot;&lt;b&gt;fraud.atо.v4&lt;/b&gt;&lt;br/&gt;M1·M2·M5&lt;br/&gt;window 45 min&quot;]
+            SC2[&quot;&lt;b&gt;fraud.ring.v2&lt;/b&gt;&lt;br/&gt;M2·M5&lt;br/&gt;window 30 d · batch&quot;]
+            SC3[&quot;&lt;b&gt;risk.distress.v3&lt;/b&gt;&lt;br/&gt;M1·M2·M5&lt;br/&gt;window 90 d&quot;]
+            SC4[&quot;&lt;b&gt;risk.connected.v2&lt;/b&gt;&lt;br/&gt;M2 · k≤3&lt;br/&gt;graph&quot;]
+            SC5[&quot;&lt;b&gt;ops.merchant.v1&lt;/b&gt;&lt;br/&gt;M1·M2&lt;br/&gt;window 7 d&quot;]
+        end
+        KG[(&quot;Knowledge Graph&lt;br/&gt;customers · entities · devices&lt;br/&gt;directorships · merchants&quot;)]
+        AIE[&quot;AI Insight Engine&quot;]
+        AC[&quot;Autonomy Controller&quot;]
+    end
+
+    subgraph CONS[&quot;Consumers&quot;]
+        direction TB
+        C1[&quot;Fraud operations&lt;br/&gt;&lt;i&gt;L4 — reversible holds&lt;/i&gt;&quot;]
+        C2[&quot;Credit risk&lt;br/&gt;&lt;i&gt;L2 — recommend only&lt;/i&gt;&quot;]
+        C3[&quot;Relationship managers&lt;br/&gt;&lt;i&gt;L1 — context panel&lt;/i&gt;&quot;]
+        C4[&quot;Collections&lt;br/&gt;&lt;i&gt;L2 — strategy suggestion&lt;/i&gt;&quot;]
+        C5[&quot;Financial crime&lt;br/&gt;&lt;i&gt;L3 — staged SAR prep&lt;/i&gt;&quot;]
+    end
+
+    SRC --&gt; ING --&gt; SCOPES --&gt; KG --&gt; AIE --&gt; AC --&gt; CONS
+
+    classDef src fill:#1b2f3d,stroke:#5b8fb0,color:#e6f2fa
+    classDef pool fill:#0a5570,stroke:#3fd0f0,stroke-width:2px,color:#ffffff
+    classDef cons fill:#3d3313,stroke:#d4a636,color:#fff8e6
+    class SRC,S1,S2,S3,S4,S5,S6,S7,S8,S9,S10 src
+    class POOL,ING,SCOPES,SC1,SC2,SC3,SC4,SC5,KG,AIE,AC pool
+    class CONS,C1,C2,C3,C4,C5 cons
+</pre></div>
+<p><strong>Figure 41.</strong> <em>Banking correlation architecture (illustrative). Ten sources feed five declared correlation scopes with differing modalities, windows, and substrates. Note that autonomy levels differ by consumer: fraud operations operate at L4 because transaction holds are genuinely reversible, while credit risk operates at L2 because credit decisions are not.</em></p>
+<h2 id="29.3-event-flow-%E2%80%94-account-takeover-with-distress-confound" tabindex="-1">29.3 Event Flow — Account Takeover with Distress Confound <a class="header-anchor" href="#29.3-event-flow-%E2%80%94-account-takeover-with-distress-confound">#</a></h2>
+<p>The following sequence illustrates the framework’s value most directly: a case where two plausible interpretations compete, and the correlation substrate distinguishes them.</p>
+<div class="figure"><pre class="mermaid">sequenceDiagram
+    autonumber
+    participant D as Digital Channel
+    participant I as Identity Platform
+    participant P as Payments
+    participant CC as Contact Centre
+    participant CE as Correlation Engine
+    participant KG as Knowledge Graph
+    participant AI as Insight Engine
+    participant AC as Autonomy Controller
+    participant FO as Fraud Operations
+
+    Note over D,CC: T+0 — signals begin arriving
+    D-&gt;&gt;CE: session.login&lt;br/&gt;new device fingerprint, VPN egress
+    CE-&gt;&gt;KG: resolve → CUSTOMER-771204
+    KG--&gt;&gt;CE: 6y tenure, no prior VPN,&lt;br/&gt;2 devices historically
+
+    I-&gt;&gt;CE: identity.credential_change&lt;br/&gt;phone number updated
+    CE-&gt;&gt;CE: M1 temporal: 4 min after login
+    CE-&gt;&gt;CE: M2 entity: same customer
+    CE-&gt;&gt;CE: M5 behavioural: device+VPN+&lt;br/&gt;credential change ≠ baseline
+
+    Note over CE: T+9 min
+    P-&gt;&gt;CE: payee.added — new beneficiary,&lt;br/&gt;first-time, different bank
+    CE-&gt;&gt;CE: sequence pattern MATCH&lt;br/&gt;fraud.ato.v4 CEP automaton
+
+    P-&gt;&gt;CE: payment.initiated £14,500&lt;br/&gt;≈ 94% of available balance
+    CE-&gt;&gt;CE: M1: full sequence in 11 min&lt;br/&gt;M5: amount ≠ baseline (p99.7)
+
+    CE-&gt;&gt;CE: fuse modalities → raw 0.89&lt;br/&gt;base rate adjust → 0.86&lt;br/&gt;FDR correct → 0.84&lt;br/&gt;calibrate → &lt;b&gt;0.91&lt;/b&gt;
+    CE-&gt;&gt;KG: persist C-88417&lt;br/&gt;COORDINATED_ACCOUNT_TAKEOVER
+
+    Note over CE,AI: Competing hypothesis check
+    CE-&gt;&gt;KG: does risk.distress.v3 also fire?
+    KG--&gt;&gt;CE: YES — C-88390&lt;br/&gt;FINANCIAL_DISTRESS_PATTERN 0.63&lt;br/&gt;(balance decline, missed DD)
+    Note over AI: Two explanations:&lt;br/&gt;fraud (0.91) vs. distress-driven&lt;br/&gt;self-transfer (0.63)
+
+    AI-&gt;&gt;KG: discriminating evidence?
+    KG--&gt;&gt;AI: beneficiary account correlates&lt;br/&gt;with 3 other ATO cases&lt;br/&gt;via fraud.ring.v2 — &lt;b&gt;decisive&lt;/b&gt;
+    AI-&gt;&gt;AC: Insight I-4471&lt;br/&gt;&quot;Probable ATO in progress&quot;&lt;br/&gt;confidence 0.93&lt;br/&gt;alternative: distress (0.11, downgraded)&lt;br/&gt;evidence: 7 correlations
+
+    AC-&gt;&gt;AC: gates — reversible ✓&lt;br/&gt;precision 0.962 ✓&lt;br/&gt;confirmed ✓ · scope fresh ✓
+    AC-&gt;&gt;FO: &lt;b&gt;L4 executed&lt;/b&gt; — payment held,&lt;br/&gt;step-up triggered, RM notified&lt;br/&gt;reverse-by T+30min
+    FO-&gt;&gt;AC: T+6 min — customer contacted,&lt;br/&gt;confirms not authorized
+    AC-&gt;&gt;CE: outcome VALIDATED → calibration
+
+    Note over FO: Because distress correlation was&lt;br/&gt;ALSO surfaced, the RM opens a&lt;br/&gt;separate supported-customer&lt;br/&gt;conversation — an outcome no&lt;br/&gt;fraud system would produce.
+</pre></div>
+<p><strong>Figure 42.</strong> <em>Banking event sequence (illustrative). The architecturally significant moment is the competing hypothesis check: the system surfaces both a fraud explanation and a financial distress explanation, uses the fraud-ring correlation as discriminating evidence, and — critically — retains the distress finding rather than discarding it. A conventional fraud system would have produced a hold; this produces a hold <strong>and</strong> a customer-support intervention.</em></p>
+<h2 id="29.4-correlation-scopes-in-detail" tabindex="-1">29.4 Correlation Scopes in Detail <a class="header-anchor" href="#29.4-correlation-scopes-in-detail">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Participating event types</th>
+<th>Modalities</th>
+<th>Window</th>
+<th>Substrate</th>
+<th>Autonomy</th>
+<th>Declared precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fraud.ato.v4</code></td>
+<td>login, device_change, credential_change, payee_added, payment_initiated, auth_step_up</td>
+<td>M1, M2, M5</td>
+<td>45 min</td>
+<td>Stream</td>
+<td>L4</td>
+<td>≥ 0.95</td>
+</tr>
+<tr>
+<td><code>fraud.ring.v2</code></td>
+<td>payee_added, payment, device_fingerprint, address_change</td>
+<td>M2, M5</td>
+<td>30 d</td>
+<td>Batch</td>
+<td>L3</td>
+<td>≥ 0.85</td>
+</tr>
+<tr>
+<td><code>risk.distress.v3</code></td>
+<td>balance, direct_debit, salary_credit, card_spend_category, contact_sentiment, arrears</td>
+<td>M1, M2, M5</td>
+<td>90 d</td>
+<td>Stream + batch</td>
+<td>L2</td>
+<td>≥ 0.80</td>
+</tr>
+<tr>
+<td><code>risk.connected.v2</code></td>
+<td>directorship, ownership, guarantee, shared_address</td>
+<td>M2 (k≤3)</td>
+<td>Standing</td>
+<td>Graph</td>
+<td>L2</td>
+<td>≥ 0.90</td>
+</tr>
+<tr>
+<td><code>ops.merchant.v1</code></td>
+<td>card_authorization, merchant_compromise_notice, dispute</td>
+<td>M1, M2</td>
+<td>7 d</td>
+<td>Stream</td>
+<td>L3</td>
+<td>≥ 0.88</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 62.</strong> <em>Banking correlation scopes (illustrative). Autonomy assignment follows the reversibility principle strictly: <code>fraud.ato.v4</code> reaches L4 because a payment hold is reversible within a defined window, while <code>risk.distress.v3</code> is capped at L2 because acting on distress inference — reducing a limit, changing terms — is materially consequential and not reversible in the sense <a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">Chapter 20</a> requires.</em></p>
+<h2 id="29.5-what-this-enables-that-existing-architectures-do-not" tabindex="-1">29.5 What This Enables That Existing Architectures Do Not <a class="header-anchor" href="#29.5-what-this-enables-that-existing-architectures-do-not">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Conventional architecture</th>
+<th>With correlation substrate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Detect ATO from a single strong signal</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Detect ATO from multiple individually-weak signals</td>
+<td>Rarely</td>
+<td>✔ Multi-modal reinforcement</td>
+</tr>
+<tr>
+<td>Distinguish fraud from distress with similar surface behaviour</td>
+<td>Manual investigation</td>
+<td>✔ Competing hypothesis with discriminating evidence</td>
+</tr>
+<tr>
+<td>Link beneficiary to other cases in real time</td>
+<td>Post-hoc analysis</td>
+<td>✔ Graph traversal at decision time</td>
+</tr>
+<tr>
+<td>Detect connected-party credit contagion across an SME group</td>
+<td>Quarterly review</td>
+<td>✔ Standing graph correlation</td>
+</tr>
+<tr>
+<td>Correlate card compromise pattern to a merchant before notification</td>
+<td>✘</td>
+<td>✔ M2 shared-attribute clustering</td>
+</tr>
+<tr>
+<td>Retain the secondary finding while acting on the primary</td>
+<td>✘ — first system to act wins</td>
+<td>✔ Both surfaced, both actionable</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 63.</strong> <em>Banking capability comparison (illustrative). The final row is the least obvious and arguably the most valuable: conventional architectures resolve competing interpretations by whichever system fires first, discarding the alternative. A correlation substrate retains both.</em></p>
+<h2 id="29.6-illustrative-outcomes" tabindex="-1">29.6 Illustrative Outcomes <a class="header-anchor" href="#29.6-illustrative-outcomes">#</a></h2>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>Estimates, not measurements.</strong> The following are reasoned projections based on the structural improvements described. They have not been observed.</p>
+</div>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Plausible direction</th>
+<th>Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ATO detection precision</td>
+<td>Improvement</td>
+<td>Multi-modal reinforcement replaces single-signal thresholds</td>
+</tr>
+<tr>
+<td>False-positive holds</td>
+<td>Substantial reduction</td>
+<td>Competing hypothesis evaluation prevents distress being treated as fraud</td>
+</tr>
+<tr>
+<td>Detection latency for multi-stage ATO</td>
+<td>Minutes rather than post-hoc</td>
+<td>Continuous sequence evaluation rather than periodic batch scoring</td>
+</tr>
+<tr>
+<td>Fraud ring identification</td>
+<td>Earlier and broader</td>
+<td>Shared-attribute clustering across previously separate cases</td>
+</tr>
+<tr>
+<td>Connected-party credit exposure discovery</td>
+<td>Continuous rather than quarterly</td>
+<td>Standing graph correlation over registry data</td>
+</tr>
+<tr>
+<td>Customer-support interventions triggered</td>
+<td>New capability</td>
+<td>Distress findings retained rather than discarded when fraud fires</td>
+</tr>
+<tr>
+<td>Analyst time per investigation</td>
+<td>Reduction</td>
+<td>Evidence chain pre-assembled rather than manually constructed</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 64.</strong> <em>Illustrative outcome directions. The last row is where the correlation tax reduction manifests operationally: the investigation an analyst previously performed to assemble evidence has been performed by the platform.</em></p>
+<h2 id="29.7-what-makes-this-hard" tabindex="-1">29.7 What Makes This Hard <a class="header-anchor" href="#29.7-what-makes-this-hard">#</a></h2>
+<p>Honesty about the difficulties in this scenario specifically:</p>
+<p><strong>Entity resolution across retail and SME.</strong> A sole trader is simultaneously a retail customer and a legal entity. Directorship data from corporate registries is inconsistently structured and frequently stale. Over-merging a director with an unrelated namesake creates false connected-party exposure — a serious error with regulatory implications.</p>
+<p><strong>Regulatory constraint on correlation.</strong> Correlating transaction data with inferred financial distress for the purpose of credit decisioning may constitute automated decision-making with significant effect, engaging rights to explanation and human intervention. The scope’s declared purpose materially determines its permissibility, and <code>risk.distress.v3</code> operating at L2 reflects this constraint rather than a technical limitation.</p>
+<p><strong>Fraud-ring correlation is adversarial.</strong> Adversaries adapt. A ring detected by shared device fingerprints will migrate to distinct devices. Behavioural baselines can be poisoned during a deliberate quiet period. The correlation scope requires continuous adversarial review, not quarterly business review.</p>
+<p><strong>Precision at L4 is demanding.</strong> A declared precision of 0.95 for autonomous transaction holds means one in twenty holds inconveniences a legitimate customer. Whether that is acceptable is a business judgement about the relative cost of fraud loss and customer friction — and it must be made explicitly by an accountable person, not implied by a threshold configuration.</p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Each banking function performs well in isolation and none sees the whole picture</strong>, so a customer’s outcome is determined by whichever function acts first on the least complete information.</li>
+<li><strong>Competing hypothesis evaluation is the scenario’s most distinctive capability:</strong> the system surfaces both fraud and distress explanations, uses ring correlation as discriminating evidence, and retains the secondary finding rather than discarding it.</li>
+<li><strong>Autonomy differs by consumer within one platform</strong> — L4 for reversible transaction holds, L2 for credit inferences — demonstrating that autonomy is a per-action-class property.</li>
+<li><strong>Real-time beneficiary linkage to other cases</strong> converts post-hoc ring analysis into decision-time evidence.</li>
+<li><strong>Entity resolution across retail and legal-entity domains is the principal technical difficulty</strong>, with over-merging carrying regulatory consequence.</li>
+<li><strong>Fraud correlation is adversarial and requires continuous review</strong>, not the quarterly cadence appropriate to business scopes.</li>
+<li><strong>A declared precision of 0.95 at L4 is an explicit business judgement</strong> about the relative cost of fraud loss and customer friction, and must be owned by an accountable person.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-3/28-performance/"><span>← Previous</span><b>28. Performance Considerations</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-4/30-healthcare/"><span>Next →</span><b>30. Healthcare Use Case</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#29.1-scenario-context">29.1 Scenario Context #</a><a href="#29.2-correlation-architecture">29.2 Correlation Architecture #</a><a href="#29.3-event-flow-%E2%80%94-account-takeover-with-distress-confound">29.3 Event Flow — Account Takeover with Distress Confound #</a><a href="#29.4-correlation-scopes-in-detail">29.4 Correlation Scopes in Detail #</a><a href="#29.5-what-this-enables-that-existing-architectures-do-not">29.5 What This Enables That Existing Architectures Do Not #</a><a href="#29.6-illustrative-outcomes">29.6 Illustrative Outcomes #</a><a href="#29.7-what-makes-this-hard">29.7 What Makes This Hard #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-4/29-banking/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

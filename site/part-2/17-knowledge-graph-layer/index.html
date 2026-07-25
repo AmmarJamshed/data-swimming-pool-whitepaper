@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en" data-part="p2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>17. Knowledge Graph Layer · Data Swimming Pool</title>
+<meta name="description" content="17. Knowledge Graph Layer --- 17.1 The Living Graph The framework&#39;s knowledge graph differs from conventional enterprise knowledge graphs in one decisive respect: its edges are pre">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="17. Knowledge Graph Layer — Data Swimming Pool">
+<meta property="og:description" content="17. Knowledge Graph Layer --- 17.1 The Living Graph The framework&#39;s knowledge graph differs from conventional enterprise knowledge graphs in one decisive respect: its edges are pre">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" open style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/" class="on">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part II — The Data Swimming Pool</span></p>
+    <h1>17. Knowledge Graph Layer</h1>
+    <p class="cmeta"><span class="chip">🏊 Part II — The Data Swimming Pool</span><span class="dot">·</span>6 min read</p>
+  </header>
+  <div class="prose">
+<h1>17. Knowledge Graph Layer</h1>
+<hr>
+<h2 id="17.1-the-living-graph" tabindex="-1">17.1 The Living Graph <a class="header-anchor" href="#17.1-the-living-graph">#</a></h2>
+<p>The framework’s knowledge graph differs from conventional enterprise knowledge graphs in one decisive respect: <strong>its edges are predominantly machine-derived from observed event relationships rather than hand-authored from documented intent.</strong></p>
+<div class="cal cal-info">
+<h3 id="definition-%E2%80%94-living-knowledge-graph" tabindex="-1">Definition — Living Knowledge Graph <a class="header-anchor" href="#definition-%E2%80%94-living-knowledge-graph">#</a></h3>
+<p>A <strong>living knowledge graph</strong> is a graph whose topology is continuously revised by the Correlation Engine from observed event relationships, such that the graph represents how the enterprise <strong>actually behaves</strong> rather than how it was <strong>documented to behave</strong>. Its edges carry confidence, temporal validity, and provenance, and they expire.</p>
+</div>
+<p>The distinction is practical. Conventional enterprise knowledge graphs are curated: a modelling team declares entity types, relationship types, and instances, typically sourced from master data systems. This produces a graph that is authoritative about <em>structure</em> and stale about <em>behaviour</em>. It knows that customers place orders; it does not know that this customer’s orders have been correlated with quality complaints for six weeks.</p>
+<p>The living graph inverts the ratio. A curated ontology provides the type system and the invariant structural relationships. The Correlation Engine supplies the overwhelming majority of edges — dynamic, scored, expiring assertions about observed relationships.</p>
+<div class="cal cal-success">
+<h3 id="design-principle-%E2%80%94-curate-the-schema%2C-derive-the-instances" tabindex="-1">Design Principle — Curate the Schema, Derive the Instances <a class="header-anchor" href="#design-principle-%E2%80%94-curate-the-schema%2C-derive-the-instances">#</a></h3>
+<p>The graph’s <strong>type system</strong> (entity classes, relationship types, constraints) MUST be curated, versioned, and governed by humans. The graph’s <strong>instance-level edges</strong> SHOULD be predominantly derived from observed correlations. Hand-curating instance edges at enterprise scale does not remain current and MUST NOT be the primary mechanism.</p>
+</div>
+<h2 id="17.2-graph-schema" tabindex="-1">17.2 Graph Schema <a class="header-anchor" href="#17.2-graph-schema">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart LR
+    subgraph CORE[&quot;Core Entity Types — curated&quot;]
+        direction TB
+        PARTY((&quot;Party&lt;br/&gt;&lt;i&gt;customer, supplier,&lt;br/&gt;employee, counterparty&lt;/i&gt;&quot;))
+        ASSET((&quot;Asset&lt;br/&gt;&lt;i&gt;account, device, vehicle,&lt;br/&gt;facility, product&lt;/i&gt;&quot;))
+        LOCATION((&quot;Location&lt;br/&gt;&lt;i&gt;site, region, jurisdiction&lt;/i&gt;&quot;))
+        PROCESS((&quot;Process&lt;br/&gt;&lt;i&gt;order, claim, case,&lt;br/&gt;shipment, treatment&lt;/i&gt;&quot;))
+    end
+
+    subgraph EVENT[&quot;Event Layer — derived&quot;]
+        direction TB
+        EV((&quot;Event&lt;br/&gt;&lt;i&gt;canonical event&lt;br/&gt;reference&lt;/i&gt;&quot;))
+        CORR((&quot;Correlation&lt;br/&gt;&lt;i&gt;scored relationship&lt;/i&gt;&quot;))
+        INS((&quot;Insight&lt;br/&gt;&lt;i&gt;Insight Object&lt;/i&gt;&quot;))
+    end
+
+    subgraph SEM[&quot;Semantic Layer — curated&quot;]
+        direction TB
+        CONCEPT((&quot;Concept&lt;br/&gt;&lt;i&gt;business term,&lt;br/&gt;metric definition&lt;/i&gt;&quot;))
+        POLICY((&quot;Policy&lt;br/&gt;&lt;i&gt;rule, obligation,&lt;br/&gt;purpose&lt;/i&gt;&quot;))
+    end
+
+    PARTY --&gt;|&quot;OWNS / CONTROLS&quot;| ASSET
+    PARTY --&gt;|&quot;LOCATED_AT&quot;| LOCATION
+    PARTY --&gt;|&quot;PARTICIPATES_IN&quot;| PROCESS
+    ASSET --&gt;|&quot;DEPLOYED_AT&quot;| LOCATION
+    PROCESS --&gt;|&quot;INVOLVES&quot;| ASSET
+    PARTY --&gt;|&quot;RELATED_TO&lt;br/&gt;&lt;i&gt;group, household,&lt;br/&gt;beneficial owner&lt;/i&gt;&quot;| PARTY
+
+    EV --&gt;|&quot;CONCERNS&quot;| PARTY
+    EV --&gt;|&quot;CONCERNS&quot;| ASSET
+    EV --&gt;|&quot;PART_OF&quot;| PROCESS
+
+    CORR --&gt;|&quot;RELATES&lt;br/&gt;&lt;i&gt;confidence, type,&lt;br/&gt;validity&lt;/i&gt;&quot;| EV
+    CORR --&gt;|&quot;IMPLICATES&quot;| PARTY
+    CORR --&gt;|&quot;SUPERSEDES&quot;| CORR
+
+    INS --&gt;|&quot;DERIVED_FROM&quot;| CORR
+    INS --&gt;|&quot;ABOUT&quot;| PARTY
+    INS --&gt;|&quot;RECOMMENDS&quot;| PROCESS
+
+    CONCEPT --&gt;|&quot;DEFINES&quot;| EV
+    POLICY --&gt;|&quot;GOVERNS&quot;| CORR
+    POLICY --&gt;|&quot;CONSTRAINS&quot;| INS
+
+    classDef curated fill:#183028,stroke:#4caf7d,stroke-width:2px,color:#e6fff2
+    classDef derived fill:#0a5570,stroke:#3fd0f0,stroke-width:2px,color:#ffffff
+    classDef sem fill:#3a2540,stroke:#a878c0,stroke-width:1.5px,color:#f6eaff
+    class CORE,PARTY,ASSET,LOCATION,PROCESS curated
+    class EVENT,EV,CORR,INS derived
+    class SEM,CONCEPT,POLICY sem
+</pre></div>
+<p><strong>Figure 25.</strong> <em>Enterprise knowledge graph schema fragment. Four curated core entity types provide the structural skeleton. The derived event layer — events, correlations, and insights — supplies the dynamic, high-volume majority of the graph. A curated semantic layer binds business concepts and policies to the derived content, which is what enables policy to govern correlation formation rather than only correlation access.</em></p>
+<p>Note that <strong>Correlation is itself a node type</strong>, not merely an edge. This is a deliberate modelling decision: a correlation has properties (confidence, modality, evidence set, validity, provenance), participates in relationships (supersedes, is governed by), and has a lifecycle. Representing it as a reified node rather than as an edge property makes these first-class and queryable, at the cost of increased graph size and traversal depth.</p>
+<h2 id="17.3-what-the-graph-enables" tabindex="-1">17.3 What the Graph Enables <a class="header-anchor" href="#17.3-what-the-graph-enables">#</a></h2>
+<h3 id="17.3.1-multi-hop-reasoning" tabindex="-1">17.3.1 Multi-Hop Reasoning <a class="header-anchor" href="#17.3.1-multi-hop-reasoning">#</a></h3>
+<p>The graph’s principal contribution is efficient traversal to depth. Questions that are expensive or impossible in relational form become natural:</p>
+<ul>
+<li><em>Which customers are within two hops of any entity subject to a sanctions correlation?</em></li>
+<li><em>What is the shortest correlation path between this equipment failure and any supplier change?</em></li>
+<li><em>Which entities form a community whose members share device correlations but no declared relationship?</em> — the canonical fraud-ring query.</li>
+<li><em>Which insights depend, transitively, on a correlation that has just been retracted?</em> — the impact-analysis query, essential for the revision protocol.</li>
+</ul>
+<p>The last of these is worth emphasizing. When a correlation is retracted, the framework must notify every consumer whose insight depended on it. Computing that transitive dependency set is a graph traversal. In a relational store it is a recursive join over the lineage tables; in a graph it is a single traversal. This is not a marginal performance difference at depth.</p>
+<h3 id="17.3.2-graph-native-analytics" tabindex="-1">17.3.2 Graph-Native Analytics <a class="header-anchor" href="#17.3.2-graph-native-analytics">#</a></h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Correlation application</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Community detection</strong> (Louvain, Leiden, label propagation)</td>
+<td>Fraud rings, coordinated inauthentic behaviour, supplier clusters sharing hidden dependency</td>
+</tr>
+<tr>
+<td><strong>Centrality</strong> (degree, betweenness, PageRank)</td>
+<td>Critical-path assets, systemically important counterparties, influential accounts</td>
+</tr>
+<tr>
+<td><strong>Link prediction</strong></td>
+<td>Anticipate relationships not yet observed — a candidate generator for the Correlation Engine</td>
+</tr>
+<tr>
+<td><strong>Shortest / all paths</strong></td>
+<td>Causal chain reconstruction; contagion path analysis</td>
+</tr>
+<tr>
+<td><strong>Similarity</strong> (node2vec, GraphSAGE embeddings)</td>
+<td>Cohort construction for M5 behavioural baselines</td>
+</tr>
+<tr>
+<td><strong>Temporal graph analysis</strong></td>
+<td>How correlation topology evolves — rising density often precedes incidents</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 31.</strong> <em>Graph-native analytics and their correlation applications. Link prediction is architecturally notable because it runs in the opposite direction to the rest of the system: the graph proposes relationships that the Correlation Engine then attempts to verify against evidence, creating a hypothesis-generation loop.</em></p>
+<h2 id="17.4-edge-lifecycle-and-expiry" tabindex="-1">17.4 Edge Lifecycle and Expiry <a class="header-anchor" href="#17.4-edge-lifecycle-and-expiry">#</a></h2>
+<p>The graph’s most operationally demanding property is that <strong>edges expire</strong>.</p>
+<p>A conventional knowledge graph accumulates edges monotonically. A living graph derived from correlations must not, for two reasons: correlations have temporal validity, and stale edges actively mislead. An edge asserting that two entities are behaviourally correlated, based on evidence from eighteen months ago, is worse than absent — it will be traversed and trusted.</p>
+<p>The framework specifies:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Explicit validity</strong></td>
+<td>Every derived edge carries <code>valid_from</code> and <code>valid_to</code>. Traversals filter by validity by default.</td>
+</tr>
+<tr>
+<td><strong>Confidence decay</strong></td>
+<td>Where appropriate to the relationship type, confidence decays with a declared half-life absent reinforcing evidence.</td>
+</tr>
+<tr>
+<td><strong>Reinforcement</strong></td>
+<td>New consistent evidence extends validity and may raise confidence, subject to the calibration pipeline.</td>
+</tr>
+<tr>
+<td><strong>Contradiction</strong></td>
+<td>Contradicting evidence reduces confidence and may retract the edge, triggering downstream notification.</td>
+</tr>
+<tr>
+<td><strong>Archival, not deletion</strong></td>
+<td>Expired edges move to a temporal archive partition, preserving auditability. Queries may explicitly request historical state.</td>
+</tr>
+<tr>
+<td><strong>Retraction propagation</strong></td>
+<td>Retraction triggers traversal of dependent insights and consumer notification.</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 32.</strong> <em>Edge lifecycle mechanisms. Archival rather than deletion is required for audit: an auditor must be able to reconstruct the graph state at the moment a historical decision was made, which is impossible if expired edges are removed.</em></p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Expiry is a significant operational cost.</strong> Continuously evaluating validity, decaying confidence, and archiving expired edges across a graph of billions of edges is substantial ongoing work — comparable to compaction in a log-structured store. Implementations that treat expiry as a low-priority background task will find that traversals over stale edges silently degrade insight quality, and the degradation will be attributed to the models rather than to the graph.</p>
+</div>
+<h2 id="17.5-technology-selection" tabindex="-1">17.5 Technology Selection <a class="header-anchor" href="#17.5-technology-selection">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Consideration</th>
+<th>Property graph (Neo4j, TigerGraph, Memgraph)</th>
+<th>RDF triple store (GraphDB, Virtuoso, Stardog)</th>
+<th>Cloud managed (Neptune, Cosmos Gremlin)</th>
+<th>Graph-on-lakehouse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Traversal performance at depth</td>
+<td>✔ Strong</td>
+<td>◐ Moderate</td>
+<td>◐ Moderate</td>
+<td>✘ Weak</td>
+</tr>
+<tr>
+<td>Write throughput</td>
+<td>◐ Moderate</td>
+<td>◐ Moderate</td>
+<td>◐ Moderate</td>
+<td>✔ Strong</td>
+</tr>
+<tr>
+<td>Formal reasoning / inference</td>
+<td>◐ Limited</td>
+<td>✔ Strong (OWL)</td>
+<td>✘</td>
+<td>✘</td>
+</tr>
+<tr>
+<td>Standardized query</td>
+<td>✔ Cypher / GQL</td>
+<td>✔ SPARQL</td>
+<td>◐ Gremlin</td>
+<td>✔ SQL</td>
+</tr>
+<tr>
+<td>Scale to 10⁹⁺ edges</td>
+<td>◐ Requires care</td>
+<td>◐ Requires care</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Temporal / bi-temporal support</td>
+<td>◐ Modelled manually</td>
+<td>◐ Modelled manually</td>
+<td>◐ Manual</td>
+<td>✔ Native snapshots</td>
+</tr>
+<tr>
+<td>Operational maturity</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔ Managed</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Cost at scale</td>
+<td>✘ High</td>
+<td>✘ High</td>
+<td>◐ Moderate</td>
+<td>✔ Low</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 33.</strong> <em>Graph technology selection considerations. Legend: ✔ strong, ◐ moderate, ✘ weak. No single option dominates, which motivates the hybrid topology below.</em></p>
+<h3 id="17.5.1-recommended-hybrid-topology" tabindex="-1">17.5.1 Recommended Hybrid Topology <a class="header-anchor" href="#17.5.1-recommended-hybrid-topology">#</a></h3>
+<p>The framework recommends a <strong>two-tier graph</strong>:</p>
+<p><strong>Hot tier — property graph.</strong> Recent, high-confidence, currently-valid edges for entities under active consideration. Sized for sub-second traversal at depth three to four. Typically the trailing 30–90 days plus curated structural edges. This is where interactive queries, insight generation, and real-time decisioning execute.</p>
+<p><strong>Cold tier — graph-on-lakehouse.</strong> Complete historical edge set, including expired and archived edges, stored in the lakehouse in an adjacency-optimized layout. Serves batch graph analytics (W3), retrospective audit, and re-correlation. Queried with distributed graph processing rather than interactive traversal.</p>
+<p><strong>Synchronization.</strong> Edges promote to hot on creation and demote on expiry or age. The hot tier is treated as a <strong>materialized cache</strong> of the cold tier, rebuildable from it — which means hot-tier loss is a recovery inconvenience rather than data loss.</p>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p><strong>Why the hot tier must be bounded.</strong> A property graph containing every historical edge will not traverse at interactive latency, regardless of tuning. Bounding the hot tier is the graph-layer expression of Principle 3, and the same discipline applies: the bound must be declared, monitored, and enforced rather than hoped for.</p>
+</div>
+<h2 id="17.6-relationship-to-data-fabric-graphs" tabindex="-1">17.6 Relationship to Data Fabric Graphs <a class="header-anchor" href="#17.6-relationship-to-data-fabric-graphs">#</a></h2>
+<p><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">Chapter 6</a> drew the distinction; it is restated here concretely because the two graphs are frequently conflated.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Data fabric catalog graph</th>
+<th>Living knowledge graph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nodes represent</strong></td>
+<td>Tables, columns, pipelines, reports, owners</td>
+<td>Parties, assets, processes, events, correlations, insights</td>
+</tr>
+<tr>
+<td><strong>Edges represent</strong></td>
+<td>Lineage, containment, ownership, classification</td>
+<td>Observed relationships with confidence and validity</td>
+</tr>
+<tr>
+<td><strong>Scale</strong></td>
+<td>10⁴–10⁶ nodes</td>
+<td>10⁸–10¹⁰ nodes and edges</td>
+</tr>
+<tr>
+<td><strong>Write rate</strong></td>
+<td>Low (schema change frequency)</td>
+<td>Very high (event rate)</td>
+</tr>
+<tr>
+<td><strong>Volatility</strong></td>
+<td>Low</td>
+<td>High — continuous creation and expiry</td>
+</tr>
+<tr>
+<td><strong>Question answered</strong></td>
+<td>“Where does this data come from?”</td>
+<td>“What is this entity connected to, and why?”</td>
+</tr>
+<tr>
+<td><strong>Consumers</strong></td>
+<td>Stewards, engineers, compliance</td>
+<td>Analysts, models, agents, decision systems</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 34.</strong> <em>Catalog graph versus living knowledge graph. Both are necessary and they are different systems. The framework retains a catalog graph in the metadata plane (<a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">Chapter 18</a>) and a living graph in the intelligence tier. Attempting to serve both from one store degrades both.</em></p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>The living graph’s edges are predominantly derived from observed correlations</strong>, so it represents how the enterprise actually behaves rather than how it was documented to behave.</li>
+<li><strong>Curate the schema, derive the instances.</strong> Hand-curating instance-level edges at enterprise scale does not stay current and must not be the primary mechanism.</li>
+<li><strong>Correlation is modelled as a node, not an edge property</strong>, making its confidence, evidence, lifecycle, and supersession relationships first-class and queryable.</li>
+<li><strong>Retraction impact analysis is a graph traversal</strong>, which is why the graph is not merely a performance optimization — computing the transitive set of insights depending on a retracted correlation is impractical relationally at depth.</li>
+<li><strong>Link prediction runs in reverse</strong>, proposing relationships for the Correlation Engine to verify against evidence — a hypothesis-generation loop.</li>
+<li><strong>Edges expire, and expiry is expensive.</strong> Stale edges are worse than absent because they will be traversed and trusted. Implementations that deprioritize expiry will see insight quality degrade and misattribute it to models.</li>
+<li><strong>Archival rather than deletion is required for audit</strong>, so that graph state at the time of any historical decision is reconstructable.</li>
+<li><strong>A two-tier hybrid is recommended:</strong> a bounded property graph for interactive traversal and a complete graph-on-lakehouse for analytics and audit, with the hot tier treated as a rebuildable cache.</li>
+<li><strong>The catalog graph and the living graph are different systems</strong> at different scales with different volatility. Serving both from one store degrades both.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/"><span>← Previous</span><b>16. AI Insight Engine</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/"><span>Next →</span><b>18. Metadata and Data Lineage</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#17.1-the-living-graph">17.1 The Living Graph #</a><a href="#17.2-graph-schema">17.2 Graph Schema #</a><a href="#17.3-what-the-graph-enables">17.3 What the Graph Enables #</a><a href="#17.4-edge-lifecycle-and-expiry">17.4 Edge Lifecycle and Expiry #</a><a href="#17.5-technology-selection">17.5 Technology Selection #</a><a href="#17.6-relationship-to-data-fabric-graphs">17.6 Relationship to Data Fabric Graphs #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

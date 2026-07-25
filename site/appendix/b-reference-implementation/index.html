@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en" data-part="apx">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Appendix B — Reference Implementation Blueprint · Data Swimming Pool</title>
+<meta name="description" content="Appendix B — Reference Implementation Blueprint --- Illustrative, not prescriptive. This blueprint shows one plausible technology composition. Named products are examples of a cate">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="Appendix B — Reference Implementation Blueprint — Data Swimming Pool">
+<meta property="og:description" content="Appendix B — Reference Implementation Blueprint --- Illustrative, not prescriptive. This blueprint shows one plausible technology composition. Named products are examples of a cate">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" open style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/" class="on">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Appendices</span></p>
+    <h1>Appendix B — Reference Implementation Blueprint</h1>
+    <p class="cmeta"><span class="chip">📎 Appendices</span><span class="dot">·</span>1 min read</p>
+  </header>
+  <div class="prose">
+<h1>Appendix B — Reference Implementation Blueprint</h1>
+<hr>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Illustrative, not prescriptive.</strong> This blueprint shows one plausible technology composition. Named products are examples of a <em>category</em>; substitutions with equivalent capability are expected. No product mentioned has been tested in this configuration, and no vendor has reviewed or endorsed this material.</p>
+</div>
+<h2 id="b.1-component-selection-by-layer" tabindex="-1">B.1 Component Selection by Layer <a class="header-anchor" href="#b.1-component-selection-by-layer">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Required capability</th>
+<th>Open-source option</th>
+<th>Managed option</th>
+<th>Selection criterion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Event log</strong></td>
+<td>Durable, partitioned, replayable, tiered retention</td>
+<td>Apache Kafka, Apache Pulsar, Redpanda</td>
+<td>Confluent Cloud, AWS MSK, Azure Event Hubs</td>
+<td>Tiered storage support; partition count ceiling</td>
+</tr>
+<tr>
+<td><strong>Stream compute</strong></td>
+<td>Stateful, event-time, exactly-once, large state</td>
+<td>Apache Flink</td>
+<td>Confluent Flink, AWS Managed Flink, Databricks</td>
+<td>Managed state size; savepoint operations</td>
+</tr>
+<tr>
+<td><strong>CDC capture</strong></td>
+<td>Log-based change capture</td>
+<td>Debezium</td>
+<td>Fivetran, Airbyte, Striim</td>
+<td>Source coverage; schema-change handling</td>
+</tr>
+<tr>
+<td><strong>Schema registry</strong></td>
+<td>Versioned schemas, compatibility enforcement</td>
+<td>Confluent Schema Registry, Apicurio</td>
+<td>Vendor-managed</td>
+<td>Compatibility policy granularity</td>
+</tr>
+<tr>
+<td><strong>Entity resolution</strong></td>
+<td>Deterministic + probabilistic + graph</td>
+<td>Zingg, Splink</td>
+<td>Senzing, Quantexa, Tamr</td>
+<td>Streaming-capable inference; explainability</td>
+</tr>
+<tr>
+<td><strong>Table format</strong></td>
+<td>ACID, time travel, schema evolution</td>
+<td>Apache Iceberg, Delta Lake, Apache Hudi</td>
+<td>Databricks, Snowflake, BigQuery</td>
+<td>Engine interoperability; partition evolution</td>
+</tr>
+<tr>
+<td><strong>Batch compute</strong></td>
+<td>Distributed, cost-elastic</td>
+<td>Apache Spark, Trino</td>
+<td>Databricks, EMR, Snowpark</td>
+<td>Graph algorithm library availability</td>
+</tr>
+<tr>
+<td><strong>Graph — hot tier</strong></td>
+<td>Low-latency traversal, high write rate</td>
+<td>Neo4j, Memgraph, JanusGraph</td>
+<td>Neo4j Aura, Amazon Neptune, TigerGraph Cloud</td>
+<td>Sustained write throughput under traversal load</td>
+</tr>
+<tr>
+<td><strong>Graph — cold tier</strong></td>
+<td>Bulk analytics over history</td>
+<td>GraphFrames, NetworkX at scale</td>
+<td>Neptune Analytics</td>
+<td>Cost per algorithm run</td>
+</tr>
+<tr>
+<td><strong>Vector index</strong></td>
+<td>ANN over embeddings, metadata filtering</td>
+<td>Qdrant, Weaviate, Milvus, pgvector</td>
+<td>Pinecone, Vertex Matching Engine</td>
+<td>Pre-filter support for policy enforcement</td>
+</tr>
+<tr>
+<td><strong>Feature store</strong></td>
+<td>Online/offline parity</td>
+<td>Feast</td>
+<td>Tecton, Databricks Feature Store</td>
+<td>Point-in-time correctness</td>
+</tr>
+<tr>
+<td><strong>Rules engine</strong></td>
+<td>Deterministic, versioned, auditable</td>
+<td>Drools, GoRules, Flink CEP</td>
+<td>Vendor BRMS</td>
+<td>Simulation and impact analysis tooling</td>
+</tr>
+<tr>
+<td><strong>Policy engine</strong></td>
+<td>Attribute-based, externalized</td>
+<td>Open Policy Agent, Cedar</td>
+<td>Styra DAS</td>
+<td>Decision latency at correlation rate</td>
+</tr>
+<tr>
+<td><strong>Metadata &amp; lineage</strong></td>
+<td>Column-level, extensible to inference</td>
+<td>OpenMetadata, DataHub, Marquez</td>
+<td>Collibra, Alation, Atlan, Purview</td>
+<td>Custom entity types for correlations</td>
+</tr>
+<tr>
+<td><strong>Model serving</strong></td>
+<td>Low-latency inference, versioning</td>
+<td>KServe, BentoML, Ray Serve</td>
+<td>SageMaker, Vertex AI</td>
+<td>Shadow deployment support</td>
+</tr>
+<tr>
+<td><strong>LLM layer</strong></td>
+<td>Grounded generation, structured output</td>
+<td>Self-hosted open-weight models</td>
+<td>Azure OpenAI, Bedrock, Vertex</td>
+<td>Data residency; citation-forcing capability</td>
+</tr>
+<tr>
+<td><strong>Observability</strong></td>
+<td>Traces, metrics, logs across streaming</td>
+<td>OpenTelemetry + Prometheus + Grafana</td>
+<td>Datadog, New Relic</td>
+<td>Streaming state and lag visibility</td>
+</tr>
+<tr>
+<td><strong>Orchestration</strong></td>
+<td>DAG scheduling, backfill</td>
+<td>Apache Airflow, Dagster</td>
+<td>Astronomer, Databricks Workflows</td>
+<td>Retrospective re-correlation ergonomics</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 88.</strong> <em>Component selection by layer. <strong>The three hardest selections are entity resolution, hot-tier graph, and inference-capable metadata</strong>, because these are the layers where the framework’s requirements exceed what mainstream products currently target.</em></p>
+<h2 id="b.2-deployment-topology" tabindex="-1">B.2 Deployment Topology <a class="header-anchor" href="#b.2-deployment-topology">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph SRC[&quot;Source Domains&quot;]
+        S1[&quot;OLTP systems&quot;]
+        S2[&quot;SaaS APIs&quot;]
+        S3[&quot;IoT / telemetry&quot;]
+        S4[&quot;Files / batch feeds&quot;]
+    end
+
+    subgraph INGEST[&quot;Ingestion Zone&quot;]
+        CDC[&quot;CDC — Debezium&quot;]
+        API[&quot;API / webhook gateway&quot;]
+        GW[&quot;Contract validation&lt;br/&gt;+ Schema Registry&quot;]
+        CANON[&quot;Canonicalizer&quot;]
+        ER[&quot;Entity Resolution service&quot;]
+        CLS[&quot;Classifier / policy tagger&quot;]
+        QT[(&quot;Quarantine&quot;)]
+    end
+
+    subgraph LOG[&quot;Event Backbone&quot;]
+        K1[[&quot;canonical.* topics&lt;br/&gt;entity-key partitioned&quot;]]
+        K2[[&quot;correlations.*&quot;]]
+        K3[[&quot;insights.*&quot;]]
+        K4[[&quot;lineage.*&quot;]]
+    end
+
+    subgraph STREAM[&quot;Stream Compute&quot;]
+        F1[&quot;Flink — M1 temporal&quot;]
+        F2[&quot;Flink — M2 entity&quot;]
+        F4[&quot;Flink — M4 semantic&quot;]
+        F5[&quot;Flink — M5 behavioural&quot;]
+        RE[&quot;Rules engine&quot;]
+        SS[(&quot;RocksDB state&lt;br/&gt;+ checkpoints&quot;)]
+    end
+
+    subgraph BATCH[&quot;Batch / Lakehouse&quot;]
+        BZ[(&quot;Bronze&quot;)]
+        SZ[(&quot;Silver&quot;)]
+        GZ[(&quot;Gold&quot;)]
+        SPK[&quot;Spark — W1..W4&lt;br/&gt;wide window, M3 causal,&lt;br/&gt;graph algorithms,&lt;br/&gt;re-correlation&quot;]
+    end
+
+    subgraph SERVE[&quot;Serving&quot;]
+        GH[(&quot;Graph hot tier&quot;)]
+        GC[(&quot;Graph cold tier&quot;)]
+        VDB[(&quot;Vector index&quot;)]
+        FS[(&quot;Feature store&quot;)]
+        API2[&quot;Insight API / GraphQL&quot;]
+    end
+
+    subgraph INTEL[&quot;Insight Layer&quot;]
+        ML[&quot;Model serving&quot;]
+        LLM[&quot;Grounded generation&lt;br/&gt;+ citation validation&quot;]
+        AC[&quot;Autonomy Controller&quot;]
+    end
+
+    subgraph PLANE[&quot;Cross-Cutting Planes&quot;]
+        MD[(&quot;Metadata + lineage&quot;)]
+        OPA[&quot;Policy engine&quot;]
+        OBS[&quot;Observability&quot;]
+    end
+
+    SRC --&gt; CDC &amp; API
+    CDC &amp; API --&gt; GW --&gt; CANON --&gt; ER --&gt; CLS --&gt; K1
+    CLS -.-&gt;|reject| QT
+    K1 --&gt; F1 &amp; F2 &amp; F4 &amp; F5 &amp; RE
+    F1 &amp; F2 &amp; F4 &amp; F5 --&gt; SS
+    F1 &amp; F2 &amp; F4 &amp; F5 &amp; RE --&gt; K2
+    K1 --&gt; BZ --&gt; SZ --&gt; GZ
+    K2 --&gt; SZ
+    SPK --&gt; GZ
+    GZ --&gt; SPK
+    SPK --&gt;|&quot;reconciliation&quot;| K2
+    K2 --&gt; GH --&gt; GC
+    K1 --&gt; VDB
+    GZ --&gt; FS
+    GH &amp; VDB &amp; FS --&gt; ML --&gt; LLM --&gt; AC --&gt; K3
+    GH &amp; K2 --&gt; API2
+    K3 --&gt; API2
+    PLANE -.-&gt; INGEST &amp; STREAM &amp; BATCH &amp; SERVE &amp; INTEL
+    INGEST &amp; STREAM &amp; BATCH &amp; INTEL -.-&gt; K4 --&gt; MD
+
+    classDef src fill:#123043,stroke:#2c7ea8,color:#dceefc
+    classDef ing fill:#0d4159,stroke:#22b3d6,color:#eaf9ff
+    classDef log fill:#0a5570,stroke:#3fd0f0,stroke-width:2px,color:#ffffff
+    classDef str fill:#183028,stroke:#4caf7d,color:#e6fff2
+    classDef bat fill:#2a2440,stroke:#7a6fd6,color:#eee9ff
+    classDef srv fill:#3a2f1a,stroke:#c9a227,color:#fff6dc
+    classDef int fill:#3d1f28,stroke:#d64550,color:#ffe8ec
+    classDef pl fill:#1a2a33,stroke:#4d8296,color:#d8eef7
+    class S1,S2,S3,S4 src
+    class CDC,API,GW,CANON,ER,CLS,QT ing
+    class K1,K2,K3,K4 log
+    class F1,F2,F4,F5,RE,SS str
+    class BZ,SZ,GZ,SPK bat
+    class GH,GC,VDB,FS,API2 srv
+    class ML,LLM,AC int
+    class MD,OPA,OBS pl
+</pre></div>
+<p><strong>Figure 60.</strong> <em>Reference deployment topology. Note that <strong>M3 causal correlation runs only in the batch layer</strong> — it requires wide windows and population-level statistics that streaming cannot supply — and that the reconciliation path from batch back to the correlation topic is explicit rather than implicit.</em></p>
+<h2 id="b.3-indicative-sizing" tabindex="-1">B.3 Indicative Sizing <a class="header-anchor" href="#b.3-indicative-sizing">#</a></h2>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>Order-of-magnitude only.</strong> Derived from published component benchmarks, not from a deployed system. Treat as a starting point for capacity planning, not as a prediction.</p>
+</div>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Profile</th>
+<th>Events/day</th>
+<th>Entities</th>
+<th>Active scopes</th>
+<th>Log partitions</th>
+<th>Stream task slots</th>
+<th>Stream state</th>
+<th>Graph edges (hot)</th>
+<th>Indicative monthly infra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pilot</strong></td>
+<td>10 M</td>
+<td>500 K</td>
+<td>1–2</td>
+<td>24</td>
+<td>16</td>
+<td>200 GB</td>
+<td>20 M</td>
+<td>Low five figures (USD)</td>
+</tr>
+<tr>
+<td><strong>Departmental</strong></td>
+<td>100 M</td>
+<td>5 M</td>
+<td>3–5</td>
+<td>96</td>
+<td>64</td>
+<td>2 TB</td>
+<td>200 M</td>
+<td>Mid five figures</td>
+</tr>
+<tr>
+<td><strong>Enterprise</strong></td>
+<td>1 B</td>
+<td>50 M</td>
+<td>8–15</td>
+<td>384</td>
+<td>256</td>
+<td>15 TB</td>
+<td>1.5 B</td>
+<td>Low-to-mid six figures</td>
+</tr>
+<tr>
+<td><strong>Large enterprise</strong></td>
+<td>10 B</td>
+<td>200 M</td>
+<td>15–25</td>
+<td>1,536</td>
+<td>1,024</td>
+<td>100 TB</td>
+<td>8 B</td>
+<td>High six figures</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 89.</strong> <em>Indicative sizing profiles. Cost is dominated by streaming state and graph write capacity, not by storage. Scope count grows far more slowly than event volume — deliberately, because scope count is the super-linear cost driver.</em></p>
+<h2 id="b.4-build-sequence" tabindex="-1">B.4 Build Sequence <a class="header-anchor" href="#b.4-build-sequence">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Sprint band</th>
+<th>Deliverable</th>
+<th>Dependency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–3</td>
+<td>Event backbone, schema registry, first two sources with contracts</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4–6</td>
+<td>Canonicalizer, classification, quarantine</td>
+<td>Contracts</td>
+</tr>
+<tr>
+<td>7–10</td>
+<td>Entity resolution service, deterministic + probabilistic tiers</td>
+<td>Canonical events</td>
+</tr>
+<tr>
+<td>11–13</td>
+<td>Metadata and lineage plane, inline emission</td>
+<td>Canonical events</td>
+</tr>
+<tr>
+<td>14–18</td>
+<td>Correlation engine M1 + M2, confidence scoring v1</td>
+<td>ER, metadata</td>
+</tr>
+<tr>
+<td>19–21</td>
+<td>Correlation store, Insight Object schema, shadow-mode harness</td>
+<td>Correlation engine</td>
+</tr>
+<tr>
+<td>22–26</td>
+<td>Graph hot tier, edge lifecycle, expiry and decay</td>
+<td>Correlation store</td>
+</tr>
+<tr>
+<td>27–30</td>
+<td>Disposition capture, calibration loop v1</td>
+<td>Shadow harness</td>
+</tr>
+<tr>
+<td>31–36</td>
+<td>Batch layer W1–W2, reconciliation protocol</td>
+<td>Lakehouse, correlation store</td>
+</tr>
+<tr>
+<td>37–42</td>
+<td>M4 semantic, vector index, correlation-grounded RAG</td>
+<td>Graph, embeddings</td>
+</tr>
+<tr>
+<td>43–48</td>
+<td>Rules engine, Autonomy Controller, L2 advisory operation</td>
+<td>Calibration, policy engine</td>
+</tr>
+<tr>
+<td>49–56</td>
+<td>M3 causal (batch), M5 behavioural, alert clustering</td>
+<td>Batch layer</td>
+</tr>
+<tr>
+<td>57+</td>
+<td>Multi-region HA, L3 actions, retrospective re-correlation</td>
+<td>Sustained calibration</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 90.</strong> <em>Indicative build sequence in two-week sprints. <strong>Entity resolution before correlation, and metadata before both</strong>, are the two ordering constraints that most implementations will be tempted to violate and should not.</em></p>
+<h2 id="b.5-minimum-viable-correlation-platform" tabindex="-1">B.5 Minimum Viable Correlation Platform <a class="header-anchor" href="#b.5-minimum-viable-correlation-platform">#</a></h2>
+<p>For organizations wishing to test the premise cheaply before committing:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Included</th>
+<th>Excluded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kafka + Flink, 3 sources</td>
+<td>Multi-region, HA beyond single-AZ</td>
+</tr>
+<tr>
+<td>Deterministic entity resolution only</td>
+<td>Probabilistic and graph-based ER</td>
+</tr>
+<tr>
+<td>M1 and M2 modalities only</td>
+<td>M3, M4, M5</td>
+</tr>
+<tr>
+<td>Postgres correlation store</td>
+<td>Dedicated graph database</td>
+</tr>
+<tr>
+<td>Static confidence heuristics</td>
+<td>Calibration loop</td>
+</tr>
+<tr>
+<td>L1 shadow mode only</td>
+<td>Any autonomous action</td>
+</tr>
+<tr>
+<td>Manual disposition capture</td>
+<td>Automated feedback</td>
+</tr>
+<tr>
+<td>OpenLineage to Marquez</td>
+<td>Full inference lineage</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 91.</strong> <em>Minimum viable correlation platform. This configuration tests the framework’s central premise — that persisted cross-domain correlations produce findings unavailable to incumbent detection — at a small fraction of full cost. <strong>If the premise fails here, it will not be rescued by additional modalities.</strong></em></p>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/appendix/a-glossary/"><span>← Previous</span><b>Appendix A — Glossary</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/appendix/c-schemas/"><span>Next →</span><b>Appendix C — Canonical Event and Correlation Schemas</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#b.1-component-selection-by-layer">B.1 Component Selection by Layer #</a><a href="#b.2-deployment-topology">B.2 Deployment Topology #</a><a href="#b.3-indicative-sizing">B.3 Indicative Sizing #</a><a href="#b.4-build-sequence">B.4 Build Sequence #</a><a href="#b.5-minimum-viable-correlation-platform">B.5 Minimum Viable Correlation Platform #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

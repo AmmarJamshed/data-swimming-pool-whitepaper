@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en" data-part="p3">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>27. High Availability · Data Swimming Pool</title>
+<meta name="description" content="27. High Availability --- 27.1 What Availability Means Here Availability in a correlation architecture is not a single property. The framework distinguishes four: Table 56. Four av">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="27. High Availability — Data Swimming Pool">
+<meta property="og:description" content="27. High Availability --- 27.1 What Availability Means Here Availability in a correlation architecture is not a single property. The framework distinguishes four: Table 56. Four av">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" open style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/" class="on">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part III — Enterprise Qualities</span></p>
+    <h1>27. High Availability</h1>
+    <p class="cmeta"><span class="chip">🛡️ Part III — Enterprise Qualities</span><span class="dot">·</span>5 min read</p>
+  </header>
+  <div class="prose">
+<h1>27. High Availability</h1>
+<hr>
+<h2 id="27.1-what-availability-means-here" tabindex="-1">27.1 What Availability Means Here <a class="header-anchor" href="#27.1-what-availability-means-here">#</a></h2>
+<p>Availability in a correlation architecture is not a single property. The framework distinguishes four:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Availability type</th>
+<th>Question</th>
+<th>Failure consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ingestion availability</strong></td>
+<td>Can events still enter?</td>
+<td>Data loss if sources cannot buffer; correlation gaps</td>
+</tr>
+<tr>
+<td><strong>Correlation availability</strong></td>
+<td>Are relationships still being discovered?</td>
+<td>Missed detections within the actionability window</td>
+</tr>
+<tr>
+<td><strong>Serving availability</strong></td>
+<td>Can consumers read correlations and insights?</td>
+<td>Decisions made without available context</td>
+</tr>
+<tr>
+<td><strong>Decision availability</strong></td>
+<td>Can actions still be taken?</td>
+<td>Protective actions not executed</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 56.</strong> <em>Four availability types. They fail independently and warrant independent objectives. A common design error is specifying a single platform SLA, which either over-engineers serving or under-engineers correlation.</em></p>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p><strong>A useful asymmetry.</strong> Serving availability can degrade gracefully — a consumer that cannot reach the pool falls back to its own data, as it did before the pool existed. Correlation availability cannot degrade gracefully in the same way: correlations not formed during an outage are <strong>not formed late, they are not formed at all</strong>, unless the system deliberately replays. This makes replay capability the framework’s most important availability property.</p>
+</div>
+<h2 id="27.2-multi-region-topology" tabindex="-1">27.2 Multi-Region Topology <a class="header-anchor" href="#27.2-multi-region-topology">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph GLOBAL[&quot;Global Control Plane&quot;]
+        direction LR
+        GC1[&quot;Scope registry&quot;]
+        GC2[&quot;Policy bundles&quot;]
+        GC3[&quot;Schema registry&quot;]
+        GC4[&quot;Model registry&quot;]
+        GC5[&quot;Metadata catalog&quot;]
+    end
+
+    subgraph RA[&quot;Region A — Active&quot;]
+        direction TB
+        RA1[&quot;Ingestion&lt;br/&gt;&lt;i&gt;active&lt;/i&gt;&quot;]
+        RA2[&quot;Circulation log&lt;br/&gt;&lt;i&gt;RF=3, rack-aware&lt;/i&gt;&quot;]
+        RA3[&quot;Correlation&lt;br/&gt;&lt;i&gt;active, checkpointed&lt;/i&gt;&quot;]
+        RA4[(&quot;Graph hot&lt;br/&gt;&lt;i&gt;causal cluster&lt;/i&gt;&quot;)]
+        RA5[(&quot;Lakehouse&lt;br/&gt;&lt;i&gt;regional&lt;/i&gt;&quot;)]
+        RA6[&quot;Serving&lt;br/&gt;&lt;i&gt;active&lt;/i&gt;&quot;]
+        RA7[&quot;Autonomy Controller&lt;br/&gt;&lt;i&gt;active&lt;/i&gt;&quot;]
+    end
+
+    subgraph RB[&quot;Region B — Active&quot;]
+        direction TB
+        RB1[&quot;Ingestion&lt;br/&gt;&lt;i&gt;active&lt;/i&gt;&quot;]
+        RB2[&quot;Circulation log&lt;br/&gt;&lt;i&gt;RF=3, rack-aware&lt;/i&gt;&quot;]
+        RB3[&quot;Correlation&lt;br/&gt;&lt;i&gt;active for B-partitioned&lt;br/&gt;entities&lt;/i&gt;&quot;]
+        RB4[(&quot;Graph hot&lt;br/&gt;&lt;i&gt;causal cluster&lt;/i&gt;&quot;)]
+        RB5[(&quot;Lakehouse&lt;br/&gt;&lt;i&gt;regional&lt;/i&gt;&quot;)]
+        RB6[&quot;Serving&lt;br/&gt;&lt;i&gt;active&lt;/i&gt;&quot;]
+        RB7[&quot;Autonomy Controller&lt;br/&gt;&lt;i&gt;standby&lt;/i&gt;&quot;]
+    end
+
+    subgraph DR[&quot;Region C — Recovery&quot;]
+        direction TB
+        DR1[&quot;Cold infrastructure&lt;br/&gt;&lt;i&gt;IaC, not running&lt;/i&gt;&quot;]
+        DR2[(&quot;Log archive&lt;br/&gt;&lt;i&gt;replicated&lt;/i&gt;&quot;)]
+        DR3[(&quot;Lakehouse replica&lt;br/&gt;&lt;i&gt;cross-region&lt;/i&gt;&quot;)]
+    end
+
+    GLOBAL -.-&gt; RA &amp; RB &amp; DR
+    RA2 &lt;==&gt;|&quot;bidirectional mirror&lt;br/&gt;with origin tracking&quot;| RB2
+    RA5 ==&gt;|&quot;async replicate&quot;| DR3
+    RA2 ==&gt;|&quot;archive&quot;| DR2
+
+    NOTE[&quot;&lt;b&gt;Entity-partitioned active-active&lt;/b&gt;&lt;br/&gt;Each region owns a disjoint set of entity key ranges.&lt;br/&gt;Cross-region correlation is explicit, governed, and&lt;br/&gt;accepts higher latency.&quot;]
+
+    RA -.- NOTE
+    RB -.- NOTE
+
+    classDef glob fill:#3a2540,stroke:#a878c0,stroke-width:2px,color:#f6eaff
+    classDef act fill:#0a5570,stroke:#3fd0f0,stroke-width:2px,color:#ffffff
+    classDef dr fill:#2a3340,stroke:#6b7a8c,color:#dbe4ee
+    classDef note fill:#3d3313,stroke:#d4a636,color:#fff8e6
+    class GLOBAL,GC1,GC2,GC3,GC4,GC5 glob
+    class RA,RA1,RA2,RA3,RA4,RA5,RA6,RA7,RB,RB1,RB2,RB3,RB4,RB5,RB6,RB7 act
+    class DR,DR1,DR2,DR3 dr
+    class NOTE note
+</pre></div>
+<p><strong>Figure 39.</strong> <em>Multi-region high-availability topology. Regions are active-active but <strong>entity-partitioned</strong>: each region owns a disjoint set of entity key ranges and performs correlation only for its own. This avoids the fundamental problem of concurrent correlation over the same entities in two regions, which would produce duplicate and potentially conflicting correlations with no principled resolution.</em></p>
+<h3 id="27.2.1-why-entity-partitioned-active-active" tabindex="-1">27.2.1 Why Entity-Partitioned Active-Active <a class="header-anchor" href="#27.2.1-why-entity-partitioned-active-active">#</a></h3>
+<p>The naïve active-active design — both regions correlating all entities — fails. Two regions independently correlating the same entity’s events will produce two correlations for the same relationship, with different confidence scores (because each saw a different subset under replication lag), and no principled way to reconcile them.</p>
+<p>Entity partitioning avoids this: for any given entity, exactly one region is authoritative. Regions are both active, but over disjoint key ranges. On regional failure, the surviving region assumes the failed region’s key ranges by replaying from the mirrored log — which is why bidirectional mirroring with origin tracking is required rather than one-way replication.</p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Cross-region correlation is the exception, not the rule.</strong> A correlation scope requiring entities owned by different regions must either accept cross-region latency and partition-tolerance implications, or be executed in the batch layer where completeness matters more than freshness. The framework recommends the latter as the default and treats cross-region streaming correlation as a scope-level decision requiring explicit justification.</p>
+</div>
+<h2 id="27.3-availability-tiers" tabindex="-1">27.3 Availability Tiers <a class="header-anchor" href="#27.3-availability-tiers">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Components</th>
+<th>Availability objective</th>
+<th>RTO</th>
+<th>RPO</th>
+<th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T1 Critical</strong></td>
+<td>Circulation log, ingestion</td>
+<td>99.99%</td>
+<td>&lt; 1 min</td>
+<td>0 (no loss)</td>
+<td>Multi-AZ replication, RF≥3, producer acks=all</td>
+</tr>
+<tr>
+<td><strong>T2 High</strong></td>
+<td>Correlation tier, Autonomy Controller</td>
+<td>99.9%</td>
+<td>&lt; 15 min</td>
+<td>&lt; 1 checkpoint interval</td>
+<td>Checkpoint restore + log replay</td>
+</tr>
+<tr>
+<td><strong>T3 Standard</strong></td>
+<td>Graph hot tier, serving</td>
+<td>99.9%</td>
+<td>&lt; 30 min</td>
+<td>&lt; 5 min</td>
+<td>Replicas; rebuildable from cold tier</td>
+</tr>
+<tr>
+<td><strong>T4 Deferred</strong></td>
+<td>Batch layer, graph cold tier</td>
+<td>99.5%</td>
+<td>&lt; 4 hours</td>
+<td>&lt; 1 hour</td>
+<td>Cross-region storage replication</td>
+</tr>
+<tr>
+<td><strong>T0 Control</strong></td>
+<td>Scope registry, policy engine</td>
+<td><strong>99.99%</strong></td>
+<td>&lt; 1 min</td>
+<td>0</td>
+<td>Multi-region, cached locally, fail-safe defaults</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 57.</strong> <em>Availability tiers with recovery objectives. The control plane is deliberately rated at the same level as the circulation log: correlation cannot proceed without scope definitions and policy decisions, so control plane unavailability halts the system’s core function even when every data-plane component is healthy.</em></p>
+<h3 id="27.3.1-control-plane-availability" tabindex="-1">27.3.1 Control Plane Availability <a class="header-anchor" href="#27.3.1-control-plane-availability">#</a></h3>
+<p>The control plane is the framework’s most dangerous single point of dependency. The mitigations:</p>
+<p><strong>Local caching with TTL.</strong> Each correlation worker caches scope definitions and compiled policy bundles locally. On control plane unavailability, workers continue on cached configuration for a bounded period.</p>
+<p><strong>Fail-safe defaults on expiry.</strong> When the cache TTL expires and the control plane remains unavailable, workers do <strong>not</strong> continue on stale policy. They halt correlation for scopes whose policy cannot be confirmed. This is a deliberate choice of correctness over availability: continuing to form correlations under possibly-revoked policy is a compliance failure, and Principle 8 states that policy prevails absolutely.</p>
+<p><strong>Read-only degradation.</strong> The control plane may be available for reads while unavailable for writes. This is a fully acceptable degraded state — existing scopes continue, new scopes cannot be declared.</p>
+<h2 id="27.4-failure-scenarios" tabindex="-1">27.4 Failure Scenarios <a class="header-anchor" href="#27.4-failure-scenarios">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Immediate effect</th>
+<th>Recovery</th>
+<th>Correlation integrity impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Single broker loss</strong></td>
+<td>None (replication)</td>
+<td>Automatic rebalance</td>
+<td>None</td>
+</tr>
+<tr>
+<td><strong>Correlation worker crash</strong></td>
+<td>Partition’s scopes stall</td>
+<td>Checkpoint restore + replay from last offset</td>
+<td>None — replay is complete</td>
+</tr>
+<tr>
+<td><strong>Correlation tier total loss</strong></td>
+<td>All correlation halts</td>
+<td>Restore checkpoints, replay from log</td>
+<td>None if log retention exceeds outage; <strong>gaps if not</strong></td>
+</tr>
+<tr>
+<td><strong>Graph hot tier loss</strong></td>
+<td>Traversal queries fail; writes buffer</td>
+<td>Rebuild from cold tier</td>
+<td>None — hot tier is a cache</td>
+</tr>
+<tr>
+<td><strong>Lakehouse unavailability</strong></td>
+<td>Batch halts; streaming continues</td>
+<td>Storage-layer recovery</td>
+<td>Batch reconciliation delayed; provisional correlations not promoted</td>
+</tr>
+<tr>
+<td><strong>Control plane unavailability</strong></td>
+<td>Cached operation, then halt on TTL expiry</td>
+<td>Control plane recovery</td>
+<td>Gap during halt; requires replay</td>
+</tr>
+<tr>
+<td><strong>Regional loss</strong></td>
+<td>Region’s entity ranges unserved</td>
+<td>Surviving region assumes ranges via log replay</td>
+<td>Gap during failover; replay closes it</td>
+</tr>
+<tr>
+<td><strong>Source outage</strong></td>
+<td>Scopes involving source degraded</td>
+<td>Source recovery + W2 re-correlation</td>
+<td><strong>Degradation flags mandatory</strong>; negative-relationship alerts suppressed</td>
+</tr>
+<tr>
+<td><strong>Model serving failure</strong></td>
+<td>AI insights unavailable</td>
+<td>Fallback to rules engine</td>
+<td>Reduced insight richness; correlations unaffected</td>
+</tr>
+<tr>
+<td><strong>Policy engine failure</strong></td>
+<td>Correlation halts (fail-closed)</td>
+<td>Policy engine recovery</td>
+<td>Gap; correctness preserved</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 58.</strong> <em>Failure scenarios and their correlation integrity impact. The recurring theme is that <strong>replay closes gaps</strong> provided log retention exceeds the outage duration — which makes retention configuration an availability decision, not merely a cost decision.</em></p>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>The retention–availability coupling.</strong> If the circulation log retains seven days and the correlation tier is unavailable for eight, the eighth day’s correlations are permanently unrecoverable from the streaming path. They may be reconstructable from the lakehouse via W2 batch re-correlation, but only if events reached the lakehouse — which they did, since ingestion writes to both. This is a strong argument for the dual-write ingestion design: <strong>the lakehouse is the correlation tier’s disaster recovery mechanism.</strong></p>
+</div>
+<h2 id="27.5-consistency-posture" tabindex="-1">27.5 Consistency Posture <a class="header-anchor" href="#27.5-consistency-posture">#</a></h2>
+<p>Per <a href="/data-swimming-pool-whitepaper/part-1/04-background/">Chapter 4</a>, the framework’s stated position:</p>
+<p><strong>Correlations are eventually consistent by default.</strong> A correlation formed in one region becomes visible in another after replication. Consumers must tolerate this, and the framework requires that correlation reads expose the freshness of the data they reflect.</p>
+<p><strong>Strong consistency by exception.</strong> Correlations gating irreversible autonomous action (L4 and above) MUST be read with strong consistency, accepting the latency and partition-tolerance cost. In practice this means such reads are served from the authoritative region for that entity, and fail rather than serve stale data under partition.</p>
+<p><strong>Read-your-writes for human workflows.</strong> An analyst who confirms a correlation must see the confirmation reflected immediately. Session-scoped consistency is provided for interactive workflows.</p>
+<h2 id="27.6-operational-practices" tabindex="-1">27.6 Operational Practices <a class="header-anchor" href="#27.6-operational-practices">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Practice</th>
+<th>Frequency</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Checkpoint restore drill</strong></td>
+<td>Monthly</td>
+<td>Verify correlation tier recovers within RTO</td>
+</tr>
+<tr>
+<td><strong>Regional failover drill</strong></td>
+<td>Quarterly</td>
+<td>Verify key-range assumption works under load</td>
+</tr>
+<tr>
+<td><strong>Replay drill</strong></td>
+<td>Quarterly</td>
+<td>Verify a defined-length outage can be closed by replay</td>
+</tr>
+<tr>
+<td><strong>Control plane isolation test</strong></td>
+<td>Quarterly</td>
+<td>Verify workers halt correctly on cache expiry rather than proceeding on stale policy</td>
+</tr>
+<tr>
+<td><strong>Reversal drill</strong></td>
+<td>Before any L4 promotion, then quarterly</td>
+<td>Verify autonomous actions can actually be reversed (<a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">Chapter 20</a>)</td>
+</tr>
+<tr>
+<td><strong>Degradation simulation</strong></td>
+<td>Quarterly</td>
+<td>Verify source outage produces degradation flags and suppresses absence alerts, not an alert storm</td>
+</tr>
+<tr>
+<td><strong>Chaos injection</strong></td>
+<td>Continuous</td>
+<td>Verify graceful degradation across component failures</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 59.</strong> <em>Operational availability practices. The degradation simulation is specific to this architecture and is the drill most likely to reveal a serious defect, because the absence–degradation confound (<a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">Chapter 19</a>) fails catastrophically and silently until it is tested.</em></p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Four availability types fail independently</strong> — ingestion, correlation, serving, and decision — and warrant independent objectives rather than a single platform SLA.</li>
+<li><strong>Correlation availability cannot degrade gracefully.</strong> Correlations not formed during an outage are not formed late, they are not formed at all — which makes replay capability the framework’s most important availability property.</li>
+<li><strong>Active-active must be entity-partitioned.</strong> Two regions correlating the same entities produce duplicate, conflicting correlations with no principled reconciliation.</li>
+<li><strong>The control plane is rated as critically as the circulation log</strong>, because correlation cannot proceed without scope definitions and policy decisions.</li>
+<li><strong>Workers halt rather than proceed on expired policy cache.</strong> Correctness prevails over availability, consistent with Principle 8.</li>
+<li><strong>Log retention is an availability decision, not only a cost decision</strong>, because replay can only close gaps shorter than retention.</li>
+<li><strong>The lakehouse is the correlation tier’s disaster recovery mechanism</strong>, which is the strongest justification for the dual-write ingestion design.</li>
+<li><strong>Degradation simulation is the drill most likely to reveal a serious defect</strong>, because the absence–degradation confound fails catastrophically and silently until deliberately tested.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-3/26-scalability/"><span>← Previous</span><b>26. Scalability</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-3/28-performance/"><span>Next →</span><b>28. Performance Considerations</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#27.1-what-availability-means-here">27.1 What Availability Means Here #</a><a href="#27.2-multi-region-topology">27.2 Multi-Region Topology #</a><a href="#27.3-availability-tiers">27.3 Availability Tiers #</a><a href="#27.4-failure-scenarios">27.4 Failure Scenarios #</a><a href="#27.5-consistency-posture">27.5 Consistency Posture #</a><a href="#27.6-operational-practices">27.6 Operational Practices #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-3/27-high-availability/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

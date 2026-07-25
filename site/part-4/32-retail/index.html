@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en" data-part="p4">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>32. Retail Use Case · Data Swimming Pool</title>
+<meta name="description" content="32. Retail Use Case --- Illustrative scenario. Synthetic and constructed. All figures are reasoned estimates, not measurements. 32.1 Scenario Context &quot;Calder &amp; Rowe&quot; is a construct">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="32. Retail Use Case — Data Swimming Pool">
+<meta property="og:description" content="32. Retail Use Case --- Illustrative scenario. Synthetic and constructed. All figures are reasoned estimates, not measurements. 32.1 Scenario Context &quot;Calder &amp; Rowe&quot; is a construct">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" open style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/" class="on">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part IV — Illustrative Enterprise Scenarios</span></p>
+    <h1>32. Retail Use Case</h1>
+    <p class="cmeta"><span class="chip">🏭 Part IV — Illustrative Enterprise Scenarios</span><span class="dot">·</span>4 min read</p>
+  </header>
+  <div class="prose">
+<h1>32. Retail Use Case</h1>
+<hr>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>Illustrative scenario.</strong> Synthetic and constructed. All figures are reasoned estimates, not measurements.</p>
+</div>
+<h2 id="32.1-scenario-context" tabindex="-1">32.1 Scenario Context <a class="header-anchor" href="#32.1-scenario-context">#</a></h2>
+<p><strong>“Calder &amp; Rowe”</strong> is a constructed omnichannel retailer: 410 stores, an e-commerce platform, a marketplace presence, three distribution centres, and 2,100 SKUs across seasonal and continuity ranges.</p>
+<p><strong>The problem it cannot solve.</strong> Commercial outcomes are determined by interactions the organization measures separately. A store’s sales decline. Merchandising attributes it to range performance. Supply chain sees adequate stock in the DC. Store operations sees normal staffing. E-commerce sees a regional uplift. In fact: a delivery was late, causing a two-day gap on a key line, during a local competitor promotion, in a store where the replenishment task was deprioritized because a colleague was absent, and the customers affected shifted to online where margin is lower.</p>
+<p>Each function’s data supports its own explanation. None supports the actual one.</p>
+<h2 id="32.2-correlation-architecture" tabindex="-1">32.2 Correlation Architecture <a class="header-anchor" href="#32.2-correlation-architecture">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph SRC[&quot;Sources&quot;]
+        direction LR
+        S1[&quot;POS&lt;br/&gt;&lt;i&gt;stream · transactions, baskets&lt;/i&gt;&quot;]
+        S2[&quot;E-commerce&lt;br/&gt;&lt;i&gt;stream · sessions, carts, orders&lt;/i&gt;&quot;]
+        S3[&quot;Inventory&lt;br/&gt;&lt;i&gt;CDC · stock position by location&lt;/i&gt;&quot;]
+        S4[&quot;Supply chain&lt;br/&gt;&lt;i&gt;stream · shipments, ASNs, delays&lt;/i&gt;&quot;]
+        S5[&quot;Store ops&lt;br/&gt;&lt;i&gt;stream · tasks, labour, compliance&lt;/i&gt;&quot;]
+        S6[&quot;Loyalty / CRM&lt;br/&gt;&lt;i&gt;CDC · membership, history&lt;/i&gt;&quot;]
+        S7[&quot;Pricing &amp; promo&lt;br/&gt;&lt;i&gt;CDC · price changes, campaigns&lt;/i&gt;&quot;]
+        S8[&quot;Competitor &amp; market&lt;br/&gt;&lt;i&gt;batch · external feeds&lt;/i&gt;&quot;]
+        S9[&quot;Weather &amp; local events&lt;br/&gt;&lt;i&gt;batch/stream · external&lt;/i&gt;&quot;]
+        S10[&quot;Customer service&lt;br/&gt;&lt;i&gt;stream · contacts, returns&lt;/i&gt;&quot;]
+    end
+
+    subgraph SCOPES[&quot;Correlation Scopes&quot;]
+        direction TB
+        SC1[&quot;&lt;b&gt;comm.demand_disruption.v3&lt;/b&gt;&lt;br/&gt;M1·M2·M3·M5 · 14 d&lt;br/&gt;What combination explains&lt;br/&gt;location-level demand deviation?&quot;]
+        SC2[&quot;&lt;b&gt;comm.channel_shift.v2&lt;/b&gt;&lt;br/&gt;M2·M1 · 30 d&lt;br/&gt;Which customers shifted&lt;br/&gt;channel, and following what?&quot;]
+        SC3[&quot;&lt;b&gt;supply.availability_impact.v3&lt;/b&gt;&lt;br/&gt;M1·M3 · 7 d&lt;br/&gt;What is the realized sales&lt;br/&gt;impact of each stockout?&quot;]
+        SC4[&quot;&lt;b&gt;cust.lifetime_risk.v4&lt;/b&gt;&lt;br/&gt;M2·M4·M5 · 180 d · batch&lt;br/&gt;Which experience sequences&lt;br/&gt;precede value decline?&quot;]
+        SC5[&quot;&lt;b&gt;loss.shrink_pattern.v2&lt;/b&gt;&lt;br/&gt;M2·M5 · 30 d&lt;br/&gt;Which conjunctions correlate&lt;br/&gt;with unexplained shrink?&quot;]
+    end
+
+    subgraph OUT[&quot;Illustrative Insight&quot;]
+        direction TB
+        O1[&quot;&lt;b&gt;I-5512&lt;/b&gt; — confidence 0.81&lt;br/&gt;'Store 214 demand decline is&lt;br/&gt;primarily attributable to a&lt;br/&gt;48h availability gap on 3 lines&lt;br/&gt;coinciding with a competitor&lt;br/&gt;promotion, not to range&lt;br/&gt;performance.'&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Evidence:&lt;/b&gt; 6 correlations&lt;br/&gt;&lt;b&gt;Estimated displaced demand:&lt;/b&gt;&lt;br/&gt;62% shifted online (lower margin),&lt;br/&gt;38% lost&lt;br/&gt;&lt;b&gt;Modifiable factor:&lt;/b&gt; replenishment&lt;br/&gt;task deprioritized during&lt;br/&gt;absence cover&lt;br/&gt;&lt;b&gt;Alternative:&lt;/b&gt; range decline (0.14)&quot;]
+    end
+
+    SRC --&gt; SCOPES --&gt; OUT
+
+    classDef src fill:#1b2f3d,stroke:#5b8fb0,color:#e6f2fa
+    classDef sc fill:#0a5570,stroke:#3fd0f0,stroke-width:2px,color:#ffffff
+    classDef out fill:#3d3313,stroke:#d4a636,stroke-width:2px,color:#fff8e6
+    class SRC,S1,S2,S3,S4,S5,S6,S7,S8,S9,S10 src
+    class SCOPES,SC1,SC2,SC3,SC4,SC5 sc
+    class OUT,O1 out
+</pre></div>
+<p><strong>Figure 46.</strong> <em>Retail unified commerce correlation workflow (illustrative). The insight attributes a demand decline to a specific conjunction and explicitly names the alternative explanation the organization would otherwise have adopted — range performance — with its lower confidence. This attribution correction is the scenario’s central value.</em></p>
+<h2 id="32.3-channel-shift-as-a-correlation-problem" tabindex="-1">32.3 Channel Shift as a Correlation Problem <a class="header-anchor" href="#32.3-channel-shift-as-a-correlation-problem">#</a></h2>
+<p><code>comm.channel_shift.v2</code> illustrates a pattern that is invisible to conventional analytics.</p>
+<p>A retailer’s channel reporting shows store sales down and online sales up. The natural interpretation is structural channel migration — an industry-wide trend requiring strategic response.</p>
+<p>The correlation substrate can distinguish this from <strong>induced channel shift</strong>: individual customers who purchased in store, encountered a specific failure (unavailability, queue, unhelpful interaction), and subsequently purchased the same category online. This is not a trend; it is a set of remediable service failures with a measurable margin cost.</p>
+<p>The distinction requires entity-resolved correlation across POS, loyalty, e-commerce, and store operations data with a customer-level view — precisely the cross-domain, entity-anchored correlation the framework provides and that channel-level aggregate reporting structurally cannot.</p>
+<h2 id="32.4-privacy-constraints-in-retail" tabindex="-1">32.4 Privacy Constraints in Retail <a class="header-anchor" href="#32.4-privacy-constraints-in-retail">#</a></h2>
+<p>Retail is where the framework’s privacy risks are most acute, because retail correlation readily produces <strong>special-category inferences from entirely non-special-category inputs</strong>.</p>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>The canonical example.</strong> Purchase patterns, delivery timing, and browsing behaviour can reveal pregnancy, health conditions, religious observance, financial distress, or relationship changes. None of the input data is special category. The inference is.</p>
+<p><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">Chapter 24</a> requires scope assessment to consider <strong>what a correlation could reveal</strong>, not what its inputs contain. In retail this assessment is not a formality — it is the difference between a lawful personalization capability and a serious regulatory and reputational failure.</p>
+</div>
+<p><strong>Framework requirements applied here:</strong></p>
+<ul>
+<li>Scopes producing customer-level behavioural correlations MUST declare a specific purpose, not “personalization” as a category.</li>
+<li>Special-category determination MUST be performed by someone with the imagination to anticipate non-obvious inferences, reviewed by the privacy office.</li>
+<li>Correlations capable of revealing special-category information MUST be classified as such on formation, inheriting the restrictions rather than the permissions of their inputs.</li>
+<li>Marketing purposes MUST NOT inherit from service-delivery or fraud-prevention collection bases — the intersection rule prevents this, and attempts to override it should be treated as a governance escalation.</li>
+</ul>
+<h2 id="32.5-illustrative-outcomes" tabindex="-1">32.5 Illustrative Outcomes <a class="header-anchor" href="#32.5-illustrative-outcomes">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Plausible direction</th>
+<th>Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Demand deviation correctly attributed</td>
+<td>Substantial improvement</td>
+<td>Multi-factor correlation replaces single-function explanation</td>
+</tr>
+<tr>
+<td>Stockout impact quantified</td>
+<td>New capability</td>
+<td>Displaced-demand correlation across channels</td>
+</tr>
+<tr>
+<td>Induced channel shift identified separately from structural</td>
+<td>New capability</td>
+<td>Entity-resolved cross-channel correlation</td>
+</tr>
+<tr>
+<td>Remediable service failures identified</td>
+<td>New capability</td>
+<td>Correlation of customer experience sequences to value change</td>
+</tr>
+<tr>
+<td>Range decisions based on correct attribution</td>
+<td>Improvement</td>
+<td>Fewer lines delisted for availability failures</td>
+</tr>
+<tr>
+<td>Shrink investigation targeting</td>
+<td>Improvement</td>
+<td>Conjunction patterns rather than variance thresholds</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 67.</strong> <em>Illustrative outcome directions for retail. Three rows are marked as new capability rather than improvement, because conventional channel-level reporting cannot produce them at all.</em></p>
+<h2 id="32.6-what-makes-this-hard" tabindex="-1">32.6 What Makes This Hard <a class="header-anchor" href="#32.6-what-makes-this-hard">#</a></h2>
+<p><strong>Identity resolution across anonymous and known.</strong> A substantial proportion of store transactions are anonymous. Linking anonymous POS activity to a known customer requires payment token matching, loyalty scanning, or probabilistic inference — the last of which carries both accuracy risk and privacy risk. The framework’s precision-favouring thresholds (<a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">Chapter 13</a>) apply with particular force: an over-merged customer identity in retail produces both wrong analysis and a potential data protection breach when one customer’s history is exposed to another.</p>
+<p><strong>External data quality.</strong> Competitor pricing, local events, and weather feeds vary substantially in reliability and timeliness. Correlations depending heavily on external feeds inherit their quality, and the contract discipline that applies to internal sources must apply equally to purchased data.</p>
+<p><strong>Seasonality dominates behavioural baselines.</strong> Retail behaviour is profoundly seasonal, and a naïve baseline will flag every seasonal transition as anomalous. Baselines must be seasonally adjusted, and the adjustment must be robust to the fact that each year’s seasonality differs.</p>
+<p><strong>Commercial pressure toward higher autonomy.</strong> Retail organizations will want automated pricing, promotion, and personalization actions at high autonomy levels because the volume justifies it. Many such actions are less reversible than they appear — a promotional price communicated to a customer cannot be un-communicated, and a personalized recommendation revealing an inferred pregnancy cannot be un-shown. The reversibility test in <a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">Chapter 20</a> should be applied strictly against commercial pressure.</p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Each retail function’s data supports its own explanation of a commercial outcome, and none supports the actual one</strong>, which is typically a conjunction spanning supply, operations, competition, and customer behaviour.</li>
+<li><strong>Distinguishing induced channel shift from structural migration is a new capability</strong> requiring entity-resolved cross-channel correlation that aggregate reporting structurally cannot produce.</li>
+<li><strong>Retail is where the framework’s privacy risk is most acute</strong>, because ordinary purchase and browsing data readily yields special-category inferences.</li>
+<li><strong>Special-category determination requires imagination, not classification</strong>, and in retail it is the difference between lawful personalization and serious regulatory failure.</li>
+<li><strong>Over-merged customer identity produces both wrong analysis and a potential breach</strong>, since one customer’s history may be exposed to another.</li>
+<li><strong>Purchased external data requires the same contract discipline as internal sources</strong>, since correlations inherit its quality.</li>
+<li><strong>Commercial pressure toward higher autonomy must be resisted where reversibility fails.</strong> A communicated price or a shown recommendation cannot be un-communicated or un-shown.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/"><span>← Previous</span><b>31. Manufacturing Use Case</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/"><span>Next →</span><b>33. Smart Cities Use Case</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#32.1-scenario-context">32.1 Scenario Context #</a><a href="#32.2-correlation-architecture">32.2 Correlation Architecture #</a><a href="#32.3-channel-shift-as-a-correlation-problem">32.3 Channel Shift as a Correlation Problem #</a><a href="#32.4-privacy-constraints-in-retail">32.4 Privacy Constraints in Retail #</a><a href="#32.5-illustrative-outcomes">32.5 Illustrative Outcomes #</a><a href="#32.6-what-makes-this-hard">32.6 What Makes This Hard #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-4/32-retail/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

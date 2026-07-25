@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en" data-part="p2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>11. Streaming Layer · Data Swimming Pool</title>
+<meta name="description" content="11. Streaming Layer --- The streaming layer is the primary execution substrate for continuous correlation Principle 4 . This chapter specifies its structure, its semantics, and the">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="11. Streaming Layer — Data Swimming Pool">
+<meta property="og:description" content="11. Streaming Layer --- The streaming layer is the primary execution substrate for continuous correlation Principle 4 . This chapter specifies its structure, its semantics, and the">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" open style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/" class="on">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part II — The Data Swimming Pool</span></p>
+    <h1>11. Streaming Layer</h1>
+    <p class="cmeta"><span class="chip">🏊 Part II — The Data Swimming Pool</span><span class="dot">·</span>8 min read</p>
+  </header>
+  <div class="prose">
+<h1>11. Streaming Layer</h1>
+<hr>
+<p>The streaming layer is the primary execution substrate for continuous correlation (Principle 4). This chapter specifies its structure, its semantics, and the properties it must guarantee for correlation to be correct.</p>
+<h2 id="11.1-architecture" tabindex="-1">11.1 Architecture <a class="header-anchor" href="#11.1-architecture">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph PROD[&quot;Producers&quot;]
+        direction LR
+        P1[&quot;CDC connectors&quot;]
+        P2[&quot;Application emitters&quot;]
+        P3[&quot;Device gateways&quot;]
+        P4[&quot;Enrichment writeback&lt;br/&gt;&lt;i&gt;(derived events)&lt;/i&gt;&quot;]
+    end
+
+    subgraph LOG[&quot;Distributed Commit Log&quot;]
+        direction TB
+        subgraph TOPICS[&quot;Topic organization&quot;]
+            direction LR
+            T1[&quot;&lt;b&gt;raw.*&lt;/b&gt;&lt;br/&gt;source-fidelity&quot;]
+            T2[&quot;&lt;b&gt;canonical.*&lt;/b&gt;&lt;br/&gt;normalized events&quot;]
+            T3[&quot;&lt;b&gt;correlation.*&lt;/b&gt;&lt;br/&gt;emitted relationships&quot;]
+            T4[&quot;&lt;b&gt;insight.*&lt;/b&gt;&lt;br/&gt;Insight Objects&quot;]
+            T5[&quot;&lt;b&gt;dlq.*&lt;/b&gt;&lt;br/&gt;quarantine&quot;]
+        end
+        PART[&quot;Partitioning by resolved entity key&lt;br/&gt;→ co-locates correlatable events&quot;]
+        RET[&quot;Tiered retention&lt;br/&gt;hot: 7d local · warm: 90d object store&quot;]
+    end
+
+    subgraph PROC[&quot;Stateful Processing&quot;]
+        direction TB
+        WM[&quot;Watermark generation&lt;br/&gt;per source, per partition&quot;]
+        WIN[&quot;Windowing&lt;br/&gt;tumbling · sliding · session · global&quot;]
+        ST[(&quot;Managed state&lt;br/&gt;RocksDB + checkpoints&quot;)]
+        OPS[&quot;Correlation operators&lt;br/&gt;scoped, budgeted&quot;]
+        WM --&gt; WIN --&gt; OPS
+        ST &lt;--&gt; OPS
+    end
+
+    subgraph GUAR[&quot;Delivery Guarantees&quot;]
+        direction LR
+        G1[&quot;Idempotent producers&quot;]
+        G2[&quot;Transactional writes&quot;]
+        G3[&quot;Exactly-once sinks&quot;]
+    end
+
+    PROD --&gt; LOG --&gt; PROC --&gt; LOG
+    GUAR -.enforces.- LOG
+    GUAR -.enforces.- PROC
+
+    classDef prod fill:#1b2f3d,stroke:#5b8fb0,color:#e6f2fa
+    classDef log fill:#0d4159,stroke:#22b3d6,stroke-width:2px,color:#eaf9ff
+    classDef proc fill:#0a5570,stroke:#3fd0f0,stroke-width:2px,color:#ffffff
+    classDef guar fill:#183028,stroke:#4caf7d,color:#e6fff2
+    class PROD,P1,P2,P3,P4 prod
+    class LOG,TOPICS,T1,T2,T3,T4,T5,PART,RET log
+    class PROC,WM,WIN,ST,OPS proc
+    class GUAR,G1,G2,G3 guar
+</pre></div>
+<p><strong>Figure 13.</strong> <em>Streaming layer architecture. Five topic families separate concerns: source-fidelity raw events, normalized canonical events, emitted correlations, Insight Objects, and quarantine. Partitioning by resolved entity key is the single most consequential design decision, because it determines whether correlatable events arrive at the same operator instance.</em></p>
+<h2 id="11.2-why-streaming-is-the-default-execution-model" tabindex="-1">11.2 Why Streaming Is the Default Execution Model <a class="header-anchor" href="#11.2-why-streaming-is-the-default-execution-model">#</a></h2>
+<p>Principle 4 mandates continuous over interrogative evaluation. Streaming is how that is realized, for three reasons specific to correlation.</p>
+<p><strong>Correlation is inherently incremental.</strong> When a new event arrives, the question is not “recompute all relationships” but “what does this event change?” A stateful stream processor maintaining windowed state answers this in bounded work proportional to the window, not to history. Recomputing correlations in batch means recomputing relationships that have not changed — an unfavourable ratio that worsens as history grows.</p>
+<p><strong>The window of actionability demands it.</strong> <a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">Table 4</a> established that most high-value correlations have short actionability windows. Batch cadence forecloses them structurally.</p>
+<p><strong>Correlation state is naturally streaming state.</strong> The state a correlation operator maintains — recent events per entity, open temporal windows, running behavioural baselines — maps directly onto the managed keyed state that stream processors provide, with checkpointing and recovery included.</p>
+<h2 id="11.3-the-distributed-commit-log" tabindex="-1">11.3 The Distributed Commit Log <a class="header-anchor" href="#11.3-the-distributed-commit-log">#</a></h2>
+<h3 id="11.3.1-topic-organization" tabindex="-1">11.3.1 Topic Organization <a class="header-anchor" href="#11.3.1-topic-organization">#</a></h3>
+<p>The framework prescribes five topic families:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Contents</th>
+<th>Retention posture</th>
+<th>Partition key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>raw.&lt;source&gt;.&lt;entity&gt;</code></td>
+<td>Source-fidelity events, unmodified</td>
+<td>Short (compliance-driven)</td>
+<td>Source natural key</td>
+</tr>
+<tr>
+<td><code>canonical.&lt;domain&gt;.&lt;type&gt;</code></td>
+<td>Canonical events post-resolution</td>
+<td>Medium to long</td>
+<td><strong>Resolved entity key</strong></td>
+</tr>
+<tr>
+<td><code>correlation.&lt;scope&gt;</code></td>
+<td>Emitted correlations</td>
+<td>Long</td>
+<td>Correlation participant key</td>
+</tr>
+<tr>
+<td><code>insight.&lt;domain&gt;</code></td>
+<td>Insight Objects</td>
+<td>Long</td>
+<td>Subject entity key</td>
+</tr>
+<tr>
+<td><code>dlq.&lt;stage&gt;</code></td>
+<td>Contract failures, poison messages</td>
+<td>Short, alerted</td>
+<td>Original key</td>
+</tr>
+</tbody>
+</table>
+</div><p>Retaining <code>raw.*</code> separately from <code>canonical.*</code> is deliberate. It preserves the ability to re-canonicalize when entity resolution logic improves — which it will — without re-ingesting from source systems. This is a direct application of event sourcing: canonicalization is a projection, and projections are rebuildable.</p>
+<h3 id="11.3.2-partitioning-is-the-critical-decision" tabindex="-1">11.3.2 Partitioning Is the Critical Decision <a class="header-anchor" href="#11.3.2-partitioning-is-the-critical-decision">#</a></h3>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>The decision that determines feasibility.</strong> Correlation between two events is cheap when they reside in the same partition and expensive when they do not. Cross-partition correlation requires either a shuffle or a distributed state lookup, both of which are orders of magnitude more costly.</p>
+</div>
+<p>The framework’s prescription: <strong>partition <code>canonical.*</code> topics by resolved entity key, not by source natural key.</strong> This is why entity resolution occurs at ingestion (L1) rather than in the correlation tier. Resolving early means that all events concerning a given commercial entity — regardless of originating system — land in the same partition and are therefore locally correlatable.</p>
+<p>For correlation scopes that do not share an entity key — for example, correlating a regional weather event with a fleet of shipments — the framework uses <strong>broadcast state</strong>: the low-cardinality side is broadcast to all operator instances and joined locally. This works only when one side is small, which is the practical constraint bounding such scopes.</p>
+<h3 id="11.3.3-tiered-retention" tabindex="-1">11.3.3 Tiered Retention <a class="header-anchor" href="#11.3.3-tiered-retention">#</a></h3>
+<p>Correlation requires more history than conventional streaming. A behavioural baseline may span ninety days; a causal chain may span weeks. The framework assumes <strong>tiered storage</strong>, where recent segments reside on local disk for low-latency access and older segments are offloaded to object storage, remaining replayable at higher latency. This capability — available in modern Kafka, Pulsar, and managed equivalents — is what makes long-window correlation economically viable.</p>
+<h2 id="11.4-event-time%2C-watermarks%2C-and-late-data" tabindex="-1">11.4 Event Time, Watermarks, and Late Data <a class="header-anchor" href="#11.4-event-time%2C-watermarks%2C-and-late-data">#</a></h2>
+<p>Principle 5 mandates event-time correlation. The mechanics follow the Dataflow model [19].</p>
+<div class="figure"><pre class="mermaid">sequenceDiagram
+    autonumber
+    participant S1 as Source A&lt;br/&gt;(low latency)
+    participant S2 as Source B&lt;br/&gt;(intermittent)
+    participant WM as Watermark&lt;br/&gt;Generator
+    participant OP as Correlation&lt;br/&gt;Operator
+    participant ST as Window State
+    participant OUT as Correlation&lt;br/&gt;Output
+
+    S1-&gt;&gt;OP: event @ t=10:00:00 (arrives 10:00:01)
+    OP-&gt;&gt;ST: buffer in window [10:00, 10:05)
+    S2-&gt;&gt;OP: event @ t=09:59:58 (arrives 10:00:03)
+    OP-&gt;&gt;ST: buffer in window [09:55, 10:00)
+    WM-&gt;&gt;OP: watermark = 09:59:55&lt;br/&gt;&lt;i&gt;(min across sources − max skew)&lt;/i&gt;
+    Note over OP,ST: window [09:55,10:00) NOT yet closed&lt;br/&gt;watermark has not passed window end
+    S2-&gt;&gt;OP: event @ t=09:59:59 (arrives 10:00:20)
+    OP-&gt;&gt;ST: buffer — still within window
+    WM-&gt;&gt;OP: watermark = 10:00:05
+    OP-&gt;&gt;ST: close window [09:55, 10:00)
+    ST-&gt;&gt;OP: evaluate correlation scope
+    OP-&gt;&gt;OUT: emit correlation, confidence 0.84
+    S2--)OP: LATE event @ t=09:59:57 (arrives 10:04:00)
+    Note over OP: within allowed lateness (5 min)
+    OP-&gt;&gt;ST: reopen window, re-evaluate
+    OP-&gt;&gt;OUT: emit REVISED correlation, confidence 0.91&lt;br/&gt;&lt;i&gt;supersedes prior version&lt;/i&gt;
+    S2--)OP: VERY LATE event @ t=09:58:00 (arrives 10:30:00)
+    Note over OP: beyond allowed lateness
+    OP-&gt;&gt;OUT: route to side output + audit&lt;br/&gt;&lt;i&gt;correlation NOT revised&lt;/i&gt;
+</pre></div>
+<p><strong>Figure 14.</strong> <em>Event-time processing with watermarks, allowed lateness, and correlation revision. The watermark is derived as the minimum event time across all participating sources less the maximum tolerated skew — meaning a single lagging source holds back correlation for the entire scope. This coupling is the principal operational hazard of the streaming layer.</em></p>
+<h3 id="11.4.1-the-slowest-source-problem" tabindex="-1">11.4.1 The Slowest-Source Problem <a class="header-anchor" href="#11.4.1-the-slowest-source-problem">#</a></h3>
+<p>Figure 14 illustrates a consequence that deserves explicit statement: because the watermark for a multi-source correlation scope is bounded by the slowest source, <strong>one lagging source stalls correlation for every source in the scope</strong>. A batch feed arriving hourly, included in the same scope as second-latency telemetry, reduces the entire scope to hourly effective latency.</p>
+<p>The framework’s mitigations:</p>
+<ul>
+<li><strong>Stratify scopes by latency class.</strong> Do not place hourly and sub-second sources in the same correlation scope unless the correlation genuinely requires both at the same freshness.</li>
+<li><strong>Use per-source idle timeouts.</strong> A source that has produced nothing for a defined interval is marked idle and excluded from watermark computation, preventing a dormant source from stalling everything.</li>
+<li><strong>Emit speculative correlations with revision.</strong> Where the use case tolerates it, emit an early correlation on partial evidence with a flag indicating provisionality, then supersede it when the window closes.</li>
+</ul>
+<h3 id="11.4.2-correlation-revision-protocol" tabindex="-1">11.4.2 Correlation Revision Protocol <a class="header-anchor" href="#11.4.2-correlation-revision-protocol">#</a></h3>
+<p>Late data means a correlation emitted at window close may be wrong. The framework specifies:</p>
+<ol>
+<li>Correlations carry a <strong>version</strong> and a <strong>supersession pointer</strong>.</li>
+<li>Late arrival within allowed lateness triggers <strong>re-evaluation</strong>, producing a new version that supersedes the prior.</li>
+<li>Consumers that acted on the superseded version are <strong>notified through the outcome feedback path</strong>.</li>
+<li>Arrival beyond allowed lateness is routed to a <strong>side output</strong> and recorded, but does not revise the correlation. Persistent very-late arrival is an operational signal that allowed lateness is mis-configured.</li>
+</ol>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Downstream consequence.</strong> Correlation revision means downstream systems must tolerate retraction. An alert fired on a correlation later revised to low confidence must be withdrawable. Systems that cannot retract — an email sent, an irreversible transaction — MUST be restricted to autonomy levels requiring window closure before action. This is a hard coupling between <a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">Chapter 11</a> and <a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">Chapter 20</a>.</p>
+</div>
+<h2 id="11.5-delivery-semantics-and-their-correlation-implications" tabindex="-1">11.5 Delivery Semantics and Their Correlation Implications <a class="header-anchor" href="#11.5-delivery-semantics-and-their-correlation-implications">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Guarantee</th>
+<th>Mechanism</th>
+<th>Correlation implication</th>
+<th>Framework position</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>At-most-once</strong></td>
+<td>Fire and forget</td>
+<td>Missing events produce false negatives silently</td>
+<td>Prohibited</td>
+</tr>
+<tr>
+<td><strong>At-least-once</strong></td>
+<td>Retry without dedup</td>
+<td>Duplicate events inflate correlation confidence — a <em>systematic bias toward false positives</em></td>
+<td>Permitted only with idempotent correlation operators</td>
+</tr>
+<tr>
+<td><strong>Exactly-once</strong></td>
+<td>Idempotent producers + transactional commits + checkpointed state</td>
+<td>Correct counts and confidence</td>
+<td><strong>Required for scored correlation</strong></td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 13.</strong> <em>Delivery semantics and their correlation implications. At-least-once delivery is uniquely dangerous for correlation because duplicates do not merely inflate counts — they inflate the evidence base for a relationship, systematically biasing confidence upward and producing more false positives precisely where the system is most trusted.</em></p>
+<p>The framework’s position is unambiguous: <strong>any correlation modality that produces a confidence score derived from event counts, frequencies, or co-occurrence rates MUST operate under exactly-once semantics.</strong> The alternative is a system whose confidence scores are inflated by an unknown, variable, infrastructure-dependent factor.</p>
+<p>Where exactly-once is unavailable — some external sources cannot support it — the framework requires either explicit deduplication at ingestion using a stable business key, or the correlation operator itself to be idempotent (for example, using set semantics rather than counting semantics).</p>
+<h2 id="11.6-state-management" tabindex="-1">11.6 State Management <a class="header-anchor" href="#11.6-state-management">#</a></h2>
+<p>Correlation state is the dominant operational cost of the streaming layer.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>State category</th>
+<th>Typical size driver</th>
+<th>Retention</th>
+<th>Backing store</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Window buffers</td>
+<td>Events/sec × window width × scopes</td>
+<td>Window width + allowed lateness</td>
+<td>RocksDB, checkpointed</td>
+</tr>
+<tr>
+<td>Entity context</td>
+<td>Active entities × attributes</td>
+<td>TTL-bounded (e.g. 90d)</td>
+<td>RocksDB with TTL compaction</td>
+</tr>
+<tr>
+<td>Behavioural baselines</td>
+<td>Entities × features × history</td>
+<td>Rolling, compacted</td>
+<td>RocksDB or external feature store</td>
+</tr>
+<tr>
+<td>Broadcast reference</td>
+<td>Reference set cardinality</td>
+<td>Until refresh</td>
+<td>In-memory, replicated</td>
+</tr>
+<tr>
+<td>Deduplication keys</td>
+<td>Events/sec × dedup window</td>
+<td>Short (minutes to hours)</td>
+<td>Bloom filter or RocksDB</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 14.</strong> <em>Correlation state categories. Window buffers dominate and scale multiplicatively with event rate, window width, and scope count — which is the mechanical reason Principle 3 (Bounded Scope) is the framework’s most critical constraint.</em></p>
+<p><strong>State size governance.</strong> Each correlation scope declares a state budget. The scope governor (<a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">Chapter 14</a>) monitors actual consumption and takes graduated action: warn, then shed the lowest-value portion of the window, then suspend the scope and alert. A scope that cannot operate within budget is a scope that was declared too broadly.</p>
+<p><strong>Checkpointing.</strong> State is checkpointed to durable storage at a configurable interval. The interval trades recovery time against steady-state overhead: shorter intervals reduce reprocessing after failure but increase continuous I/O. The framework recommends aligning the checkpoint interval with the shortest window in the scope set, so that recovery never requires replaying more than one window.</p>
+<h2 id="11.7-technology-selection" tabindex="-1">11.7 Technology Selection <a class="header-anchor" href="#11.7-technology-selection">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Kafka</th>
+<th>Pulsar</th>
+<th>Flink</th>
+<th>Spark Structured Streaming</th>
+<th>Managed cloud</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Durable partitioned log</td>
+<td>✔ Native</td>
+<td>✔ Native</td>
+<td>—</td>
+<td>—</td>
+<td>✔ Kinesis, Event Hubs, Pub/Sub</td>
+</tr>
+<tr>
+<td>Tiered storage</td>
+<td>✔</td>
+<td>✔ Native</td>
+<td>—</td>
+<td>—</td>
+<td>✔ Varies</td>
+</tr>
+<tr>
+<td>True per-event streaming</td>
+<td>—</td>
+<td>—</td>
+<td>✔</td>
+<td>◐ Micro-batch</td>
+<td>Varies</td>
+</tr>
+<tr>
+<td>Rich event-time windowing</td>
+<td>—</td>
+<td>—</td>
+<td>✔ Strongest</td>
+<td>✔ Good</td>
+<td>Varies</td>
+</tr>
+<tr>
+<td>Large keyed state</td>
+<td>—</td>
+<td>—</td>
+<td>✔ RocksDB</td>
+<td>◐ Limited</td>
+<td>Varies</td>
+</tr>
+<tr>
+<td>Native CEP pattern API</td>
+<td>—</td>
+<td>—</td>
+<td>✔ Flink CEP</td>
+<td>✘</td>
+<td>✘</td>
+</tr>
+<tr>
+<td>Exactly-once end-to-end</td>
+<td>✔ Transactions</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+<td>Varies</td>
+</tr>
+<tr>
+<td>Batch/stream unification</td>
+<td>—</td>
+<td>—</td>
+<td>✔</td>
+<td>✔ Strongest</td>
+<td>Varies</td>
+</tr>
+<tr>
+<td>Operational simplicity</td>
+<td>◐</td>
+<td>◐</td>
+<td>✘ Complex</td>
+<td>✔</td>
+<td>✔ Strongest</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 15.</strong> <em>Streaming layer technology selection matrix. Legend: ✔ strong, ◐ partial, ✘ weak, — not applicable. The framework’s reference combination is Kafka with tiered storage as the log and Flink as the correlation processor, chosen for Flink’s state management, event-time rigour, and native CEP support — accepting materially higher operational complexity in exchange.</em></p>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p><strong>On Spark Structured Streaming.</strong> Spark is a reasonable alternative where an organization already operates Spark at scale and its correlation scopes tolerate micro-batch latency (typically hundreds of milliseconds to seconds). Its weaker large-state support is the binding constraint for wide-window correlation; its unified batch/stream API is a genuine advantage for the reconciliation protocol described in <a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">Chapter 12</a>.</p>
+</div>
+<h2 id="11.8-backpressure-and-load-shedding" tabindex="-1">11.8 Backpressure and Load Shedding <a class="header-anchor" href="#11.8-backpressure-and-load-shedding">#</a></h2>
+<p>When correlation cannot keep pace with ingestion, the system must degrade predictably rather than fail.</p>
+<p>The framework specifies a four-stage graduated response:</p>
+<ol>
+<li><strong>Backpressure.</strong> Slow consumption, allowing the log to buffer. Acceptable while retention permits; the log is designed for exactly this.</li>
+<li><strong>Scope prioritization.</strong> Suspend scopes below a declared priority threshold. Every scope carries a priority; scopes without one default to lowest.</li>
+<li><strong>Confidence-threshold elevation.</strong> Raise the minimum emission threshold, reducing output volume while preserving the highest-value correlations.</li>
+<li><strong>Window narrowing.</strong> Temporarily reduce window widths, trading correlation recall for state reduction.</li>
+</ol>
+<p>Only after all four are exhausted does the system shed input — and when it does, it MUST record precisely what was shed, because correlation over silently incomplete data produces confident and wrong conclusions.</p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Streaming is the default execution model</strong> because correlation is inherently incremental, actionability windows are short, and correlation state maps naturally onto managed keyed state.</li>
+<li><strong>Partitioning by resolved entity key is the decision that determines feasibility</strong>, and it is why entity resolution belongs at ingestion rather than in the correlation tier.</li>
+<li><strong>Retaining raw events separately from canonical events</strong> preserves the ability to re-canonicalize as entity resolution improves, without re-ingesting from source.</li>
+<li><strong>The watermark is bounded by the slowest source</strong>, so mixing latency classes within one correlation scope degrades the entire scope. Stratification, idle timeouts, and speculative emission are the mitigations.</li>
+<li><strong>Correlations are revisable on late arrival</strong>, which imposes a hard requirement that downstream consumers tolerate retraction — and restricts irreversible actions to post-window-close autonomy levels.</li>
+<li><strong>At-least-once delivery systematically biases confidence upward</strong>, because duplicates inflate the evidence base. Exactly-once is required for any count-derived confidence score.</li>
+<li><strong>Window buffer state scales multiplicatively</strong> with event rate, window width, and scope count — the mechanical basis for the bounded-scope principle.</li>
+<li><strong>Load shedding is graduated across four stages</strong> before input is dropped, and any dropped input MUST be recorded, because correlation over silently incomplete data is confidently wrong.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/"><span>← Previous</span><b>10. System Architecture</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/"><span>Next →</span><b>12. Batch Layer</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#11.1-architecture">11.1 Architecture #</a><a href="#11.2-why-streaming-is-the-default-execution-model">11.2 Why Streaming Is the Default Execution Model #</a><a href="#11.3-the-distributed-commit-log">11.3 The Distributed Commit Log #</a><a href="#11.4-event-time%2C-watermarks%2C-and-late-data">11.4 Event Time, Watermarks, and Late Data #</a><a href="#11.5-delivery-semantics-and-their-correlation-implications">11.5 Delivery Semantics and Their Correlation Implications #</a><a href="#11.6-state-management">11.6 State Management #</a><a href="#11.7-technology-selection">11.7 Technology Selection #</a><a href="#11.8-backpressure-and-load-shedding">11.8 Backpressure and Load Shedding #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

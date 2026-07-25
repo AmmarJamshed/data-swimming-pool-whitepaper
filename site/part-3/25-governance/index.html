@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en" data-part="p3">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>25. Governance · Data Swimming Pool</title>
+<meta name="description" content="25. Governance --- 25.1 The Governance Object That Does Not Exist Elsewhere Conventional data governance operates over datasets, pipelines, reports, and models. A Data Swimming Poo">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="25. Governance — Data Swimming Pool">
+<meta property="og:description" content="25. Governance --- 25.1 The Governance Object That Does Not Exist Elsewhere Conventional data governance operates over datasets, pipelines, reports, and models. A Data Swimming Poo">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" open style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/" class="on">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part III — Enterprise Qualities</span></p>
+    <h1>25. Governance</h1>
+    <p class="cmeta"><span class="chip">🛡️ Part III — Enterprise Qualities</span><span class="dot">·</span>5 min read</p>
+  </header>
+  <div class="prose">
+<h1>25. Governance</h1>
+<hr>
+<h2 id="25.1-the-governance-object-that-does-not-exist-elsewhere" tabindex="-1">25.1 The Governance Object That Does Not Exist Elsewhere <a class="header-anchor" href="#25.1-the-governance-object-that-does-not-exist-elsewhere">#</a></h2>
+<p>Conventional data governance operates over datasets, pipelines, reports, and models. A Data Swimming Pool introduces a governance object with no established equivalent: <strong>the correlation scope</strong>.</p>
+<p>A correlation scope is not a dataset — it produces data rather than containing it. It is not a pipeline — it discovers rather than transforms. It is not a model — it is declarative configuration, though it may invoke models. It is a <strong>standing authorization to derive relationships between specified categories of data for a specified purpose</strong>, and it requires its own governance discipline.</p>
+<div class="cal cal-info">
+<h3 id="definition-%E2%80%94-correlation-scope-governance" tabindex="-1">Definition — Correlation Scope Governance <a class="header-anchor" href="#definition-%E2%80%94-correlation-scope-governance">#</a></h3>
+<p><strong>Correlation scope governance</strong> is the discipline of declaring, reviewing, approving, monitoring, and retiring standing authorizations to derive relationships across data domains, with accountability for the purpose, proportionality, precision, cost, and consequences of each authorization.</p>
+</div>
+<h2 id="25.2-federated-computational-governance" tabindex="-1">25.2 Federated Computational Governance <a class="header-anchor" href="#25.2-federated-computational-governance">#</a></h2>
+<p>The framework adopts data mesh’s federated computational governance principle [28] and extends it.</p>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph FED[&quot;Federated Governance Council&quot;]
+        direction LR
+        F1[&quot;Domain representatives&quot;]
+        F2[&quot;Platform team&quot;]
+        F3[&quot;Risk &amp; compliance&quot;]
+        F4[&quot;Privacy office&quot;]
+        F5[&quot;Security&quot;]
+    end
+
+    subgraph SETS[&quot;Sets Global Policy&quot;]
+        direction TB
+        G1[&quot;Classification taxonomy&quot;]
+        G2[&quot;Purpose taxonomy&quot;]
+        G3[&quot;Autonomy promotion criteria&quot;]
+        G4[&quot;Precision thresholds by risk tier&quot;]
+        G5[&quot;Retention and residency rules&quot;]
+        G6[&quot;Interoperability standards&quot;]
+    end
+
+    subgraph DOMAIN[&quot;Domain Accountability&quot;]
+        direction TB
+        D1[&quot;Owns source data quality&quot;]
+        D2[&quot;Owns data contracts&quot;]
+        D3[&quot;Approves use of its data&lt;br/&gt;in cross-domain scopes&quot;]
+        D4[&quot;Owns domain-internal scopes&quot;]
+    end
+
+    subgraph PLATFORM[&quot;Platform Accountability&quot;]
+        direction TB
+        P1[&quot;&lt;b&gt;Owns the correlation substrate&lt;br/&gt;as a product&lt;/b&gt;&quot;]
+        P2[&quot;Owns cross-domain scopes&quot;]
+        P3[&quot;Owns calibration integrity&quot;]
+        P4[&quot;Owns cost attribution&quot;]
+        P5[&quot;Owns the Autonomy Controller&quot;]
+    end
+
+    subgraph AUTO[&quot;Computational Enforcement&quot;]
+        direction TB
+        A1[&quot;Policy-as-code&lt;br/&gt;&lt;i&gt;version controlled&lt;/i&gt;&quot;]
+        A2[&quot;Scope Governor&lt;br/&gt;&lt;i&gt;runtime limits&lt;/i&gt;&quot;]
+        A3[&quot;Automated demotion&lt;br/&gt;&lt;i&gt;on precision breach&lt;/i&gt;&quot;]
+        A4[&quot;Contract validation&lt;br/&gt;&lt;i&gt;at ingestion&lt;/i&gt;&quot;]
+        A5[&quot;Purpose binding&lt;br/&gt;&lt;i&gt;at correlation&lt;/i&gt;&quot;]
+    end
+
+    FED --&gt; SETS
+    SETS --&gt; AUTO
+    DOMAIN --&gt; AUTO
+    PLATFORM --&gt; AUTO
+    AUTO -.enforces on.-&gt; RUNTIME[&quot;Runtime — no manual gate&quot;]
+
+    classDef fed fill:#3a2540,stroke:#a878c0,stroke-width:2px,color:#f6eaff
+    classDef dom fill:#183028,stroke:#4caf7d,color:#e6fff2
+    classDef plat fill:#0a5570,stroke:#3fd0f0,stroke-width:2px,color:#ffffff
+    classDef auto fill:#3d3313,stroke:#d4a636,stroke-width:2px,color:#fff8e6
+    class FED,F1,F2,F3,F4,F5,SETS,G1,G2,G3,G4,G5,G6 fed
+    class DOMAIN,D1,D2,D3,D4 dom
+    class PLATFORM,P1,P2,P3,P4,P5 plat
+    class AUTO,A1,A2,A3,A4,A5 auto
+</pre></div>
+<p><strong>Figure 37.</strong> <em>Federated governance operating model. The council sets global policy; domains own their data and approve its use in cross-domain scopes; the platform owns the correlation substrate as a product with a named owner and budget. All policy is enforced computationally at runtime rather than through manual review gates — which is what makes the model scale.</em></p>
+<h3 id="25.2.1-the-platform-owns-the-correlation-substrate" tabindex="-1">25.2.1 The Platform Owns the Correlation Substrate <a class="header-anchor" href="#25.2.1-the-platform-owns-the-correlation-substrate">#</a></h3>
+<p><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">Chapter 6</a> identified that data mesh leaves the inter-domain space ownerless. The framework’s resolution is explicit:</p>
+<p><strong>The correlation substrate is a platform-provided data product with a named owner, a published SLA, a budget, and a roadmap.</strong> It is not a shared service that everyone uses and no one maintains. Its owner is accountable for correlation precision, calibration integrity, substrate availability, and cost — and is measured on them.</p>
+<p>This does not centralize domain data ownership. Domains continue to own their data, their contracts, and their quality. What the platform owns is the <em>relating of domains</em>, which no domain can own without acquiring expertise in another domain’s semantics.</p>
+<h2 id="25.3-the-scope-lifecycle" tabindex="-1">25.3 The Scope Lifecycle <a class="header-anchor" href="#25.3-the-scope-lifecycle">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Activity</th>
+<th>Approvers</th>
+<th>Exit criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Proposal</strong></td>
+<td>Business case, purpose, participating domains, expected value</td>
+<td>Requesting owner</td>
+<td>Complete declaration per <a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">Table 23</a></td>
+</tr>
+<tr>
+<td><strong>2. Domain consent</strong></td>
+<td>Each contributing domain reviews use of its data</td>
+<td>Domain owners</td>
+<td>All domains consent or the scope is narrowed</td>
+</tr>
+<tr>
+<td><strong>3. Privacy assessment</strong></td>
+<td>Purpose, necessity, proportionality, special-category determination</td>
+<td>Privacy office</td>
+<td>Assessment complete; DPIA where triggered</td>
+</tr>
+<tr>
+<td><strong>4. Security assessment</strong></td>
+<td>Sensitivity of derived inference; access model</td>
+<td>Security</td>
+<td>Controls specified</td>
+</tr>
+<tr>
+<td><strong>5. Cost approval</strong></td>
+<td>State, compute, and emission budget</td>
+<td>Platform + finance</td>
+<td>Budget allocated</td>
+</tr>
+<tr>
+<td><strong>6. Shadow (L0)</strong></td>
+<td>Execute without output; measure volume, precision proxy, cost</td>
+<td>Platform</td>
+<td>Actual cost within budget; volume as projected</td>
+</tr>
+<tr>
+<td><strong>7. Advisory (L1–L2)</strong></td>
+<td>Surface to humans; measure usefulness and precision</td>
+<td>Scope owner</td>
+<td>Precision above declared threshold over defined period</td>
+</tr>
+<tr>
+<td><strong>8. Operational (L3+)</strong></td>
+<td>Promote per Autonomy Ladder</td>
+<td>Risk function</td>
+<td>Autonomy Ladder criteria met</td>
+</tr>
+<tr>
+<td><strong>9. Periodic review</strong></td>
+<td>Quarterly: still valuable? still proportionate? still precise?</td>
+<td>Scope owner + council</td>
+<td>Renewed, narrowed, or retired</td>
+</tr>
+<tr>
+<td><strong>10. Retirement</strong></td>
+<td>Scope disabled; correlations expire; consumers notified</td>
+<td>Scope owner</td>
+<td>Consumers migrated</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 50.</strong> <em>Correlation scope lifecycle. Stage 6 — mandatory shadow execution — is the stage most likely to be skipped under delivery pressure and most valuable when observed: it is where cost overruns and volume misestimates are discovered before they reach production.</em></p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Scope proliferation is the governance failure to expect.</strong> Scopes are easy to create and difficult to retire. Left unmanaged, an organization accumulates hundreds of overlapping, partially redundant, individually-justified scopes whose combined cost is unsustainable and whose combined false-positive volume is unmanageable.</p>
+<p>The framework’s countermeasures: a hard organizational cap on active scopes (reviewed rather than raised automatically), mandatory expiry dates requiring active renewal, automatic retirement of scopes whose outputs are not consumed, and overlap detection flagging scopes whose participating event types substantially intersect.</p>
+</div>
+<h2 id="25.4-governance-of-correlations-themselves" tabindex="-1">25.4 Governance of Correlations Themselves <a class="header-anchor" href="#25.4-governance-of-correlations-themselves">#</a></h2>
+<p>Beyond scopes, individual correlation <em>types</em> require governance:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Governance question</th>
+<th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Is this relationship type permissible to derive?</td>
+<td>Purpose binding at the correlation boundary (<a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">Chapter 24</a>)</td>
+</tr>
+<tr>
+<td>Is its confidence meaningful?</td>
+<td>Mandatory calibration against outcomes; uncalibrated types visually distinguished</td>
+</tr>
+<tr>
+<td>Who may see correlations of this type?</td>
+<td>Type-level permission sets, more restrictive than source data permissions</td>
+</tr>
+<tr>
+<td>How long does it remain valid?</td>
+<td>Declared temporal validity per type; confidence decay where appropriate</td>
+</tr>
+<tr>
+<td>What happens when it is wrong?</td>
+<td>Retraction protocol with consumer notification</td>
+</tr>
+<tr>
+<td>Who is accountable when it drives a bad decision?</td>
+<td>Named accountable human per action class (<a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">Chapter 20</a>)</td>
+</tr>
+<tr>
+<td>Should this type continue to exist?</td>
+<td>Automatic deprecation on chronic falsification (P10)</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 51.</strong> <em>Governance questions applied to correlation types. The accountability question is the one organizations most often leave unanswered, and it must be answered before an action class is promoted above L2 — not after an incident.</em></p>
+<h2 id="25.5-metrics-and-reporting" tabindex="-1">25.5 Metrics and Reporting <a class="header-anchor" href="#25.5-metrics-and-reporting">#</a></h2>
+<p>The framework proposes a governance dashboard organized around five questions:</p>
+<p><strong>Is the substrate trustworthy?</strong> Calibration error by scope, share of correlations uncalibrated, retraction rate, divergence between streaming and batch results.</p>
+<p><strong>Is it proportionate?</strong> Active scope count against cap, share of scopes touching special-category data, DPIA coverage, scope overlap index.</p>
+<p><strong>Is it valuable?</strong> Correlations consumed against correlations produced, insights acted upon, outcome-confirmed insights, actioned-within-window rate.</p>
+<p><strong>Is it controlled?</strong> Autonomy level distribution across action classes, automatic demotions in period, policy denials at each boundary, reversal rate at L4.</p>
+<p><strong>Is it affordable?</strong> Cost per scope, cost per emitted correlation, cost per acted-upon insight, share of budget consumed by the top five scopes.</p>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p><strong>The most diagnostic single metric.</strong> <em>Correlations consumed divided by correlations produced.</em> A system producing large volumes of correlations that nothing consumes is expending resources on relationships nobody needs — which indicates scope design disconnected from actual decision-making, and is the earliest reliable signal that the programme is drifting into technical activity without business value.</p>
+</div>
+<h2 id="25.6-regulatory-alignment" tabindex="-1">25.6 Regulatory Alignment <a class="header-anchor" href="#25.6-regulatory-alignment">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Relevant obligation</th>
+<th>Architectural response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GDPR</strong></td>
+<td>Purpose limitation, minimization, erasure, automated decision rights</td>
+<td>Purpose binding, scope necessity assessment, erasure propagation, evidence chains</td>
+</tr>
+<tr>
+<td><strong>EU AI Act</strong></td>
+<td>Risk classification, transparency, human oversight, logging</td>
+<td>Autonomy Ladder as the oversight mechanism; provenance ledger as the logging mechanism; risk tiering per action class</td>
+</tr>
+<tr>
+<td><strong>BCBS 239</strong></td>
+<td>Risk data aggregation accuracy, completeness, timeliness, adaptability</td>
+<td>Lineage completeness, degradation flagging, reconciliation protocol, W2 adaptability</td>
+</tr>
+<tr>
+<td><strong>HIPAA</strong></td>
+<td>Minimum necessary, access controls, audit</td>
+<td>Purpose binding, field-level encryption, immutable audit</td>
+</tr>
+<tr>
+<td><strong>PCI DSS</strong></td>
+<td>Cardholder data isolation and protection</td>
+<td>Tokenization before correlation; correlation operates on tokens</td>
+</tr>
+<tr>
+<td><strong>SOX</strong></td>
+<td>Controls over financial reporting</td>
+<td>Reproducibility from provenance; rule approval workflow</td>
+</tr>
+<tr>
+<td><strong>DORA</strong></td>
+<td>Operational resilience, third-party risk</td>
+<td>HA design (<a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">Chapter 27</a>); source dependency mapping via lineage</td>
+</tr>
+<tr>
+<td><strong>Model risk (SR 11-7 and equivalents)</strong></td>
+<td>Model validation, monitoring, governance</td>
+<td>Model registry, shadow deployment, drift monitoring, automatic demotion</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 52.</strong> <em>Regulatory alignment at a conceptual level. The EU AI Act row is the most consequential for this framework: the Autonomy Ladder and provenance ledger were designed independently but map closely onto its human-oversight and logging requirements, which the author regards as convergent evidence that the design is pointed in a defensible direction.</em></p>
+<h2 id="25.7-governance-anti-patterns" tabindex="-1">25.7 Governance Anti-Patterns <a class="header-anchor" href="#25.7-governance-anti-patterns">#</a></h2>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Four failure modes observed in comparable programmes.</strong></p>
+<p><strong>Governance as a review board.</strong> If every scope requires a committee meeting, the correlation bypass (<a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">Chapter 22</a>) becomes rational. Governance must be computational and fast; committees set policy, code enforces it.</p>
+<p><strong>Precision thresholds set by the requesting function.</strong> The team that wants a scope promoted should not measure whether it qualifies. Measurement must be independent.</p>
+<p><strong>Scope approval without cost approval.</strong> Scopes approved on business merit without a budget produce cost incidents. Cost is a governance concern, not merely an engineering one.</p>
+<p><strong>Governance without retirement.</strong> A governance process that only approves and never retires guarantees proliferation. Retirement must be as routine as approval, and automatic where outputs go unconsumed.</p>
+</div>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>The correlation scope is a governance object with no established equivalent</strong> — a standing authorization to derive relationships for a purpose, requiring its own discipline.</li>
+<li><strong>The platform owns the correlation substrate as a product</strong> with a named owner, SLA, and budget, resolving data mesh’s ownerless inter-domain space without recentralizing domain data ownership.</li>
+<li><strong>Mandatory shadow execution is the most valuable and most skipped lifecycle stage</strong>, because it surfaces cost overruns and volume misestimates before production.</li>
+<li><strong>Scope proliferation is the governance failure to expect</strong>, countered by hard caps, mandatory expiry, automatic retirement of unconsumed scopes, and overlap detection.</li>
+<li><strong>Accountability for a bad automated decision must be assigned before promotion above L2</strong>, not determined after an incident.</li>
+<li><strong>Correlations consumed divided by correlations produced is the most diagnostic single metric</strong>, and the earliest reliable signal of drift into technical activity without business value.</li>
+<li><strong>The EU AI Act’s human-oversight and logging requirements map closely onto the Autonomy Ladder and provenance ledger</strong>, which were designed independently — convergent evidence the design is defensible.</li>
+<li><strong>Governance must be computational and fast</strong>, because slow governance makes the correlation bypass rational and erodes the architecture from below.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-3/24-privacy/"><span>← Previous</span><b>24. Privacy</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-3/26-scalability/"><span>Next →</span><b>26. Scalability</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#25.1-the-governance-object-that-does-not-exist-elsewhere">25.1 The Governance Object That Does Not Exist Elsewhere #</a><a href="#25.2-federated-computational-governance">25.2 Federated Computational Governance #</a><a href="#25.3-the-scope-lifecycle">25.3 The Scope Lifecycle #</a><a href="#25.4-governance-of-correlations-themselves">25.4 Governance of Correlations Themselves #</a><a href="#25.5-metrics-and-reporting">25.5 Metrics and Reporting #</a><a href="#25.6-regulatory-alignment">25.6 Regulatory Alignment #</a><a href="#25.7-governance-anti-patterns">25.7 Governance Anti-Patterns #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-3/25-governance/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

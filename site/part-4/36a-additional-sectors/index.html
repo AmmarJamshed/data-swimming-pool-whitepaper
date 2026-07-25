@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en" data-part="p4">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>36A. Insurance, Logistics, Energy and Aviation · Data Swimming Pool</title>
+<meta name="description" content="36A. Insurance, Logistics, Energy and Aviation --- Illustrative scenarios. All four are synthetic and constructed. Figures are reasoned estimates, not measurements. This chapter pr">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="36A. Insurance, Logistics, Energy and Aviation — Data Swimming Pool">
+<meta property="og:description" content="36A. Insurance, Logistics, Energy and Aviation --- Illustrative scenarios. All four are synthetic and constructed. Figures are reasoned estimates, not measurements. This chapter pr">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" open style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/" class="on">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part IV — Illustrative Enterprise Scenarios</span></p>
+    <h1>36A. Insurance, Logistics, Energy and Aviation</h1>
+    <p class="cmeta"><span class="chip">🏭 Part IV — Illustrative Enterprise Scenarios</span><span class="dot">·</span>6 min read</p>
+  </header>
+  <div class="prose">
+<h1>36A. Insurance, Logistics, Energy and Aviation</h1>
+<hr>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>Illustrative scenarios.</strong> All four are synthetic and constructed. Figures are reasoned estimates, not measurements.</p>
+</div>
+<p>This chapter presents four additional sectors in condensed form, completing the ten-sector coverage. Each follows the same analytical structure: the cross-domain phenomenon that current architectures cannot see, the correlation pattern that would reveal it, and the specific constraint that makes it difficult.</p>
+<hr>
+<h2 id="36a.1-insurance" tabindex="-1">36A.1 Insurance <a class="header-anchor" href="#36a.1-insurance">#</a></h2>
+<h3 id="the-invisible-phenomenon" tabindex="-1">The Invisible Phenomenon <a class="header-anchor" href="#the-invisible-phenomenon">#</a></h3>
+<p>Claims fraud, particularly organized fraud, is a network phenomenon presented as a set of individual claims. A staged collision involves a driver, a passenger, a medical practitioner, a vehicle repairer, and a legal representative — each of whom appears in multiple claims across multiple insurers, in combinations that are individually unremarkable and collectively definitive.</p>
+<p>Separately and more benignly, claims <em>experience</em> is multi-factorial in ways underwriting does not capture: a property’s claims history correlates with weather exposure, local infrastructure age, maintenance behaviour, and occupancy pattern — signals that exist across policy, claims, external, and IoT data but are not related.</p>
+<h3 id="correlation-pattern" tabindex="-1">Correlation Pattern <a class="header-anchor" href="#correlation-pattern">#</a></h3>
+<div class="figure"><pre class="mermaid">flowchart LR
+    subgraph IN[&quot;Sources&quot;]
+        direction TB
+        I1[&quot;Policy administration&quot;]
+        I2[&quot;Claims management&quot;]
+        I3[&quot;Third-party involvement&lt;br/&gt;&lt;i&gt;repairers, medical, legal&lt;/i&gt;&quot;]
+        I4[&quot;Telematics / IoT&lt;br/&gt;&lt;i&gt;where consented&lt;/i&gt;&quot;]
+        I5[&quot;External&lt;br/&gt;&lt;i&gt;weather, hazard, registry&lt;/i&gt;&quot;]
+        I6[&quot;Industry fraud registers&quot;]
+    end
+    subgraph SC[&quot;Scopes&quot;]
+        direction TB
+        C1[&quot;&lt;b&gt;fraud.claim_network.v3&lt;/b&gt;&lt;br/&gt;M2 (k≤4) · M5 · 24 mo · batch&lt;br/&gt;Shared-participant community&lt;br/&gt;detection across claims&quot;]
+        C2[&quot;&lt;b&gt;uw.exposure_reality.v2&lt;/b&gt;&lt;br/&gt;M1·M2·M3 · 36 mo · batch&lt;br/&gt;Which factors actually predict&lt;br/&gt;claims, vs. which are priced&quot;]
+        C3[&quot;&lt;b&gt;ops.claim_trajectory.v2&lt;/b&gt;&lt;br/&gt;M1·M5·negative · 90 d&lt;br/&gt;Which claims are drifting&lt;br/&gt;toward dispute or leakage&quot;]
+    end
+    subgraph OUT[&quot;Outputs&quot;]
+        direction TB
+        O1[&quot;L2 — investigation&lt;br/&gt;prioritization with&lt;br/&gt;network evidence&quot;]
+        O2[&quot;L2 — underwriting&lt;br/&gt;factor review&quot;]
+        O3[&quot;L3 — staged claim&lt;br/&gt;handler intervention&quot;]
+    end
+    IN --&gt; SC --&gt; OUT
+    classDef a fill:#1b2f3d,stroke:#5b8fb0,color:#e6f2fa
+    classDef b fill:#0a5570,stroke:#3fd0f0,stroke-width:2px,color:#ffffff
+    classDef c fill:#3d3313,stroke:#d4a636,color:#fff8e6
+    class IN,I1,I2,I3,I4,I5,I6 a
+    class SC,C1,C2,C3 b
+    class OUT,O1,O2,O3 c
+</pre></div>
+<p><strong>Figure 51.</strong> <em>Insurance correlation pattern (illustrative). Claim network detection is a graph community-detection problem over shared participants — the archetypal M2 application at depth.</em></p>
+<h3 id="the-specific-constraint" tabindex="-1">The Specific Constraint <a class="header-anchor" href="#the-specific-constraint">#</a></h3>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Correlation in insurance risks unlawful discrimination.</strong> A correlation between a protected characteristic proxy and claims experience may be statistically robust and legally prohibited as a pricing factor. Insurance is among the most heavily regulated domains for permissible inference, and the scope assessment in <a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">Chapter 24</a> — <em>what could this correlation reveal?</em> — must extend to <em>what does this correlation proxy for?</em></p>
+<p>Additionally, autonomy must be capped at <strong>L2 for anything affecting a policyholder’s price, terms, or claim outcome.</strong> These are materially irreversible and typically require human determination with appeal rights.</p>
+</div>
+<hr>
+<h2 id="36a.2-logistics" tabindex="-1">36A.2 Logistics <a class="header-anchor" href="#36a.2-logistics">#</a></h2>
+<h3 id="the-invisible-phenomenon-1" tabindex="-1">The Invisible Phenomenon <a class="header-anchor" href="#the-invisible-phenomenon-1">#</a></h3>
+<p>Supply chain disruption propagates through relationships that no single system models. A port congestion event affects specific vessels, carrying specific containers, containing specific SKUs, destined for specific distribution centres, feeding specific stores, supporting specific promotional campaigns — with a customs delay, a driver-hours constraint, and a warehouse capacity limit interacting along the way.</p>
+<p>Each system tracks its own leg. The <strong>compound delay</strong> — and, critically, which downstream commitments it endangers — is computed by nobody until something fails.</p>
+<h3 id="correlation-pattern-1" tabindex="-1">Correlation Pattern <a class="header-anchor" href="#correlation-pattern-1">#</a></h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Purpose</th>
+<th>Modalities</th>
+<th>Window</th>
+<th>Autonomy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sup.disruption_propagation.v3</code></td>
+<td>Trace a disruption to endangered downstream commitments</td>
+<td>M1, M2 (k≤5), M3</td>
+<td>30 d</td>
+<td>L3 (staged re-routing)</td>
+</tr>
+<tr>
+<td><code>sup.eta_reality.v4</code></td>
+<td>Correlate promised vs. realized transit under condition combinations</td>
+<td>M1, M3, M5</td>
+<td>12 mo, batch</td>
+<td>L2</td>
+</tr>
+<tr>
+<td><code>sup.carrier_reliability.v2</code></td>
+<td>Which carrier–lane–condition combinations underperform</td>
+<td>M2, M5</td>
+<td>12 mo, batch</td>
+<td>L2</td>
+</tr>
+<tr>
+<td><code>sup.cold_chain.v2</code></td>
+<td>Temperature excursion correlated with handling events</td>
+<td>M1, M2, negative</td>
+<td>Per shipment</td>
+<td><strong>L4</strong> (reversible: divert, re-inspect)</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 73.</strong> <em>Logistics correlation scopes (illustrative). Cold chain reaches L4 because diverting a shipment for inspection is genuinely reversible and the consequence of not acting — spoiled pharmaceutical or food product reaching consumers — is severe.</em></p>
+<h3 id="the-specific-constraint-1" tabindex="-1">The Specific Constraint <a class="header-anchor" href="#the-specific-constraint-1">#</a></h3>
+<p>Logistics correlation crosses organizational boundaries constantly — carriers, ports, customs, 3PLs, and suppliers are separate entities with separate systems and no obligation to share. Data availability, not correlation capability, is the binding constraint. The framework’s contribution here is to make the <em>value</em> of shared data measurable, which may support the commercial case for sharing agreements.</p>
+<p>Deep graph traversal (k≤5) is required to trace propagation, which pushes against the depth limits in <a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">Chapter 26</a>. This scope must run in the batch layer with careful pruning rather than as interactive traversal.</p>
+<hr>
+<h2 id="36a.3-energy" tabindex="-1">36A.3 Energy <a class="header-anchor" href="#36a.3-energy">#</a></h2>
+<h3 id="the-invisible-phenomenon-2" tabindex="-1">The Invisible Phenomenon <a class="header-anchor" href="#the-invisible-phenomenon-2">#</a></h3>
+<p>Grid reliability, asset health, and demand behaviour are analysed separately and are causally entangled. A transformer’s degradation rate depends on loading history, ambient conditions, harmonic distortion from distributed generation, and maintenance history. A local demand anomaly may indicate an emerging fault, a metering error, unauthorized abstraction, or a genuine behavioural change — and distinguishing them requires correlating meter data, network telemetry, weather, and customer records.</p>
+<h3 id="correlation-pattern-2" tabindex="-1">Correlation Pattern <a class="header-anchor" href="#correlation-pattern-2">#</a></h3>
+<div class="figure"><pre class="mermaid">flowchart TB
+    subgraph SRC[&quot;Sources&quot;]
+        direction LR
+        E1[&quot;SCADA / grid telemetry&quot;]
+        E2[&quot;Smart meters&lt;br/&gt;&lt;i&gt;interval consumption&lt;/i&gt;&quot;]
+        E3[&quot;Asset condition&lt;br/&gt;&lt;i&gt;DGA, thermal, partial discharge&lt;/i&gt;&quot;]
+        E4[&quot;Distributed generation&lt;br/&gt;&lt;i&gt;solar, storage, EV&lt;/i&gt;&quot;]
+        E5[&quot;Weather &amp; irradiance&quot;]
+        E6[&quot;Maintenance history&quot;]
+        E7[&quot;Customer &amp; market&quot;]
+    end
+    subgraph SC[&quot;Scopes&quot;]
+        direction TB
+        S1[&quot;&lt;b&gt;asset.degradation.v4&lt;/b&gt; — L3&lt;br/&gt;M1·M3·M5 · 24 mo&lt;br/&gt;Which loading, thermal and&lt;br/&gt;harmonic conjunctions&lt;br/&gt;accelerate asset ageing?&quot;]
+        S2[&quot;&lt;b&gt;grid.anomaly_cause.v3&lt;/b&gt; — L2&lt;br/&gt;M1·M2·M3 · 7 d&lt;br/&gt;Fault vs. metering error vs.&lt;br/&gt;abstraction vs. behaviour&quot;]
+        S3[&quot;&lt;b&gt;flex.response_reality.v2&lt;/b&gt; — L3&lt;br/&gt;M1·M3 · 12 mo&lt;br/&gt;Which flexibility signals&lt;br/&gt;actually produce response?&quot;]
+        S4[&quot;&lt;b&gt;safety.veg_risk.v2&lt;/b&gt; — L2&lt;br/&gt;M1·M2·M5 · seasonal&lt;br/&gt;Vegetation, weather and&lt;br/&gt;circuit conjunction risk&quot;]
+    end
+    SRC --&gt; SC
+    classDef a fill:#1b2f3d,stroke:#5b8fb0,color:#e6f2fa
+    classDef b fill:#0a5570,stroke:#3fd0f0,stroke-width:2px,color:#ffffff
+    class SRC,E1,E2,E3,E4,E5,E6,E7 a
+    class SC,S1,S2,S3,S4 b
+</pre></div>
+<p><strong>Figure 52.</strong> <em>Energy correlation pattern (illustrative). Asset degradation correlation is a strong M3 candidate because the physical mechanisms are well understood and causal hypotheses are experimentally testable — as in manufacturing.</em></p>
+<h3 id="the-specific-constraint-2" tabindex="-1">The Specific Constraint <a class="header-anchor" href="#the-specific-constraint-2">#</a></h3>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Safety-critical actions must not be automated on correlation.</strong> Grid switching, protection setting changes, and asset de-energization have physical safety consequences and are governed by engineering authority frameworks. The framework’s role in energy is to inform human engineering judgement, not to substitute for it. Autonomy above L3 is inappropriate for any action affecting grid state.</p>
+<p>Smart meter data is also personal data in most jurisdictions, revealing occupancy, appliance use, and behaviour patterns. Purpose binding must be strict, and correlations combining meter data with customer records require careful special-category assessment.</p>
+</div>
+<hr>
+<h2 id="36a.4-aviation" tabindex="-1">36A.4 Aviation <a class="header-anchor" href="#36a.4-aviation">#</a></h2>
+<h3 id="the-invisible-phenomenon-3" tabindex="-1">The Invisible Phenomenon <a class="header-anchor" href="#the-invisible-phenomenon-3">#</a></h3>
+<p>Aviation operations are a tightly coupled network in which small perturbations propagate non-linearly. An aircraft’s delayed arrival affects its next rotation, the crew’s duty limits, the connecting passengers, the gate allocation, the ground handling schedule, and — through crew and aircraft rotation — flights hours later and continents away.</p>
+<p>Separately, predictive maintenance in aviation is exceptionally multi-factorial: component health correlates with flight cycles, route profiles, environmental exposure, operating technique, and maintenance history, across data held by the operator, the manufacturer, and the maintenance provider.</p>
+<h3 id="correlation-pattern-3" tabindex="-1">Correlation Pattern <a class="header-anchor" href="#correlation-pattern-3">#</a></h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Purpose</th>
+<th>Modalities</th>
+<th>Window</th>
+<th>Autonomy</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ops.disruption_propagation.v4</code></td>
+<td>Trace a delay to endangered downstream rotations, crew limits and connections</td>
+<td>M1, M2 (k≤4), M3</td>
+<td>72 h</td>
+<td>L3</td>
+<td>Recovery actions staged for ops control</td>
+</tr>
+<tr>
+<td><code>maint.component_health.v5</code></td>
+<td>Multi-factor component degradation prediction</td>
+<td>M1, M3, M5</td>
+<td>24 mo, batch</td>
+<td>L2</td>
+<td>Airworthiness decisions are human, always</td>
+</tr>
+<tr>
+<td><code>safety.precursor.v3</code></td>
+<td>Correlate operational events with recognized safety precursors</td>
+<td>M1, M2, M4, M5</td>
+<td>12 mo</td>
+<td><strong>L1</strong></td>
+<td>Safety reporting culture — never punitive</td>
+</tr>
+<tr>
+<td><code>cust.recovery_priority.v2</code></td>
+<td>Which disrupted passengers face worst compound outcomes</td>
+<td>M2, negative</td>
+<td>Per event</td>
+<td>L3</td>
+<td>Rebooking is reversible</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 74.</strong> <em>Aviation correlation scopes (illustrative). Safety precursor correlation is capped at L1 — informational only — because aviation safety depends on a non-punitive reporting culture, and any perception that correlated data is used for enforcement would suppress the reporting the system depends on.</em></p>
+<h3 id="the-specific-constraint-3" tabindex="-1">The Specific Constraint <a class="header-anchor" href="#the-specific-constraint-3">#</a></h3>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>Aviation safety data has a special status.</strong> Safety reporting systems function because reporters trust that data will be used for safety improvement rather than enforcement. Correlating safety reports with operational and personnel data — technically valuable — risks destroying that trust and therefore the data itself.</p>
+<p>The framework’s position for aviation: safety precursor correlation should be <strong>de-identified at ingestion, restricted to aggregate analysis, governed by the safety function independently of operations management, and explicitly excluded from any individual performance or disciplinary purpose</strong> — with the exclusion enforced computationally through purpose binding rather than asserted in policy.</p>
+</div>
+<p>Additionally, airworthiness determinations are subject to regulatory frameworks requiring qualified human judgement. Predictive maintenance correlation informs the engineer; it does not determine the outcome.</p>
+<hr>
+<h2 id="36a.5-cross-sector-pattern-synthesis" tabindex="-1">36A.5 Cross-Sector Pattern Synthesis <a class="header-anchor" href="#36a.5-cross-sector-pattern-synthesis">#</a></h2>
+<p>Ten sectors have now been examined. Five patterns recur across all of them:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Recurring pattern</th>
+<th>Description</th>
+<th>Sectors where dominant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sub-threshold conjunction</strong></td>
+<td>Multiple individually-acceptable conditions that are jointly significant</td>
+<td>Manufacturing, healthcare, cybersecurity, energy</td>
+</tr>
+<tr>
+<td><strong>Cross-domain attribution</strong></td>
+<td>An outcome misattributed because each function sees only its own data</td>
+<td>Retail, telecommunications, banking, aviation</td>
+</tr>
+<tr>
+<td><strong>Network / community detection</strong></td>
+<td>Coordinated behaviour visible only as a graph structure</td>
+<td>Banking, insurance, cybersecurity</td>
+</tr>
+<tr>
+<td><strong>Negative relationship</strong></td>
+<td>The expected event that did not occur</td>
+<td>Healthcare, government, telecommunications, logistics</td>
+</tr>
+<tr>
+<td><strong>Propagation tracing</strong></td>
+<td>A perturbation’s compound downstream consequences</td>
+<td>Logistics, aviation, smart cities, energy</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 75.</strong> <em>Cross-sector correlation pattern synthesis. Every scenario in Part IV reduces to one or more of these five patterns, which suggests that a reference implementation supporting them well would serve most enterprise correlation requirements — a hypothesis worth testing and proposed as future work in <a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">Chapter 40</a>.</em></p>
+<p>Two constraints also recur universally:</p>
+<p><strong>Autonomy is capped by irreversibility, not by confidence.</strong> In every sector, the actions the organization most wants to automate are the ones least eligible for automation — credit decisions, clinical interventions, benefit determinations, airworthiness calls, grid switching. The framework’s consistent answer is that these remain human, and the value is delivered by making the human’s decision better-informed and faster rather than by removing the human.</p>
+<p><strong>The correlation that is most valuable is frequently the one that is most sensitive.</strong> Staffing to clinical outcomes, operator to defect, safety report to individual, citizen to service history. In every case the framework’s answer is the same: the correlation should exist, its purpose must be bound computationally to a legitimate use, and the prohibited uses must be enforced by architecture rather than asserted in policy.</p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Insurance correlation risks unlawful discrimination</strong>, requiring scope assessment to extend from <em>what could this reveal?</em> to <em>what does this proxy for?</em>, with autonomy capped at L2 for anything affecting price, terms, or claim outcome.</li>
+<li><strong>Logistics is constrained by data availability across organizational boundaries</strong>, not by correlation capability — and the framework’s contribution may be making the value of sharing measurable enough to justify agreements.</li>
+<li><strong>Energy asset degradation is a strong causal-correlation candidate</strong> because physical mechanisms are understood and hypotheses are experimentally testable, but safety-critical grid actions must never exceed L3.</li>
+<li><strong>Aviation safety data has a special status</strong> dependent on non-punitive reporting culture, requiring de-identification, aggregate-only analysis, independent safety-function governance, and computationally enforced exclusion from performance purposes.</li>
+<li><strong>Five correlation patterns recur across all ten sectors</strong> — sub-threshold conjunction, cross-domain attribution, network detection, negative relationship, and propagation tracing — suggesting a reference implementation supporting these would serve most enterprise requirements.</li>
+<li><strong>Autonomy is universally capped by irreversibility, not confidence.</strong> The actions organizations most want to automate are consistently the least eligible, and the framework’s value lies in better-informed human decisions rather than removed humans.</li>
+<li><strong>The most valuable correlation is frequently the most sensitive</strong>, and the consistent answer is that it should exist with its purpose bound computationally and prohibited uses enforced architecturally.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/"><span>← Previous</span><b>36. Telecommunications Use Case</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-5/37-comparison/"><span>Next →</span><b>37. Comparison with Existing Technologies</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#36a.1-insurance">36A.1 Insurance #</a><a href="#36a.2-logistics">36A.2 Logistics #</a><a href="#36a.3-energy">36A.3 Energy #</a><a href="#36a.4-aviation">36A.4 Aviation #</a><a href="#36a.5-cross-sector-pattern-synthesis">36A.5 Cross-Sector Pattern Synthesis #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

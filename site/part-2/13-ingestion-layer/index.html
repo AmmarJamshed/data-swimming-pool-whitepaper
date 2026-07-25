@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en" data-part="p2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>13. Data Ingestion Layer · Data Swimming Pool</title>
+<meta name="description" content="13. Data Ingestion Layer --- The ingestion layer is where the framework&#39;s most consequential work happens. In a data lake, ingestion is a transport concern: land the bytes, interpr">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="13. Data Ingestion Layer — Data Swimming Pool">
+<meta property="og:description" content="13. Data Ingestion Layer --- The ingestion layer is where the framework&#39;s most consequential work happens. In a data lake, ingestion is a transport concern: land the bytes, interpr">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" open style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/" class="on">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part II — The Data Swimming Pool</span></p>
+    <h1>13. Data Ingestion Layer</h1>
+    <p class="cmeta"><span class="chip">🏊 Part II — The Data Swimming Pool</span><span class="dot">·</span>6 min read</p>
+  </header>
+  <div class="prose">
+<h1>13. Data Ingestion Layer</h1>
+<hr>
+<p>The ingestion layer is where the framework’s most consequential work happens. In a data lake, ingestion is a transport concern: land the bytes, interpret later. In a Data Swimming Pool, ingestion performs <strong>canonicalization, entity resolution, and classification</strong> — and doing so once at entry, rather than repeatedly at query time, is the primary mechanism by which the correlation tax is eliminated.</p>
+<p>This is the filtration system of the metaphor, and it is the difference between a maintained pool and a swamp.</p>
+<h2 id="13.1-ingestion-workflow" tabindex="-1">13.1 Ingestion Workflow <a class="header-anchor" href="#13.1-ingestion-workflow">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    START([&quot;Source event or batch&quot;]) --&gt; CONN[&quot;&lt;b&gt;1. Connect&lt;/b&gt;&lt;br/&gt;CDC · stream · file · API pull&quot;]
+    CONN --&gt; RAW[(&quot;&lt;b&gt;2. Land raw&lt;/b&gt;&lt;br/&gt;raw.* topic + Bronze zone&lt;br/&gt;&lt;i&gt;immutable, source-fidelity&lt;/i&gt;&quot;)]
+
+    RAW --&gt; CTR{&quot;&lt;b&gt;3. Contract&lt;br/&gt;validation&lt;/b&gt;&quot;}
+    CTR --&gt;|&quot;schema violation&quot;| Q1[&quot;Quarantine&lt;br/&gt;&lt;i&gt;dlq.schema&lt;/i&gt;&quot;]
+    CTR --&gt;|&quot;required field missing&quot;| Q1
+    CTR --&gt;|&quot;type mismatch&quot;| Q1
+    CTR --&gt;|pass| QUAL{&quot;&lt;b&gt;4. Quality&lt;br/&gt;assertion&lt;/b&gt;&quot;}
+
+    QUAL --&gt;|&quot;range violation&quot;| Q2[&quot;Quarantine&lt;br/&gt;&lt;i&gt;dlq.quality&lt;/i&gt;&quot;]
+    QUAL --&gt;|&quot;referential failure&quot;| Q2
+    QUAL --&gt;|&quot;freshness violation&quot;| Q2
+    QUAL --&gt;|pass| DEDUP{&quot;&lt;b&gt;5. Deduplicate&lt;/b&gt;&quot;}
+
+    DEDUP --&gt;|&quot;duplicate business key&quot;| DROP[&quot;Drop + count&lt;br/&gt;&lt;i&gt;metric only&lt;/i&gt;&quot;]
+    DEDUP --&gt;|unique| CANON[&quot;&lt;b&gt;6. Canonicalize&lt;/b&gt;&lt;br/&gt;map to canonical event schema&lt;br/&gt;normalize units, currency, timezone&lt;br/&gt;assign event time + clock quality&quot;]
+
+    CANON --&gt; ER[&quot;&lt;b&gt;7. Entity Resolution&lt;/b&gt;&lt;br/&gt;deterministic match → probabilistic match&lt;br/&gt;→ assign resolved entity ID&lt;br/&gt;&lt;i&gt;retain original identifiers&lt;/i&gt;&quot;]
+
+    ER --&gt; ERCONF{&quot;Resolution&lt;br/&gt;confidence?&quot;}
+    ERCONF --&gt;|&quot;high (≥0.95)&quot;| CLASS
+    ERCONF --&gt;|&quot;medium (0.70–0.95)&quot;| CLASS2[&quot;Tag as&lt;br/&gt;&lt;i&gt;provisional resolution&lt;/i&gt;&quot;]
+    ERCONF --&gt;|&quot;low (&lt;0.70)&quot;| Q3[&quot;Quarantine&lt;br/&gt;&lt;i&gt;dlq.resolution&lt;/i&gt;&lt;br/&gt;+ steward review queue&quot;]
+    CLASS2 --&gt; CLASS
+
+    CLASS[&quot;&lt;b&gt;8. Classify&lt;/b&gt;&lt;br/&gt;sensitivity tier · regulatory scope&lt;br/&gt;purpose tags · retention class&quot;]
+    CLASS --&gt; POL{&quot;&lt;b&gt;9. Ingestion&lt;br/&gt;policy check&lt;/b&gt;&quot;}
+    POL --&gt;|&quot;prohibited source/purpose&quot;| Q4[&quot;Reject + audit&lt;br/&gt;&lt;i&gt;compliance event&lt;/i&gt;&quot;]
+    POL --&gt;|permit| LIN[&quot;&lt;b&gt;10. Emit lineage&lt;/b&gt;&lt;br/&gt;source → canonical event&lt;br/&gt;OpenLineage event&quot;]
+
+    LIN --&gt; PUB[(&quot;&lt;b&gt;11. Publish&lt;/b&gt;&lt;br/&gt;canonical.* topic&lt;br/&gt;+ Silver zone&quot;)]
+    PUB --&gt; END([&quot;Available for correlation&quot;])
+
+    Q1 &amp; Q2 &amp; Q3 --&gt; NOTIFY[&quot;Notify source owner&lt;br/&gt;SLA-bound remediation&quot;]
+    NOTIFY -.reprocess after fix.-&gt; CTR
+
+    classDef ok fill:#183028,stroke:#4caf7d,color:#e6fff2
+    classDef bad fill:#4a2020,stroke:#d07070,color:#ffeaea
+    classDef proc fill:#0d4159,stroke:#22b3d6,color:#eaf9ff
+    classDef store fill:#0a5570,stroke:#3fd0f0,stroke-width:2px,color:#ffffff
+    class Q1,Q2,Q3,Q4,DROP bad
+    class RAW,PUB store
+    class CONN,CANON,ER,CLASS,LIN,CLASS2 proc
+    class END ok
+</pre></div>
+<p><strong>Figure 17.</strong> <em>Data ingestion workflow. Eleven stages, four quarantine paths, and one drop path. The critical design property is that <strong>nothing reaches the correlation layer unvalidated, unresolved, or unclassified</strong> — the architectural expression of the filtration metaphor and the reason a Data Swimming Pool cannot degrade into a swamp through neglect alone.</em></p>
+<h2 id="13.2-ingestion-patterns-by-source-type" tabindex="-1">13.2 Ingestion Patterns by Source Type <a class="header-anchor" href="#13.2-ingestion-patterns-by-source-type">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Source type</th>
+<th>Pattern</th>
+<th>Mechanism</th>
+<th>Latency</th>
+<th>Correlation considerations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transactional database</td>
+<td>Change data capture</td>
+<td>Log-based CDC (Debezium, native)</td>
+<td>Sub-second</td>
+<td>Transaction boundaries must be preserved; correlating partial transactions produces false conclusions</td>
+</tr>
+<tr>
+<td>Application events</td>
+<td>Direct emit</td>
+<td>SDK to log, schema-registry validated</td>
+<td>Milliseconds</td>
+<td>Requires application change; highest quality when achieved</td>
+</tr>
+<tr>
+<td>IoT / telemetry</td>
+<td>Gateway aggregation</td>
+<td>MQTT/OPC-UA → edge gateway → log</td>
+<td>Sub-second to seconds</td>
+<td>Device clock skew is severe; clock quality indicator is essential</td>
+</tr>
+<tr>
+<td>Clickstream</td>
+<td>Collector</td>
+<td>Beacon → collector → log</td>
+<td>Seconds</td>
+<td>Identity is cookie-scoped; resolution to person is probabilistic at best</td>
+</tr>
+<tr>
+<td>SaaS applications</td>
+<td>API polling / webhook</td>
+<td>Connector with incremental cursor</td>
+<td>Minutes</td>
+<td>Rate limits bound freshness; webhook delivery is at-least-once</td>
+</tr>
+<tr>
+<td>Files / extracts</td>
+<td>Batch landing</td>
+<td>Object storage event → parser</td>
+<td>Minutes to hours</td>
+<td>Event time must be extracted from content, not inferred from file arrival</td>
+</tr>
+<tr>
+<td>Partner / B2B feeds</td>
+<td>Scheduled transfer</td>
+<td>SFTP/API, contract-validated</td>
+<td>Hours to daily</td>
+<td>Highest contract-violation rate; strict quarantine essential</td>
+</tr>
+<tr>
+<td>Mainframe</td>
+<td>Scheduled extract or CDC</td>
+<td>Specialized connector</td>
+<td>Hours</td>
+<td>Frequently EBCDIC, fixed-width, undocumented; canonicalization is substantial work</td>
+</tr>
+<tr>
+<td>Documents / unstructured</td>
+<td>Pipeline with extraction</td>
+<td>OCR/ASR → structuring → embedding</td>
+<td>Minutes</td>
+<td>Produces both canonical events and vector embeddings</td>
+</tr>
+<tr>
+<td>Reference / master data</td>
+<td>Slowly changing snapshot</td>
+<td>Full or delta load, versioned</td>
+<td>Daily</td>
+<td>Becomes broadcast state for correlation; version must be pinned per correlation</td>
+</tr>
+<tr>
+<td><strong>Derived (writeback)</strong></td>
+<td>Internal emit</td>
+<td>Intelligence tier → log</td>
+<td>Seconds</td>
+<td>MUST carry derivation order; MUST respect depth limit</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 19.</strong> <em>Ingestion patterns by source type. Two rows warrant particular attention: IoT sources require an explicit clock quality indicator because device clock skew routinely exceeds correlation window widths, and derived events require derivation-order tagging to prevent the feedback amplification described in <a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">Chapter 10</a>.</em></p>
+<h2 id="13.3-data-contracts" tabindex="-1">13.3 Data Contracts <a class="header-anchor" href="#13.3-data-contracts">#</a></h2>
+<p>A <strong>data contract</strong> is a machine-enforceable agreement between a source owner and the platform. The framework treats contracts as mandatory, not advisory.</p>
+<p>Each contract declares:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Schema</strong></td>
+<td>Field names, types, nullability, nested structure, with a compatibility policy</td>
+</tr>
+<tr>
+<td><strong>Semantics</strong></td>
+<td>The business meaning of each field, in prose, versioned</td>
+</tr>
+<tr>
+<td><strong>Event time source</strong></td>
+<td>Which field carries event time, in which format, in which timezone</td>
+</tr>
+<tr>
+<td><strong>Clock quality</strong></td>
+<td>Whether the source clock is NTP-synchronized, best-effort, or unreliable</td>
+</tr>
+<tr>
+<td><strong>Identity</strong></td>
+<td>Which fields constitute the business key and which are candidate entity identifiers</td>
+</tr>
+<tr>
+<td><strong>Quality assertions</strong></td>
+<td>Range constraints, referential expectations, cardinality bounds, allowed null rates</td>
+</tr>
+<tr>
+<td><strong>Freshness SLA</strong></td>
+<td>Maximum acceptable lag from event occurrence to availability</td>
+</tr>
+<tr>
+<td><strong>Volume expectation</strong></td>
+<td>Expected rate and acceptable variance, for anomaly detection</td>
+</tr>
+<tr>
+<td><strong>Classification</strong></td>
+<td>Sensitivity tier, regulatory scope, permitted purposes, retention class</td>
+</tr>
+<tr>
+<td><strong>Ownership</strong></td>
+<td>Named accountable owner and escalation path</td>
+</tr>
+<tr>
+<td><strong>Deprecation policy</strong></td>
+<td>Notice period for breaking changes</td>
+</tr>
+</tbody>
+</table>
+</div><div class="cal cal-success">
+<h3 id="design-principle-%E2%80%94-contracts-are-enforced-at-the-boundary" tabindex="-1">Design Principle — Contracts Are Enforced at the Boundary <a class="header-anchor" href="#design-principle-%E2%80%94-contracts-are-enforced-at-the-boundary">#</a></h3>
+<p>A source without a registered, versioned contract MUST NOT be ingested. A message violating its contract MUST be quarantined with notification to the named owner, never silently coerced, defaulted, or dropped. Contract violations MUST be visible as an operational metric with an SLA for remediation.</p>
+</div>
+<p>The rationale is specific to correlation. In a conventional lake, a malformed record degrades one dataset. In a correlation architecture, a malformed record propagates: it may be incorrectly entity-resolved, forming false relationships with events belonging to a different entity, which then feed insights and potentially actions. <strong>Correlation amplifies data quality defects rather than absorbing them.</strong> Contract enforcement is therefore load-bearing rather than hygienic.</p>
+<h2 id="13.4-entity-resolution" tabindex="-1">13.4 Entity Resolution <a class="header-anchor" href="#13.4-entity-resolution">#</a></h2>
+<p>Entity resolution is the single most valuable and most difficult function in the ingestion layer.</p>
+<h3 id="13.4.1-the-problem" tabindex="-1">13.4.1 The Problem <a class="header-anchor" href="#13.4.1-the-problem">#</a></h3>
+<p>The same real-world entity appears across systems with different identifiers and inconsistent attributes:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>System</th>
+<th>Identifier</th>
+<th>Name</th>
+<th>Other attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CRM</td>
+<td><code>cust-8823a-4f</code></td>
+<td>Northgate Industrial Ltd</td>
+<td>Registered address, SIC code</td>
+</tr>
+<tr>
+<td>ERP</td>
+<td><code>AC-441902</code></td>
+<td>NORTHGATE IND. LTD</td>
+<td>Billing address, tax ID</td>
+</tr>
+<tr>
+<td>Service desk</td>
+<td><code>ops@northgate-ind.com</code></td>
+<td>Northgate</td>
+<td>Contact name only</td>
+</tr>
+<tr>
+<td>Web analytics</td>
+<td><code>cookie:7f3a...</code></td>
+<td>—</td>
+<td>IP geolocation, device fingerprint</td>
+</tr>
+<tr>
+<td>IoT platform</td>
+<td><code>site-NG-04</code></td>
+<td>Northgate Plant 4</td>
+<td>GPS coordinates</td>
+</tr>
+</tbody>
+</table>
+</div><p>Without resolution, correlating a service ticket with a payment failure and a device fault is impossible: no join key exists.</p>
+<h3 id="13.4.2-resolution-strategy" tabindex="-1">13.4.2 Resolution Strategy <a class="header-anchor" href="#13.4.2-resolution-strategy">#</a></h3>
+<p>The framework specifies a three-tier cascade, executed in order:</p>
+<p><strong>Tier 1 — Deterministic matching.</strong> Exact match on authoritative identifiers: tax registration number, legal entity identifier, verified email, national identifier where lawful. High precision, limited recall. Every match is recorded with the rule that produced it.</p>
+<p><strong>Tier 2 — Probabilistic matching.</strong> Fellegi–Sunter-style probabilistic linkage or a learned pairwise classifier over normalized attributes (name similarity, address similarity, temporal co-occurrence, structural graph features). Produces a match probability. Blocked by candidate-generation keys to avoid all-pairs comparison — the same combinatorial discipline Principle 3 imposes on correlation.</p>
+<p><strong>Tier 3 — Graph-based resolution.</strong> Transitive closure over high-confidence pairwise matches, with community detection to identify entity clusters. Critically, this tier must include <strong>cluster-splitting logic</strong>: transitive closure over probabilistic matches produces over-merged clusters (“everything connects to everything”) unless actively constrained by cluster cohesion thresholds.</p>
+<h3 id="13.4.3-handling-resolution-uncertainty" tabindex="-1">13.4.3 Handling Resolution Uncertainty <a class="header-anchor" href="#13.4.3-handling-resolution-uncertainty">#</a></h3>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>The over-merge hazard.</strong> An entity resolution system tuned for recall will merge distinct entities. A merged entity inherits the union of all its constituents’ events, producing correlations between events belonging to genuinely different parties. In a fraud context this creates false accusations; in a clinical context it creates records mixing two patients. <strong>Over-merging is more dangerous than under-merging</strong>, and the framework therefore prescribes precision-favouring thresholds with human stewardship for the ambiguous band.</p>
+</div>
+<p>The framework’s handling:</p>
+<ul>
+<li><strong>High confidence (≥ 0.95):</strong> resolve and proceed.</li>
+<li><strong>Medium confidence (0.70–0.95):</strong> resolve but tag as <strong>provisional</strong>. Correlations formed on provisional resolutions carry reduced confidence and are excluded from autonomy levels 3 and above.</li>
+<li><strong>Low confidence (&lt; 0.70):</strong> quarantine to a <strong>data steward review queue</strong>. Human adjudication is required. This queue’s depth is an operational metric, and a growing queue indicates deteriorating source quality or model drift.</li>
+<li><strong>All resolutions are reversible.</strong> A resolution decision is an event with lineage. If it is later found incorrect, W2 retrospective re-correlation (<a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">Chapter 12</a>) recomputes affected correlations.</li>
+</ul>
+<h2 id="13.5-classification-and-policy-tagging" tabindex="-1">13.5 Classification and Policy Tagging <a class="header-anchor" href="#13.5-classification-and-policy-tagging">#</a></h2>
+<p>Every canonical event is tagged at ingestion with:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Tag class</th>
+<th>Values (illustrative)</th>
+<th>Consumed by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sensitivity tier</strong></td>
+<td>Public, Internal, Confidential, Restricted</td>
+<td>Access control, masking</td>
+</tr>
+<tr>
+<td><strong>Regulatory scope</strong></td>
+<td>GDPR, HIPAA, PCI DSS, SOX, none</td>
+<td>Residency, retention, audit</td>
+</tr>
+<tr>
+<td><strong>Special category</strong></td>
+<td>Health, biometric, financial, political, none</td>
+<td>Correlation-time prohibition</td>
+</tr>
+<tr>
+<td><strong>Permitted purposes</strong></td>
+<td>fraud-prevention, service-delivery, marketing, research</td>
+<td>Purpose binding (<a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">Chapter 24</a>)</td>
+</tr>
+<tr>
+<td><strong>Retention class</strong></td>
+<td>30d, 1y, 7y, indefinite, legal-hold</td>
+<td>Automated retention enforcement</td>
+</tr>
+<tr>
+<td><strong>Residency constraint</strong></td>
+<td>EU-only, in-country, unrestricted</td>
+<td>Deployment routing</td>
+</tr>
+<tr>
+<td><strong>Derivation order</strong></td>
+<td>0 (source), 1, 2, …</td>
+<td>Feedback depth limiting</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 20.</strong> <em>Classification tags applied at ingestion. Permitted purposes and special category are the two tags that make correlation-time policy enforcement (Principle 8) possible: the correlation engine can refuse to relate a special-category event to a commercially-purposed scope because the tag travels with the event.</em></p>
+<p>Classification is performed by a combination of contract declaration (the source owner declares what the field contains), automated detection (pattern and model-based identification of sensitive content), and inheritance (derived events inherit the most restrictive classification of their inputs).</p>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>Inheritance of the most restrictive classification</strong> is a rule with significant practical consequence: a derived risk score computed partly from health data inherits health-data restrictions. This is correct — the derived value can leak the sensitive input — but it means derived attributes rapidly accumulate restrictions unless deliberate, documented, and reviewed de-identification is applied. Managing this is an ongoing governance activity, not a one-time design decision.</p>
+</div>
+<h2 id="13.6-quarantine-and-remediation" tabindex="-1">13.6 Quarantine and Remediation <a class="header-anchor" href="#13.6-quarantine-and-remediation">#</a></h2>
+<p>Quarantine is a first-class operational concept, not an error log.</p>
+<div class="figure"><pre class="mermaid">flowchart LR
+    subgraph DLQ[&quot;Quarantine Queues&quot;]
+        direction TB
+        D1[&quot;dlq.schema&lt;br/&gt;&lt;i&gt;contract violation&lt;/i&gt;&quot;]
+        D2[&quot;dlq.quality&lt;br/&gt;&lt;i&gt;assertion failure&lt;/i&gt;&quot;]
+        D3[&quot;dlq.resolution&lt;br/&gt;&lt;i&gt;ambiguous entity&lt;/i&gt;&quot;]
+        D4[&quot;dlq.policy&lt;br/&gt;&lt;i&gt;prohibited ingestion&lt;/i&gt;&quot;]
+    end
+
+    subgraph TRIAGE[&quot;Triage&quot;]
+        direction TB
+        T1{&quot;Systemic or&lt;br/&gt;isolated?&quot;}
+        T2[&quot;&lt;b&gt;Systemic&lt;/b&gt;&lt;br/&gt;→ page source owner&lt;br/&gt;→ consider pausing source&quot;]
+        T3[&quot;&lt;b&gt;Isolated&lt;/b&gt;&lt;br/&gt;→ steward queue&lt;br/&gt;→ batch remediation&quot;]
+        T1 --&gt; T2 &amp; T3
+    end
+
+    subgraph ACT[&quot;Remediation&quot;]
+        direction TB
+        A1[&quot;Fix at source&quot;]
+        A2[&quot;Amend contract&quot;]
+        A3[&quot;Manual adjudication&quot;]
+        A4[&quot;Accept exclusion&lt;br/&gt;+ document&quot;]
+    end
+
+    REPRO[&quot;Reprocess from raw.*&lt;br/&gt;&lt;i&gt;original fidelity retained&lt;/i&gt;&quot;]
+    IMPACT[&quot;&lt;b&gt;Correlation impact assessment&lt;/b&gt;&lt;br/&gt;Which scopes ran on incomplete data?&lt;br/&gt;Which correlations need revision?&quot;]
+
+    DLQ --&gt; TRIAGE --&gt; ACT --&gt; REPRO --&gt; IMPACT
+
+    classDef dlq fill:#4a2020,stroke:#d07070,color:#ffeaea
+    classDef triage fill:#3d3313,stroke:#d4a636,color:#fff8e6
+    classDef act fill:#183028,stroke:#4caf7d,color:#e6fff2
+    class DLQ,D1,D2,D3,D4 dlq
+    class TRIAGE,T1,T2,T3 triage
+    class ACT,A1,A2,A3,A4,REPRO,IMPACT act
+</pre></div>
+<p><strong>Figure 18.</strong> <em>Quarantine and remediation flow. The final stage is what distinguishes this from conventional dead-letter handling: after reprocessing, the system must assess which correlation scopes executed on incomplete data during the outage and revise affected correlations. Silent data gaps produce confidently wrong correlations, so gap accounting is mandatory.</em></p>
+<p><strong>The gap accounting requirement.</strong> If a source was quarantining for four hours, every correlation scope including that source produced results on incomplete evidence during that window. The framework requires that:</p>
+<ol>
+<li>Scopes affected by a source outage are <strong>marked degraded</strong> for the affected window.</li>
+<li>Correlations produced during a degraded window carry a <strong>degradation flag</strong>.</li>
+<li>After remediation, affected windows are <strong>re-correlated</strong> via W2.</li>
+<li>Consumers that acted on degraded correlations are <strong>notified</strong>.</li>
+</ol>
+<p>This is operationally demanding and is one of the framework’s genuine cost drivers. It is also non-negotiable: a correlation system that does not know when it was operating blind will assert conclusions it cannot support.</p>
+<h2 id="13.7-ingestion-observability" tabindex="-1">13.7 Ingestion Observability <a class="header-anchor" href="#13.7-ingestion-observability">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Purpose</th>
+<th>Alert condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contract violation rate per source</td>
+<td>Source health</td>
+<td>Sustained rise above baseline</td>
+</tr>
+<tr>
+<td>Quarantine queue depth per queue</td>
+<td>Remediation backlog</td>
+<td>Depth or age above threshold</td>
+</tr>
+<tr>
+<td>Entity resolution confidence distribution</td>
+<td>Resolution model health</td>
+<td>Shift in distribution shape</td>
+</tr>
+<tr>
+<td>Steward review queue depth and age</td>
+<td>Human bottleneck</td>
+<td>Age exceeds SLA</td>
+</tr>
+<tr>
+<td>Ingestion lag per source (event time to availability)</td>
+<td>Freshness SLA</td>
+<td>Lag exceeds contract SLA</td>
+</tr>
+<tr>
+<td>Volume deviation from expectation</td>
+<td>Silent source failure</td>
+<td>Volume outside expected band</td>
+</tr>
+<tr>
+<td>Clock skew distribution per source</td>
+<td>Correlation validity risk</td>
+<td>Skew approaching window width</td>
+</tr>
+<tr>
+<td>Classification coverage</td>
+<td>Governance completeness</td>
+<td>Any unclassified field reaching Silver</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 21.</strong> <em>Ingestion observability metrics. Volume deviation detection is the most operationally valuable, because a source that silently stops producing is the failure mode most likely to cause confidently wrong correlations — the system does not know it is missing evidence unless it is watching for absence.</em></p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>Ingestion performs canonicalization, entity resolution, and classification</strong> — doing once at entry what conventional architectures redo at every query, which is the primary mechanism for eliminating the correlation tax.</li>
+<li><strong>Nothing reaches the correlation layer unvalidated, unresolved, or unclassified.</strong> This is the architectural expression of filtration and the reason the framework cannot degrade into a swamp through neglect alone.</li>
+<li><strong>Correlation amplifies data quality defects rather than absorbing them</strong>, because a misresolved record forms false relationships that propagate into insights and actions. Contract enforcement is therefore load-bearing.</li>
+<li><strong>Over-merging in entity resolution is more dangerous than under-merging</strong>, so thresholds favour precision and the ambiguous band routes to human stewardship rather than being resolved automatically.</li>
+<li><strong>Resolution decisions are reversible events with lineage</strong>, allowing retrospective re-correlation when resolution logic improves.</li>
+<li><strong>Classification tags travel with the event</strong>, which is what makes correlation-time policy prohibition possible. Derived events inherit the most restrictive classification of their inputs.</li>
+<li><strong>Gap accounting is mandatory.</strong> Correlations produced while a source was quarantining must be flagged, re-correlated after remediation, and their consumers notified — because a system that does not know when it was blind will assert unsupportable conclusions.</li>
+<li><strong>Detecting absence matters more than detecting anomaly.</strong> A silently stopped source is the failure mode most likely to produce confidently wrong correlations.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/"><span>← Previous</span><b>12. Batch Layer</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/"><span>Next →</span><b>14. Correlation Engine</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#13.1-ingestion-workflow">13.1 Ingestion Workflow #</a><a href="#13.2-ingestion-patterns-by-source-type">13.2 Ingestion Patterns by Source Type #</a><a href="#13.3-data-contracts">13.3 Data Contracts #</a><a href="#13.4-entity-resolution">13.4 Entity Resolution #</a><a href="#13.5-classification-and-policy-tagging">13.5 Classification and Policy Tagging #</a><a href="#13.6-quarantine-and-remediation">13.6 Quarantine and Remediation #</a><a href="#13.7-ingestion-observability">13.7 Ingestion Observability #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en" data-part="p2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>14. Correlation Engine · Data Swimming Pool</title>
+<meta name="description" content="14. Correlation Engine --- The Correlation Engine is the framework&#39;s principal contribution. Everything preceding it prepares data for correlation; everything following it consumes">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="14. Correlation Engine — Data Swimming Pool">
+<meta property="og:description" content="14. Correlation Engine --- The Correlation Engine is the framework&#39;s principal contribution. Everything preceding it prepares data for correlation; everything following it consumes">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" open style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/" class="on">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part II — The Data Swimming Pool</span></p>
+    <h1>14. Correlation Engine</h1>
+    <p class="cmeta"><span class="chip">🏊 Part II — The Data Swimming Pool</span><span class="dot">·</span>10 min read</p>
+  </header>
+  <div class="prose">
+<h1>14. Correlation Engine</h1>
+<hr>
+<p>The Correlation Engine is the framework’s principal contribution. Everything preceding it prepares data for correlation; everything following it consumes correlations. This chapter specifies its internal architecture, its five detection modalities, its confidence semantics, its scope governance, and — with equal seriousness — its failure modes.</p>
+<h2 id="14.1-purpose-and-position" tabindex="-1">14.1 Purpose and Position <a class="header-anchor" href="#14.1-purpose-and-position">#</a></h2>
+<div class="cal cal-info">
+<h3 id="definition-%E2%80%94-correlation-engine" tabindex="-1">Definition — Correlation Engine <a class="header-anchor" href="#definition-%E2%80%94-correlation-engine">#</a></h3>
+<p>The <strong>Correlation Engine</strong> is a dedicated architectural tier whose sole responsibility is to continuously discover, score, persist, revise, and expire typed relationships between canonical events and resolved entities, within explicitly declared and budgeted scopes, subject to policy enforcement, and with full evidentiary lineage.</p>
+</div>
+<p>Its position is deliberate. It sits <strong>above</strong> the circulation layer, so it observes all canonical events regardless of source. It sits <strong>below</strong> the intelligence tier, so rules, models, and generative systems consume its output rather than re-deriving relationships independently. This positioning is the architectural realization of Principle 1: correlation is infrastructure.</p>
+<div class="cal cal-success">
+<h3 id="design-principle-%E2%80%94-consumers-consume%2C-they-do-not-re-derive" tabindex="-1">Design Principle — Consumers Consume, They Do Not Re-Derive <a class="header-anchor" href="#design-principle-%E2%80%94-consumers-consume%2C-they-do-not-re-derive">#</a></h3>
+<p>No component above the Correlation Engine MAY independently compute cross-domain relationships. If a required relationship type does not exist, the correct response is to declare a new correlation scope, not to implement the join in the consuming application. Violating this reintroduces the correlation tax inside the architecture designed to eliminate it.</p>
+</div>
+<h2 id="14.2-internal-architecture" tabindex="-1">14.2 Internal Architecture <a class="header-anchor" href="#14.2-internal-architecture">#</a></h2>
+<div class="figure"><pre class="mermaid">flowchart TB
+    IN[(&quot;canonical.* events&lt;br/&gt;from circulation layer&quot;)]
+
+    subgraph GOV[&quot;Scope Governor&quot;]
+        direction TB
+        SG1[&quot;Scope registry&lt;br/&gt;&lt;i&gt;declared, versioned, reviewed&lt;/i&gt;&quot;]
+        SG2[&quot;Budget enforcement&lt;br/&gt;&lt;i&gt;state · compute · emission rate&lt;/i&gt;&quot;]
+        SG3[&quot;Priority arbitration&quot;]
+        SG4{&quot;Policy gate&lt;br/&gt;&lt;i&gt;purpose · sensitivity&lt;/i&gt;&quot;}
+    end
+
+    subgraph MOD[&quot;Detection Modalities — parallel&quot;]
+        direction TB
+        M1[&quot;&lt;b&gt;M1 Temporal&lt;/b&gt;&lt;br/&gt;windowed co-occurrence&lt;br/&gt;sequence patterns (CEP)&lt;br/&gt;lag-correlation&quot;]
+        M2[&quot;&lt;b&gt;M2 Entity&lt;/b&gt;&lt;br/&gt;shared resolved entity&lt;br/&gt;graph proximity&lt;br/&gt;shared attribute clusters&quot;]
+        M3[&quot;&lt;b&gt;M3 Causal&lt;/b&gt;&lt;br/&gt;Granger-style precedence&lt;br/&gt;intervention analysis&lt;br/&gt;structural hypotheses&quot;]
+        M4[&quot;&lt;b&gt;M4 Semantic&lt;/b&gt;&lt;br/&gt;embedding proximity&lt;br/&gt;ontology inference&lt;br/&gt;text/topic alignment&quot;]
+        M5[&quot;&lt;b&gt;M5 Behavioural&lt;/b&gt;&lt;br/&gt;baseline deviation co-occurrence&lt;br/&gt;learned pattern matching&lt;br/&gt;anomaly co-incidence&quot;]
+    end
+
+    subgraph SCORE[&quot;Confidence Pipeline&quot;]
+        direction TB
+        C1[&quot;Modality raw score&quot;]
+        C2[&quot;Evidence strength&lt;br/&gt;&lt;i&gt;volume · consistency · specificity&lt;/i&gt;&quot;]
+        C3[&quot;Prior adjustment&lt;br/&gt;&lt;i&gt;base rate of relationship type&lt;/i&gt;&quot;]
+        C4[&quot;Multiple-testing correction&lt;br/&gt;&lt;i&gt;FDR control per scope&lt;/i&gt;&quot;]
+        C5[&quot;Calibration mapping&lt;br/&gt;&lt;i&gt;from historical outcomes&lt;/i&gt;&quot;]
+        C6{&quot;Threshold&lt;br/&gt;gate&quot;}
+        C1 --&gt; C2 --&gt; C3 --&gt; C4 --&gt; C5 --&gt; C6
+    end
+
+    subgraph LIFE[&quot;Lifecycle Manager&quot;]
+        direction TB
+        L1[&quot;Version + supersede&quot;]
+        L2[&quot;Temporal validity + expiry&quot;]
+        L3[&quot;Revision on late data&quot;]
+        L4[&quot;Auto-deprecation&lt;br/&gt;&lt;i&gt;chronic under-performers&lt;/i&gt;&quot;]
+    end
+
+    OUT1[(&quot;Correlation store&lt;br/&gt;graph + lakehouse&quot;)]
+    OUT2[(&quot;correlation.* topic&quot;)]
+    FB[&quot;Outcome feedback&lt;br/&gt;from decision layer&quot;]
+
+    IN --&gt; GOV
+    SG4 --&gt;|&quot;permit&quot;| MOD
+    SG4 --&gt;|&quot;deny&quot;| DENY[&quot;Audit + reject&lt;br/&gt;&lt;i&gt;correlation not formed&lt;/i&gt;&quot;]
+    MOD --&gt; SCORE
+    C6 --&gt;|&quot;above threshold&quot;| LIFE
+    C6 --&gt;|&quot;below threshold&quot;| DISC[&quot;Discard + count&lt;br/&gt;&lt;i&gt;recall telemetry&lt;/i&gt;&quot;]
+    LIFE --&gt; OUT1 &amp; OUT2
+    FB --&gt; C5
+    FB --&gt; L4
+
+    classDef gov fill:#3a2540,stroke:#a878c0,stroke-width:2px,color:#f6eaff
+    classDef mod fill:#0a5570,stroke:#3fd0f0,stroke-width:2px,color:#ffffff
+    classDef score fill:#14415c,stroke:#4fb8d8,stroke-width:1.5px,color:#eaf6fb
+    classDef life fill:#183028,stroke:#4caf7d,color:#e6fff2
+    classDef bad fill:#4a2020,stroke:#d07070,color:#ffeaea
+    classDef store fill:#0d4159,stroke:#22b3d6,stroke-width:2px,color:#eaf9ff
+    class GOV,SG1,SG2,SG3,SG4 gov
+    class MOD,M1,M2,M3,M4,M5 mod
+    class SCORE,C1,C2,C3,C4,C5,C6 score
+    class LIFE,L1,L2,L3,L4 life
+    class DENY,DISC bad
+    class IN,OUT1,OUT2 store
+</pre></div>
+<p><strong>Figure 19.</strong> <em>Correlation Engine internal architecture. Four subsystems: the Scope Governor enforces bounded scope and policy before any detection occurs; five detection modalities operate in parallel; a six-stage confidence pipeline including explicit multiple-testing correction and outcome-based calibration; and a lifecycle manager handling versioning, expiry, revision, and automatic deprecation. Note that the policy gate precedes detection — a prohibited correlation is never formed, not merely never shown.</em></p>
+<h2 id="14.3-the-five-detection-modalities" tabindex="-1">14.3 The Five Detection Modalities <a class="header-anchor" href="#14.3-the-five-detection-modalities">#</a></h2>
+<h3 id="m1-%E2%80%94-temporal-correlation" tabindex="-1">M1 — Temporal Correlation <a class="header-anchor" href="#m1-%E2%80%94-temporal-correlation">#</a></h3>
+<p><strong>Mechanism.</strong> Detects relationships based on co-occurrence, sequence, or lag in event time.</p>
+<p>Three sub-mechanisms:</p>
+<ul>
+<li><strong>Windowed co-occurrence.</strong> Events of declared types occurring within a window for the same or related entities. The simplest and cheapest modality.</li>
+<li><strong>Sequence pattern matching.</strong> Ordered patterns with optional negation and timing constraints, implemented via CEP automata (NFA-based, following SASE [14] and Flink CEP). Example: <em>authentication from new device</em> → <em>within 10 minutes</em> → <em>payee added</em> → <em>within 5 minutes</em> → <em>high-value transfer</em>, with <em>no step-up authentication</em> in between.</li>
+<li><strong>Lag correlation.</strong> Statistical association between two time series at a discovered lag, useful for relationships where the delay is unknown a priori — for example, supplier batch change to defect rate.</li>
+</ul>
+<p><strong>Strengths.</strong> Cheap, interpretable, directly actionable. Sequence patterns are highly precise when the pattern is genuinely characteristic.</p>
+<p><strong>Weaknesses.</strong> Co-occurrence is the weakest form of evidence. In a high-volume environment, unrelated events co-occur constantly. Without base-rate correction, temporal co-occurrence generates overwhelming false positive volume.</p>
+<h3 id="m2-%E2%80%94-entity-correlation" tabindex="-1">M2 — Entity Correlation <a class="header-anchor" href="#m2-%E2%80%94-entity-correlation">#</a></h3>
+<p><strong>Mechanism.</strong> Relates events sharing a resolved entity, or entities within a bounded graph distance.</p>
+<ul>
+<li><strong>Shared entity.</strong> The strongest and cheapest correlation: two events concern the same resolved commercial entity. Available essentially for free as a consequence of ingestion-time resolution and entity-key partitioning.</li>
+<li><strong>Graph proximity.</strong> Events concerning entities within <em>k</em> hops in the knowledge graph — same household, same corporate group, same device, same beneficial owner.</li>
+<li><strong>Shared attribute clusters.</strong> Events whose entities share a distinguishing attribute — same device fingerprint, same shipping address, same IBAN — which is the foundational mechanism for detecting coordinated behaviour such as fraud rings.</li>
+</ul>
+<p><strong>Strengths.</strong> High precision when resolution is sound. Computationally efficient. Highly explainable.</p>
+<p><strong>Weaknesses.</strong> Entirely dependent on entity resolution quality. An over-merged entity produces false correlations at scale — the hazard identified in <a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">Chapter 13</a>. Graph proximity requires careful <em>k</em> bounding, since at <em>k</em>=4 or beyond in a dense graph, nearly everything is proximate to everything.</p>
+<h3 id="m3-%E2%80%94-causal-correlation" tabindex="-1">M3 — Causal Correlation <a class="header-anchor" href="#m3-%E2%80%94-causal-correlation">#</a></h3>
+<p><strong>Mechanism.</strong> Attempts to establish directional influence rather than mere association.</p>
+<ul>
+<li><strong>Precedence testing.</strong> Granger-style tests establishing that one series improves prediction of another beyond the second’s own history.</li>
+<li><strong>Natural experiment exploitation.</strong> Where an intervention occurred — a policy change, a deployment, a supplier switch — comparing pre- and post-periods, or treated and untreated cohorts.</li>
+<li><strong>Structural hypothesis testing.</strong> Evaluating a declared causal graph against observational data, using do-calculus-informed methods.</li>
+</ul>
+<div class="cal cal-warning">
+<p class="cal-label"><span class="cal-dot">!</span>Important</p>
+<p><strong>The honest limitation.</strong> This modality produces <strong>causal hypotheses with confidence, never causal facts.</strong> Lamport’s constraint [5] means cross-system precedence cannot be established with certainty, and observational data cannot distinguish causation from confounding without assumptions that the platform cannot verify. Correlations from M3 MUST be labelled as hypotheses, MUST carry their assumptions explicitly, and MUST NOT gate irreversible autonomous action at autonomy levels 4 or 5.</p>
+<p>The framework includes M3 because causal hypotheses are genuinely valuable for directing human investigation. It constrains M3 because presenting a causal hypothesis as a causal fact is the most consequential error the system could make.</p>
+</div>
+<p><strong>Strengths.</strong> Highest decision value when correct. Directs remediation rather than merely flagging.</p>
+<p><strong>Weaknesses.</strong> Most computationally expensive, most assumption-dependent, most easily misinterpreted by consumers. Requires the largest evidence base.</p>
+<h3 id="m4-%E2%80%94-semantic-correlation" tabindex="-1">M4 — Semantic Correlation <a class="header-anchor" href="#m4-%E2%80%94-semantic-correlation">#</a></h3>
+<p><strong>Mechanism.</strong> Relates events by meaning rather than by key or timing.</p>
+<ul>
+<li><strong>Embedding proximity.</strong> Events, documents, and entity descriptions embedded into a shared vector space; relationships inferred from nearest-neighbour proximity via HNSW or IVF indices [25].</li>
+<li><strong>Ontology inference.</strong> Relationships derived by reasoning over a declared ontology — if <em>A</em> is a subtype of <em>B</em> and <em>B</em> relates to <em>C</em>, then <em>A</em> relates to <em>C</em>.</li>
+<li><strong>Cross-lingual and cross-modal alignment.</strong> Relating a support call transcript to a technician’s written note to a product defect classification, despite no shared vocabulary.</li>
+</ul>
+<p><strong>Strengths.</strong> Discovers relationships invisible to key-based or timing-based methods. Essential for unstructured content. Effective across languages and modalities.</p>
+<p><strong>Weaknesses.</strong> Embedding proximity is not relationship — semantic similarity frequently reflects topical overlap rather than a genuine connection between the specific instances. Embeddings drift as models are updated, making historical comparisons unreliable unless embedding version is pinned. Explainability is weak: “these vectors are close” is a poor justification to present to an auditor.</p>
+<h3 id="m5-%E2%80%94-behavioural-correlation" tabindex="-1">M5 — Behavioural Correlation <a class="header-anchor" href="#m5-%E2%80%94-behavioural-correlation">#</a></h3>
+<p><strong>Mechanism.</strong> Relates events by their deviation from established baselines.</p>
+<ul>
+<li><strong>Co-incident anomaly.</strong> Two entities or systems simultaneously departing from their respective baselines. Individually unremarkable deviations; jointly significant.</li>
+<li><strong>Learned pattern matching.</strong> Sequence or graph models trained on historically-confirmed relationships, applied to detect similar structures.</li>
+<li><strong>Cohort divergence.</strong> An entity behaving unlike its peer cohort, where the cohort itself is behaviourally defined rather than declared.</li>
+</ul>
+<p><strong>Strengths.</strong> Detects novel patterns not previously declared — the modality most capable of finding what nobody thought to look for. Robust to adversarial adaptation, since baselines shift with genuine behaviour.</p>
+<p><strong>Weaknesses.</strong> Requires substantial baseline history before becoming useful (typically weeks to months per entity). Highly sensitive to baseline drift and to seasonality. Poor explainability. Vulnerable to poisoning if an adversary can influence the baseline period.</p>
+<h3 id="14.3.1-modality-comparison" tabindex="-1">14.3.1 Modality Comparison <a class="header-anchor" href="#14.3.1-modality-comparison">#</a></h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Modality</th>
+<th>Compute cost</th>
+<th>Explainability</th>
+<th>Precision potential</th>
+<th>Recall potential</th>
+<th>Prerequisite</th>
+<th>Min. evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>M1 Temporal</strong></td>
+<td>Low</td>
+<td>High</td>
+<td>Low–Medium</td>
+<td>High</td>
+<td>Reliable event time</td>
+<td>2 events</td>
+</tr>
+<tr>
+<td><strong>M2 Entity</strong></td>
+<td>Low</td>
+<td>Very high</td>
+<td>High</td>
+<td>Medium</td>
+<td>Sound entity resolution</td>
+<td>2 events</td>
+</tr>
+<tr>
+<td><strong>M3 Causal</strong></td>
+<td>Very high</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Low</td>
+<td>Long history + assumptions</td>
+<td>Hundreds of observations</td>
+</tr>
+<tr>
+<td><strong>M4 Semantic</strong></td>
+<td>Medium</td>
+<td>Low</td>
+<td>Medium</td>
+<td>High</td>
+<td>Embedding infrastructure</td>
+<td>2 events</td>
+</tr>
+<tr>
+<td><strong>M5 Behavioural</strong></td>
+<td>High</td>
+<td>Low</td>
+<td>Medium–High</td>
+<td>Medium</td>
+<td>Weeks of baseline</td>
+<td>Baseline + deviation</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 22.</strong> <em>Correlation modalities compared. The framework’s guidance is that <strong>M2 (entity) should carry the majority of production correlation volume</strong>, because it combines low cost, high precision, and strong explainability. M1 provides breadth, M4 reaches unstructured content, M5 finds novelty, and M3 should be used sparingly and always as hypothesis.</em></p>
+<h3 id="14.3.2-multi-modal-reinforcement" tabindex="-1">14.3.2 Multi-Modal Reinforcement <a class="header-anchor" href="#14.3.2-multi-modal-reinforcement">#</a></h3>
+<p>The framework’s most important scoring property: <strong>correlations confirmed by multiple independent modalities are substantially more trustworthy than any single-modality correlation.</strong></p>
+<div class="figure"><pre class="mermaid">flowchart TB
+    E1[&quot;Event A&lt;br/&gt;&lt;i&gt;payment declined&lt;/i&gt;&quot;]
+    E2[&quot;Event B&lt;br/&gt;&lt;i&gt;support call&lt;/i&gt;&quot;]
+
+    E1 &amp; E2 --&gt; M1C[&quot;&lt;b&gt;M1 Temporal&lt;/b&gt;&lt;br/&gt;within 8 minutes&lt;br/&gt;raw score 0.35&quot;]
+    E1 &amp; E2 --&gt; M2C[&quot;&lt;b&gt;M2 Entity&lt;/b&gt;&lt;br/&gt;same resolved customer&lt;br/&gt;raw score 0.90&quot;]
+    E1 &amp; E2 --&gt; M4C[&quot;&lt;b&gt;M4 Semantic&lt;/b&gt;&lt;br/&gt;call transcript mentions&lt;br/&gt;payment failure&lt;br/&gt;raw score 0.72&quot;]
+    E1 &amp; E2 --&gt; M5C[&quot;&lt;b&gt;M5 Behavioural&lt;/b&gt;&lt;br/&gt;no baseline deviation&lt;br/&gt;raw score 0.10&quot;]
+
+    M1C &amp; M2C &amp; M4C &amp; M5C --&gt; FUSE[&quot;&lt;b&gt;Evidence Fusion&lt;/b&gt;&lt;br/&gt;independent-modality reinforcement&lt;br/&gt;3 of 4 modalities concur&quot;]
+    FUSE --&gt; BASE[&quot;Base-rate adjustment&lt;br/&gt;&lt;i&gt;P(support call | payment decline)&lt;/i&gt;&lt;br/&gt;historically 0.31&quot;]
+    BASE --&gt; FDR[&quot;FDR correction&lt;br/&gt;&lt;i&gt;scope performed 4.2M tests&lt;/i&gt;&quot;]
+    FDR --&gt; CAL[&quot;Calibration mapping&lt;br/&gt;&lt;i&gt;historical precision at this&lt;br/&gt;raw score: 0.88&lt;/i&gt;&quot;]
+    CAL --&gt; FINAL[&quot;&lt;b&gt;Final confidence 0.88&lt;/b&gt;&lt;br/&gt;type: SERVICE_RESPONSE_TO_EVENT&lt;br/&gt;evidence: 4 modality assessments&lt;br/&gt;validity: 24h from event B&quot;]
+
+    classDef ev fill:#1b2f3d,stroke:#5b8fb0,color:#e6f2fa
+    classDef mod fill:#0a5570,stroke:#3fd0f0,color:#ffffff
+    classDef proc fill:#14415c,stroke:#4fb8d8,color:#eaf6fb
+    classDef fin fill:#183028,stroke:#4caf7d,stroke-width:2px,color:#e6fff2
+    class E1,E2 ev
+    class M1C,M2C,M4C,M5C mod
+    class FUSE,BASE,FDR,CAL proc
+    class FINAL fin
+</pre></div>
+<p><strong>Figure 20.</strong> <em>Confidence scoring pipeline, illustrated for a single correlation. Four modalities assess the same event pair independently. Evidence fusion rewards concurrence across independent modalities. Base-rate adjustment prevents the system from treating a common co-occurrence as remarkable. False discovery rate correction accounts for the millions of tests the scope performed. Final calibration maps the raw score to observed historical precision, so that a stated confidence of 0.88 means the correlation type has historically been correct 88% of the time at this score.</em></p>
+<p>The calibration step in Figure 20 is what gives the confidence score meaning. Without it, a score of 0.88 is an arbitrary number produced by an internal formula. With it, the score is an <strong>empirical claim about historical precision</strong> that can be verified and challenged.</p>
+<h2 id="14.4-scope-governance" tabindex="-1">14.4 Scope Governance <a class="header-anchor" href="#14.4-scope-governance">#</a></h2>
+<p>Principle 3 requires bounded scope. The Scope Governor enforces it.</p>
+<h3 id="14.4.1-scope-declaration" tabindex="-1">14.4.1 Scope Declaration <a class="header-anchor" href="#14.4.1-scope-declaration">#</a></h3>
+<p>A correlation scope is a versioned, reviewed configuration artifact declaring:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Example</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Identity and version</strong></td>
+<td><code>fraud.card-not-present.v3</code></td>
+<td>Provenance and supersession</td>
+</tr>
+<tr>
+<td><strong>Participating event types</strong></td>
+<td><code>payment.authorization</code>, <code>identity.device_change</code>, <code>session.login</code></td>
+<td>Bounds the cross-product</td>
+</tr>
+<tr>
+<td><strong>Entity class</strong></td>
+<td><code>customer</code></td>
+<td>Bounds the partition space</td>
+</tr>
+<tr>
+<td><strong>Modalities enabled</strong></td>
+<td>M1, M2, M5</td>
+<td>Bounds compute per event</td>
+</tr>
+<tr>
+<td><strong>Temporal window</strong></td>
+<td>30 minutes, allowed lateness 5 minutes</td>
+<td>Bounds state</td>
+</tr>
+<tr>
+<td><strong>Graph proximity bound</strong></td>
+<td>k ≤ 2</td>
+<td>Prevents proximity explosion</td>
+</tr>
+<tr>
+<td><strong>Emission threshold</strong></td>
+<td>confidence ≥ 0.75</td>
+<td>Bounds output volume</td>
+</tr>
+<tr>
+<td><strong>Declared purpose</strong></td>
+<td><code>fraud-prevention</code></td>
+<td>Policy gate input</td>
+</tr>
+<tr>
+<td><strong>State budget</strong></td>
+<td>40 GB</td>
+<td>Hard operational limit</td>
+</tr>
+<tr>
+<td><strong>Compute budget</strong></td>
+<td>expressed in platform units</td>
+<td>Cost attribution</td>
+</tr>
+<tr>
+<td><strong>Emission rate cap</strong></td>
+<td>500 correlations/minute</td>
+<td>Prevents downstream flooding</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>P1</td>
+<td>Load-shedding arbitration</td>
+</tr>
+<tr>
+<td><strong>Owner</strong></td>
+<td>named accountable individual</td>
+<td>Governance</td>
+</tr>
+<tr>
+<td><strong>Expected precision</strong></td>
+<td>≥ 0.80, measured monthly</td>
+<td>Autonomy gating</td>
+</tr>
+<tr>
+<td><strong>Review cadence</strong></td>
+<td>quarterly</td>
+<td>Prevents scope rot</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 23.</strong> <em>Correlation scope declaration elements. The Scope Governor refuses to execute a scope missing any mandatory element. Expected precision is the field that gates autonomy: a scope that cannot demonstrate its declared precision cannot be promoted to a higher autonomy level.</em></p>
+<h3 id="14.4.2-the-combinatorial-discipline" tabindex="-1">14.4.2 The Combinatorial Discipline <a class="header-anchor" href="#14.4.2-the-combinatorial-discipline">#</a></h3>
+<div class="cal cal-danger">
+<p class="cal-label"><span class="cal-dot">!</span>Read this carefully</p>
+<p><strong>The arithmetic that makes bounded scope non-negotiable.</strong></p>
+<p>Consider an enterprise producing 1,000 events per second — a modest figure — across 20 event types, with a 30-minute correlation window.</p>
+<p>Events in window: 1,000 × 1,800 = <strong>1.8 million</strong>.</p>
+<p>Naïve all-pairs comparisons: 1.8M² / 2 ≈ <strong>1.6 × 10¹²</strong> per window, recomputed continuously.</p>
+<p>At a conventional significance threshold of α = 0.05, purely by chance the system would surface approximately <strong>8 × 10¹⁰ “significant” relationships per window.</strong> Every one of them would be spurious. Signal would be undetectable within the noise, and the compute cost would be several orders of magnitude beyond economic viability.</p>
+<p>Now apply bounded scope. Restrict to 3 declared event types (not 20), partition by resolved entity so comparisons occur only within an entity’s events (typically tens, not millions), enable 3 modalities rather than 5, and apply FDR correction across the actual test count.</p>
+<p>Comparisons per window fall from 10¹² to approximately <strong>10⁵–10⁶</strong> — a reduction of six to seven orders of magnitude — and the expected false discovery count falls to a manageable figure that FDR correction can control explicitly.</p>
+<p><strong>Bounded scope is not an optimization. It is the difference between a functioning system and noise.</strong></p>
+</div>
+<h3 id="14.4.3-runtime-enforcement" tabindex="-1">14.4.3 Runtime Enforcement <a class="header-anchor" href="#14.4.3-runtime-enforcement">#</a></h3>
+<p>The Scope Governor monitors and acts:</p>
+<ul>
+<li><strong>State budget exceeded:</strong> warn at 80%, shed oldest window content at 95%, suspend scope at 100% with alert.</li>
+<li><strong>Emission rate cap exceeded:</strong> raise the effective confidence threshold dynamically until the rate conforms, and record that recall was sacrificed.</li>
+<li><strong>Precision below declared expectation:</strong> automatically demote the scope’s autonomy level and notify the owner. This is the framework’s most important automated safeguard.</li>
+<li><strong>Review overdue:</strong> mark the scope stale; stale scopes are excluded from autonomy levels 3 and above.</li>
+</ul>
+<h2 id="14.5-correlation-lifecycle" tabindex="-1">14.5 Correlation Lifecycle <a class="header-anchor" href="#14.5-correlation-lifecycle">#</a></h2>
+<div class="figure"><pre class="mermaid">stateDiagram-v2
+    [*] --&gt; Candidate: modality detects
+    Candidate --&gt; Rejected: below threshold
+    Candidate --&gt; Denied: policy gate refuses
+    Candidate --&gt; Provisional: above threshold,&lt;br/&gt;window open
+    Provisional --&gt; Confirmed: window closed,&lt;br/&gt;batch reconciled
+    Provisional --&gt; Revised: late data arrives
+    Revised --&gt; Confirmed: re-evaluated
+    Provisional --&gt; Retracted: contradicted by&lt;br/&gt;late evidence
+    Confirmed --&gt; Validated: outcome feedback&lt;br/&gt;confirms prediction
+    Confirmed --&gt; Falsified: outcome feedback&lt;br/&gt;contradicts
+    Confirmed --&gt; Expired: temporal validity&lt;br/&gt;elapsed
+    Confirmed --&gt; Superseded: re-correlation (W2)&lt;br/&gt;produces new version
+    Validated --&gt; Expired: temporal validity&lt;br/&gt;elapsed
+    Falsified --&gt; Deprecated: pattern chronically&lt;br/&gt;under-performs
+    Deprecated --&gt; [*]: scope disabled
+    Expired --&gt; [*]: archived
+    Retracted --&gt; [*]: archived + consumers notified
+    Rejected --&gt; [*]: counted only
+    Denied --&gt; [*]: audited only
+
+    note right of Provisional
+        Actionable at autonomy L0–L2 only.
+        Irreversible action prohibited
+        until Confirmed.
+    end note
+
+    note right of Falsified
+        Feeds calibration.
+        Repeated falsification of a
+        correlation TYPE triggers
+        automatic deprecation (P10).
+    end note
+</pre></div>
+<p><strong>Figure 21.</strong> <em>Correlation lifecycle state machine. Two constraints are architecturally enforced: provisional correlations may drive only reversible actions (autonomy levels 0–2), and correlation types that are chronically falsified by outcome feedback are automatically deprecated rather than persisting indefinitely as accumulated noise.</em></p>
+<h2 id="14.6-failure-modes-and-mitigations" tabindex="-1">14.6 Failure Modes and Mitigations <a class="header-anchor" href="#14.6-failure-modes-and-mitigations">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Failure mode</th>
+<th>Mechanism</th>
+<th>Consequence</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Combinatorial explosion</strong></td>
+<td>Scope declared too broadly</td>
+<td>Cost and noise simultaneously</td>
+<td>Scope Governor hard limits; declaration review</td>
+</tr>
+<tr>
+<td><strong>Spurious correlation</strong></td>
+<td>Multiple testing without correction</td>
+<td>False relationships trusted</td>
+<td>FDR control per scope; base-rate adjustment; multi-modal reinforcement requirement</td>
+</tr>
+<tr>
+<td><strong>Confidence miscalibration</strong></td>
+<td>No outcome feedback, or drift</td>
+<td>Stated confidence is meaningless</td>
+<td>Mandatory calibration against outcomes; reliability diagram monitoring; auto-demotion on drift</td>
+</tr>
+<tr>
+<td><strong>Over-merged entities</strong></td>
+<td>Entity resolution tuned for recall</td>
+<td>Correlations across genuinely distinct parties</td>
+<td>Precision-favouring thresholds; steward review; cluster cohesion limits</td>
+</tr>
+<tr>
+<td><strong>Processing-time contamination</strong></td>
+<td>Event time absent or unreliable</td>
+<td>Systematic false temporal correlation</td>
+<td>Mandatory clock quality indicator; scope-level minimum clock quality</td>
+</tr>
+<tr>
+<td><strong>Silent evidence gaps</strong></td>
+<td>Source outage unnoticed</td>
+<td>Confident conclusions on partial data</td>
+<td>Volume-absence detection; degradation flags; mandatory re-correlation</td>
+</tr>
+<tr>
+<td><strong>Feedback amplification</strong></td>
+<td>Derived events re-correlated recursively</td>
+<td>Runaway event generation</td>
+<td>Derivation-order tagging; depth limit; scope-level derived-event exclusion</td>
+</tr>
+<tr>
+<td><strong>Embedding drift</strong></td>
+<td>Model updated without versioning</td>
+<td>Historical correlations incomparable</td>
+<td>Pin embedding version per correlation; re-embed under W2 on change</td>
+</tr>
+<tr>
+<td><strong>Adversarial baseline poisoning</strong></td>
+<td>Attacker shapes M5 baseline</td>
+<td>Malicious behaviour appears normal</td>
+<td>Baseline change-rate limits; robust statistics; multi-modal cross-check</td>
+</tr>
+<tr>
+<td><strong>Scope rot</strong></td>
+<td>Scope outlives its business relevance</td>
+<td>Cost without value; stale conclusions</td>
+<td>Mandatory review cadence; staleness excludes from high autonomy</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 24.</strong> <em>Correlation Engine failure modes. Confidence miscalibration is the most insidious, because the system continues to operate and produce plausible output while its stated confidence has silently ceased to mean anything. It is detectable only by deliberate measurement against outcomes.</em></p>
+<h2 id="14.7-relationship-to-complex-event-processing" tabindex="-1">14.7 Relationship to Complex Event Processing <a class="header-anchor" href="#14.7-relationship-to-complex-event-processing">#</a></h2>
+<p>The framework’s relationship to CEP [13] warrants precise statement, since CEP is its closest antecedent.</p>
+<p><strong>What the framework takes from CEP:</strong> the event pattern abstraction, NFA-based sequence matching, event hierarchies and abstraction, and the notion of derived higher-order events. The M1 sequence sub-mechanism is essentially a CEP engine, and the framework recommends using a mature one rather than reimplementing.</p>
+<p><strong>What the framework adds:</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Classical CEP</th>
+<th>Correlation Engine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pattern origin</td>
+<td>Declared by expert</td>
+<td>Declared (M1) <strong>and</strong> discovered (M3, M4, M5)</td>
+</tr>
+<tr>
+<td>Result</td>
+<td>Derived event, typically transient</td>
+<td>Persistent, versioned, scored artifact</td>
+</tr>
+<tr>
+<td>Confidence</td>
+<td>Binary match / no match</td>
+<td>Calibrated probability with evidence set</td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>Application or domain</td>
+<td>Cross-domain with entity resolution</td>
+</tr>
+<tr>
+<td>Governance</td>
+<td>Application configuration</td>
+<td>Platform-managed lineage, policy, expiry</td>
+</tr>
+<tr>
+<td>Improvement</td>
+<td>Manual pattern refinement</td>
+<td>Outcome-driven calibration and auto-deprecation</td>
+</tr>
+<tr>
+<td>Multiple testing</td>
+<td>Not addressed</td>
+<td>Explicit FDR control</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 25.</strong> <em>Correlation Engine relative to classical CEP. The framework is fairly characterized as CEP generalized along four axes: from declared to discovered, from transient to persistent, from binary to calibrated, and from application-scoped to platform-governed.</em></p>
+<hr>
+<div class="cal cal-success">
+<h2 id="key-takeaways" tabindex="-1">Key Takeaways <a class="header-anchor" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>The Correlation Engine is dedicated infrastructure</strong>, positioned so that all canonical events flow through it and no consumer above it re-derives relationships independently.</li>
+<li><strong>Five modalities operate in parallel:</strong> temporal, entity, causal, semantic, and behavioural. Entity correlation should carry the majority of production volume because it uniquely combines low cost, high precision, and strong explainability.</li>
+<li><strong>Causal correlation produces hypotheses, never facts.</strong> It is included because hypotheses direct investigation valuably, and constrained because presenting one as fact is the most consequential error available to the system.</li>
+<li><strong>Multi-modal reinforcement is the strongest confidence signal.</strong> Independent modalities concurring on the same relationship is substantially more trustworthy than any single modality’s assessment.</li>
+<li><strong>Calibration against historical outcomes is what gives a confidence score meaning</strong> — converting an arbitrary internal number into a verifiable empirical claim about precision.</li>
+<li><strong>The combinatorial arithmetic makes bounded scope non-negotiable.</strong> Unbounded correlation at modest event rates implies 10¹² comparisons and 10¹⁰ spurious “significant” findings per window. Bounded scope reduces this by six to seven orders of magnitude.</li>
+<li><strong>Provisional correlations may drive only reversible actions.</strong> Irreversible action requires a confirmed correlation on a closed, reconciled window.</li>
+<li><strong>Chronically falsified correlation types are automatically deprecated</strong>, preventing the accumulation of persistent methodological noise.</li>
+<li><strong>Confidence miscalibration is the most insidious failure mode</strong>, because the system continues producing plausible output after its confidence scores have ceased to mean anything. Only deliberate measurement detects it.</li>
+<li><strong>The engine is CEP generalized along four axes:</strong> declared to discovered, transient to persistent, binary to calibrated, and application-scoped to platform-governed.</li>
+</ol>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/"><span>← Previous</span><b>13. Data Ingestion Layer</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/"><span>Next →</span><b>15. Rules Engine</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#14.1-purpose-and-position">14.1 Purpose and Position #</a><a href="#14.2-internal-architecture">14.2 Internal Architecture #</a><a href="#14.3-the-five-detection-modalities">14.3 The Five Detection Modalities #</a><a href="#14.4-scope-governance">14.4 Scope Governance #</a><a href="#14.5-correlation-lifecycle">14.5 Correlation Lifecycle #</a><a href="#14.6-failure-modes-and-mitigations">14.6 Failure Modes and Mitigations #</a><a href="#14.7-relationship-to-complex-event-processing">14.7 Relationship to Complex Event Processing #</a><a href="#key-takeaways">Key Takeaways #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

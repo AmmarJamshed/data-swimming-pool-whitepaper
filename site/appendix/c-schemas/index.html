@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en" data-part="apx">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Appendix C — Canonical Event and Correlation Schemas · Data Swimming Pool</title>
+<meta name="description" content="Appendix C — Canonical Event and Correlation Schemas --- Schemas are expressed in JSON Schema draft form for readability. Production deployment would use Avro or Protobuf with a sc">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="Appendix C — Canonical Event and Correlation Schemas — Data Swimming Pool">
+<meta property="og:description" content="Appendix C — Canonical Event and Correlation Schemas --- Schemas are expressed in JSON Schema draft form for readability. Production deployment would use Avro or Protobuf with a sc">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
+</details>
+<details class="sb-group" open style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/" class="on">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Appendices</span></p>
+    <h1>Appendix C — Canonical Event and Correlation Schemas</h1>
+    <p class="cmeta"><span class="chip">📎 Appendices</span><span class="dot">·</span>1 min read</p>
+  </header>
+  <div class="prose">
+<h1>Appendix C — Canonical Event and Correlation Schemas</h1>
+<hr>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p>Schemas are expressed in JSON Schema draft form for readability. Production deployment would use Avro or Protobuf with a schema registry. Field requirements follow RFC 2119 conventions. All example values are fictitious.</p>
+</div>
+<h2 id="c.1-canonical-event" tabindex="-1">C.1 Canonical Event <a class="header-anchor" href="#c.1-canonical-event">#</a></h2>
+<p>The unit of ingestion. Every event entering the pool conforms to this envelope regardless of source.</p>
+<pre><code class="language-json">{
+  &quot;$id&quot;: &quot;https://dsp.example/schemas/canonical-event/v1.json&quot;,
+  &quot;title&quot;: &quot;CanonicalEvent&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [
+    &quot;event_id&quot;, &quot;event_type&quot;, &quot;event_time&quot;, &quot;ingest_time&quot;,
+    &quot;source&quot;, &quot;entities&quot;, &quot;classification&quot;, &quot;payload&quot;
+  ],
+  &quot;properties&quot;: {
+    &quot;event_id&quot;:    { &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;uuid&quot; },
+    &quot;event_type&quot;:  { &quot;type&quot;: &quot;string&quot;, &quot;pattern&quot;: &quot;^[a-z0-9]+(\\.[a-z0-9_]+){2,}$&quot;,
+                     &quot;description&quot;: &quot;domain.subdomain.action e.g. banking.card.authorization_declined&quot; },
+    &quot;schema_version&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;pattern&quot;: &quot;^\\d+\\.\\d+\\.\\d+$&quot; },
+
+    &quot;event_time&quot;:  { &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;date-time&quot;,
+                     &quot;description&quot;: &quot;Occurrence time in the source domain. MUST be source-asserted.&quot; },
+    &quot;ingest_time&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;date-time&quot; },
+    &quot;event_time_confidence&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;exact&quot;, &quot;approximate&quot;, &quot;inferred&quot;] },
+
+    &quot;source&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [&quot;system_id&quot;, &quot;domain&quot;, &quot;contract_id&quot;, &quot;contract_version&quot;],
+      &quot;properties&quot;: {
+        &quot;system_id&quot;:        { &quot;type&quot;: &quot;string&quot; },
+        &quot;domain&quot;:           { &quot;type&quot;: &quot;string&quot; },
+        &quot;contract_id&quot;:      { &quot;type&quot;: &quot;string&quot; },
+        &quot;contract_version&quot;: { &quot;type&quot;: &quot;string&quot; },
+        &quot;capture_method&quot;:   { &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;cdc&quot;, &quot;api&quot;, &quot;stream&quot;, &quot;file&quot;, &quot;webhook&quot;] }
+      }
+    },
+
+    &quot;entities&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;minItems&quot;: 1,
+      &quot;description&quot;: &quot;Resolved entity references. At least one MUST be present.&quot;,
+      &quot;items&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;required&quot;: [&quot;role&quot;, &quot;entity_type&quot;, &quot;entity_key&quot;, &quot;resolution&quot;],
+        &quot;properties&quot;: {
+          &quot;role&quot;:        { &quot;type&quot;: &quot;string&quot;, &quot;examples&quot;: [&quot;subject&quot;, &quot;counterparty&quot;, &quot;operator&quot;, &quot;asset&quot;] },
+          &quot;entity_type&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;examples&quot;: [&quot;customer&quot;, &quot;patient&quot;, &quot;device&quot;, &quot;account&quot;] },
+          &quot;entity_key&quot;:  { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Platform-canonical key, not a source identifier&quot; },
+          &quot;resolution&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;required&quot;: [&quot;tier&quot;, &quot;confidence&quot;],
+            &quot;properties&quot;: {
+              &quot;tier&quot;:       { &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;deterministic&quot;, &quot;probabilistic&quot;, &quot;graph&quot;, &quot;unresolved&quot;] },
+              &quot;confidence&quot;: { &quot;type&quot;: &quot;number&quot;, &quot;minimum&quot;: 0, &quot;maximum&quot;: 1 },
+              &quot;method_id&quot;:  { &quot;type&quot;: &quot;string&quot; }
+            }
+          }
+        }
+      }
+    },
+
+    &quot;classification&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [&quot;sensitivity&quot;, &quot;permitted_purposes&quot;, &quot;jurisdiction&quot;],
+      &quot;properties&quot;: {
+        &quot;sensitivity&quot;:        { &quot;type&quot;: &quot;string&quot;,
+                                &quot;enum&quot;: [&quot;public&quot;, &quot;internal&quot;, &quot;confidential&quot;, &quot;restricted&quot;, &quot;special_category&quot;] },
+        &quot;special_categories&quot;: { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot; } },
+        &quot;permitted_purposes&quot;: { &quot;type&quot;: &quot;array&quot;, &quot;minItems&quot;: 1, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot; },
+                                &quot;description&quot;: &quot;Correlation purpose is the INTERSECTION across constituent events&quot; },
+        &quot;jurisdiction&quot;:       { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot; } },
+        &quot;retention_class&quot;:    { &quot;type&quot;: &quot;string&quot; },
+        &quot;erasure_key&quot;:        { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Enables erasure propagation&quot; }
+      }
+    },
+
+    &quot;quality&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;completeness&quot;:   { &quot;type&quot;: &quot;number&quot;, &quot;minimum&quot;: 0, &quot;maximum&quot;: 1 },
+        &quot;late_arrival&quot;:   { &quot;type&quot;: &quot;boolean&quot; },
+        &quot;lateness_ms&quot;:    { &quot;type&quot;: &quot;integer&quot;, &quot;minimum&quot;: 0 },
+        &quot;contract_status&quot;:{ &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;valid&quot;, &quot;degraded&quot;, &quot;quarantined&quot;] }
+      }
+    },
+
+    &quot;payload&quot;:  { &quot;type&quot;: &quot;object&quot;, &quot;description&quot;: &quot;Domain-specific body, validated against contract&quot; },
+    &quot;lineage_ref&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Pointer into the lineage plane&quot; }
+  }
+}
+</code></pre>
+<p><strong>Listing C-1.</strong> <em>Canonical event schema. Three fields do the framework’s distinctive work: <code>entities</code> with resolution confidence makes correlation possible; <code>classification.permitted_purposes</code> makes purpose intersection enforceable; and <code>classification.erasure_key</code> makes erasure propagation through derived correlations tractable.</em></p>
+<h2 id="c.2-correlation" tabindex="-1">C.2 Correlation <a class="header-anchor" href="#c.2-correlation">#</a></h2>
+<pre><code class="language-json">{
+  &quot;$id&quot;: &quot;https://dsp.example/schemas/correlation/v1.json&quot;,
+  &quot;title&quot;: &quot;Correlation&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [
+    &quot;correlation_id&quot;, &quot;scope_id&quot;, &quot;correlation_type&quot;, &quot;modality&quot;,
+    &quot;members&quot;, &quot;confidence&quot;, &quot;detected_at&quot;, &quot;valid_until&quot;, &quot;evidence&quot;
+  ],
+  &quot;properties&quot;: {
+    &quot;correlation_id&quot;:   { &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;uuid&quot; },
+    &quot;scope_id&quot;:         { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;The governed scope that authorized this correlation&quot; },
+    &quot;scope_version&quot;:    { &quot;type&quot;: &quot;string&quot; },
+
+    &quot;correlation_type&quot;: { &quot;type&quot;: &quot;string&quot;,
+                          &quot;enum&quot;: [&quot;temporal_sequence&quot;, &quot;temporal_coincidence&quot;,
+                                   &quot;shared_entity&quot;, &quot;structural_path&quot;,
+                                   &quot;causal_hypothesis&quot;, &quot;semantic_similarity&quot;,
+                                   &quot;behavioural_deviation&quot;, &quot;negative_absence&quot;] },
+    &quot;modality&quot;:         { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;M1&quot;,&quot;M2&quot;,&quot;M3&quot;,&quot;M4&quot;,&quot;M5&quot;,&quot;M6&quot;] },
+                          &quot;description&quot;: &quot;Multiple entries indicate multi-modal reinforcement&quot; },
+    &quot;direction&quot;:        { &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;directed&quot;, &quot;undirected&quot;] },
+
+    &quot;members&quot;: {
+      &quot;type&quot;: &quot;array&quot;, &quot;minItems&quot;: 1,
+      &quot;items&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;required&quot;: [&quot;ref_type&quot;, &quot;ref_id&quot;],
+        &quot;properties&quot;: {
+          &quot;ref_type&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;event&quot;, &quot;entity&quot;, &quot;correlation&quot;] },
+          &quot;ref_id&quot;:   { &quot;type&quot;: &quot;string&quot; },
+          &quot;role&quot;:     { &quot;type&quot;: &quot;string&quot;, &quot;examples&quot;: [&quot;antecedent&quot;, &quot;consequent&quot;, &quot;participant&quot;] }
+        }
+      }
+    },
+
+    &quot;confidence&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [&quot;value&quot;, &quot;method&quot;, &quot;calibrated&quot;],
+      &quot;properties&quot;: {
+        &quot;value&quot;:       { &quot;type&quot;: &quot;number&quot;, &quot;minimum&quot;: 0, &quot;maximum&quot;: 1 },
+        &quot;ceiling&quot;:     { &quot;type&quot;: &quot;number&quot;, &quot;description&quot;: &quot;Type-specific cap, e.g. 0.70 for causal_hypothesis&quot; },
+        &quot;method&quot;:      { &quot;type&quot;: &quot;string&quot; },
+        &quot;calibrated&quot;:  { &quot;type&quot;: &quot;boolean&quot; },
+        &quot;sample_size&quot;: { &quot;type&quot;: &quot;integer&quot; },
+        &quot;decay_rate&quot;:  { &quot;type&quot;: &quot;number&quot;, &quot;description&quot;: &quot;Per-day confidence decay in absence of reinforcement&quot; }
+      }
+    },
+
+    &quot;strength&quot;: { &quot;type&quot;: &quot;number&quot;, &quot;description&quot;: &quot;Effect size — distinct from confidence&quot; },
+
+    &quot;temporal&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;window_start&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;date-time&quot; },
+        &quot;window_end&quot;:   { &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;date-time&quot; },
+        &quot;lag_ms&quot;:       { &quot;type&quot;: &quot;integer&quot; }
+      }
+    },
+
+    &quot;detected_at&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;date-time&quot; },
+    &quot;valid_until&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;date-time&quot;,
+                     &quot;description&quot;: &quot;Expiry is MANDATORY. Correlations do not persist indefinitely.&quot; },
+    &quot;status&quot;:      { &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;candidate&quot;, &quot;active&quot;, &quot;decaying&quot;, &quot;expired&quot;, &quot;retracted&quot;] },
+
+    &quot;derivation&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;layer&quot;:         { &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;streaming&quot;, &quot;batch&quot;] },
+        &quot;engine_version&quot;:{ &quot;type&quot;: &quot;string&quot; },
+        &quot;superseded_by&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Set when batch reconciliation supersedes a streaming result&quot; }
+      }
+    },
+
+    &quot;governance&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [&quot;permitted_purposes&quot;, &quot;sensitivity&quot;],
+      &quot;properties&quot;: {
+        &quot;permitted_purposes&quot;: { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot; },
+                                &quot;description&quot;: &quot;Intersection of member events' permitted purposes&quot; },
+        &quot;sensitivity&quot;:        { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;MUST be &gt;= max sensitivity of members&quot; },
+        &quot;erasure_keys&quot;:       { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot; } },
+        &quot;policy_decisions&quot;:   { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot; } }
+      }
+    },
+
+    &quot;evidence&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [&quot;event_refs&quot;],
+      &quot;properties&quot;: {
+        &quot;event_refs&quot;:       { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot; } },
+        &quot;counter_evidence&quot;: { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot; },
+                              &quot;description&quot;: &quot;Observations inconsistent with the asserted relationship&quot; },
+        &quot;alternatives&quot;:     { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot; },
+                              &quot;description&quot;: &quot;Competing correlations explaining the same observations&quot; },
+        &quot;baseline_ref&quot;:     { &quot;type&quot;: &quot;string&quot; }
+      }
+    }
+  }
+}
+</code></pre>
+<p><strong>Listing C-2.</strong> <em>Correlation schema. Four elements distinguish it from a conventional join result: mandatory <code>valid_until</code>, a confidence <code>ceiling</code> that varies by type, <code>governance.permitted_purposes</code> computed as an intersection, and <code>evidence.counter_evidence</code> — the framework requires that disconfirming observations be recorded, not only supporting ones.</em></p>
+<h2 id="c.3-insight-object" tabindex="-1">C.3 Insight Object <a class="header-anchor" href="#c.3-insight-object">#</a></h2>
+<pre><code class="language-json">{
+  &quot;$id&quot;: &quot;https://dsp.example/schemas/insight/v1.json&quot;,
+  &quot;title&quot;: &quot;InsightObject&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [
+    &quot;insight_id&quot;, &quot;insight_type&quot;, &quot;subject&quot;, &quot;statement&quot;,
+    &quot;confidence&quot;, &quot;evidence_chain&quot;, &quot;autonomy&quot;, &quot;generated_at&quot;, &quot;expires_at&quot;
+  ],
+  &quot;properties&quot;: {
+    &quot;insight_id&quot;:   { &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;uuid&quot; },
+    &quot;insight_type&quot;: { &quot;type&quot;: &quot;string&quot;,
+                      &quot;enum&quot;: [&quot;risk&quot;, &quot;opportunity&quot;, &quot;anomaly&quot;, &quot;prediction&quot;,
+                               &quot;explanation&quot;, &quot;recommendation&quot;, &quot;absence&quot;] },
+    &quot;subject&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [&quot;entity_type&quot;, &quot;entity_key&quot;],
+      &quot;properties&quot;: {
+        &quot;entity_type&quot;: { &quot;type&quot;: &quot;string&quot; },
+        &quot;entity_key&quot;:  { &quot;type&quot;: &quot;string&quot; },
+        &quot;scope&quot;:       { &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;individual&quot;, &quot;cohort&quot;, &quot;aggregate&quot;] }
+      }
+    },
+
+    &quot;statement&quot;:  { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Natural-language finding. MUST be grounded in evidence_chain.&quot; },
+    &quot;rationale&quot;:  { &quot;type&quot;: &quot;string&quot; },
+
+    &quot;confidence&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [&quot;value&quot;, &quot;basis&quot;],
+      &quot;properties&quot;: {
+        &quot;value&quot;:  { &quot;type&quot;: &quot;number&quot;, &quot;minimum&quot;: 0, &quot;maximum&quot;: 1 },
+        &quot;basis&quot;:  { &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;calibrated&quot;, &quot;heuristic&quot;, &quot;model_output&quot;] },
+        &quot;interval&quot;: { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;number&quot; }, &quot;minItems&quot;: 2, &quot;maxItems&quot;: 2 }
+      }
+    },
+
+    &quot;evidence_chain&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [&quot;correlation_refs&quot;, &quot;event_refs&quot;, &quot;citation_status&quot;],
+      &quot;properties&quot;: {
+        &quot;correlation_refs&quot;: { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot; } },
+        &quot;event_refs&quot;:       { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot; } },
+        &quot;model_refs&quot;:       { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot; } },
+        &quot;rule_refs&quot;:        { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot; } },
+        &quot;citation_status&quot;:  { &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;validated&quot;, &quot;partial&quot;, &quot;failed&quot;],
+                              &quot;description&quot;: &quot;Insights with citation_status=failed MUST NOT be released&quot; },
+        &quot;competing_hypotheses&quot;: { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;object&quot; } }
+      }
+    },
+
+    &quot;recommended_action&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;action_type&quot;:     { &quot;type&quot;: &quot;string&quot; },
+        &quot;modifiable_factors&quot;: { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot; },
+                                &quot;description&quot;: &quot;Factors the recipient can actually change&quot; },
+        &quot;reversibility&quot;:   { &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;fully_reversible&quot;, &quot;reversible_with_cost&quot;,
+                                                        &quot;partially_reversible&quot;, &quot;irreversible&quot;] },
+        &quot;blast_radius&quot;:    { &quot;type&quot;: &quot;integer&quot; },
+        &quot;expected_effect&quot;: { &quot;type&quot;: &quot;string&quot; }
+      }
+    },
+
+    &quot;autonomy&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [&quot;level&quot;, &quot;authorized_by&quot;],
+      &quot;properties&quot;: {
+        &quot;level&quot;:         { &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;L0&quot;,&quot;L1&quot;,&quot;L2&quot;,&quot;L3&quot;,&quot;L4&quot;,&quot;L5&quot;] },
+        &quot;authorized_by&quot;: { &quot;type&quot;: &quot;string&quot; },
+        &quot;reversal_window_seconds&quot;: { &quot;type&quot;: &quot;integer&quot; },
+        &quot;kill_switch_ref&quot;: { &quot;type&quot;: &quot;string&quot; }
+      }
+    },
+
+    &quot;routing&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;owner&quot;:     { &quot;type&quot;: &quot;string&quot; },
+        &quot;incident_id&quot;: { &quot;type&quot;: &quot;string&quot; },
+        &quot;severity&quot;:  { &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;informational&quot;, &quot;low&quot;, &quot;medium&quot;, &quot;high&quot;, &quot;critical&quot;] }
+      }
+    },
+
+    &quot;governance&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;permitted_purposes&quot;: { &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: { &quot;type&quot;: &quot;string&quot; } },
+        &quot;explanation_required&quot;: { &quot;type&quot;: &quot;boolean&quot; },
+        &quot;adm_classification&quot;: { &quot;type&quot;: &quot;string&quot;,
+                                &quot;enum&quot;: [&quot;not_adm&quot;, &quot;adm_with_human_review&quot;, &quot;adm_significant_effect&quot;] }
+      }
+    },
+
+    &quot;generated_at&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;date-time&quot; },
+    &quot;expires_at&quot;:   { &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;date-time&quot; },
+    &quot;disposition&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;description&quot;: &quot;Populated after human or system response. Feeds the calibration loop.&quot;,
+      &quot;properties&quot;: {
+        &quot;outcome&quot;:     { &quot;type&quot;: &quot;string&quot;, &quot;enum&quot;: [&quot;confirmed&quot;, &quot;rejected&quot;, &quot;inconclusive&quot;, &quot;no_response&quot;] },
+        &quot;actioned&quot;:    { &quot;type&quot;: &quot;boolean&quot; },
+        &quot;responded_at&quot;:{ &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;date-time&quot; },
+        &quot;notes&quot;:       { &quot;type&quot;: &quot;string&quot; }
+      }
+    }
+  }
+}
+</code></pre>
+<p><strong>Listing C-3.</strong> <em>Insight Object schema. The <code>disposition</code> block is what closes the calibration loop; without it confidence scores cannot be validated and the framework degrades into unfalsifiable assertion.</em></p>
+<h2 id="c.4-correlation-scope-declaration" tabindex="-1">C.4 Correlation Scope Declaration <a class="header-anchor" href="#c.4-correlation-scope-declaration">#</a></h2>
+<pre><code class="language-yaml">scope_id: banking.distress-vs-takeover.v3
+version: 3.1.0
+status: active
+owner:
+  domain: retail-banking-risk
+  steward: risk.data.steward@example
+  approved_by: [data-governance-board, dpo, model-risk]
+  approved_on: 2026-03-14
+
+purpose:
+  declared: customer_financial_distress_support
+  legal_basis: legitimate_interest
+  dpia_ref: DPIA-2026-0042
+  regulatory_refs: [FCA-FG21-1, GDPR-Art22]
+
+inputs:
+  event_types:
+    - banking.card.authorization_declined
+    - banking.account.balance_threshold_breach
+    - banking.payment.direct_debit_returned
+    - banking.channel.session_anomaly
+    - banking.contact.inbound_call
+  max_sensitivity: confidential
+  excluded_classifications: [special_category]
+
+window:
+  type: sliding
+  width: P14D
+  slide: PT5M
+  allowed_lateness: PT30M
+
+modalities: [M1, M2, M5]
+# M3 causal excluded: insufficient interventional data
+# M4 semantic excluded: free-text call notes out of purpose scope
+
+confidence:
+  minimum_persist: 0.35
+  minimum_surface: 0.62
+  type_ceiling:
+    behavioural_deviation: 0.85
+  decay_per_day: 0.03
+  calibration:
+    method: isotonic
+    ground_truth_source: case_outcomes
+    review_cadence: P30D
+
+prohibited_inferences:
+  - health_condition
+  - pregnancy
+  - religious_affiliation
+  - trade_union_membership
+  - immigration_status
+
+outputs:
+  insight_types: [risk, recommendation]
+  max_autonomy: L2
+  # L3 explicitly withheld: any account restriction is
+  # not reversible from the customer's perspective
+  routing:
+    owner: vulnerable-customer-team
+    severity_map: { high: &quot;confidence&gt;=0.80&quot;, medium: &quot;confidence&gt;=0.62&quot; }
+
+retention:
+  correlation_ttl: P90D
+  insight_ttl: P180D
+  erasure_propagation: enabled
+
+cost:
+  monthly_budget_usd: 14000
+  metric: cost_per_acted_upon_insight
+  suspend_if_exceeded: true
+
+lifecycle:
+  review_due: 2026-09-14
+  retire_if:
+    - &quot;action_rate &lt; 0.05 over P90D&quot;
+    - &quot;precision &lt; 0.50 over P60D&quot;
+    - &quot;cost_per_acted_upon_insight &gt; 400 over P30D&quot;
+</code></pre>
+<p><strong>Listing C-4.</strong> <em>Correlation scope declaration. <strong>The <code>retire_if</code> block is the most operationally significant element</strong>: a scope that specifies the conditions under which it should cease to exist is far more likely to be retired than one that relies on periodic human review.</em></p>
+<h2 id="c.5-type-reference" tabindex="-1">C.5 Type Reference <a class="header-anchor" href="#c.5-type-reference">#</a></h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Correlation type</th>
+<th>Modality</th>
+<th style="text-align:center">Directed</th>
+<th style="text-align:center">Default ceiling</th>
+<th style="text-align:center">Default TTL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>temporal_sequence</code></td>
+<td>M1</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">0.95</td>
+<td style="text-align:center">30 d</td>
+</tr>
+<tr>
+<td><code>temporal_coincidence</code></td>
+<td>M1</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">0.90</td>
+<td style="text-align:center">30 d</td>
+</tr>
+<tr>
+<td><code>shared_entity</code></td>
+<td>M2</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">0.98</td>
+<td style="text-align:center">180 d</td>
+</tr>
+<tr>
+<td><code>structural_path</code></td>
+<td>M2</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">0.85</td>
+<td style="text-align:center">90 d</td>
+</tr>
+<tr>
+<td><code>causal_hypothesis</code></td>
+<td>M3</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center"><strong>0.70</strong></td>
+<td style="text-align:center">365 d</td>
+</tr>
+<tr>
+<td><code>semantic_similarity</code></td>
+<td>M4</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">0.80</td>
+<td style="text-align:center">60 d</td>
+</tr>
+<tr>
+<td><code>behavioural_deviation</code></td>
+<td>M5</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">0.85</td>
+<td style="text-align:center">45 d</td>
+</tr>
+<tr>
+<td><code>negative_absence</code></td>
+<td>M6</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">0.75</td>
+<td style="text-align:center">14 d</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Table 92.</strong> <em>Correlation type reference with confidence ceilings and default lifetimes. The causal ceiling of 0.70 is deliberately low and is a structural admission that observational data cannot establish causation.</em></p>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/"><span>← Previous</span><b>Appendix B — Reference Implementation Blueprint</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/"><span>Next →</span><b>Appendix D — Adoption Maturity Assessment</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#c.1-canonical-event">C.1 Canonical Event #</a><a href="#c.2-correlation">C.2 Correlation #</a><a href="#c.3-insight-object">C.3 Insight Object #</a><a href="#c.4-correlation-scope-declaration">C.4 Correlation Scope Declaration #</a><a href="#c.5-type-reference">C.5 Type Reference #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/appendix/c-schemas/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>

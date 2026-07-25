@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en" data-part="p5">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>42. References · Data Swimming Pool</title>
+<meta name="description" content="42. References --- References are organized by topic. Works are cited for the ideas this framework builds upon; inclusion does not imply that any author endorses the Data Swimming ">
+<meta name="author" content="Ammar Jamshed">
+<meta property="og:title" content="42. References — Data Swimming Pool">
+<meta property="og:description" content="42. References --- References are organized by topic. Works are cited for the ideas this framework builds upon; inclusion does not imply that any author endorses the Data Swimming ">
+<meta property="og:image" content="/data-swimming-pool-whitepaper/assets/cover-illustration.png">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#062a38">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/data-swimming-pool-whitepaper/styles.css">
+<style>:root{--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="/data-swimming-pool-whitepaper/">
+    <span class="brand-mark" aria-hidden="true">🏊</span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+  </a>
+
+  <div class="searchwrap">
+    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <div id="results" class="results" hidden></div>
+  </div>
+
+  <div class="topactions">
+    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+    <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">GitHub</a>
+    <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
+      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-txt">Download PDF</span>
+      <span class="pdf-sub">333 pages · 7 MB</span>
+    </a>
+  </div>
+</header>
+<div class="progress"><i id="bar"></i></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Chapters">
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/"><span>🏠</span>Home</a><details class="sb-group" style="--part:#0e6a86;--part2:#1ba0bd;--part-tint:#e6f4f9">
+  <summary><span class="sb-ico">📘</span>Overview<span class="sb-count">1</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
+</details>
+<details class="sb-group" style="--part:#0e8ba8;--part2:#28c2d8;--part-tint:#e6f7fb">
+  <summary><span class="sb-ico">🧭</span>Front Matter<span class="sb-count">5</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
+</details>
+<details class="sb-group" style="--part:#5b52d6;--part2:#8b7bf0;--part-tint:#eeecfd">
+  <summary><span class="sb-ico">🔍</span>Part I — Context and Motivation<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
+</details>
+<details class="sb-group" style="--part:#0b8ea3;--part2:#22c1d6;--part-tint:#e4f7fa">
+  <summary><span class="sb-ico">🏊</span>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
+</details>
+<details class="sb-group" style="--part:#0f8a5f;--part2:#2fbd85;--part-tint:#e6f7ef">
+  <summary><span class="sb-ico">🛡️</span>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
+</details>
+<details class="sb-group" style="--part:#c2701c;--part2:#eda03f;--part-tint:#fdf2e3">
+  <summary><span class="sb-ico">🏭</span>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
+</details>
+<details class="sb-group" open style="--part:#c2445f;--part2:#e8748c;--part-tint:#fdeef1">
+  <summary><span class="sb-ico">⚖️</span>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/" class="on">42. References</a></div>
+</details>
+<details class="sb-group" style="--part:#7b4fc9;--part2:#a681e6;--part-tint:#f2ecfd">
+  <summary><span class="sb-ico">📎</span>Appendices<span class="sb-count">6</span></summary>
+  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
+</details></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+
+<article class="doc">
+  <header class="chead">
+    <p class="crumb"><a href="/data-swimming-pool-whitepaper/">Home</a> <em>/</em> <span>Part V — Evaluation and Outlook</span></p>
+    <h1>42. References</h1>
+    <p class="cmeta"><span class="chip">⚖️ Part V — Evaluation and Outlook</span><span class="dot">·</span>15 min read</p>
+  </header>
+  <div class="prose">
+<h1>42. References</h1>
+<hr>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p>References are organized by topic. Works are cited for the ideas this framework builds upon; inclusion does not imply that any author endorses the Data Swimming Pool framework. Where a work is foundational to a specific chapter, that chapter is noted.</p>
+</div>
+<h2 id="42.1-foundations-of-data-management" tabindex="-1">42.1 Foundations of Data Management <a class="header-anchor" href="#42.1-foundations-of-data-management">#</a></h2>
+<ol>
+<li>Codd, E. F. (1970). <em>A Relational Model of Data for Large Shared Data Banks</em>. Communications of the ACM, 13(6), 377–387. — <em>Ch. 4, 6</em></li>
+<li>Codd, E. F. (1979). <em>Extending the Database Relational Model to Capture More Meaning</em>. ACM Transactions on Database Systems, 4(4), 397–434.</li>
+<li>Chen, P. P. (1976). <em>The Entity-Relationship Model — Toward a Unified View of Data</em>. ACM TODS, 1(1), 9–36.</li>
+<li>Gray, J., &amp; Reuter, A. (1992). <em>Transaction Processing: Concepts and Techniques</em>. Morgan Kaufmann.</li>
+<li>Stonebraker, M., &amp; Çetintemel, U. (2005). <em>“One Size Fits All”: An Idea Whose Time Has Come and Gone</em>. ICDE 2005.</li>
+<li>Hellerstein, J. M., Stonebraker, M., &amp; Hamilton, J. (2007). <em>Architecture of a Database System</em>. Foundations and Trends in Databases, 1(2), 141–259.</li>
+</ol>
+<h2 id="42.2-data-warehousing-and-dimensional-modelling" tabindex="-1">42.2 Data Warehousing and Dimensional Modelling <a class="header-anchor" href="#42.2-data-warehousing-and-dimensional-modelling">#</a></h2>
+<ol start="7">
+<li>Inmon, W. H. (1992). <em>Building the Data Warehouse</em>. Wiley. — <em>Ch. 6</em></li>
+<li>Inmon, W. H., Zachman, J. A., &amp; Geiger, J. G. (1997). <em>Data Stores, Data Warehousing, and the Zachman Framework</em>. McGraw-Hill.</li>
+<li>Kimball, R., &amp; Ross, M. (2013). <em>The Data Warehouse Toolkit: The Definitive Guide to Dimensional Modeling</em> (3rd ed.). Wiley. — <em>Ch. 6</em></li>
+<li>Chaudhuri, S., &amp; Dayal, U. (1997). <em>An Overview of Data Warehousing and OLAP Technology</em>. ACM SIGMOD Record, 26(1), 65–74.</li>
+<li>Kimball, R., &amp; Caserta, J. (2004). <em>The Data Warehouse ETL Toolkit</em>. Wiley.</li>
+</ol>
+<h2 id="42.3-data-lakes%2C-lakehouses%2C-and-open-table-formats" tabindex="-1">42.3 Data Lakes, Lakehouses, and Open Table Formats <a class="header-anchor" href="#42.3-data-lakes%2C-lakehouses%2C-and-open-table-formats">#</a></h2>
+<ol start="12">
+<li>Dean, J., &amp; Ghemawat, S. (2004). <em>MapReduce: Simplified Data Processing on Large Clusters</em>. OSDI 2004. — <em>Ch. 6</em></li>
+<li>Ghemawat, S., Gobioff, H., &amp; Leung, S.-T. (2003). <em>The Google File System</em>. SOSP 2003.</li>
+<li>Shvachko, K., Kuang, H., Radia, S., &amp; Chansler, R. (2010). <em>The Hadoop Distributed File System</em>. IEEE MSST 2010.</li>
+<li>Zaharia, M., et al. (2012). <em>Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing</em>. NSDI 2012. — <em>Ch. 12</em></li>
+<li>Armbrust, M., et al. (2020). <em>Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores</em>. VLDB, 13(12), 3411–3424. — <em>Ch. 12</em></li>
+<li>Armbrust, M., Ghodsi, A., Xin, R., &amp; Zaharia, M. (2021). <em>Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics</em>. CIDR 2021. — <em>Ch. 6, 12</em></li>
+<li>Apache Software Foundation. <em>Apache Iceberg Specification</em>. <a href="https://iceberg.apache.org/spec/">https://iceberg.apache.org/spec/</a></li>
+<li>Apache Software Foundation. <em>Apache Hudi Documentation</em>. <a href="https://hudi.apache.org/">https://hudi.apache.org/</a></li>
+<li>Zaharia, M., et al. (2016). <em>Apache Spark: A Unified Engine for Big Data Processing</em>. Communications of the ACM, 59(11), 56–65. — <em>Ch. 12</em></li>
+</ol>
+<h2 id="42.4-distributed-systems-theory" tabindex="-1">42.4 Distributed Systems Theory <a class="header-anchor" href="#42.4-distributed-systems-theory">#</a></h2>
+<ol start="21">
+<li>Lamport, L. (1978). <em>Time, Clocks, and the Ordering of Events in a Distributed System</em>. Communications of the ACM, 21(7), 558–565. — <em>Ch. 4, 11, 19</em></li>
+<li>Brewer, E. (2000). <em>Towards Robust Distributed Systems</em>. PODC Keynote. — <em>Ch. 4, 27</em></li>
+<li>Gilbert, S., &amp; Lynch, N. (2002). <em>Brewer’s Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services</em>. ACM SIGACT News, 33(2), 51–59. — <em>Ch. 27</em></li>
+<li>Abadi, D. (2012). <em>Consistency Tradeoffs in Modern Distributed Database System Design: CAP is Only Part of the Story</em>. IEEE Computer, 45(2), 37–42. — <em>Ch. 27</em></li>
+<li>Bailis, P., &amp; Ghodsi, A. (2013). <em>Eventual Consistency Today: Limitations, Extensions, and Beyond</em>. ACM Queue, 11(3).</li>
+<li>Ongaro, D., &amp; Ousterhout, J. (2014). <em>In Search of an Understandable Consensus Algorithm (Raft)</em>. USENIX ATC 2014.</li>
+<li>Burrows, M. (2006). <em>The Chubby Lock Service for Loosely-Coupled Distributed Systems</em>. OSDI 2006.</li>
+<li>Helland, P. (2015). <em>Immutability Changes Everything</em>. ACM Queue, 13(9). — <em>Ch. 19</em></li>
+</ol>
+<h2 id="42.5-event-streaming-and-stream-processing" tabindex="-1">42.5 Event Streaming and Stream Processing <a class="header-anchor" href="#42.5-event-streaming-and-stream-processing">#</a></h2>
+<ol start="29">
+<li>Kreps, J. (2013). <em>The Log: What Every Software Engineer Should Know About Real-Time Data’s Unifying Abstraction</em>. LinkedIn Engineering. — <em>Ch. 4, 11</em></li>
+<li>Kreps, J., Narkhede, N., &amp; Rao, J. (2011). <em>Kafka: A Distributed Messaging System for Log Processing</em>. NetDB 2011. — <em>Ch. 11</em></li>
+<li>Kreps, J. (2014). <em>Questioning the Lambda Architecture</em>. O’Reilly Radar. — <em>Ch. 4, 12</em></li>
+<li>Marz, N., &amp; Warren, J. (2015). <em>Big Data: Principles and Best Practices of Scalable Realtime Data Systems</em>. Manning. — <em>Ch. 4, 12</em></li>
+<li>Akidau, T., et al. (2015). <em>The Dataflow Model: A Practical Approach to Balancing Correctness, Latency, and Cost in Massive-Scale, Unbounded, Out-of-Order Data Processing</em>. VLDB, 8(12), 1792–1803. — <em>Ch. 11</em></li>
+<li>Akidau, T., Chernyak, S., &amp; Lax, R. (2018). <em>Streaming Systems</em>. O’Reilly Media. — <em>Ch. 11</em></li>
+<li>Carbone, P., et al. (2015). <em>Apache Flink: Stream and Batch Processing in a Single Engine</em>. IEEE Data Engineering Bulletin, 38(4), 28–38. — <em>Ch. 11</em></li>
+<li>Carbone, P., et al. (2017). <em>State Management in Apache Flink: Consistent Stateful Distributed Stream Processing</em>. VLDB, 10(12), 1718–1729. — <em>Ch. 11</em></li>
+<li>Chandy, K. M., &amp; Lamport, L. (1985). <em>Distributed Snapshots: Determining Global States of Distributed Systems</em>. ACM TOCS, 3(1), 63–75.</li>
+<li>Apache Software Foundation. <em>Apache Kafka Documentation</em>. <a href="https://kafka.apache.org/documentation/">https://kafka.apache.org/documentation/</a></li>
+<li>Apache Software Foundation. <em>Apache Flink Documentation</em>. <a href="https://flink.apache.org/">https://flink.apache.org/</a></li>
+</ol>
+<h2 id="42.6-complex-event-processing-and-event-sourcing" tabindex="-1">42.6 Complex Event Processing and Event Sourcing <a class="header-anchor" href="#42.6-complex-event-processing-and-event-sourcing">#</a></h2>
+<ol start="40">
+<li>Luckham, D. (2002). <em>The Power of Events: An Introduction to Complex Event Processing in Distributed Enterprise Systems</em>. Addison-Wesley. — <em>Ch. 4, 14</em></li>
+<li>Luckham, D. (2011). <em>Event Processing for Business: Organizing the Real-Time Enterprise</em>. Wiley.</li>
+<li>Wu, E., Diao, Y., &amp; Rizvi, S. (2006). <em>High-Performance Complex Event Processing over Streams (SASE)</em>. SIGMOD 2006. — <em>Ch. 14</em></li>
+<li>Demers, A., et al. (2007). <em>Cayuga: A General Purpose Event Monitoring System</em>. CIDR 2007. — <em>Ch. 14</em></li>
+<li>Cugola, G., &amp; Margara, A. (2012). <em>Processing Flows of Information: From Data Stream to Complex Event Processing</em>. ACM Computing Surveys, 44(3), 1–62. — <em>Ch. 14</em></li>
+<li>Etzion, O., &amp; Niblett, P. (2010). <em>Event Processing in Action</em>. Manning.</li>
+<li>Fowler, M. (2005). <em>Event Sourcing</em>. <a href="http://martinfowler.com">martinfowler.com</a>. — <em>Ch. 4, 19</em></li>
+<li>Young, G. (2010). <em>CQRS Documents</em>. — <em>Ch. 4</em></li>
+<li>Vernon, V. (2013). <em>Implementing Domain-Driven Design</em>. Addison-Wesley.</li>
+</ol>
+<h2 id="42.7-knowledge-graphs%2C-semantics%2C-and-graph-databases" tabindex="-1">42.7 Knowledge Graphs, Semantics, and Graph Databases <a class="header-anchor" href="#42.7-knowledge-graphs%2C-semantics%2C-and-graph-databases">#</a></h2>
+<ol start="49">
+<li>Hogan, A., et al. (2021). <em>Knowledge Graphs</em>. ACM Computing Surveys, 54(4), 1–37. — <em>Ch. 17</em></li>
+<li>Noy, N., et al. (2019). <em>Industry-Scale Knowledge Graphs: Lessons and Challenges</em>. ACM Queue, 17(2). — <em>Ch. 17</em></li>
+<li>Berners-Lee, T., Hendler, J., &amp; Lassila, O. (2001). <em>The Semantic Web</em>. Scientific American, 284(5), 34–43.</li>
+<li>W3C. (2014). <em>RDF 1.1 Concepts and Abstract Syntax</em>. <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a></li>
+<li>W3C. (2013). <em>SPARQL 1.1 Query Language</em>. <a href="https://www.w3.org/TR/sparql11-query/">https://www.w3.org/TR/sparql11-query/</a></li>
+<li>Angles, R., et al. (2017). <em>Foundations of Modern Query Languages for Graph Databases</em>. ACM Computing Surveys, 50(5), 1–40. — <em>Ch. 17</em></li>
+<li>Francis, N., et al. (2018). <em>Cypher: An Evolving Query Language for Property Graphs</em>. SIGMOD 2018.</li>
+<li>ISO/IEC 39075:2024. <em>Information Technology — Database Languages — GQL</em>. — <em>Ch. 17</em></li>
+<li>Robinson, I., Webber, J., &amp; Eifrem, E. (2015). <em>Graph Databases: New Opportunities for Connected Data</em> (2nd ed.). O’Reilly.</li>
+<li>Newman, M. E. J. (2010). <em>Networks: An Introduction</em>. Oxford University Press. — <em>Ch. 17</em></li>
+<li>Blondel, V. D., et al. (2008). <em>Fast Unfolding of Communities in Large Networks (Louvain)</em>. Journal of Statistical Mechanics, P10008. — <em>Ch. 17, 29</em></li>
+</ol>
+<h2 id="42.8-machine-learning%2C-embeddings%2C-and-retrieval" tabindex="-1">42.8 Machine Learning, Embeddings, and Retrieval <a class="header-anchor" href="#42.8-machine-learning%2C-embeddings%2C-and-retrieval">#</a></h2>
+<ol start="60">
+<li>Mikolov, T., et al. (2013). <em>Distributed Representations of Words and Phrases and their Compositionality</em>. NeurIPS 2013.</li>
+<li>Vaswani, A., et al. (2017). <em>Attention Is All You Need</em>. NeurIPS 2017.</li>
+<li>Lewis, P., et al. (2020). <em>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</em>. NeurIPS 2020. — <em>Ch. 16</em></li>
+<li>Gao, Y., et al. (2024). <em>Retrieval-Augmented Generation for Large Language Models: A Survey</em>. arXiv:2312.10997. — <em>Ch. 16</em></li>
+<li>Edge, D., et al. (2024). <em>From Local to Global: A Graph RAG Approach to Query-Focused Summarization</em>. arXiv:2404.16130. — <em>Ch. 16, 17</em></li>
+<li>Malkov, Y. A., &amp; Yashunin, D. A. (2018). <em>Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs</em>. IEEE TPAMI, 42(4), 824–836. — <em>Ch. 17</em></li>
+<li>Johnson, J., Douze, M., &amp; Jégou, H. (2019). <em>Billion-Scale Similarity Search with GPUs (FAISS)</em>. IEEE Transactions on Big Data.</li>
+<li>Kipf, T. N., &amp; Welling, M. (2017). <em>Semi-Supervised Classification with Graph Convolutional Networks</em>. ICLR 2017. — <em>Ch. 16</em></li>
+<li>Hamilton, W., Ying, Z., &amp; Leskovec, J. (2017). <em>Inductive Representation Learning on Large Graphs (GraphSAGE)</em>. NeurIPS 2017. — <em>Ch. 16</em></li>
+<li>Sculley, D., et al. (2015). <em>Hidden Technical Debt in Machine Learning Systems</em>. NeurIPS 2015. — <em>Ch. 16</em></li>
+<li>Guo, C., et al. (2017). <em>On Calibration of Modern Neural Networks</em>. ICML 2017. — <em>Ch. 14, 16</em></li>
+<li>Niculescu-Mizil, A., &amp; Caruana, R. (2005). <em>Predicting Good Probabilities with Supervised Learning</em>. ICML 2005. — <em>Ch. 14</em></li>
+<li>Gawlikowski, J., et al. (2023). <em>A Survey of Uncertainty in Deep Neural Networks</em>. Artificial Intelligence Review, 56, 1513–1589.</li>
+</ol>
+<h2 id="42.9-causal-inference-and-statistical-correctness" tabindex="-1">42.9 Causal Inference and Statistical Correctness <a class="header-anchor" href="#42.9-causal-inference-and-statistical-correctness">#</a></h2>
+<ol start="73">
+<li>Pearl, J. (2009). <em>Causality: Models, Reasoning, and Inference</em> (2nd ed.). Cambridge University Press. — <em>Ch. 14, 19</em></li>
+<li>Pearl, J., &amp; Mackenzie, D. (2018). <em>The Book of Why: The New Science of Cause and Effect</em>. Basic Books.</li>
+<li>Granger, C. W. J. (1969). <em>Investigating Causal Relations by Econometric Models and Cross-Spectral Methods</em>. Econometrica, 37(3), 424–438. — <em>Ch. 14</em></li>
+<li>Imbens, G. W., &amp; Rubin, D. B. (2015). <em>Causal Inference for Statistics, Social, and Biomedical Sciences</em>. Cambridge University Press.</li>
+<li>Benjamini, Y., &amp; Hochberg, Y. (1995). <em>Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing</em>. JRSS-B, 57(1), 289–300. — <em>Ch. 14, 39</em></li>
+<li>Ioannidis, J. P. A. (2005). <em>Why Most Published Research Findings Are False</em>. PLoS Medicine, 2(8), e124. — <em>Ch. 39</em></li>
+<li>Simmons, J. P., Nelson, L. D., &amp; Simonsohn, U. (2011). <em>False-Positive Psychology</em>. Psychological Science, 22(11), 1359–1366.</li>
+<li>Calude, C. S., &amp; Longo, G. (2017). <em>The Deluge of Spurious Correlations in Big Data</em>. Foundations of Science, 22, 595–612. — <em>Ch. 39</em></li>
+</ol>
+<h2 id="42.10-entity-resolution-and-data-quality" tabindex="-1">42.10 Entity Resolution and Data Quality <a class="header-anchor" href="#42.10-entity-resolution-and-data-quality">#</a></h2>
+<ol start="81">
+<li>Fellegi, I. P., &amp; Sunter, A. B. (1969). <em>A Theory for Record Linkage</em>. Journal of the American Statistical Association, 64(328), 1183–1210. — <em>Ch. 13</em></li>
+<li>Christen, P. (2012). <em>Data Matching: Concepts and Techniques for Record Linkage, Entity Resolution, and Duplicate Detection</em>. Springer. — <em>Ch. 13</em></li>
+<li>Getoor, L., &amp; Machanavajjhala, A. (2012). <em>Entity Resolution: Theory, Practice &amp; Open Challenges</em>. VLDB, 5(12), 2018–2019. — <em>Ch. 13</em></li>
+<li>Papadakis, G., et al. (2020). <em>Blocking and Filtering Techniques for Entity Resolution: A Survey</em>. ACM Computing Surveys, 53(2), 1–42.</li>
+<li>Redman, T. C. (1998). <em>The Impact of Poor Data Quality on the Typical Enterprise</em>. Communications of the ACM, 41(2), 79–82. — <em>Ch. 5</em></li>
+</ol>
+<h2 id="42.11-data-architecture-paradigms" tabindex="-1">42.11 Data Architecture Paradigms <a class="header-anchor" href="#42.11-data-architecture-paradigms">#</a></h2>
+<ol start="86">
+<li>Dehghani, Z. (2019). <em>How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh</em>. <a href="http://martinfowler.com">martinfowler.com</a>. — <em>Ch. 6</em></li>
+<li>Dehghani, Z. (2022). <em>Data Mesh: Delivering Data-Driven Value at Scale</em>. O’Reilly Media. — <em>Ch. 6, 25</em></li>
+<li>Gartner. (2019–2024). <em>Data Fabric</em> research notes and Hype Cycle for Data Management. — <em>Ch. 6</em></li>
+<li>Forrester Research. (2016). <em>The Forrester Wave: Big Data Fabric</em>. — <em>Ch. 6</em></li>
+<li>Machado, I. A., Costa, C., &amp; Santos, M. Y. (2022). <em>Data Mesh: Concepts and Principles of a Paradigm Shift in Data Architectures</em>. Procedia Computer Science, 196, 263–271.</li>
+<li>Kleppmann, M. (2017). <em>Designing Data-Intensive Applications</em>. O’Reilly Media. — <em>Ch. 4, 10, 11</em></li>
+<li>Reis, J., &amp; Housley, M. (2022). <em>Fundamentals of Data Engineering</em>. O’Reilly Media.</li>
+</ol>
+<h2 id="42.12-metadata%2C-lineage%2C-and-observability" tabindex="-1">42.12 Metadata, Lineage, and Observability <a class="header-anchor" href="#42.12-metadata%2C-lineage%2C-and-observability">#</a></h2>
+<ol start="93">
+<li>Hellerstein, J. M., et al. (2017). <em>Ground: A Data Context Service</em>. CIDR 2017. — <em>Ch. 18</em></li>
+<li>Herschel, M., Diestelkämper, R., &amp; Ben Lahmar, H. (2017). <em>A Survey on Provenance: What For? What Form? What From?</em> VLDB Journal, 26, 881–906. — <em>Ch. 18</em></li>
+<li>Cheney, J., Chiticariu, L., &amp; Tan, W.-C. (2009). <em>Provenance in Databases: Why, How, and Where</em>. Foundations and Trends in Databases, 1(4), 379–474.</li>
+<li>OpenLineage Project. <em>OpenLineage Specification</em>. <a href="https://openlineage.io/">https://openlineage.io/</a> — <em>Ch. 18</em></li>
+<li>Linux Foundation. <em>Marquez: Collect, Aggregate, and Visualize a Data Ecosystem’s Metadata</em>. <a href="https://marquezproject.ai/">https://marquezproject.ai/</a></li>
+<li>OpenTelemetry Project. <em>OpenTelemetry Specification</em>. <a href="https://opentelemetry.io/">https://opentelemetry.io/</a> — <em>Ch. 18</em></li>
+<li>W3C. (2013). <em>PROV-DM: The PROV Data Model</em>. <a href="https://www.w3.org/TR/prov-dm/">https://www.w3.org/TR/prov-dm/</a> — <em>Ch. 18</em></li>
+</ol>
+<h2 id="42.13-governance%2C-privacy%2C-and-regulation" tabindex="-1">42.13 Governance, Privacy, and Regulation <a class="header-anchor" href="#42.13-governance%2C-privacy%2C-and-regulation">#</a></h2>
+<ol start="100">
+<li>DAMA International. (2017). <em>DAMA-DMBOK: Data Management Body of Knowledge</em> (2nd ed.). Technics Publications. — <em>Ch. 25</em></li>
+<li>European Union. (2016). <em>Regulation (EU) 2016/679 — General Data Protection Regulation (GDPR)</em>. — <em>Ch. 24, 25</em></li>
+<li>European Union. (2024). <em>Regulation (EU) 2024/1689 — Artificial Intelligence Act</em>. — <em>Ch. 20, 25</em></li>
+<li>Article 29 Data Protection Working Party. (2018). <em>Guidelines on Automated Individual Decision-Making and Profiling (WP251rev.01)</em>. — <em>Ch. 24</em></li>
+<li>Wachter, S., &amp; Mittelstadt, B. (2019). <em>A Right to Reasonable Inferences: Re-Thinking Data Protection Law in the Age of Big Data and AI</em>. Columbia Business Law Review, 2019(2), 494–620. — <em>Ch. 24</em></li>
+<li>Basel Committee on Banking Supervision. (2013). <em>BCBS 239: Principles for Effective Risk Data Aggregation and Risk Reporting</em>. — <em>Ch. 25, 29</em></li>
+<li>U.S. Department of Health and Human Services. <em>HIPAA Privacy Rule</em>, 45 CFR Parts 160 and 164. — <em>Ch. 24, 30</em></li>
+<li>Sweeney, L. (2002). <em>k-Anonymity: A Model for Protecting Privacy</em>. International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems, 10(5), 557–570. — <em>Ch. 24, 33</em></li>
+<li>Machanavajjhala, A., et al. (2007). <em>ℓ-Diversity: Privacy Beyond k-Anonymity</em>. ACM TKDD, 1(1). — <em>Ch. 24</em></li>
+<li>Dwork, C., &amp; Roth, A. (2014). <em>The Algorithmic Foundations of Differential Privacy</em>. Foundations and Trends in Theoretical Computer Science, 9(3–4), 211–407. — <em>Ch. 24</em></li>
+<li>Narayanan, A., &amp; Shmatikov, V. (2008). <em>Robust De-anonymization of Large Sparse Datasets</em>. IEEE S&amp;P 2008. — <em>Ch. 23, 24</em></li>
+<li>Bourtoule, L., et al. (2021). <em>Machine Unlearning</em>. IEEE S&amp;P 2021. — <em>Ch. 24</em></li>
+<li>Kairouz, P., et al. (2021). <em>Advances and Open Problems in Federated Learning</em>. Foundations and Trends in Machine Learning, 14(1–2). — <em>Ch. 24, 40</em></li>
+<li>Open Policy Agent Project. <em>Rego Policy Language Documentation</em>. <a href="https://www.openpolicyagent.org/">https://www.openpolicyagent.org/</a> — <em>Ch. 23, 25</em></li>
+</ol>
+<h2 id="42.14-security" tabindex="-1">42.14 Security <a class="header-anchor" href="#42.14-security">#</a></h2>
+<ol start="114">
+<li>Rose, S., et al. (2020). <em>NIST SP 800-207: Zero Trust Architecture</em>. National Institute of Standards and Technology. — <em>Ch. 23</em></li>
+<li>NIST. (2018). <em>Framework for Improving Critical Infrastructure Cybersecurity (CSF) v1.1</em>. — <em>Ch. 23</em></li>
+<li>MITRE. <em>ATT&amp;CK Framework</em>. <a href="https://attack.mitre.org/">https://attack.mitre.org/</a> — <em>Ch. 34</em></li>
+<li>Hutchins, E. M., Cloppert, M. J., &amp; Amin, R. M. (2011). <em>Intelligence-Driven Computer Network Defense Informed by Analysis of Adversary Campaigns and Intrusion Kill Chains</em>. Leading Issues in Information Warfare &amp; Security Research, 1(1). — <em>Ch. 34</em></li>
+<li>Greshake, K., et al. (2023). <em>Not What You’ve Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection</em>. AISec 2023. — <em>Ch. 16, 23</em></li>
+<li>OWASP. (2025). <em>OWASP Top 10 for Large Language Model Applications</em>. — <em>Ch. 23</em></li>
+<li>Biggio, B., &amp; Roli, F. (2018). <em>Wild Patterns: Ten Years After the Rise of Adversarial Machine Learning</em>. Pattern Recognition, 84, 317–331. — <em>Ch. 23, 34</em></li>
+</ol>
+<h2 id="42.15-human-factors%2C-automation%2C-and-decision-support" tabindex="-1">42.15 Human Factors, Automation, and Decision Support <a class="header-anchor" href="#42.15-human-factors%2C-automation%2C-and-decision-support">#</a></h2>
+<ol start="121">
+<li>Parasuraman, R., &amp; Riley, V. (1997). <em>Humans and Automation: Use, Misuse, Disuse, Abuse</em>. Human Factors, 39(2), 230–253. — <em>Ch. 20</em></li>
+<li>Parasuraman, R., Sheridan, T. B., &amp; Wickens, C. D. (2000). <em>A Model for Types and Levels of Human Interaction with Automation</em>. IEEE Transactions on Systems, Man, and Cybernetics, 30(3), 286–297. — <em>Ch. 20</em></li>
+<li>Bainbridge, L. (1983). <em>Ironies of Automation</em>. Automatica, 19(6), 775–779. — <em>Ch. 20</em></li>
+<li>Skitka, L. J., Mosier, K. L., &amp; Burdick, M. (1999). <em>Does Automation Bias Decision-Making?</em> International Journal of Human-Computer Studies, 51(5), 991–1006. — <em>Ch. 20, 39</em></li>
+<li>SAE International. (2021). <em>J3016: Taxonomy and Definitions for Terms Related to Driving Automation Systems</em>. — <em>Ch. 20</em></li>
+<li>Cvach, M. (2012). <em>Monitor Alarm Fatigue: An Integrative Review</em>. Biomedical Instrumentation &amp; Technology, 46(4), 268–277. — <em>Ch. 21, 30</em></li>
+<li>Sendelbach, S., &amp; Funk, M. (2013). <em>Alarm Fatigue: A Patient Safety Concern</em>. AACN Advanced Critical Care, 24(4), 378–386. — <em>Ch. 21</em></li>
+<li>Beyer, B., Jones, C., Petoff, J., &amp; Murphy, N. R. (2016). <em>Site Reliability Engineering</em>. O’Reilly Media. — <em>Ch. 21, 27, 28</em></li>
+<li>Woods, D. D., &amp; Hollnagel, E. (2006). <em>Joint Cognitive Systems: Patterns in Cognitive Systems Engineering</em>. CRC Press.</li>
+</ol>
+<h2 id="42.16-domain-specific-sources" tabindex="-1">42.16 Domain-Specific Sources <a class="header-anchor" href="#42.16-domain-specific-sources">#</a></h2>
+<ol start="130">
+<li>Churpek, M. M., et al. (2016). <em>Multicenter Comparison of Machine Learning Methods and Conventional Regression for Predicting Clinical Deterioration on the Wards</em>. Critical Care Medicine, 44(2), 368–374. — <em>Ch. 30</em></li>
+<li>Escobar, G. J., et al. (2020). <em>Automated Identification of Adults at Risk for In-Hospital Clinical Deterioration</em>. New England Journal of Medicine, 383, 1951–1960. — <em>Ch. 30</em></li>
+<li>Financial Action Task Force. (2012–2023). <em>International Standards on Combating Money Laundering and the Financing of Terrorism &amp; Proliferation</em>. — <em>Ch. 29</em></li>
+<li>Financial Conduct Authority. (2021). <em>FG21/1: Guidance for Firms on the Fair Treatment of Vulnerable Customers</em>. — <em>Ch. 29</em></li>
+<li>Lee, J., Bagheri, B., &amp; Kao, H.-A. (2015). <em>A Cyber-Physical Systems Architecture for Industry 4.0-Based Manufacturing Systems</em>. Manufacturing Letters, 3, 18–23. — <em>Ch. 31</em></li>
+<li>Lasi, H., et al. (2014). <em>Industry 4.0</em>. Business &amp; Information Systems Engineering, 6, 239–242. — <em>Ch. 31</em></li>
+<li>International Civil Aviation Organization. (2018). <em>Doc 9859: Safety Management Manual</em> (4th ed.). — <em>Ch. 36A</em></li>
+<li>Reason, J. (1990). <em>Human Error</em>. Cambridge University Press. — <em>Ch. 36A</em></li>
+<li>Kitchin, R. (2014). <em>The Real-Time City? Big Data and Smart Urbanism</em>. GeoJournal, 79, 1–14. — <em>Ch. 33</em></li>
+<li>Zuboff, S. (2019). <em>The Age of Surveillance Capitalism</em>. PublicAffairs. — <em>Ch. 24, 33, 35</em></li>
+<li>Eubanks, V. (2018). <em>Automating Inequality: How High-Tech Tools Profile, Police, and Punish the Poor</em>. St. Martin’s Press. — <em>Ch. 35</em></li>
+<li>O’Neil, C. (2016). <em>Weapons of Math Destruction</em>. Crown. — <em>Ch. 35</em></li>
+</ol>
+<h2 id="42.17-standards-and-specifications" tabindex="-1">42.17 Standards and Specifications <a class="header-anchor" href="#42.17-standards-and-specifications">#</a></h2>
+<ol start="142">
+<li>Bradner, S. (1997). <em>RFC 2119: Key Words for Use in RFCs to Indicate Requirement Levels</em>. IETF. — <em>Ch. 9</em></li>
+<li>Leiba, B. (2017). <em>RFC 8174: Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</em>. IETF.</li>
+<li>ISO/IEC 25012:2008. <em>Software Engineering — Software Product Quality Requirements and Evaluation — Data Quality Model</em>.</li>
+<li>ISO/IEC 27001:2022. <em>Information Security, Cybersecurity and Privacy Protection — Information Security Management Systems</em>. — <em>Ch. 23</em></li>
+<li>ISO/IEC 42001:2023. <em>Information Technology — Artificial Intelligence — Management System</em>. — <em>Ch. 25</em></li>
+<li>NIST. (2023). <em>AI Risk Management Framework (AI RMF 1.0)</em>. — <em>Ch. 20, 25</em></li>
+<li>CloudEvents. <em>CloudEvents Specification v1.0.2</em>. CNCF. <a href="https://cloudevents.io/">https://cloudevents.io/</a> — <em>Ch. 13</em></li>
+<li>Apache Software Foundation. <em>Apache Avro Specification</em>. <a href="https://avro.apache.org/docs/">https://avro.apache.org/docs/</a></li>
+<li>The Open Group. (2022). <em>TOGAF Standard, 10th Edition</em>.</li>
+</ol>
+<hr>
+<h2 id="42.18-citation-of-this-work" tabindex="-1">42.18 Citation of This Work <a class="header-anchor" href="#42.18-citation-of-this-work">#</a></h2>
+<div class="cal cal-info">
+<p class="cal-label"><span class="cal-dot">i</span>Note</p>
+<p><strong>Suggested citation</strong></p>
+<p>Jamshed, A. (2026). <em>Data Swimming Pool: An Intelligent Enterprise Data Ecosystem for Connected, Living Data</em>. Independent research whitepaper, Version 1.0.</p>
+<p><strong>BibTeX</strong></p>
+<pre><code class="language-bibtex">@techreport{jamshed2026dsp,
+  author      = {Jamshed, Ammar},
+  title       = {Data Swimming Pool: An Intelligent Enterprise Data
+                 Ecosystem for Connected, Living Data},
+  type        = {Independent Research Whitepaper},
+  institution = {Independent},
+  year        = {2026},
+  version     = {1.0},
+  note        = {Original conceptual framework. Not an industry standard.}
+}
+</code></pre>
+</div>
+<hr>
+<p><strong>Next:</strong> <a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary →</a></p>
+
+  </div>
+  <nav class="pager">
+      <a class="pg prev" href="/data-swimming-pool-whitepaper/part-5/41-conclusion/"><span>← Previous</span><b>41. Conclusion</b></a>
+      <a class="pg next" href="/data-swimming-pool-whitepaper/appendix/a-glossary/"><span>Next →</span><b>Appendix A — Glossary</b></a>
+    </nav>
+</article>
+  </main>
+
+  <aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav><a href="#42.1-foundations-of-data-management">42.1 Foundations of Data Management #</a><a href="#42.2-data-warehousing-and-dimensional-modelling">42.2 Data Warehousing and Dimensional Modelling #</a><a href="#42.3-data-lakes%2C-lakehouses%2C-and-open-table-formats">42.3 Data Lakes, Lakehouses, and Open Table Formats #</a><a href="#42.4-distributed-systems-theory">42.4 Distributed Systems Theory #</a><a href="#42.5-event-streaming-and-stream-processing">42.5 Event Streaming and Stream Processing #</a><a href="#42.6-complex-event-processing-and-event-sourcing">42.6 Complex Event Processing and Event Sourcing #</a><a href="#42.7-knowledge-graphs%2C-semantics%2C-and-graph-databases">42.7 Knowledge Graphs, Semantics, and Graph Databases #</a><a href="#42.8-machine-learning%2C-embeddings%2C-and-retrieval">42.8 Machine Learning, Embeddings, and Retrieval #</a><a href="#42.9-causal-inference-and-statistical-correctness">42.9 Causal Inference and Statistical Correctness #</a><a href="#42.10-entity-resolution-and-data-quality">42.10 Entity Resolution and Data Quality #</a><a href="#42.11-data-architecture-paradigms">42.11 Data Architecture Paradigms #</a><a href="#42.12-metadata%2C-lineage%2C-and-observability">42.12 Metadata, Lineage, and Observability #</a><a href="#42.13-governance%2C-privacy%2C-and-regulation">42.13 Governance, Privacy, and Regulation #</a><a href="#42.14-security">42.14 Security #</a><a href="#42.15-human-factors%2C-automation%2C-and-decision-support">42.15 Human Factors, Automation, and Decision Support #</a><a href="#42.16-domain-specific-sources">42.16 Domain-Specific Sources #</a><a href="#42.17-standards-and-specifications">42.17 Standards and Specifications #</a><a href="#42.18-citation-of-this-work">42.18 Citation of This Work #</a></nav>
+        <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>⤓ Download full PDF</a>
+        </div></aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <b>Data Swimming Pool</b>
+      <p>An Intelligent Enterprise Data Ecosystem for Connected, Living Data</p>
+      <p class="muted">An independent conceptual framework. Not an industry standard, not a product.</p>
+    </div>
+    <div>
+      <b>Read</b>
+      <a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here (simple version)</a>
+      <a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">Executive Summary</a>
+      <a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">Challenges &amp; Limitations</a>
+    </div>
+    <div>
+      <b>Get it</b>
+      <a href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
+      <a href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
+    </div>
+    <div>
+      <b>Author</b>
+      <a href="https://www.linkedin.com/in/ammarjamshed/" target="_blank" rel="noopener">Ammar Jamshed</a>
+      <p class="muted">Independent Data Scientist · AI Researcher</p>
+      <p class="muted">CC BY 4.0 · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.SITE_BASE="/data-swimming-pool-whitepaper";window.CURRENT="/data-swimming-pool-whitepaper/part-5/42-references/";</script>
+<script src="/data-swimming-pool-whitepaper/app.js" type="module"></script>
+</body>
+</html>
