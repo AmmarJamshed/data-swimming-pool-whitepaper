@@ -29,7 +29,7 @@ const AUTHOR = 'Ammar Jamshed';
 const PDF_NAME = 'data-swimming-pool-whitepaper.pdf';
 const GITHUB = 'https://github.com/AmmarJamshed/data-swimming-pool-whitepaper';
 const LINKEDIN = 'https://www.linkedin.com/in/ammarjamshed/';
-const ASSET_VERSION = '20260726-2';
+const ASSET_VERSION = '20260726-3';
 
 /* ------------------------------------------------------------------ */
 /* Part identity — each Part gets its own colour so readers always     */
@@ -268,7 +268,7 @@ function shell({ title, description, bodyClass, part, content, nav, toc, current
     <a class="pdfbtn" href="${BASE}/${PDF_NAME}" download>
       <span class="pdf-ico" aria-hidden="true">PDF</span>
       <span class="pdf-txt">Download PDF</span>
-      <span class="pdf-sub">55 pages · 7 MB</span>
+      <span class="pdf-sub">55 pages (333 pages) · 7 MB</span>
     </a>
   </div>
 </header>
@@ -410,7 +410,7 @@ function landing(items, nav) {
       <a class="btn ghost" href="${BASE}/part-1/01-executive-summary/">Executive summary</a>
     </div>
     <ul class="stats">
-      <li><b>55</b><span>pages</span></li>
+      <li><b>55</b><span>pages (333 pages)</span></li>
       <li><b>63</b><span>diagrams</span></li>
       <li><b>95</b><span>tables</span></li>
       <li><b>150</b><span>references</span></li>
@@ -453,7 +453,7 @@ function landing(items, nav) {
     <a class="tcard" href="${BASE}/part-4/29-banking/"><b>Industry scenarios</b><span>Banking, healthcare, manufacturing, retail, cybersecurity, and more.</span></a>
     <a class="tcard" href="${BASE}/part-2/14-correlation-engine/"><b>Architecture core</b><span>The Correlation Engine — the central design contribution.</span></a>
     <a class="tcard" href="${BASE}/part-5/39-challenges-and-limitations/"><b>Limitations</b><span>Fundamental constraints, failure modes, and when not to adopt.</span></a>
-    <a class="tcard" href="${BASE}/${PDF_NAME}" download><b>Print edition (PDF)</b><span>Typeset A4 edition — 55 pages, full-bleed cover.</span></a>
+    <a class="tcard" href="${BASE}/${PDF_NAME}" download><b>Print edition (PDF)</b><span>Typeset A4 edition — 55 pages (333 pages), full-bleed cover.</span></a>
   </div>
 </section>
 

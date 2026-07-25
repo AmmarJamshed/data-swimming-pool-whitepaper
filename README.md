@@ -76,7 +76,7 @@ Then jump to your industry story, or skim the Executive Summary.
 | **Classification**    | Public — Open Research Contribution                                          |
 | **Primary Audience**  | Chief Data Officers, Enterprise Architects, Data Platform Leaders, AI Researchers |
 | **Also useful for**   | Curious non-specialists — start with [the Simple Version](front-matter/start-here.md) |
-| **Extent**            | 55 pages · ~91,000 words · 63 figures · 95 tables · 150 references          |
+| **Extent**            | 55 pages (333 pages) · ~91,000 words · 63 figures · 95 tables · 150 references |
 | **Reading time**      | Simple path ≈ 10 min · Executive ≈ 25 min · Architect ≈ 4 hrs · Full ≈ 7 hrs |
 | **Live site**         | [livestockmon.gitbook.io/data-swimming-pool](https://livestockmon.gitbook.io/data-swimming-pool/) |
 | **Source**            | [github.com/AmmarJamshed/data-swimming-pool-whitepaper](https://github.com/AmmarJamshed/data-swimming-pool-whitepaper) |
