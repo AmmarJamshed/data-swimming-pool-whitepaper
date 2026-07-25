@@ -1,0 +1,517 @@
+/* =========================================================================
+   Data Swimming Pool — print stylesheet
+   Palette: deep petrol / hydro-teal on paper white, with a single copper
+   accent reserved for emphasis. Display face: Fraunces. Text: Public Sans.
+   ========================================================================= */
+
+:root {
+  --ink:            #10222b;
+  --ink-soft:       #3c5a67;
+  --ink-faint:      #7d97a3;
+  --rule:           #d7e3e8;
+  --rule-soft:      #eaf1f4;
+  --paper:          #ffffff;
+  --paper-tint:     #f6fafb;
+
+  --petrol:         #0c3b4d;
+  --petrol-deep:    #071f2b;
+  --hydro:          #1c8fb5;
+  --hydro-light:    #d6eef7;
+  --copper:         #b4623a;
+
+  --ok:             #2f7d5b;
+  --ok-tint:        #e8f5ee;
+  --warn:           #9a6b12;
+  --warn-tint:      #fdf4e0;
+  --stop:           #9e3345;
+  --stop-tint:      #fceef0;
+  --note-tint:      #eaf4f9;
+
+  --measure:        100%;
+}
+
+@page {
+  size: A4;
+  margin: 20mm 18mm 18mm 18mm;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Public Sans', -apple-system, 'Segoe UI', sans-serif;
+  font-size: 10.2pt;
+  line-height: 1.62;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'onum' 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* ------------------------------------------------------------------ */
+/* Sections                                                            */
+/* ------------------------------------------------------------------ */
+
+.chapter {
+  break-before: page;
+  page-break-before: always;
+}
+.chapter:first-of-type { break-before: avoid; page-break-before: avoid; }
+
+/* ---- Full-bleed print cover ---- */
+
+.print-cover {
+  position: relative;
+  break-after: page;
+  page-break-after: always;
+  width: 210mm;
+  height: 297mm;
+  margin: 0;
+  overflow: hidden;
+  background-image: var(--cover-image);
+  background-size: cover;
+  background-position: 50% 44%;
+  background-color: var(--petrol-deep);
+  color: #ffffff;
+}
+
+.pc-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(3,14,21,0.94) 0%,
+      rgba(3,14,21,0.86) 26%,
+      rgba(3,14,21,0.52) 44%,
+      rgba(3,14,21,0.30) 56%,
+      rgba(3,14,21,0.72) 74%,
+      rgba(3,14,21,0.95) 88%,
+      rgba(3,14,21,0.985) 100%),
+    radial-gradient(90% 50% at 12% 20%, rgba(28,143,181,0.30) 0%, rgba(28,143,181,0) 72%);
+}
+
+.pc-top {
+  position: absolute;
+  left: 20mm;
+  right: 20mm;
+  top: 24mm;
+}
+
+.pc-bottom {
+  position: absolute;
+  left: 20mm;
+  right: 20mm;
+  bottom: 20mm;
+}
+
+.pc-eyebrow {
+  font-size: 8pt;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: rgba(196, 231, 245, 0.82);
+  margin: 0 0 9mm;
+}
+
+.pc-brand {
+  font-family: 'Fraunces', Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: 58pt;
+  line-height: 0.94;
+  letter-spacing: -0.028em;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+}
+
+.pc-subtitle {
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 14.5pt;
+  line-height: 1.34;
+  font-weight: 400;
+  color: #bfe6f5;
+  max-width: 118mm;
+  margin: 8mm 0 0;
+}
+
+.print-cover .pc-rule {
+  width: 26mm;
+  height: 2.5px;
+  background: var(--hydro);
+  margin: 10mm 0 6mm;
+}
+
+.pc-author {
+  font-size: 12pt;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  margin: 0 0 1.5mm;
+}
+
+.pc-role {
+  font-size: 8.6pt;
+  line-height: 1.55;
+  color: rgba(206, 231, 242, 0.78);
+  margin: 0;
+}
+
+.pc-foot {
+  font-size: 7.8pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(196, 231, 245, 0.68);
+  margin: 7mm 0 0;
+  padding-top: 4mm;
+  border-top: 0.5px solid rgba(196, 231, 245, 0.26);
+}
+
+/* ---- Colophon (publication details) ---- */
+
+.colophon h2:first-of-type {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22pt;
+  font-weight: 600;
+  color: var(--petrol-deep);
+  margin: 0 0 6mm;
+  padding-bottom: 3.5mm;
+  border-bottom: 2.5px solid var(--hydro);
+}
+.colophon h3 {
+  font-size: 9.4pt;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+}
+.colophon table th { display: none; }
+.colophon table td:first-child { width: 34%; color: var(--petrol); font-weight: 600; }
+
+/* ---- Part dividers ---- */
+
+.part-divider {
+  break-before: page;
+  page-break-before: always;
+  height: 235mm;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background:
+    radial-gradient(120% 90% at 8% 12%, rgba(28,143,181,0.16) 0%, rgba(28,143,181,0) 62%),
+    linear-gradient(155deg, var(--petrol-deep) 0%, var(--petrol) 58%, #0a4c63 100%);
+  color: #ffffff;
+  padding: 0 18mm;
+  margin: 0 -18mm;
+}
+.part-divider .part-eyebrow {
+  font-size: 8.5pt;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(214, 238, 247, 0.72);
+  margin: 0 0 5mm;
+}
+.part-divider h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 34pt;
+  line-height: 1.08;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  max-width: 130mm;
+}
+
+/* ---- Table of contents ---- */
+
+.toc-page h1 { border: 0; padding-bottom: 0; }
+ul.toc { list-style: none; padding: 0; margin: 8mm 0 0; column-count: 2; column-gap: 12mm; }
+ul.toc li { break-inside: avoid; }
+.toc-part {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 11pt;
+  font-weight: 600;
+  color: var(--petrol);
+  margin: 6mm 0 2mm;
+  padding-bottom: 1.5mm;
+  border-bottom: 1px solid var(--rule);
+}
+.toc-chapter { font-size: 9.4pt; margin: 1.1mm 0; }
+.toc-chapter a { color: var(--ink-soft); text-decoration: none; }
+
+/* ------------------------------------------------------------------ */
+/* Typography                                                          */
+/* ------------------------------------------------------------------ */
+
+h1, h2, h3, h4, h5, h6 { break-after: avoid; page-break-after: avoid; }
+
+.chapter h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 25pt;
+  line-height: 1.12;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--petrol-deep);
+  margin: 0 0 7mm;
+  padding-bottom: 4mm;
+  border-bottom: 2.5px solid var(--hydro);
+}
+
+.chapter h2 {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 13pt;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: var(--petrol);
+  margin: 9mm 0 3mm;
+}
+
+.chapter h3 {
+  font-size: 11pt;
+  font-weight: 600;
+  color: var(--hydro);
+  margin: 6.5mm 0 2mm;
+}
+
+.chapter h4 {
+  font-size: 9.6pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--ink-soft);
+  margin: 5mm 0 1.6mm;
+}
+
+p { margin: 0 0 3.4mm; orphans: 3; widows: 3; }
+
+strong { font-weight: 600; color: var(--petrol-deep); }
+em { color: inherit; }
+
+a { color: var(--hydro); text-decoration: none; }
+.chapter a { border-bottom: 0.5px solid rgba(28,143,181,0.35); }
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--rule);
+  margin: 7mm 0;
+}
+
+blockquote {
+  margin: 5mm 0;
+  padding: 0 0 0 6mm;
+  border-left: 2.5px solid var(--hydro-light);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+ul, ol { margin: 0 0 3.4mm; padding-left: 5.5mm; }
+li { margin: 0 0 1.2mm; }
+li > ul, li > ol { margin-top: 1.2mm; }
+
+/* ------------------------------------------------------------------ */
+/* Code                                                                */
+/* ------------------------------------------------------------------ */
+
+code {
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 0.855em;
+  background: var(--paper-tint);
+  border: 0.5px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.4mm 1.1mm;
+  color: var(--petrol);
+}
+
+pre {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  background: var(--paper-tint);
+  border: 0.75px solid var(--rule);
+  border-left: 2.5px solid var(--hydro);
+  border-radius: 2px;
+  padding: 4mm 5mm;
+  margin: 4.5mm 0;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 7.6pt;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------------ */
+/* Tables                                                              */
+/* ------------------------------------------------------------------ */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 4.5mm 0 5mm;
+  font-size: 8.4pt;
+  line-height: 1.42;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+thead { display: table-header-group; }
+
+th {
+  background: var(--petrol);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 8pt;
+  letter-spacing: 0.02em;
+  text-align: left;
+  padding: 2.2mm 2.6mm;
+  border: 0;
+  vertical-align: bottom;
+}
+th:first-child { border-top-left-radius: 2px; }
+th:last-child  { border-top-right-radius: 2px; }
+
+td {
+  padding: 2mm 2.6mm;
+  border-bottom: 0.5px solid var(--rule-soft);
+  vertical-align: top;
+}
+
+tbody tr:nth-child(even) { background: var(--paper-tint); }
+tbody tr:last-child td { border-bottom: 1px solid var(--rule); }
+
+/* Table captions authored as an italic paragraph beginning "**Table n.**" */
+p > strong:first-child { }
+
+/* ------------------------------------------------------------------ */
+/* Figures and diagrams                                                */
+/* ------------------------------------------------------------------ */
+
+.mermaid-wrap {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin: 6mm 0 3mm;
+  padding: 5mm 4mm;
+  background:
+    linear-gradient(180deg, #fbfdfe 0%, #f4f9fb 100%);
+  border: 0.75px solid var(--rule);
+  border-radius: 3px;
+  text-align: center;
+}
+pre.mermaid {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+pre.mermaid svg {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  break-inside: avoid;
+}
+
+/* Figure / table caption paragraphs */
+.chapter p:has(> strong:first-child:where(:not(:only-child))) { }
+
+/* ------------------------------------------------------------------ */
+/* Callout boxes                                                       */
+/* ------------------------------------------------------------------ */
+
+.hint {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin: 5.5mm 0;
+  padding: 4mm 5mm 3mm;
+  border-radius: 3px;
+  border: 0.75px solid var(--rule);
+  border-left-width: 3px;
+  border-left-style: solid;
+  font-size: 9.5pt;
+}
+.hint > *:last-child { margin-bottom: 0; }
+
+.hint-label {
+  font-size: 7.6pt;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0 0 2mm;
+}
+
+.hint h1, .hint h2, .hint h3 {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 10.4pt;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0 0 2.5mm;
+  padding: 0;
+  border: 0;
+  color: inherit;
+}
+
+.hint-info    { background: var(--note-tint); border-left-color: var(--hydro);  border-color: #c3e0ee; }
+.hint-info .hint-label, .hint-info h1, .hint-info h2, .hint-info h3 { color: var(--petrol); }
+
+.hint-success { background: var(--ok-tint);   border-left-color: var(--ok);     border-color: #c8e6d6; }
+.hint-success .hint-label, .hint-success h1, .hint-success h2, .hint-success h3 { color: #205a41; }
+
+.hint-warning { background: var(--warn-tint); border-left-color: var(--copper); border-color: #edd9b6; }
+.hint-warning .hint-label, .hint-warning h1, .hint-warning h2, .hint-warning h3 { color: #7d4d17; }
+
+.hint-danger  { background: var(--stop-tint); border-left-color: var(--stop);   border-color: #eec6cd; }
+.hint-danger .hint-label, .hint-danger h1, .hint-danger h2, .hint-danger h3 { color: var(--stop); }
+
+.hint ul, .hint ol { padding-left: 5mm; }
+.hint code { background: rgba(255,255,255,0.65); }
+
+/* ------------------------------------------------------------------ */
+/* Centred blocks (cover, pull quotes)                                 */
+/* ------------------------------------------------------------------ */
+
+div[align='center'] {
+  text-align: center;
+  margin: 6mm 0;
+}
+div[align='center'] em {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 12pt;
+  color: var(--petrol);
+  line-height: 1.7;
+}
+div[align='center'] h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 20pt;
+  color: var(--petrol-deep);
+  margin: 0 0 2mm;
+}
+
+/* ------------------------------------------------------------------ */
+/* Screen preview (non-print)                                          */
+/* ------------------------------------------------------------------ */
+
+@media screen {
+  body {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 18mm;
+    box-shadow: 0 0 0 1px var(--rule-soft);
+  }
+  .part-divider { margin: 0; }
+}

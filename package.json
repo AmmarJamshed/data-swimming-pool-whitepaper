@@ -1,0 +1,25 @@
+{
+  "name": "data-swimming-pool-whitepaper",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Data Swimming Pool — An Intelligent Enterprise Data Ecosystem for Connected, Living Data",
+  "author": "Ammar Jamshed",
+  "license": "CC-BY-4.0",
+  "scripts": {
+    "build:html": "node build/build.mjs --html-only",
+    "build:pdf": "node build/build.mjs",
+    "build": "node build/build.mjs",
+    "index": "node build/gen-index.mjs",
+    "lint:links": "node build/check-links.mjs",
+    "lint:mermaid": "node build/check-mermaid.mjs",
+    "verify": "npm run index && npm run lint:links && npm run lint:mermaid"
+  },
+  "devDependencies": {
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-attrs": "^4.2.0",
+    "pdf-lib": "^1.17.1",
+    "puppeteer": "^23.0.0"
+  }
+}
