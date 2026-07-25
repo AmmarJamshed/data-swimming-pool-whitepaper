@@ -29,6 +29,7 @@ const AUTHOR = 'Ammar Jamshed';
 const PDF_NAME = 'data-swimming-pool-whitepaper.pdf';
 const GITHUB = 'https://github.com/AmmarJamshed/data-swimming-pool-whitepaper';
 const LINKEDIN = 'https://www.linkedin.com/in/ammarjamshed/';
+const ASSET_VERSION = '20260726-1';
 
 /* ------------------------------------------------------------------ */
 /* Part identity — each Part gets its own colour so readers always     */
@@ -239,7 +240,7 @@ function shell({ title, description, bodyClass, part, content, nav, toc, current
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${BASE}/styles.css">
+<link rel="stylesheet" href="${BASE}/styles.css?v=${ASSET_VERSION}">
 <style>:root{--part:${p.hue};--part2:${p.hue2};--part-tint:${p.tint}}</style>
 </head>
 <body class="${bodyClass || ''}">
@@ -355,13 +356,14 @@ ${content}
 </footer>
 
 <script>window.SITE_BASE=${JSON.stringify(BASE)};window.CURRENT=${JSON.stringify(current || '')};</script>
-<script src="${BASE}/app.js" type="module"></script>
+<script src="${BASE}/app.js?v=${ASSET_VERSION}" type="module"></script>
 </body>
 </html>`;
 }
 
 function buildNav(items, currentFile) {
   const home = `<a class="sb-home${currentFile ? '' : ' on'}" href="${BASE}/">Home</a>`;
+  const label = `<div class="sb-label"><span>Pages</span><span>${items.length}</span></div>`;
   const links = items
     .map((item, i) => {
       const active = item.file === currentFile ? ' class="on"' : '';
@@ -372,7 +374,7 @@ function buildNav(items, currentFile) {
       return `<a href="${urlFor(item.file)}"${active}><span class="sb-num">${num}</span><span class="sb-title">${esc(title)}</span></a>`;
     })
     .join('\n');
-  return `${home}<nav class="sb-flat" aria-label="Pages">${links}</nav>`;
+  return `${home}${label}<nav class="sb-flat" aria-label="Pages">${links}</nav>`;
 }
 
 /* ------------------------------------------------------------------ */
