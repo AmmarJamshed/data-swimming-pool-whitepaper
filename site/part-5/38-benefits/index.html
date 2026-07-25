@@ -34,6 +34,10 @@
   </div>
 
   <div class="topactions">
+    <button class="audiobtn" id="listenbtn" type="button" aria-haspopup="dialog" aria-controls="audioPanel">
+      <span class="audio-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      Listen
+    </button>
     <button class="iconbtn" id="themebtn" title="Toggle colour theme" aria-label="Toggle colour theme">Aa</button>
     <a class="ghost" href="https://github.com/AmmarJamshed/data-swimming-pool-whitepaper" target="_blank" rel="noopener">Source</a>
     <a class="pdfbtn" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>
@@ -47,38 +51,61 @@
 
 <div class="layout">
   <nav class="sidebar" id="sidebar" aria-label="Chapters">
-    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/">Home</a><details class="sb-group" style="--part:#1a6f86;--part2:#2489a3;--part-tint:#e8f3f6">
-  <summary>Overview<span class="sb-count">1</span></summary>
-  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/about/">About This Publication</a></div>
-</details>
-<details class="sb-group" style="--part:#1a6f86;--part2:#2489a3;--part-tint:#e8f3f6">
-  <summary>Front Matter<span class="sb-count">5</span></summary>
-  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/front-matter/start-here/">Start Here — The Simple Version</a><a href="/data-swimming-pool-whitepaper/front-matter/authors-note/">Author&#39;s Note</a><a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/">Disclaimer</a><a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/">How to Read This Whitepaper</a><a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/">Index of Figures and Tables</a></div>
-</details>
-<details class="sb-group" style="--part:#1a6f86;--part2:#2489a3;--part-tint:#e8f3f6">
-  <summary>Part I — Context and Motivation<span class="sb-count">7</span></summary>
-  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/">1. Executive Summary</a><a href="/data-swimming-pool-whitepaper/part-1/02-abstract/">2. Abstract</a><a href="/data-swimming-pool-whitepaper/part-1/03-introduction/">3. Introduction</a><a href="/data-swimming-pool-whitepaper/part-1/04-background/">4. Background</a><a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/">5. Current Challenges in Enterprise Data</a><a href="/data-swimming-pool-whitepaper/part-1/06-evolution/">6. Evolution of Enterprise Data Architecture</a><a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/">7. Why Another Architecture?</a></div>
-</details>
-<details class="sb-group" style="--part:#1a6f86;--part2:#2489a3;--part-tint:#e8f3f6">
-  <summary>Part II — The Data Swimming Pool<span class="sb-count">14</span></summary>
-  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/">8. Introducing Data Swimming Pool</a><a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/">9. Core Design Principles</a><a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/">10. System Architecture</a><a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/">11. Streaming Layer</a><a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/">12. Batch Layer</a><a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/">13. Data Ingestion Layer</a><a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/">14. Correlation Engine</a><a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/">15. Rules Engine</a><a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/">16. AI Insight Engine</a><a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/">17. Knowledge Graph Layer</a><a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/">18. Metadata and Data Lineage</a><a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/">19. Event Relationships</a><a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/">20. Autonomous Decision Support</a><a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/">21. Alert Generation</a></div>
-</details>
-<details class="sb-group" style="--part:#1a6f86;--part2:#2489a3;--part-tint:#e8f3f6">
-  <summary>Part III — Enterprise Qualities<span class="sb-count">7</span></summary>
-  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/">22. Enterprise Integration</a><a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/">23. Security Architecture</a><a href="/data-swimming-pool-whitepaper/part-3/24-privacy/">24. Privacy</a><a href="/data-swimming-pool-whitepaper/part-3/25-governance/">25. Governance</a><a href="/data-swimming-pool-whitepaper/part-3/26-scalability/">26. Scalability</a><a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/">27. High Availability</a><a href="/data-swimming-pool-whitepaper/part-3/28-performance/">28. Performance Considerations</a></div>
-</details>
-<details class="sb-group" style="--part:#1a6f86;--part2:#2489a3;--part-tint:#e8f3f6">
-  <summary>Part IV — Illustrative Enterprise Scenarios<span class="sb-count">9</span></summary>
-  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-4/29-banking/">29. Banking Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/">30. Healthcare Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/">31. Manufacturing Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/32-retail/">32. Retail Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/">33. Smart Cities Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/">34. Cybersecurity Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/35-government/">35. Government Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/">36. Telecommunications Use Case</a><a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/">36A. Insurance, Logistics, Energy and Aviation</a></div>
-</details>
-<details class="sb-group" open style="--part:#1a6f86;--part2:#2489a3;--part-tint:#e8f3f6">
-  <summary>Part V — Evaluation and Outlook<span class="sb-count">6</span></summary>
-  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/part-5/37-comparison/">37. Comparison with Existing Technologies</a><a href="/data-swimming-pool-whitepaper/part-5/38-benefits/" class="on">38. Benefits</a><a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/">39. Challenges and Limitations</a><a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/">40. Future Roadmap</a><a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/">41. Conclusion</a><a href="/data-swimming-pool-whitepaper/part-5/42-references/">42. References</a></div>
-</details>
-<details class="sb-group" style="--part:#1a6f86;--part2:#2489a3;--part-tint:#e8f3f6">
-  <summary>Appendices<span class="sb-count">6</span></summary>
-  <div class="sb-links"><a href="/data-swimming-pool-whitepaper/appendix/a-glossary/">Appendix A — Glossary</a><a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/">Appendix B — Reference Implementation Blueprint</a><a href="/data-swimming-pool-whitepaper/appendix/c-schemas/">Appendix C — Canonical Event and Correlation Schemas</a><a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/">Appendix D — Adoption Maturity Assessment</a><a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/">Appendix E — Full Disclaimer and Licensing</a><a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/">Appendix F — About the Author</a></div>
-</details></div>
+    <div class="sb-inner"><a class="sb-home" href="/data-swimming-pool-whitepaper/">Home</a><nav class="sb-flat" aria-label="Pages"><a href="/data-swimming-pool-whitepaper/about/"><span class="sb-num">01</span><span class="sb-title">About This Publication</span></a>
+<a href="/data-swimming-pool-whitepaper/front-matter/start-here/"><span class="sb-num">02</span><span class="sb-title">Start Here — The Simple Version</span></a>
+<a href="/data-swimming-pool-whitepaper/front-matter/authors-note/"><span class="sb-num">03</span><span class="sb-title">Author&#39;s Note</span></a>
+<a href="/data-swimming-pool-whitepaper/front-matter/disclaimer/"><span class="sb-num">04</span><span class="sb-title">Disclaimer</span></a>
+<a href="/data-swimming-pool-whitepaper/front-matter/how-to-read/"><span class="sb-num">05</span><span class="sb-title">How to Read This Whitepaper</span></a>
+<a href="/data-swimming-pool-whitepaper/front-matter/figures-and-tables/"><span class="sb-num">06</span><span class="sb-title">Index of Figures and Tables</span></a>
+<a href="/data-swimming-pool-whitepaper/part-1/01-executive-summary/"><span class="sb-num">07</span><span class="sb-title">Executive Summary</span></a>
+<a href="/data-swimming-pool-whitepaper/part-1/02-abstract/"><span class="sb-num">08</span><span class="sb-title">Abstract</span></a>
+<a href="/data-swimming-pool-whitepaper/part-1/03-introduction/"><span class="sb-num">09</span><span class="sb-title">Introduction</span></a>
+<a href="/data-swimming-pool-whitepaper/part-1/04-background/"><span class="sb-num">10</span><span class="sb-title">Background</span></a>
+<a href="/data-swimming-pool-whitepaper/part-1/05-current-challenges/"><span class="sb-num">11</span><span class="sb-title">Current Challenges in Enterprise Data</span></a>
+<a href="/data-swimming-pool-whitepaper/part-1/06-evolution/"><span class="sb-num">12</span><span class="sb-title">Evolution of Enterprise Data Architecture</span></a>
+<a href="/data-swimming-pool-whitepaper/part-1/07-why-another-architecture/"><span class="sb-num">13</span><span class="sb-title">Why Another Architecture?</span></a>
+<a href="/data-swimming-pool-whitepaper/part-2/08-introducing-dsp/"><span class="sb-num">14</span><span class="sb-title">Introducing Data Swimming Pool</span></a>
+<a href="/data-swimming-pool-whitepaper/part-2/09-core-design-principles/"><span class="sb-num">15</span><span class="sb-title">Core Design Principles</span></a>
+<a href="/data-swimming-pool-whitepaper/part-2/10-system-architecture/"><span class="sb-num">16</span><span class="sb-title">System Architecture</span></a>
+<a href="/data-swimming-pool-whitepaper/part-2/11-streaming-layer/"><span class="sb-num">17</span><span class="sb-title">Streaming Layer</span></a>
+<a href="/data-swimming-pool-whitepaper/part-2/12-batch-layer/"><span class="sb-num">18</span><span class="sb-title">Batch Layer</span></a>
+<a href="/data-swimming-pool-whitepaper/part-2/13-ingestion-layer/"><span class="sb-num">19</span><span class="sb-title">Data Ingestion Layer</span></a>
+<a href="/data-swimming-pool-whitepaper/part-2/14-correlation-engine/"><span class="sb-num">20</span><span class="sb-title">Correlation Engine</span></a>
+<a href="/data-swimming-pool-whitepaper/part-2/15-rules-engine/"><span class="sb-num">21</span><span class="sb-title">Rules Engine</span></a>
+<a href="/data-swimming-pool-whitepaper/part-2/16-ai-insight-engine/"><span class="sb-num">22</span><span class="sb-title">AI Insight Engine</span></a>
+<a href="/data-swimming-pool-whitepaper/part-2/17-knowledge-graph-layer/"><span class="sb-num">23</span><span class="sb-title">Knowledge Graph Layer</span></a>
+<a href="/data-swimming-pool-whitepaper/part-2/18-metadata-and-lineage/"><span class="sb-num">24</span><span class="sb-title">Metadata and Data Lineage</span></a>
+<a href="/data-swimming-pool-whitepaper/part-2/19-event-relationships/"><span class="sb-num">25</span><span class="sb-title">Event Relationships</span></a>
+<a href="/data-swimming-pool-whitepaper/part-2/20-autonomous-decision-support/"><span class="sb-num">26</span><span class="sb-title">Autonomous Decision Support</span></a>
+<a href="/data-swimming-pool-whitepaper/part-2/21-alert-generation/"><span class="sb-num">27</span><span class="sb-title">Alert Generation</span></a>
+<a href="/data-swimming-pool-whitepaper/part-3/22-enterprise-integration/"><span class="sb-num">28</span><span class="sb-title">Enterprise Integration</span></a>
+<a href="/data-swimming-pool-whitepaper/part-3/23-security-architecture/"><span class="sb-num">29</span><span class="sb-title">Security Architecture</span></a>
+<a href="/data-swimming-pool-whitepaper/part-3/24-privacy/"><span class="sb-num">30</span><span class="sb-title">Privacy</span></a>
+<a href="/data-swimming-pool-whitepaper/part-3/25-governance/"><span class="sb-num">31</span><span class="sb-title">Governance</span></a>
+<a href="/data-swimming-pool-whitepaper/part-3/26-scalability/"><span class="sb-num">32</span><span class="sb-title">Scalability</span></a>
+<a href="/data-swimming-pool-whitepaper/part-3/27-high-availability/"><span class="sb-num">33</span><span class="sb-title">High Availability</span></a>
+<a href="/data-swimming-pool-whitepaper/part-3/28-performance/"><span class="sb-num">34</span><span class="sb-title">Performance Considerations</span></a>
+<a href="/data-swimming-pool-whitepaper/part-4/29-banking/"><span class="sb-num">35</span><span class="sb-title">Banking Use Case</span></a>
+<a href="/data-swimming-pool-whitepaper/part-4/30-healthcare/"><span class="sb-num">36</span><span class="sb-title">Healthcare Use Case</span></a>
+<a href="/data-swimming-pool-whitepaper/part-4/31-manufacturing/"><span class="sb-num">37</span><span class="sb-title">Manufacturing Use Case</span></a>
+<a href="/data-swimming-pool-whitepaper/part-4/32-retail/"><span class="sb-num">38</span><span class="sb-title">Retail Use Case</span></a>
+<a href="/data-swimming-pool-whitepaper/part-4/33-smart-cities/"><span class="sb-num">39</span><span class="sb-title">Smart Cities Use Case</span></a>
+<a href="/data-swimming-pool-whitepaper/part-4/34-cybersecurity/"><span class="sb-num">40</span><span class="sb-title">Cybersecurity Use Case</span></a>
+<a href="/data-swimming-pool-whitepaper/part-4/35-government/"><span class="sb-num">41</span><span class="sb-title">Government Use Case</span></a>
+<a href="/data-swimming-pool-whitepaper/part-4/36-telecommunications/"><span class="sb-num">42</span><span class="sb-title">Telecommunications Use Case</span></a>
+<a href="/data-swimming-pool-whitepaper/part-4/36a-additional-sectors/"><span class="sb-num">43</span><span class="sb-title">Insurance, Logistics, Energy and Aviation</span></a>
+<a href="/data-swimming-pool-whitepaper/part-5/37-comparison/"><span class="sb-num">44</span><span class="sb-title">Comparison with Existing Technologies</span></a>
+<a href="/data-swimming-pool-whitepaper/part-5/38-benefits/" class="on"><span class="sb-num">45</span><span class="sb-title">Benefits</span></a>
+<a href="/data-swimming-pool-whitepaper/part-5/39-challenges-and-limitations/"><span class="sb-num">46</span><span class="sb-title">Challenges and Limitations</span></a>
+<a href="/data-swimming-pool-whitepaper/part-5/40-future-roadmap/"><span class="sb-num">47</span><span class="sb-title">Future Roadmap</span></a>
+<a href="/data-swimming-pool-whitepaper/part-5/41-conclusion/"><span class="sb-num">48</span><span class="sb-title">Conclusion</span></a>
+<a href="/data-swimming-pool-whitepaper/part-5/42-references/"><span class="sb-num">49</span><span class="sb-title">References</span></a>
+<a href="/data-swimming-pool-whitepaper/appendix/a-glossary/"><span class="sb-num">50</span><span class="sb-title">Appendix A — Glossary</span></a>
+<a href="/data-swimming-pool-whitepaper/appendix/b-reference-implementation/"><span class="sb-num">51</span><span class="sb-title">Appendix B — Reference Implementation Blueprint</span></a>
+<a href="/data-swimming-pool-whitepaper/appendix/c-schemas/"><span class="sb-num">52</span><span class="sb-title">Appendix C — Canonical Event and Correlation Schemas</span></a>
+<a href="/data-swimming-pool-whitepaper/appendix/d-maturity-assessment/"><span class="sb-num">53</span><span class="sb-title">Appendix D — Adoption Maturity Assessment</span></a>
+<a href="/data-swimming-pool-whitepaper/appendix/e-disclaimer/"><span class="sb-num">54</span><span class="sb-title">Appendix E — Full Disclaimer and Licensing</span></a>
+<a href="/data-swimming-pool-whitepaper/appendix/f-about-the-author/"><span class="sb-num">55</span><span class="sb-title">Appendix F — About the Author</span></a></nav></div>
   </nav>
   <div class="scrim" id="scrim"></div>
 
@@ -347,6 +374,46 @@
         <a class="rail-pdf" href="/data-swimming-pool-whitepaper/data-swimming-pool-whitepaper.pdf" download>Download PDF</a>
         </div></aside>
 </div>
+
+<section class="audio-panel" id="audioPanel" role="dialog" aria-labelledby="audioTitle" hidden>
+  <div class="audio-head">
+    <div>
+      <p class="audio-kicker">Text-to-speech</p>
+      <h2 id="audioTitle">Audio reader</h2>
+    </div>
+    <button class="audio-close" id="audioClose" type="button" aria-label="Close audio reader">Close</button>
+  </div>
+  <p class="audio-intro">Listen to this chapter or continue through the complete whitepaper using a voice installed on your device.</p>
+  <div class="audio-fields">
+    <label>Reading selection
+      <select id="audioScope">
+        <option value="current">Current chapter</option>
+        <option value="full">Complete whitepaper</option>
+      </select>
+    </label>
+    <label>Voice
+      <select id="audioVoice" aria-label="Narrator voice"></select>
+    </label>
+    <label>Speed
+      <select id="audioRate" aria-label="Reading speed">
+        <option value="0.8">0.8×</option>
+        <option value="1" selected>1.0×</option>
+        <option value="1.2">1.2×</option>
+        <option value="1.5">1.5×</option>
+        <option value="1.8">1.8×</option>
+      </select>
+    </label>
+  </div>
+  <div class="audio-controls">
+    <button class="audio-primary" id="audioPlay" type="button">Start reading</button>
+    <button id="audioPause" type="button" disabled>Pause</button>
+    <button id="audioStop" type="button" disabled>Stop</button>
+  </div>
+  <div class="audio-progress" aria-hidden="true"><i id="audioBar"></i></div>
+  <p class="audio-status" id="audioStatus" aria-live="polite">Ready to read.</p>
+  <p class="audio-note">Audio is generated by your browser. Keep this tab open while listening. Voice availability varies by device.</p>
+</section>
+<div class="audio-backdrop" id="audioBackdrop" hidden></div>
 
 <footer class="foot">
   <div class="foot-grid">

@@ -28,7 +28,7 @@ burger?.addEventListener('click', () => {
   burger.setAttribute('aria-expanded', String(open));
 });
 $('#scrim')?.addEventListener('click', closeNav);
-$$('.sb-links a').forEach((a) => a.addEventListener('click', closeNav));
+$$('.sb-flat a, .sb-links a').forEach((a) => a.addEventListener('click', closeNav));
 
 // Keep the active sidebar entry in view on load.
 requestAnimationFrame(() => {
@@ -265,3 +265,264 @@ document.addEventListener('click', (e) => {
   if (svg) openBox(svg);
 });
 addEventListener('keydown', (e) => { if (e.key === 'Escape') closeBox(); });
+
+/* ------------------------------------------------------- audio reader -- */
+
+const listenBtn = $('#listenbtn');
+const audioPanel = $('#audioPanel');
+const audioBackdrop = $('#audioBackdrop');
+const audioClose = $('#audioClose');
+const audioScope = $('#audioScope');
+const audioVoice = $('#audioVoice');
+const audioRate = $('#audioRate');
+const audioPlay = $('#audioPlay');
+const audioPause = $('#audioPause');
+const audioStop = $('#audioStop');
+const audioStatus = $('#audioStatus');
+const audioBar = $('#audioBar');
+const synth = window.speechSynthesis;
+
+let audioData;
+let audioQueue = [];
+let audioPosition = 0;
+let audioSession = 0;
+let audioIsPlaying = false;
+let audioIsPaused = false;
+
+function openAudio() {
+  audioPanel.hidden = false;
+  audioBackdrop.hidden = false;
+  document.body.classList.add('audio-open');
+  audioClose.focus();
+}
+
+function closeAudio() {
+  audioPanel.hidden = true;
+  audioBackdrop.hidden = true;
+  document.body.classList.remove('audio-open');
+  listenBtn?.focus();
+}
+
+listenBtn?.addEventListener('click', openAudio);
+audioClose?.addEventListener('click', closeAudio);
+audioBackdrop?.addEventListener('click', closeAudio);
+addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && audioPanel && !audioPanel.hidden) closeAudio();
+});
+
+function populateVoices() {
+  if (!synth || !audioVoice) return;
+  const voices = synth.getVoices()
+    .filter((voice) => voice.lang?.toLowerCase().startsWith('en'))
+    .sort((a, b) => Number(b.default) - Number(a.default) || a.name.localeCompare(b.name));
+  const previous = localStorage.getItem('dsp-audio-voice');
+  audioVoice.innerHTML = voices
+    .map((voice, i) => `<option value="${escapeHtml(voice.name)}"${voice.name === previous || (!previous && i === 0) ? ' selected' : ''}>${escapeHtml(voice.name)} · ${escapeHtml(voice.lang)}</option>`)
+    .join('');
+}
+
+if (synth) {
+  populateVoices();
+  speechSynthesis.addEventListener?.('voiceschanged', populateVoices);
+} else if (listenBtn) {
+  listenBtn.disabled = true;
+  listenBtn.title = 'Audio reading is not supported by this browser';
+}
+
+audioVoice?.addEventListener('change', () => localStorage.setItem('dsp-audio-voice', audioVoice.value));
+audioRate?.addEventListener('change', () => localStorage.setItem('dsp-audio-rate', audioRate.value));
+if (audioRate && localStorage.getItem('dsp-audio-rate')) {
+  audioRate.value = localStorage.getItem('dsp-audio-rate');
+}
+
+async function loadAudioData() {
+  if (audioData) return audioData;
+  const response = await fetch(`${BASE}/audio-index.json`);
+  if (!response.ok) throw new Error(`Audio text could not be loaded (${response.status})`);
+  audioData = await response.json();
+  return audioData;
+}
+
+function splitForSpeech(text, limit = 1100) {
+  const sentences = text.match(/[^.!?]+(?:[.!?]+|$)/g) || [text];
+  const chunks = [];
+  let chunk = '';
+
+  const add = (piece) => {
+    const clean = piece.trim();
+    if (!clean) return;
+    if ((chunk + ' ' + clean).trim().length <= limit) {
+      chunk = (chunk + ' ' + clean).trim();
+      return;
+    }
+    if (chunk) chunks.push(chunk);
+    chunk = '';
+    if (clean.length <= limit) {
+      chunk = clean;
+      return;
+    }
+    const words = clean.split(/\s+/);
+    for (const word of words) {
+      if ((chunk + ' ' + word).trim().length > limit) {
+        if (chunk) chunks.push(chunk);
+        chunk = word;
+      } else {
+        chunk = (chunk + ' ' + word).trim();
+      }
+    }
+  };
+
+  sentences.forEach(add);
+  if (chunk) chunks.push(chunk);
+  return chunks;
+}
+
+function currentAudioEntry(data) {
+  const current = (window.CURRENT || location.pathname).replace(/\/+$/, '/');
+  return data.find((item) => item.u.replace(/\/+$/, '/') === current);
+}
+
+function setAudioStatus(message) {
+  if (audioStatus) audioStatus.textContent = message;
+}
+
+function resetAudioControls() {
+  audioIsPlaying = false;
+  audioIsPaused = false;
+  audioPlay.textContent = 'Start reading';
+  audioPause.textContent = 'Pause';
+  audioPause.disabled = true;
+  audioStop.disabled = true;
+}
+
+function stopAudio({ reset = true } = {}) {
+  audioSession += 1;
+  synth?.cancel();
+  audioQueue = [];
+  audioPosition = 0;
+  if (audioBar) audioBar.style.width = '0%';
+  if (reset) setAudioStatus('Ready to read.');
+  resetAudioControls();
+}
+
+function selectedVoice() {
+  return synth?.getVoices().find((voice) => voice.name === audioVoice?.value);
+}
+
+function updateAudioProgress(item) {
+  const percent = audioQueue.length ? Math.round((audioPosition / audioQueue.length) * 100) : 0;
+  if (audioBar) audioBar.style.width = `${percent}%`;
+  const chapter = item.chapterTotal > 1
+    ? `Chapter ${item.chapterNumber} of ${item.chapterTotal} · `
+    : '';
+  setAudioStatus(`${chapter}${item.title} · ${percent}%`);
+}
+
+function speakAudioChunk(session) {
+  if (session !== audioSession || !audioIsPlaying) return;
+  if (audioPosition >= audioQueue.length) {
+    if (audioBar) audioBar.style.width = '100%';
+    setAudioStatus('Reading complete.');
+    resetAudioControls();
+    return;
+  }
+
+  const item = audioQueue[audioPosition];
+  updateAudioProgress(item);
+  const utterance = new SpeechSynthesisUtterance(item.text);
+  utterance.rate = Number(audioRate?.value || 1);
+  const voice = selectedVoice();
+  if (voice) {
+    utterance.voice = voice;
+    utterance.lang = voice.lang;
+  } else {
+    utterance.lang = 'en';
+  }
+  utterance.onend = () => {
+    if (session !== audioSession) return;
+    audioPosition += 1;
+    speakAudioChunk(session);
+  };
+  utterance.onerror = (event) => {
+    if (session !== audioSession || event.error === 'interrupted' || event.error === 'canceled') return;
+    setAudioStatus(`Audio reader stopped: ${event.error}.`);
+    resetAudioControls();
+  };
+  synth.speak(utterance);
+}
+
+async function startAudio() {
+  if (!synth) {
+    setAudioStatus('This browser does not support text-to-speech.');
+    return;
+  }
+  if (audioIsPaused) {
+    synth.resume();
+    audioIsPaused = false;
+    audioPause.textContent = 'Pause';
+    audioPlay.textContent = 'Restart';
+    setAudioStatus(audioQueue[audioPosition]?.title || 'Reading resumed.');
+    return;
+  }
+
+  audioPlay.disabled = true;
+  setAudioStatus('Preparing the manuscript…');
+  try {
+    const data = await loadAudioData();
+    const current = currentAudioEntry(data);
+    let selection;
+    if (audioScope.value === 'current') {
+      if (!current) {
+        audioScope.value = 'full';
+        selection = data;
+      } else {
+        selection = [current];
+      }
+    } else {
+      selection = data;
+    }
+
+    stopAudio({ reset: false });
+    const chapterTotal = selection.length;
+    audioQueue = selection.flatMap((entry, chapterIndex) =>
+      splitForSpeech(`${entry.t}. ${entry.x}`).map((text) => ({
+        text,
+        title: entry.t,
+        chapterNumber: chapterIndex + 1,
+        chapterTotal,
+      }))
+    );
+
+    if (!audioQueue.length) throw new Error('No readable text was found');
+    audioPosition = 0;
+    audioIsPlaying = true;
+    audioIsPaused = false;
+    audioPlay.textContent = 'Restart';
+    audioPause.disabled = false;
+    audioStop.disabled = false;
+    audioSession += 1;
+    speakAudioChunk(audioSession);
+  } catch (error) {
+    setAudioStatus(error.message || 'The audio reader could not start.');
+    resetAudioControls();
+  } finally {
+    audioPlay.disabled = false;
+  }
+}
+
+audioPlay?.addEventListener('click', startAudio);
+audioPause?.addEventListener('click', () => {
+  if (!audioIsPlaying) return;
+  if (audioIsPaused) {
+    synth.resume();
+    audioIsPaused = false;
+    audioPause.textContent = 'Pause';
+    setAudioStatus(audioQueue[audioPosition]?.title || 'Reading resumed.');
+  } else {
+    synth.pause();
+    audioIsPaused = true;
+    audioPause.textContent = 'Resume';
+    setAudioStatus('Reading paused.');
+  }
+});
+audioStop?.addEventListener('click', () => stopAudio());
