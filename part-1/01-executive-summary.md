@@ -2,6 +2,18 @@
 
 ---
 
+{% hint style="success" %}
+### Plain English (30 seconds)
+
+Companies are great at **keeping** data. They are bad at **connecting** it across teams.
+
+So fraud clues, customer distress signals, machine warnings, and security events often sit in separate systems until a human stitches them together — usually too late.
+
+**Data Swimming Pool** is a proposed design where the platform itself keeps finding those connections, scores how sure it is, shows its evidence, and helps people (or carefully, machines) act.
+
+New to this topic? Read [Start Here — The Simple Version](../front-matter/start-here.md) first.
+{% endhint %}
+
 ## 1.1 The Central Problem
 
 Enterprises have solved data storage. They have not solved data *connection*.
@@ -24,6 +36,18 @@ This whitepaper introduces **Data Swimming Pool**, an original conceptual framew
 ### Definition — Data Swimming Pool
 
 A **Data Swimming Pool** is a governed enterprise data ecosystem in which heterogeneous batch and streaming sources are continuously ingested into a shared, instrumented medium where they interact, correlate, and enrich one another, producing a persistent and queryable graph of event relationships from which insights, alerts, predictions, recommendations, and bounded autonomous actions are generated in a lineage-traceable and policy-governed manner.
+{% endhint %}
+
+{% hint style="success" %}
+### Same definition, shorter words
+
+A **Data Swimming Pool** is a shared data system that:
+
+1. Takes in data from many places (live streams and historical loads)
+2. Keeps asking “what belongs together?”
+3. Saves those connections with confidence scores and rules
+4. Turns them into alerts, recommendations, and carefully limited automatic actions
+5. Always shows *why* it reached that conclusion
 {% endhint %}
 
 The name is chosen deliberately. A **lake** is a passive reservoir: things are placed in it and remain still. A **swimming pool** is an engineered, circulating, continuously maintained volume: it is filtered, chemically balanced, temperature-controlled, monitored, and — critically — its contents *move and interact*. The metaphor is not decorative. It encodes the central architectural claim: that the medium in which enterprise data sits should be active, instrumented, and self-maintaining rather than inert.

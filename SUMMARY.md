@@ -4,6 +4,7 @@
 
 ## Front Matter
 
+* [Start Here — The Simple Version](front-matter/start-here.md)
 * [Author's Note](front-matter/authors-note.md)
 * [Disclaimer](front-matter/disclaimer.md)
 * [How to Read This Whitepaper](front-matter/how-to-read.md)
