@@ -37,40 +37,40 @@ const LINKEDIN = 'https://www.linkedin.com/in/ammarjamshed/';
 
 const PARTS = {
   Overview: {
-    key: 'ovw', hue: '#0e6a86', hue2: '#1ba0bd', tint: '#e6f4f9',
-    icon: '📘', blurb: 'Publication details, citation, licence, and how the document is put together.',
+    key: 'ovw', hue: '#1a6f86', hue2: '#2489a3', tint: '#e8f3f6',
+    label: '00', blurb: 'Publication details, citation, licence, and document structure.',
   },
   'Front Matter': {
-    key: 'front', hue: '#0e8ba8', hue2: '#28c2d8', tint: '#e6f7fb',
-    icon: '🧭', blurb: 'Orientation, plain-English tour, and the disclaimers that frame everything else.',
+    key: 'front', hue: '#1a6f86', hue2: '#2489a3', tint: '#e8f3f6',
+    label: 'FM', blurb: 'Orientation, plain-language introduction, and framing disclaimers.',
   },
   'Part I — Context and Motivation': {
-    key: 'p1', hue: '#5b52d6', hue2: '#8b7bf0', tint: '#eeecfd',
-    icon: '🔍', blurb: 'Why six decades of data architecture still leave one gap wide open.',
+    key: 'p1', hue: '#1a6f86', hue2: '#2489a3', tint: '#e8f3f6',
+    label: 'I', blurb: 'Why six decades of enterprise data architecture still leave a structural gap.',
   },
   'Part II — The Data Swimming Pool': {
-    key: 'p2', hue: '#0b8ea3', hue2: '#22c1d6', tint: '#e4f7fa',
-    icon: '🏊', blurb: 'The proposed architecture, layer by layer — the core of the whitepaper.',
+    key: 'p2', hue: '#1a6f86', hue2: '#2489a3', tint: '#e8f3f6',
+    label: 'II', blurb: 'The proposed architecture, specified layer by layer.',
   },
   'Part III — Enterprise Qualities': {
-    key: 'p3', hue: '#0f8a5f', hue2: '#2fbd85', tint: '#e6f7ef',
-    icon: '🛡️', blurb: 'Security, privacy, governance, scale, availability, and performance.',
+    key: 'p3', hue: '#1a6f86', hue2: '#2489a3', tint: '#e8f3f6',
+    label: 'III', blurb: 'Security, privacy, governance, scale, availability, and performance.',
   },
   'Part IV — Illustrative Enterprise Scenarios': {
-    key: 'p4', hue: '#c2701c', hue2: '#eda03f', tint: '#fdf2e3',
-    icon: '🏭', blurb: 'Twelve synthetic industry stories, from banking to aviation.',
+    key: 'p4', hue: '#1a6f86', hue2: '#2489a3', tint: '#e8f3f6',
+    label: 'IV', blurb: 'Synthetic industry scenarios from banking to aviation.',
   },
   'Part V — Evaluation and Outlook': {
-    key: 'p5', hue: '#c2445f', hue2: '#e8748c', tint: '#fdeef1',
-    icon: '⚖️', blurb: 'How it compares, what it promises, where it breaks, and what comes next.',
+    key: 'p5', hue: '#1a6f86', hue2: '#2489a3', tint: '#e8f3f6',
+    label: 'V', blurb: 'Comparison, benefits, limitations, and research roadmap.',
   },
   Appendices: {
-    key: 'apx', hue: '#7b4fc9', hue2: '#a681e6', tint: '#f2ecfd',
-    icon: '📎', blurb: 'Glossary, blueprint, schemas, readiness assessment, licensing, author.',
+    key: 'apx', hue: '#1a6f86', hue2: '#2489a3', tint: '#e8f3f6',
+    label: 'A', blurb: 'Glossary, reference blueprint, schemas, maturity assessment, and licensing.',
   },
 };
 
-const DEFAULT_PART = { key: 'front', hue: '#0e8ba8', hue2: '#28c2d8', tint: '#e6f7fb', icon: '📄', blurb: '' };
+const DEFAULT_PART = { key: 'front', hue: '#1a6f86', hue2: '#2489a3', tint: '#e8f3f6', label: '', blurb: '' };
 
 /* ------------------------------------------------------------------ */
 /* Read the table of contents                                          */
@@ -103,10 +103,10 @@ const urlFor = (file) => `${BASE}/${slugForFile(file)}/`;
 /* ------------------------------------------------------------------ */
 
 const HINTS = {
-  info: { label: 'Note', icon: 'i' },
-  success: { label: 'In plain English', icon: '✓' },
-  warning: { label: 'Important', icon: '!' },
-  danger: { label: 'Read this carefully', icon: '!' },
+  info: { label: 'Definition' },
+  success: { label: 'Plain language' },
+  warning: { label: 'Caution' },
+  danger: { label: 'Illustrative only' },
 };
 
 function preprocess(md, file) {
@@ -121,7 +121,7 @@ function preprocess(md, file) {
       const hasHeading = /^#{1,6}\s/.test(inner);
       const head = hasHeading
         ? ''
-        : `<p class="cal-label"><span class="cal-dot">${HINTS[s].icon}</span>${HINTS[s].label}</p>\n\n`;
+        : `<p class="cal-label">${HINTS[s].label}</p>\n\n`;
       return `\n<div class="cal cal-${s}">\n\n${head}${inner}\n\n</div>\n`;
     }
   );
@@ -211,7 +211,7 @@ function shell({ title, description, bodyClass, part, content, nav, toc, current
 <meta property="og:image" content="${BASE}/assets/cover-illustration.png">
 <meta property="og:type" content="article">
 <meta name="theme-color" content="#062a38">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%230a2a36'/%3E%3Cpath d='M8 20c3-6 13-6 16 0' fill='none' stroke='%232489a3' stroke-width='2.2'/%3E%3Ccircle cx='16' cy='14' r='2.2' fill='%23e8f3f6'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -224,20 +224,20 @@ function shell({ title, description, bodyClass, part, content, nav, toc, current
 <header class="topbar">
   <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
   <a class="brand" href="${BASE}/">
-    <span class="brand-mark" aria-hidden="true">🏊</span>
-    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · v1.0</i></span>
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-text"><b>Data Swimming Pool</b><i>Whitepaper · Version 1.0</i></span>
   </a>
 
   <div class="searchwrap">
-    <input id="q" type="search" placeholder="Search the whitepaper…  (press /)" autocomplete="off" aria-label="Search">
+    <input id="q" type="search" placeholder="Search chapters, terms, topics…" autocomplete="off" aria-label="Search">
     <div id="results" class="results" hidden></div>
   </div>
 
   <div class="topactions">
-    <button class="iconbtn" id="themebtn" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
-    <a class="ghost" href="${GITHUB}" target="_blank" rel="noopener">GitHub</a>
+    <button class="iconbtn" id="themebtn" title="Toggle colour theme" aria-label="Toggle colour theme">Aa</button>
+    <a class="ghost" href="${GITHUB}" target="_blank" rel="noopener">Source</a>
     <a class="pdfbtn" href="${BASE}/${PDF_NAME}" download>
-      <span class="pdf-ico" aria-hidden="true">⤓</span>
+      <span class="pdf-ico" aria-hidden="true">PDF</span>
       <span class="pdf-txt">Download PDF</span>
       <span class="pdf-sub">333 pages · 7 MB</span>
     </a>
@@ -299,7 +299,7 @@ function buildNav(items, currentFile) {
     if (!g) { g = { name: it.group, items: [] }; groups.push(g); }
     g.items.push(it);
   }
-  const home = `<a class="sb-home${currentFile ? '' : ' on'}" href="${BASE}/"><span>🏠</span>Home</a>`;
+  const home = `<a class="sb-home${currentFile ? '' : ' on'}" href="${BASE}/">Home</a>`;
   return home + groups
     .map((g) => {
       const p = PARTS[g.name] || DEFAULT_PART;
@@ -311,7 +311,7 @@ function buildNav(items, currentFile) {
         })
         .join('');
       return `<details class="sb-group"${open} style="--part:${p.hue};--part2:${p.hue2};--part-tint:${p.tint}">
-  <summary><span class="sb-ico">${p.icon}</span>${esc(g.name)}<span class="sb-count">${g.items.length}</span></summary>
+  <summary>${esc(g.name)}<span class="sb-count">${g.items.length}</span></summary>
   <div class="sb-links">${links}</div>
 </details>`;
     })
@@ -330,10 +330,10 @@ function landing(items, nav) {
       const list = items.filter((i) => i.group === name);
       const first = list[0];
       return `<a class="pcard" href="${urlFor(first.file)}" style="--part:${p.hue};--part2:${p.hue2};--part-tint:${p.tint}">
-  <span class="pcard-ico">${p.icon}</span>
+  <span class="pcard-kicker">Section ${esc(p.label || '—')}</span>
   <h3>${esc(name)}</h3>
   <p>${esc(p.blurb)}</p>
-  <span class="pcard-meta">${list.length} chapter${list.length > 1 ? 's' : ''} <b>→</b></span>
+  <span class="pcard-meta">${list.length} chapter${list.length > 1 ? 's' : ''}</span>
 </a>`;
     })
     .join('\n');
@@ -344,10 +344,10 @@ function landing(items, nav) {
     <p class="eyebrow">Independent research whitepaper · Version 1.0</p>
     <h1>Data<br>Swimming Pool</h1>
     <p class="lede">${SUBTITLE}</p>
-    <p class="byline">by <a href="${LINKEDIN}" target="_blank" rel="noopener">Ammar Jamshed</a> · Independent Data Scientist &amp; AI Researcher</p>
+    <p class="byline">Ammar Jamshed · Independent Data Scientist &amp; AI Researcher</p>
     <div class="cta">
-      <a class="btn primary" href="${BASE}/front-matter/start-here/">Start here — the simple version</a>
-      <a class="btn solid" href="${BASE}/${PDF_NAME}" download>⤓ Download PDF</a>
+      <a class="btn primary" href="${BASE}/front-matter/start-here/">Begin with the overview</a>
+      <a class="btn solid" href="${BASE}/${PDF_NAME}" download>Download PDF</a>
       <a class="btn ghost" href="${BASE}/part-1/01-executive-summary/">Executive summary</a>
     </div>
     <ul class="stats">
@@ -359,7 +359,7 @@ function landing(items, nav) {
     </ul>
   </div>
   <div class="hero-art">
-    <img src="${BASE}/assets/cover-illustration.png" alt="Data flowing into a luminous pool containing an interconnected knowledge graph">
+    <img src="${BASE}/assets/cover-illustration.png" alt="Abstract visualisation of connected enterprise data flowing into a governed pool">
   </div>
 </section>
 
@@ -367,35 +367,35 @@ function landing(items, nav) {
   <div class="pitch-item">
     <span class="pitch-num">01</span>
     <h3>The problem</h3>
-    <p>Organisations store data brilliantly and <b>connect</b> it badly. The clue that predicted the fraud, the failure, or the churn already exists — in four different systems, noticed by nobody.</p>
+    <p>Enterprises store data well and connect it poorly. The signal that predicted fraud, failure, or churn often already exists — distributed across systems that never meet in time.</p>
   </div>
   <div class="pitch-item">
     <span class="pitch-num">02</span>
-    <h3>The idea</h3>
-    <p>A data lake <b>stores</b>. A Data Swimming Pool <b>connects</b>: relationships between events become saved, scored, governed assets instead of one-off spreadsheet joins.</p>
+    <h3>The proposal</h3>
+    <p>A data lake stores. A Data Swimming Pool connects: relationships between events become durable, scored, and policy-governed assets of the platform itself.</p>
   </div>
   <div class="pitch-item">
     <span class="pitch-num">03</span>
-    <h3>The honesty</h3>
-    <p>This is a <b>proposed design</b>, not a product and not an industry standard. A whole chapter is devoted to why you might reasonably decide <b>not</b> to build it.</p>
+    <h3>The posture</h3>
+    <p>This is an original conceptual architecture for research and critique — not a product, and not an industry standard. Limitations are treated as first-class content.</p>
   </div>
 </section>
 
 <section class="section">
-  <h2 class="sec-title">Explore by part</h2>
-  <p class="sec-sub">Each part has its own colour throughout the site, so you always know where you are.</p>
+  <h2 class="sec-title">Document structure</h2>
+  <p class="sec-sub">Navigate by part. Each chapter is self-contained and linked to the next.</p>
   <div class="pgrid">${cards}</div>
 </section>
 
 <section class="section">
-  <h2 class="sec-title">Not sure where to begin?</h2>
+  <h2 class="sec-title">Recommended entry points</h2>
   <div class="tgrid">
-    <a class="tcard" href="${BASE}/front-matter/start-here/"><b>I'm not technical</b><span>An 8-minute plain-English tour with no jargon.</span></a>
-    <a class="tcard" href="${BASE}/part-1/01-executive-summary/"><b>I'm a leader, 25 minutes</b><span>Thesis, evidence, risk profile, comparison table.</span></a>
-    <a class="tcard" href="${BASE}/part-4/29-banking/"><b>Show me my industry</b><span>Banking, healthcare, manufacturing, retail, cyber and more.</span></a>
-    <a class="tcard" href="${BASE}/part-2/14-correlation-engine/"><b>I want the architecture</b><span>The Correlation Engine is the heart of the proposal.</span></a>
-    <a class="tcard" href="${BASE}/part-5/39-challenges-and-limitations/"><b>Convince me it's wrong</b><span>Fundamental limits, failure modes, and when not to adopt.</span></a>
-    <a class="tcard" href="${BASE}/${PDF_NAME}" download><b>Just give me the PDF</b><span>Typeset A4 edition, 333 pages, full-bleed cover.</span></a>
+    <a class="tcard" href="${BASE}/front-matter/start-here/"><b>Non-technical overview</b><span>An eight-minute plain-language introduction to the thesis.</span></a>
+    <a class="tcard" href="${BASE}/part-1/01-executive-summary/"><b>Executive briefing</b><span>Problem, proposal, comparison, and risk profile in about 25 minutes.</span></a>
+    <a class="tcard" href="${BASE}/part-4/29-banking/"><b>Industry scenarios</b><span>Banking, healthcare, manufacturing, retail, cybersecurity, and more.</span></a>
+    <a class="tcard" href="${BASE}/part-2/14-correlation-engine/"><b>Architecture core</b><span>The Correlation Engine — the central design contribution.</span></a>
+    <a class="tcard" href="${BASE}/part-5/39-challenges-and-limitations/"><b>Limitations</b><span>Fundamental constraints, failure modes, and when not to adopt.</span></a>
+    <a class="tcard" href="${BASE}/${PDF_NAME}" download><b>Print edition (PDF)</b><span>Typeset A4 edition — 333 pages, full-bleed cover.</span></a>
   </div>
 </section>
 
@@ -472,13 +472,13 @@ function main() {
       ? `<aside class="rail"><div class="rail-in"><p class="rail-t">On this page</p><nav>${heads
           .map((h) => `<a href="#${h.id}">${esc(h.text)}</a>`)
           .join('')}</nav>
-        <a class="rail-pdf" href="${BASE}/${PDF_NAME}" download>⤓ Download full PDF</a>
+        <a class="rail-pdf" href="${BASE}/${PDF_NAME}" download>Download PDF</a>
         </div></aside>`
       : '';
 
     const pager = `<nav class="pager">
-      ${prev ? `<a class="pg prev" href="${urlFor(prev.file)}"><span>← Previous</span><b>${esc(prev.title)}</b></a>` : '<span></span>'}
-      ${next ? `<a class="pg next" href="${urlFor(next.file)}"><span>Next →</span><b>${esc(next.title)}</b></a>` : '<span></span>'}
+      ${prev ? `<a class="pg prev" href="${urlFor(prev.file)}"><span>Previous</span><b>${esc(prev.title)}</b></a>` : '<span></span>'}
+      ${next ? `<a class="pg next" href="${urlFor(next.file)}"><span>Next</span><b>${esc(next.title)}</b></a>` : '<span></span>'}
     </nav>`;
 
     const content = `
@@ -486,7 +486,7 @@ function main() {
   <header class="chead">
     <p class="crumb"><a href="${BASE}/">Home</a> <em>/</em> <span>${esc(item.group)}</span></p>
     <h1>${esc(item.title)}</h1>
-    <p class="cmeta"><span class="chip">${part.icon} ${esc(item.group)}</span><span class="dot">·</span>${readingTime(text)} min read</p>
+    <p class="cmeta"><span class="chip">${esc(item.group)}</span><span class="dot">·</span>${readingTime(text)} min read</p>
   </header>
   <div class="prose">
 ${html}
