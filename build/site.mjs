@@ -353,7 +353,7 @@ function landing(items, nav) {
     <ul class="stats">
       <li><b>333</b><span>pages</span></li>
       <li><b>54</b><span>chapters</span></li>
-      <li><b>62</b><span>diagrams</span></li>
+      <li><b>63</b><span>diagrams</span></li>
       <li><b>95</b><span>tables</span></li>
       <li><b>150</b><span>references</span></li>
     </ul>
