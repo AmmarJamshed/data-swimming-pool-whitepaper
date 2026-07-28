@@ -28,8 +28,9 @@ const SUBTITLE = 'An Intelligent Enterprise Data Ecosystem for Connected, Living
 const AUTHOR = 'Ammar Jamshed';
 const PDF_NAME = 'data-swimming-pool-whitepaper.pdf';
 const GITHUB = 'https://github.com/AmmarJamshed/data-swimming-pool-whitepaper';
+const GITHUB_OSS = 'https://github.com/AmmarJamshed/data-swimming-pool';
 const LINKEDIN = 'https://www.linkedin.com/in/ammarjamshed/';
-const ASSET_VERSION = '20260726-3';
+const ASSET_VERSION = '20260728-1';
 
 /* ------------------------------------------------------------------ */
 /* Part identity — each Part gets its own colour so readers always     */
@@ -343,7 +344,8 @@ ${content}
     <div>
       <b>Get it</b>
       <a href="${BASE}/${PDF_NAME}" download>Download PDF</a>
-      <a href="${GITHUB}" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="${GITHUB_OSS}" target="_blank" rel="noopener">Open-source implementation</a>
+      <a href="${GITHUB}" target="_blank" rel="noopener">Whitepaper source on GitHub</a>
       <a href="https://livestockmon.gitbook.io/data-swimming-pool/" target="_blank" rel="noopener">GitBook edition</a>
     </div>
     <div>
@@ -407,7 +409,7 @@ function landing(items, nav) {
     <div class="cta">
       <a class="btn primary" href="${BASE}/front-matter/start-here/">Begin with the overview</a>
       <a class="btn solid" href="${BASE}/${PDF_NAME}" download>Download PDF</a>
-      <a class="btn ghost" href="${BASE}/part-1/01-executive-summary/">Executive summary</a>
+      <a class="btn ghost" href="${GITHUB_OSS}" target="_blank" rel="noopener">Open-source code</a>
     </div>
     <ul class="stats">
       <li><b>55</b><span>pages (333 pages)</span></li>
@@ -453,6 +455,7 @@ function landing(items, nav) {
     <a class="tcard" href="${BASE}/part-4/29-banking/"><b>Industry scenarios</b><span>Banking, healthcare, manufacturing, retail, cybersecurity, and more.</span></a>
     <a class="tcard" href="${BASE}/part-2/14-correlation-engine/"><b>Architecture core</b><span>The Correlation Engine — the central design contribution.</span></a>
     <a class="tcard" href="${BASE}/part-5/39-challenges-and-limitations/"><b>Limitations</b><span>Fundamental constraints, failure modes, and when not to adopt.</span></a>
+    <a class="tcard" href="${GITHUB_OSS}" target="_blank" rel="noopener"><b>Open-source code</b><span>Apache-2.0 library — run <code>dsp demo</code> for fraud-ring correlation in about a minute.</span></a>
     <a class="tcard" href="${BASE}/${PDF_NAME}" download><b>Print edition (PDF)</b><span>Typeset A4 edition — 55 pages (333 pages), full-bleed cover.</span></a>
   </div>
 </section>

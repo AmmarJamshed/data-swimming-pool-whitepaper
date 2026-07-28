@@ -36,6 +36,14 @@ This site is a full technical whitepaper — but you do **not** need to be a dat
 Then jump to your industry story, or skim the Executive Summary.
 {% endhint %}
 
+{% hint style="info" %}
+### Open-source implementation (Apache 2.0)
+
+A runnable reference library now lives on GitHub — scoped correlation, evidence chains, purpose gates, and a one-minute fraud demo:
+
+**→ [github.com/AmmarJamshed/data-swimming-pool](https://github.com/AmmarJamshed/data-swimming-pool)** · `pip install -e .` then `dsp demo`
+{% endhint %}
+
 ---
 
 <figure><img src="assets/cover-illustration.png" alt="Abstract visualization of the Data Swimming Pool: streaming data flowing into a luminous pool containing an interconnected knowledge graph, with insight beams radiating outward"><figcaption><p><strong>Cover Illustration.</strong> Many data sources flow into a shared, governed medium where information does not merely sit — it circulates, connects, and produces useful intelligence.</p></figcaption></figure>
